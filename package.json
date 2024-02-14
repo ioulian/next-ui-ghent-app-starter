@@ -3,22 +3,35 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky",
+    "postinstall": "husky",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "check-types": "tsc --noemit",
+    "format-code": "prettier --write .",
+    "lint": "yarn check-types && next lint --fix"
   },
   "dependencies": {
+    "next": "14.1.0",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.0"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "7.0.1",
     "eslint": "^8",
-    "eslint-config-next": "14.1.0"
+    "eslint-config-next": "14.1.0",
+    "eslint-plugin-i18next": "6.0.3",
+    "eslint-plugin-jsx-a11y": "6.8.0",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-sonarjs": "0.24.0",
+    "eslint-plugin-storybook": "0.6.15",
+    "husky": "9.0.11",
+    "lint-staged": "15.2.2",
+    "prettier": "3.2.5",
+    "typescript": "^5"
   }
 }
