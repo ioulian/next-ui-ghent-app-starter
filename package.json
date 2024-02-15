@@ -6,11 +6,13 @@
     "prepare": "husky",
     "postinstall": "husky",
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn check-build-prerequisites && next build",
     "start": "next start",
     "check-types": "tsc --noemit",
     "format-code": "prettier --write .",
-    "lint": "yarn check-types && next lint --fix"
+    "lint": "yarn check-types && next lint --fix",
+    "check-translations": "ts-node -O '{\"module\":\"commonjs\"}' scripts/check-translations.ts",
+    "check-build-prerequisites": "ts-node -O '{\"module\":\"commonjs\"}' scripts/check-build-prerequisites.ts"
   },
   "dependencies": {
     "next": "14.1.0",
@@ -19,6 +21,7 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@stylistic/eslint-plugin": "^1.6.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -26,14 +29,18 @@
     "@typescript-eslint/parser": "^7.0.1",
     "eslint": "^8",
     "eslint-config-next": "^14.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-i18next": "^6.0.3",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-sonarjs": "^0.24.0",
     "eslint-plugin-storybook": "^0.6.15",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
+    "next-compose-plugins": "^2.2.1",
     "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   },
   "packageManager": "yarn@4.1.0"
