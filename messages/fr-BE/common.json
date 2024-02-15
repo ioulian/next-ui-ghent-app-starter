@@ -24,8 +24,8 @@
         "passwordMatch": "Passwords do not match"
       }
     },
-    "languageSwitcher": {
-      "current": "Selected language: {{ locale }}",
+    "localeSwitcher": {
+      "current": "Selected language: {locale}",
       "locales": {
         "nl-BE": "Nederlands",
         "fr-BE": "Français",

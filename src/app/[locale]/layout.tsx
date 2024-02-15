@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
+import { Source_Sans_3 } from "next/font/google";
 
 import LocaleSwitcher from "@/components/common/locale-switcher/LocaleSwitcher";
 
-const inter = Inter({ subsets: ["latin"] });
+const sourceSansPro = Source_Sans_3({
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--app-font-body",
+});
 
 type Props = Readonly<{
   children: ReactNode;
@@ -28,8 +33,8 @@ export async function generateMetadata({
 
 export default function RootLayout({ children, params: { locale } }: Props) {
   return (
-    <html lang={locale}>
-      <body className={inter.className}>
+    <html lang={locale} className={sourceSansPro.variable}>
+      <body>
         <LocaleSwitcher />
         {children}
       </body>

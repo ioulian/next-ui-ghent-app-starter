@@ -1,11 +1,15 @@
 "use client";
 
 import React, { FC, memo, useCallback, useTransition } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import clsx from "clsx";
 
 import { usePathname, useRouter } from "@/navigation";
 
+import { a, activeA } from "./LocaleItem.styles.css";
+
 const LocaleItem: FC<{ locale: string }> = ({ locale }) => {
+  const t = useTranslations("common.localeSwitcher");
   const currentLocale = useLocale();
   const router = useRouter();
   const [, startTransition] = useTransition();
@@ -21,9 +25,26 @@ const LocaleItem: FC<{ locale: string }> = ({ locale }) => {
     [pathname, router, locale],
   );
 
+  const isActive = currentLocale === locale;
+  const ariaLabel = isActive
+    ? (t("current", {
+        // @ts-expect-error Is dynamic
+        locale: t(`locales.${locale}`),
+      }) as string)
+    : // @ts-expect-error Is dynamic
+      (t(`locales.${locale}`) as string);
+
   return (
-    <a href={`/${locale}`} onClick={onSelectLocale}>
-      {locale} {currentLocale === locale && "(current)"}
+    <a
+      href={`/${locale}`}
+      onClick={onSelectLocale}
+      lang={locale}
+      hrefLang={locale}
+      className={clsx(a, isActive && activeA)}
+      title={ariaLabel}
+      aria-label={ariaLabel}
+    >
+      {locale}
     </a>
   );
 };
