@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
-import { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
-import { Source_Sans_3 } from "next/font/google";
+import { NextIntlClientProvider, useMessages } from "next-intl";
+import { ReactNode } from "react";
 
 import LocaleSwitcher from "@/components/common/locale-switcher/LocaleSwitcher";
-
-const sourceSansPro = Source_Sans_3({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  variable: "--app-font-body",
-});
+import { htmlFontClass } from "@/styles/fonts";
 
 type Props = Readonly<{
   children: ReactNode;
@@ -32,11 +26,14 @@ export async function generateMetadata({
 }
 
 export default function RootLayout({ children, params: { locale } }: Props) {
+  const messages = useMessages();
   return (
-    <html lang={locale} className={sourceSansPro.variable}>
+    <html lang={locale} className={htmlFontClass}>
       <body>
-        <LocaleSwitcher />
-        {children}
+        <NextIntlClientProvider messages={messages}>
+          <LocaleSwitcher />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

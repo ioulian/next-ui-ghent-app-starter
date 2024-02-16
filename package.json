@@ -6,6 +6,7 @@
     "prepare": "husky",
     "postinstall": "husky",
     "dev": "next dev",
+    "analyze": "ANALYZE=true yarn build",
     "build": "yarn check-build-prerequisites && next build",
     "start": "next start",
     "check-types": "tsc --noemit",
@@ -25,6 +26,7 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.1.0",
     "@storybook/addon-essentials": "^7.6.16",
     "@storybook/addon-interactions": "^7.6.16",
     "@storybook/addon-links": "^7.6.16",
@@ -43,6 +45,7 @@
     "@typescript-eslint/parser": "^7.0.1",
     "@vanilla-extract/next-plugin": "^2.3.6",
     "@vanilla-extract/webpack-plugin": "^2.3.6",
+    "css-loader": "^6.10.0",
     "eslint": "^8",
     "eslint-config-next": "^14.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -58,6 +61,7 @@
     "next-compose-plugins": "^2.2.1",
     "prettier": "^3.2.5",
     "storybook": "^7.6.16",
+    "style-loader": "^3.3.4",
     "ts-node": "^10.9.2",
     "typescript": "^5"
   },
