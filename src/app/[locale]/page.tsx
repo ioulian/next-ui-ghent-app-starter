@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
+import sampleSvgSprite from "@tabler/icons/arrow-right-circle.svg";
+
+import SvgSprite from "@/components/common/svg-sprite/SvgSprite";
 
 type Props = Readonly<{
   params: { locale: string };
@@ -22,6 +25,7 @@ export default function Page({}: Props) {
   return (
     <div>
       <div>{t("home.title")}</div>
+      <SvgSprite src={sampleSvgSprite} />
     </div>
   );
 }
