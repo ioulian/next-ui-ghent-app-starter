@@ -11,7 +11,7 @@ const icons = {
 
 const meta: Meta<typeof SvgSprite> = {
   tags: ["autodocs"],
-  title: "UI/Icon",
+  title: "UI/Svg Sprite",
   component: SvgSprite,
   argTypes: {
     src: {
@@ -19,13 +19,10 @@ const meta: Meta<typeof SvgSprite> = {
       mapping: icons,
       control: {
         type: "select",
-        labels: Object.entries(icons).reduce<Record<string, string>>(
-          (labels, [name, value]) => {
-            labels[name] = value.id;
-            return labels;
-          },
-          {},
-        ),
+        labels: Object.entries(icons).reduce<Record<string, string>>((labels, [name, value]) => {
+          labels[name] = value.id;
+          return labels;
+        }, {}),
       },
     },
   },

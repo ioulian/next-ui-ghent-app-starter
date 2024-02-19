@@ -7,7 +7,7 @@ import Text from "../text/Text";
 import VisuallyHidden from "./VisuallyHidden";
 
 const meta: Meta<typeof VisuallyHidden> = {
-  title: "UI/Common/Visually Hidden",
+  title: "UI/Visually Hidden",
   component: VisuallyHidden,
   tags: ["autodocs"],
 };

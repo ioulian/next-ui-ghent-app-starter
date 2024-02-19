@@ -3,6 +3,9 @@ import fs from "fs";
 import { BUILD_ID_FILE } from "next/dist/shared/lib/constants";
 
 export const getBuildId = (): string | "development" => {
+  if (process.env.IS_STORYBOOK === "true") {
+    return "development";
+  }
   const fileUrl = `${process.cwd()}/.next/${BUILD_ID_FILE}`;
 
   if (!fs.existsSync(fileUrl)) {

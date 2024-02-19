@@ -5,6 +5,8 @@ import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 import { VanillaExtractPlugin } from "@vanilla-extract/webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
+import { injectToWebpackConfig } from "./../scripts/svg-sprite-sheet.mjs";
+
 const config: StorybookConfig = {
   core: {
     disableTelemetry: true,
@@ -62,7 +64,12 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
+  env: {
+    IS_STORYBOOK: "true",
+  },
   webpackFinal: async (config) => {
+    injectToWebpackConfig(config);
+
     if (config.resolve) {
       config.resolve.plugins = [new TsconfigPathsPlugin()];
     }

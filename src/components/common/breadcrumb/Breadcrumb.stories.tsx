@@ -6,7 +6,7 @@ import Link from "next/link";
 import Breadcrumb from "./Breadcrumb";
 
 const meta: Meta<typeof Breadcrumb> = {
-  title: "UI/Common/  Breadcrumb",
+  title: "UI/Breadcrumb",
   component: Breadcrumb,
   tags: ["autodocs"],
 };
