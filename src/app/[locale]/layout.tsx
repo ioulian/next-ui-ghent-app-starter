@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 
 import LocaleSwitcher from "@/components/common/locale-switcher/LocaleSwitcher";
 import { htmlFontClass } from "@/styles/fonts";
-import { getSpritesheetUrl } from "@/components/common/svg-sprite/utils";
+import SpriteSheetPreload from "@/components/common/svg-sprite/SpriteSheetPreload";
 
 type Props = Readonly<{
   children: ReactNode;
@@ -32,15 +32,9 @@ export default function RootLayout({ children, params: { locale } }: Props) {
   return (
     <html lang={locale} className={htmlFontClass}>
       <head>
-        <link rel="preload" href={getSpritesheetUrl()} as="image" />
+        <SpriteSheetPreload />
       </head>
       <body>
-        <img
-          src={getSpritesheetUrl()}
-          style={{ position: "absolute", width: 0, height: 0 }}
-          aria-hidden
-          alt=""
-        />
         <NextIntlClientProvider messages={messages}>
           <LocaleSwitcher />
           {children}
