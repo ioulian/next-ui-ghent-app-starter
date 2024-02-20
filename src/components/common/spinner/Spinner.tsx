@@ -10,6 +10,8 @@ import {
   primaryColorVar,
   secondaryColorVar,
   spinner,
+  fullWidth as fullWidthStyle,
+  fullHeight as fullHeightStyle,
   spinnerElement,
   spinnerInner,
   spinnerLabel,
@@ -20,22 +22,23 @@ const Spinner: FC<
     primaryColor?: string;
     secondaryColor?: string;
     backgroundColor?: string;
-    // TODO: find how to get the variant type
-    variant?: "base" | "fullWidth" | "fullHeight" | "fullSize";
+    fullWidth?: boolean;
+    fullHeight?: boolean;
   } & InferComponentProps<"div">
 > = ({
   children,
   style,
   className,
-  variant = "base",
   primaryColor = "currentColor",
   secondaryColor = "transparent",
   backgroundColor = "transparent",
+  fullWidth,
+  fullHeight,
   ...props
 }) => (
-  <div
+  <span
     {...props}
-    className={clsx(spinner[variant], className)}
+    className={clsx(spinner, fullWidth && fullWidthStyle, fullHeight && fullHeightStyle, className)}
     style={merge(
       style ?? {},
       assignInlineVars({
@@ -43,17 +46,17 @@ const Spinner: FC<
       }),
     )}
   >
-    <div className={spinnerInner}>
-      <div
+    <span className={spinnerInner}>
+      <span
         className={spinnerElement}
         style={assignInlineVars({
           [primaryColorVar]: primaryColor,
           [secondaryColorVar]: secondaryColor,
         })}
       />
-    </div>
+    </span>
     {children ? <span className={spinnerLabel}>{children}</span> : null}
-  </div>
+  </span>
 );
 
 export default memo(Spinner);

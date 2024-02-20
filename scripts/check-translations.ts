@@ -34,7 +34,7 @@ const getTranslationFile = (locale: string, name: string): Record<string, unknow
       return undefined;
     }
 
-    return JSON.parse(file.toString());
+    return JSON.parse(file.toString()) as Record<string, unknown>;
   } catch {
     return undefined;
   }

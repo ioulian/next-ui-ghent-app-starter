@@ -18,15 +18,20 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.0.2",
     "@tabler/icons": "^2.47.0",
     "@vanilla-extract/dynamic": "^2.1.0",
     "@vanilla-extract/recipes": "^0.5.1",
     "clsx": "^2.1.0",
+    "colorjs.io": "^0.4.5",
+    "easing-coordinates": "^2.0.2",
     "lodash": "^4.17.21",
     "next": "14.1.0",
     "next-intl": "^3.7.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-animate-height": "^3.2.3",
+    "react-dom": "^18",
+    "react-use": "^17.5.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.1.0",
@@ -40,6 +45,7 @@
     "@storybook/react": "^7.6.16",
     "@storybook/test": "^7.6.16",
     "@stylistic/eslint-plugin": "^1.6.1",
+    "@total-typescript/ts-reset": "^0.5.1",
     "@types/lodash": "^4",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -64,6 +70,7 @@
     "mini-css-extract-plugin": "^2.8.0",
     "next-compose-plugins": "^2.2.1",
     "prettier": "^3.2.5",
+    "react-polymorphed": "^2.2.2",
     "storybook": "^7.6.16",
     "style-loader": "^3.3.4",
     "svg-sprite-loader": "^6.0.11",

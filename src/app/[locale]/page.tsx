@@ -5,6 +5,8 @@ import sampleSvgSprite from "@tabler/icons/arrow-right-circle.svg";
 
 import SvgSprite from "@/components/common/svg-sprite/SvgSprite";
 
+import styles from "./styles.module.css";
+
 type Props = Readonly<{
   params: { locale: string };
 }>;
@@ -24,7 +26,7 @@ export default function Page({}: Props) {
   const t = useTranslations("pages");
   return (
     <div>
-      <div>{t("home.title")}</div>
+      <div className={styles.test}>{t("home.title")}</div>
       <SvgSprite src={sampleSvgSprite} />
     </div>
   );

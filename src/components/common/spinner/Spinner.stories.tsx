@@ -23,7 +23,6 @@ export const WithLabel: Story = {
 
 export const WithCustomColors: Story = {
   args: {
-    variant: "fullSize",
     primaryColor: "#fff",
     secondaryColor: "#647373",
     backgroundColor: "rgba(0, 0, 0, 0.25)",
@@ -33,6 +32,7 @@ export const WithCustomColors: Story = {
 
 export const FullSize: Story = {
   args: {
-    variant: "fullSize",
+    fullWidth: true,
+    fullHeight: true,
   },
 };

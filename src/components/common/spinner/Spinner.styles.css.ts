@@ -1,4 +1,4 @@
-import { style, styleVariants, createVar, keyframes } from "@vanilla-extract/css";
+import { style, createVar, keyframes } from "@vanilla-extract/css";
 
 const rotate = keyframes({
   from: { transform: "rotate(0deg)" },
@@ -9,7 +9,7 @@ export const backgroundColorVar = createVar();
 export const primaryColorVar = createVar();
 export const secondaryColorVar = createVar();
 
-const base = style({
+export const spinner = style({
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
@@ -18,11 +18,12 @@ const base = style({
   backgroundColor: backgroundColorVar,
 });
 
-export const spinner = styleVariants({
-  base: [base],
-  fullWidth: [base, { width: "100%" }],
-  fullHeight: [base, { height: "100%" }],
-  fullSize: [base, { width: "100%", height: "100%" }],
+export const fullWidth = style({
+  width: "100%",
+});
+
+export const fullHeight = style({
+  height: "100%",
 });
 
 export const spinnerInner = style({
@@ -32,6 +33,7 @@ export const spinnerInner = style({
 });
 
 export const spinnerElement = style({
+  display: "block",
   borderWidth: "2px",
   borderStyle: "solid",
   borderTopColor: primaryColorVar,
@@ -45,6 +47,7 @@ export const spinnerElement = style({
 });
 
 export const spinnerLabel = style({
+  display: "block",
   fontSize: "0.875rem",
   lineHeight: 1,
 });
