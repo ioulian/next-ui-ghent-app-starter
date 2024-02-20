@@ -18,6 +18,28 @@ export const vars = createGlobalThemeContract(
       normal: "timing-normal",
       slow: "timing-slow",
     },
+    borderRadius: {
+      normal: "border-radius-normal",
+    },
+    floatingUI: {
+      tooltip: {
+        offset: "floating-ui-tooltip-offset",
+      },
+      popover: {
+        offset: "floating-ui-popover-offset",
+      },
+      dropdown: {
+        offset: "floating-ui-dropdown-offset",
+      },
+      floater: {
+        shift: "floating-ui-floater-shift",
+        flip: "floating-ui-floater-flip",
+        arrow: {
+          size: "floating-ui-floater-arrow-size",
+          padding: "floating-ui-floater-arrow-padding",
+        },
+      },
+    },
   },
   (value) => `app-${value}`,
 );
@@ -38,6 +60,28 @@ export const defaultTheme = {
     fast: "100ms",
     normal: "250ms",
     slow: "400ms",
+  },
+  borderRadius: {
+    normal: "4px",
+  },
+  floatingUI: {
+    tooltip: {
+      offset: "10px",
+    },
+    popover: {
+      offset: "10px",
+    },
+    dropdown: {
+      offset: "10px",
+    },
+    floater: {
+      shift: "5px",
+      flip: "5px",
+      arrow: {
+        size: "10px",
+        padding: "10px",
+      },
+    },
   },
 };
 

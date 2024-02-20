@@ -23,7 +23,7 @@ globalStyle("*, *::before, *::after", {
 globalStyle("body", {
   fontFamily: vars.font.body,
   fontSize: "1rem",
-  lineHeight: "1.25rem",
+  lineHeight: "1.5rem",
   color: vars.color.body,
   letterSpacing: "0.01em",
 });

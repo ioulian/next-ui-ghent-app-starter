@@ -12,7 +12,7 @@ import Button from "./Button";
 import SvgSprite from "./../svg-sprite/SvgSprite";
 
 const meta: Meta<typeof Button> = {
-  title: "UI/Buttons/Button",
+  title: "UI/Button/Button",
   component: Button,
   tags: ["autodocs"],
   argTypes: {

@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { InferComponentProps } from "@/@types/component";
 import { defaultTheme } from "@/styles/theme.css";
+import { convertThemeVarToNumber } from "@/styles/utils";
 
 import SvgSprite from "../svg-sprite/SvgSprite";
 
@@ -66,7 +67,7 @@ const Expandable: FC<
       </button>
       <AnimateHeight
         id={id}
-        duration={parseInt(defaultTheme.timing.slow.replace("ms", ""), 10)}
+        duration={convertThemeVarToNumber(defaultTheme.timing.slow)}
         height={isOpen ? "auto" : 0}
       >
         <div className={expandableContainer}>{children}</div>
