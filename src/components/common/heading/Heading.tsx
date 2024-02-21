@@ -1,7 +1,7 @@
 import { forwardRef, memo } from "react";
 import clsx from "clsx";
 
-import { InferComponentProps } from "@/@types/component";
+import { InferComponentProps } from "@/types/component";
 
 import { heading } from "./Heading.styles.css";
 
@@ -16,6 +16,7 @@ const Heading = forwardRef<
   } & InferComponentProps<"h1">
 >(({ type = "h2", size = type, className, children, ...props }, ref) => {
   const Element = type;
+
   return (
     <Element {...props} className={clsx(heading[size], className)} ref={ref}>
       {children}

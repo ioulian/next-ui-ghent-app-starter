@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import clsx from "clsx";
 
-import { InferComponentProps } from "@/@types/component";
+import { InferComponentProps } from "@/types/component";
 
 import { text } from "./Text.styles.css";
 

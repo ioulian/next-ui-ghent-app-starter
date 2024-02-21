@@ -192,6 +192,7 @@ const Dialog: FC<PropsWithChildren & DialogOptions> & {
   // This can accept any props as options, e.g. `placement`,
   // or other positioning options.
   const popover = useDialog(options);
+
   return <DialogContext.Provider value={popover}>{children}</DialogContext.Provider>;
 };
 

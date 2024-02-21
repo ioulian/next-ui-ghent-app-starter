@@ -10,6 +10,19 @@
     "plugin:react-hooks/recommended"
   ],
   "rules": {
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "const",
+        "next": "return"
+      },
+      {
+        "blankLine": "always",
+        "prev": "let",
+        "next": "return"
+      }
+    ],
     "quotes": ["error", "double", { "allowTemplateLiterals": false, "avoidEscape": true }],
     "curly": ["error", "all"],
     "object-shorthand": "error",

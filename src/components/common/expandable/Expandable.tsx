@@ -4,7 +4,7 @@ import AnimateHeight from "react-animate-height";
 import { useUpdateEffect } from "react-use";
 import clsx from "clsx";
 
-import { InferComponentProps } from "@/@types/component";
+import { InferComponentProps } from "@/types/component";
 import { defaultTheme } from "@/styles/theme.css";
 import { convertThemeVarToNumber } from "@/styles/utils";
 

@@ -24,6 +24,7 @@ export async function generateMetadata({
 
 export default function Page({}: Props) {
   const t = useTranslations("pages");
+
   return (
     <div>
       <div className={styles.test}>{t("home.title")}</div>

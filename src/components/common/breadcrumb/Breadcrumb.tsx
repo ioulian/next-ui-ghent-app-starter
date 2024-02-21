@@ -2,12 +2,13 @@ import { Children, cloneElement, FC, isValidElement, memo } from "react";
 import { useTranslations } from "next-intl";
 import clsx from "clsx";
 
-import { InferComponentProps } from "@/@types/component";
+import { InferComponentProps } from "@/types/component";
 
 import { li, nav, ol } from "./Breadcrumb.styles.css";
 
 const Breadcrumb: FC<InferComponentProps<"nav">> = ({ children, className, ...props }) => {
   const t = useTranslations("common");
+
   return (
     <nav aria-label={t("breadcrumb.label")} {...props} className={clsx(nav, className)}>
       <ol className={ol}>

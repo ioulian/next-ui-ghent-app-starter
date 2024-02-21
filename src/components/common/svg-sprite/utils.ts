@@ -13,5 +13,6 @@ export const hasSpriteSheet = () => {
   }
 
   const file = fs.readFileSync(fileUrl, "utf8");
+
   return file && typeof file === "string" && file.trim() !== "";
 };

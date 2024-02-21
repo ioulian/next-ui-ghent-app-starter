@@ -21,6 +21,7 @@ export async function generateMetadata({
 // is necessary for this page to render.
 export default function NotFoundPage({}: Props) {
   const t = useTranslations("pages");
+
   return (
     <div>
       <div>{t("notFound.title")}</div>

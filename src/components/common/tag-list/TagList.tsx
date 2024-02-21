@@ -1,7 +1,7 @@
 import { Children, FC, memo } from "react";
 import clsx from "clsx";
 
-import { InferComponentProps } from "@/@types/component";
+import { InferComponentProps } from "@/types/component";
 
 import { tagList } from "./TagList.styles.css";
 

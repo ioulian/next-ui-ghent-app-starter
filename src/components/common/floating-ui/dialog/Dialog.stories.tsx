@@ -181,6 +181,7 @@ export const DialogInDialog: Story = {
 
 const ControlledDialog = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
     <>
       <Button
@@ -236,6 +237,7 @@ export const CustomElements: Story = {
 
 const ControlledOverlayComponent = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
     <>
       <div>

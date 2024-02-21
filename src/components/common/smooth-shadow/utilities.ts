@@ -41,6 +41,7 @@ export const createSmoothShadow = ({
     Math.floor(parsedColor.srgb.g * 255),
     Math.floor(parsedColor.srgb.b * 255),
   ];
+
   return Array(layers)
     .fill(0)
     .map((_, i) => ({

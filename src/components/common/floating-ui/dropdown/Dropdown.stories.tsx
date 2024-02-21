@@ -115,6 +115,7 @@ export const CustomElements: Story = {
 
 const WithOverlayComponent = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
     <Dropdown trigger={<Button>Open</Button>}>
       <DropdownMenuItem typeaheadKey="Copy">

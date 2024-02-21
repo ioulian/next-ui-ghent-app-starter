@@ -3,7 +3,7 @@ import { assignInlineVars } from "@vanilla-extract/dynamic";
 import clsx from "clsx";
 import merge from "lodash/merge";
 
-import { InferComponentProps } from "@/@types/component";
+import { InferComponentProps } from "@/types/component";
 
 import {
   backgroundColorVar,

@@ -58,6 +58,7 @@ export const PopoverInPopover: Story = {
 
 const ControlledPopover = () => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
+
   return (
     <Popover open={isOpen} onOpenChange={(isNewOpen) => setIsOpen(isNewOpen)}>
       <Popover.Trigger

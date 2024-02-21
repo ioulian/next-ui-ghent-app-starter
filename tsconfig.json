@@ -18,7 +18,6 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
       "@/types/*": ["./src/@types/*"],
       "@/components/*": ["./src/components/*"],
       "@/utils/*": ["./src/utils/*"],
@@ -26,7 +25,8 @@
       "@/hooks/*": ["./src/hooks/*"],
       "@/styles/*": ["./src/styles/*"],
       "@/features/*": ["./src/features/*"],
-      "@/services/*": ["./src/services/*"]
+      "@/services/*": ["./src/services/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": [

@@ -17,6 +17,7 @@ const SvgSprite: FC<{ src: { id: string; viewBox: string } } & HTMLProps<SVGElem
   }: Partial<HTMLProps<SVGElement>> = props;
 
   const titleId = useId();
+
   return (
     <svg
       {...typedProps}

@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import clsx from "clsx";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 
-import { InferComponentProps } from "@/@types/component";
+import { InferComponentProps } from "@/types/component";
 import useResizeObserver from "@/hooks/useResizeObserver";
 
 import Button from "../button/Button";

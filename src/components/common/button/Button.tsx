@@ -10,7 +10,7 @@ import { useCallback } from "react";
 import clsx from "clsx";
 import { PolyForwardMemoComponent, PolyRefFunction } from "react-polymorphed";
 
-import { InferComponentProps } from "@/@types/component";
+import { InferComponentProps } from "@/types/component";
 import { ExtractVariants } from "@/@types/styles";
 
 import Spinner from "../spinner/Spinner";

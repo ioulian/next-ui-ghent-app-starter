@@ -2,7 +2,7 @@ import { CSSProperties, forwardRef, useMemo } from "react";
 import { Coords, Placement, Strategy } from "@floating-ui/react";
 import clsx from "clsx";
 
-import { InferComponentProps } from "@/@types/component";
+import { InferComponentProps } from "@/types/component";
 import { defaultTheme } from "@/styles/theme.css";
 import { convertThemeVarToNumber } from "@/styles/utils";
 

@@ -27,6 +27,7 @@ export const Uncontrolled: Story = {
 
 const ControlledTooltip = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
     <Tooltip open={isOpen} onOpenChange={(isNewOpen) => setIsOpen(isNewOpen)}>
       <Tooltip.Trigger
