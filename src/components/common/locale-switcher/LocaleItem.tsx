@@ -5,10 +5,11 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { usePathname, useRouter } from "@/navigation";
 import { cx } from "@/styled-system/css";
+import { LocaleType } from "@/i18n";
 
 import { a, activeA } from "./LocaleItem.styles";
 
-const LocaleItem: FC<{ locale: string }> = ({ locale }) => {
+const LocaleItem: FC<{ locale: LocaleType }> = ({ locale }) => {
   const t = useTranslations("common.localeSwitcher");
   const currentLocale = useLocale();
   const router = useRouter();

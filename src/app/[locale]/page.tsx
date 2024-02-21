@@ -8,6 +8,7 @@ import iconChevronLeft from "@tabler/icons/chevron-left.svg";
 import SvgSprite from "@/components/common/svg-sprite/SvgSprite";
 import Text from "@/components/common/text/Text";
 import Pagination from "@/components/common/pagination/Pagination";
+import Test from "@/components/Test";
 
 import styles from "./styles.module.css";
 
@@ -56,7 +57,7 @@ export default function Page({}: Props) {
           <li>List item 3</li>
         </ol>
       </Text>
-
+      <Test />
       <Pagination
         {...{
           breakLabel: "...",

@@ -4641,13 +4641,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@total-typescript/ts-reset@npm:^0.5.1":
-  version: 0.5.1
-  resolution: "@total-typescript/ts-reset@npm:0.5.1"
-  checksum: 10c0/0339e975034ae648e83f08d0d408d9bda926fdb0cbaddf8efebd3105b378847be8bc9c2f1aa1435e2221f5958019bc2cb562211745a52fe076a109645c8a31f0
-  languageName: node
-  linkType: hard
-
 "@trysound/sax@npm:0.2.0":
   version: 0.2.0
   resolution: "@trysound/sax@npm:0.2.0"
@@ -12789,7 +12782,6 @@ __metadata:
     "@storybook/test": "npm:^7.6.16"
     "@stylistic/eslint-plugin": "npm:^1.6.1"
     "@tabler/icons": "npm:^2.47.0"
-    "@total-typescript/ts-reset": "npm:^0.5.1"
     "@types/lodash": "npm:^4"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"

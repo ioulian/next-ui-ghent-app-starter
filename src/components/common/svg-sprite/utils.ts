@@ -3,7 +3,6 @@ import fs from "fs";
 import { getBuildId } from "@/utils/next";
 
 export const getSpritesheetUrl = () =>
-  // @ts-expect-error FIXME:
   `${__webpack_public_path__}static/media/sprite-${getBuildId()}.svg`;
 
 export const hasSpriteSheet = () => {

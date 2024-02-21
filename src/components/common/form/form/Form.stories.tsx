@@ -149,6 +149,7 @@ export const Example: Story = {
       </div>
       <FormField<SampleFormData>
         label="I accept privacy policy"
+        description="Read terms and conditions first"
         name="privacy"
         isToggle
         options={{

@@ -1,10 +1,15 @@
+// @ts-check
+
 import { notFound } from "next/navigation";
 import { getRequestConfig } from "next-intl/server";
 import { Pathnames } from "next-intl/navigation";
 
+// TODO: find a way to get this from the array definition below
+export type LocaleType = "en-GB" | "fr-BE" | "nl-BE";
+
 // If changing this, also do not forget to change middleware!!
-export const locales: string[] = ["en-GB", "fr-BE", "nl-BE"];
-export const defaultLocale: string = "en-GB";
+export const locales: LocaleType[] = ["en-GB", "fr-BE", "nl-BE"];
+export const defaultLocale: LocaleType = "en-GB";
 
 export const pathnames = {
   "/": "/",
@@ -17,7 +22,7 @@ export type AppPathnames = keyof typeof pathnames;
 
 export default getRequestConfig(async ({ locale }) => {
   // Validate that the incoming `locale` parameter is valid
-  if (!locales.includes(locale)) {
+  if (!locales.includes(locale as unknown as LocaleType)) {
     notFound();
   }
 

@@ -5,7 +5,4 @@ export const description = css({
   "& a": {
     color: "inherit",
   },
-  "& + *": {
-    marginTop: "0.25rem",
-  },
 });

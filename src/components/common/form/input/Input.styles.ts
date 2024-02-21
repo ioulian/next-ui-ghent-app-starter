@@ -1,6 +1,5 @@
 import { css } from "@/styled-system/css";
 import { token } from "@/styled-system/tokens";
-import { convertThemeVarToNumber } from "@/styles/utils";
 import { escapeSVG } from "@/utils/svg";
 
 export const input = css({
@@ -31,7 +30,7 @@ export const input = css({
   },
   '&[type="checkbox"]:checked': {
     backgroundImage: `url("${escapeSVG(
-      `<svg width='24' height='24' viewBox='0 0 24 24' fill='${convertThemeVarToNumber(token("colors.form.checkbox.checked.color"))}' xmlns='http://www.w3.org/2000/svg'><path d='M9 22l-10-10.598 2.798-2.859 7.149 7.473 13.144-14.016 2.909 2.806z' /></svg>`,
+      `<svg width='24' height='24' viewBox='0 0 24 24' fill='${token("colors.form.checkbox.checked.color")}' xmlns='http://www.w3.org/2000/svg'><path d='M9 22l-10-10.598 2.798-2.859 7.149 7.473 13.144-14.016 2.909 2.806z' /></svg>`,
     )}")`,
   },
   '&[type="radio"]': {
@@ -40,7 +39,7 @@ export const input = css({
   },
   '&[type="radio"]:checked': {
     backgroundImage: `url("${escapeSVG(
-      `<svg width='24' height='24' viewBox='0 0 24 24' fill='${convertThemeVarToNumber(token("colors.form.checkbox.checked.color"))}' xmlns='http://www.w3.org/2000/svg'><circle cx='12' cy='12' r='12' /></svg>`,
+      `<svg width='24' height='24' viewBox='0 0 24 24' fill='${token("colors.form.checkbox.checked.color")}' xmlns='http://www.w3.org/2000/svg'><circle cx='12' cy='12' r='12' /></svg>`,
     )}")`,
   },
   //[`${formFieldToggle} > &`]: {
@@ -50,6 +49,9 @@ export const input = css({
 
 export const inputIconContainer = css({
   position: "relative",
+  "& + *:not(button)": {
+    marginTop: "0.25rem",
+  },
   "& > svg": {
     width: "1rem",
     height: "1rem",

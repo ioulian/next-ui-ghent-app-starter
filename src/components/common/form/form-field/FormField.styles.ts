@@ -7,7 +7,7 @@ export const formField = css({
   "&:not(:last-child)": {
     marginBottom: "1.25rem",
   },
-  "& label": {
+  "& > label": {
     marginBottom: "0.5rem",
   },
 });
@@ -18,7 +18,7 @@ export const formFieldToggle = css({
   alignItems: "center",
   flexWrap: "wrap",
   "& > label": {
-    marginBottom: 0,
+    marginBottom: "0!",
     marginLeft: "0.5rem",
   },
   "& > input": {
@@ -44,6 +44,9 @@ export const baseFormField = cva({
     borderStyle: "solid",
     borderColor: "form.input.border",
     margin: 0,
+    "& + *:not(button, label)": {
+      marginTop: "0.25rem",
+    },
   },
   variants: {
     isError: {

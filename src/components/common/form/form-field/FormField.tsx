@@ -142,7 +142,8 @@ const FormField = <T extends FormValueType>({
         <Error id={getErrorId(name)}>
           {error.type === BE_VALIDATION
             ? (error.message as unknown as string)
-            : t(`validationErrors.${error.message as string}`)}
+            : // @ts-expect-error This is dynamic
+              t(`validationErrors.${error.message as string}`)}
         </Error>
       ) : null}
       {description ? <Description id={getDescriptionId(name)}>{description}</Description> : null}
