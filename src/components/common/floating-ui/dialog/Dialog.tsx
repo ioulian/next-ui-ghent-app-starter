@@ -22,7 +22,7 @@ import {
 import { useCallback } from "react";
 
 import { convertThemeVarToNumber } from "@/styles/utils";
-import { defaultTheme } from "@/styles/theme.css";
+import { token } from "@/styled-system/tokens";
 
 import Floater from "../floater/Floater";
 
@@ -69,8 +69,8 @@ const DialogContent = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((pro
   const parentId = useFloatingParentNodeId();
   const { isMounted, styles } = useTransitionStyles(context.context, {
     duration: {
-      open: convertThemeVarToNumber(defaultTheme.timing.normal),
-      close: convertThemeVarToNumber(defaultTheme.timing.fast),
+      open: convertThemeVarToNumber(token("durations.normal")),
+      close: convertThemeVarToNumber(token("durations.fast")),
     },
   });
 

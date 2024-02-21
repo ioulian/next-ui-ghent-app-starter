@@ -31,7 +31,7 @@ import Label from "../label/Label";
 import { getAriaDescribedBy, getDescriptionId, getErrorId } from "../utils";
 import { BE_VALIDATION, type FormValueType } from "../form/Form";
 
-import { formField, formFieldError, formFieldToggle } from "./FormField.styles.css";
+import { formField, formFieldToggle } from "./FormField.styles";
 
 const BaseWrapper: FC<{ children?: ReactNode }> = ({ children }) => children;
 
@@ -92,10 +92,7 @@ const FormField = <T extends FormValueType>({
 
   return (
     // @ts-expect-error TODO: fixme
-    <Component
-      {...props}
-      className={clsx(formField, error && formFieldError, isToggle && formFieldToggle, className)}
-    >
+    <Component {...props} className={clsx(formField, isToggle && formFieldToggle, className)}>
       {!!label && (
         <Label
           as={asFieldSet ? "legend" : "label"}
@@ -115,6 +112,8 @@ const FormField = <T extends FormValueType>({
                 ...args,
                 props: {
                   id: name,
+                  // @ts-expect-error FIXME:
+                  isError: !!error,
                   ...(describedBy && { "aria-describedby": describedBy }),
                   ...(error && { "aria-invalid": "true" }),
                 },
@@ -129,6 +128,7 @@ const FormField = <T extends FormValueType>({
               ? cloneElement(child, {
                   ...child.props,
                   ...registerProps,
+                  isError: !!error,
                   name,
                   id: name,
                   ...(describedBy && { "aria-describedby": describedBy }),
@@ -142,10 +142,7 @@ const FormField = <T extends FormValueType>({
         <Error id={getErrorId(name)}>
           {error.type === BE_VALIDATION
             ? (error.message as unknown as string)
-            : (t(
-                // @ts-expect-error FIXME:
-                `validationErrors.${error.message as string}`,
-              ) as string)}
+            : t(`validationErrors.${error.message as string}`)}
         </Error>
       ) : null}
       {description ? <Description id={getDescriptionId(name)}>{description}</Description> : null}

@@ -7,7 +7,7 @@ import { InferComponentProps } from "@/types/component";
 
 import ApiFormError from "../ApiFormError";
 
-import { form } from "./Form.styles.css";
+import { form } from "./Form.styles";
 
 export const BE_VALIDATION: string = "BE";
 

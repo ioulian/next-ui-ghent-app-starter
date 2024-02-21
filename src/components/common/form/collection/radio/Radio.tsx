@@ -2,13 +2,19 @@ import { forwardRef, memo } from "react";
 import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
+import { cx } from "@/styled-system/css";
+import { baseFormField } from "@/components/common/form/form-field/FormField.styles";
 
 import Label from "../../label/Label";
-import { input } from "../../input/Input.styles.css";
+import { input } from "../../input/Input.styles";
+import { checkboxContainer } from "../checkbox/Checkbox.styles";
 
-import { radioContainer } from "./Radio.styles.css";
+import { radioContainer } from "./Radio.styles";
 
-const Radio = forwardRef<HTMLInputElement, { inputValue: string } & InferComponentProps<"input">>(
+const Radio = forwardRef<
+  HTMLInputElement,
+  { inputValue: string; isError?: boolean } & InferComponentProps<"input">
+>(
   (
     {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -16,6 +22,7 @@ const Radio = forwardRef<HTMLInputElement, { inputValue: string } & InferCompone
       name,
       inputValue,
       children,
+      isError,
       className,
       ...props
     },
@@ -24,10 +31,10 @@ const Radio = forwardRef<HTMLInputElement, { inputValue: string } & InferCompone
     const linkedId = `${name}-${inputValue}`;
 
     return (
-      <div className={radioContainer}>
+      <div className={cx(checkboxContainer, radioContainer)}>
         <input
           {...props}
-          className={clsx(input, className)}
+          className={clsx(baseFormField({ isError }), input, className)}
           name={name}
           type="radio"
           id={linkedId}

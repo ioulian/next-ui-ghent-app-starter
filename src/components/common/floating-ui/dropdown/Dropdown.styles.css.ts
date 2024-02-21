@@ -1,16 +1,11 @@
-import { style, globalStyle } from "@vanilla-extract/css";
+import { css } from "@/styled-system/css";
 
-export const menuWrapper = style({});
-
-globalStyle(`${menuWrapper} > button`, {
-  width: "100%",
-  display: "block",
+export const menuWrapper = css({
+  "& > button": {
+    width: "100%",
+    display: "block",
+    "&:not(:first-child)": {
+      marginTop: "0.25rem",
+    },
+  },
 });
-
-globalStyle(`${menuWrapper} > button:not(:first-child)`, {
-  marginTop: "0.25rem",
-});
-
-//globalStyle(`${menuWrapper} > span`, {
-//  position: "absolute"
-//});

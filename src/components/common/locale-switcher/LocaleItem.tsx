@@ -2,11 +2,11 @@
 
 import React, { FC, memo, useCallback, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import clsx from "clsx";
 
 import { usePathname, useRouter } from "@/navigation";
+import { cx } from "@/styled-system/css";
 
-import { a, activeA } from "./LocaleItem.styles.css";
+import { a, activeA } from "./LocaleItem.styles";
 
 const LocaleItem: FC<{ locale: string }> = ({ locale }) => {
   const t = useTranslations("common.localeSwitcher");
@@ -27,12 +27,10 @@ const LocaleItem: FC<{ locale: string }> = ({ locale }) => {
 
   const isActive = currentLocale === locale;
   const ariaLabel = isActive
-    ? (t("current", {
-        // @ts-expect-error Is dynamic
+    ? t("current", {
         locale: t(`locales.${locale}`),
-      }) as string)
-    : // @ts-expect-error Is dynamic
-      (t(`locales.${locale}`) as string);
+      })
+    : t(`locales.${locale}`);
 
   return (
     <a
@@ -40,7 +38,7 @@ const LocaleItem: FC<{ locale: string }> = ({ locale }) => {
       onClick={onSelectLocale}
       lang={locale}
       hrefLang={locale}
-      className={clsx(a, isActive && activeA)}
+      className={cx(a, isActive && activeA)}
       title={ariaLabel}
       aria-label={ariaLabel}
     >

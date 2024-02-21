@@ -40,8 +40,8 @@ import {
   useState,
 } from "react";
 
-import { defaultTheme } from "@/styles/theme.css";
 import { convertThemeVarToNumber } from "@/styles/utils";
+import { token } from "@/styled-system/tokens";
 
 import Floater from "../floater/Floater";
 
@@ -179,14 +179,14 @@ const DropdownMenu = forwardRef<
       placement: isNested ? "right-start" : "bottom-start",
       middleware: [
         offset({
-          mainAxis: convertThemeVarToNumber(defaultTheme.floatingUI.dropdown.offset),
-          alignmentAxis: convertThemeVarToNumber(defaultTheme.floatingUI.dropdown.offset),
+          mainAxis: convertThemeVarToNumber(token("spacing.floating.dropdown.offset")),
+          alignmentAxis: convertThemeVarToNumber(token("spacing.floating.dropdown.offset")),
         }),
         flip(),
-        shift({ padding: convertThemeVarToNumber(defaultTheme.floatingUI.floater.shift) }),
+        shift({ padding: convertThemeVarToNumber(token("spacing.floating.floater.shift")) }),
         arrow({
           element: arrowRef,
-          padding: convertThemeVarToNumber(defaultTheme.floatingUI.floater.arrow.padding),
+          padding: convertThemeVarToNumber(token("spacing.floating.floater.arrow.padding")),
         }),
       ],
       whileElementsMounted: autoUpdate,
@@ -268,8 +268,8 @@ const DropdownMenu = forwardRef<
 
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: {
-      open: convertThemeVarToNumber(defaultTheme.timing.normal),
-      close: convertThemeVarToNumber(defaultTheme.timing.fast),
+      open: convertThemeVarToNumber(token("durations.normal")),
+      close: convertThemeVarToNumber(token("durations.fast")),
     },
   });
 

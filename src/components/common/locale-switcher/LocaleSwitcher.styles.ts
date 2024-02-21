@@ -1,6 +1,6 @@
-import { style } from "@vanilla-extract/css";
+import { css } from "@/styled-system/css";
 
-export const ul = style({
+export const ul = css({
   justifyContent: "center",
   alignItems: "center",
   position: "relative",

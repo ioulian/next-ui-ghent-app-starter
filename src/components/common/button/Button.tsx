@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ReactNode,
   forwardRef,
@@ -7,32 +9,37 @@ import {
   memo,
 } from "react";
 import { useCallback } from "react";
-import clsx from "clsx";
 import { PolyForwardMemoComponent, PolyRefFunction } from "react-polymorphed";
 
 import { InferComponentProps } from "@/types/component";
-import { ExtractVariants } from "@/@types/styles";
+import { cx } from "@/styled-system/css";
+import { ArrayElement } from "@/types/helpers";
 
 import Spinner from "../spinner/Spinner";
 import VisuallyHidden from "../visually-hidden/VisuallyHidden";
 
-import { button, buttonContent, fullWidth as fullWidthStyle } from "./Button.styles.css";
+import { button, buttonContent, spinner, svg } from "./Button.styles";
 
 type Props = {
   /**
    * Variant of the button
    */
-  variant?: ExtractVariants<typeof button>["variant"];
+  variant?: ArrayElement<(typeof button.variantMap)["variant"]>;
 
   /**
    * Size of the button
    */
-  size?: ExtractVariants<typeof button>["size"];
+  size?: ArrayElement<(typeof button.variantMap)["size"]>;
 
   /**
    * Should button be rendered full width
    */
   fullWidth?: boolean;
+
+  /**
+   * Show progress bar
+   */
+  isLoading?: boolean;
 
   /**
    * Add an icon before
@@ -43,11 +50,6 @@ type Props = {
    * Add an icon after
    */
   iconAfter?: ReactNode;
-
-  /**
-   * Show progress bar
-   */
-  isLoading?: boolean;
 
   /**
    * Will hide children and show icons only
@@ -98,18 +100,15 @@ const Button = polyRef<"button" | "a", Props>(
         ref={ref}
         type={!Element || Element === "button" ? props.type ?? "button" : undefined}
         {...props}
-        className={clsx(
-          button({ variant, size, isLoading }),
-          fullWidth && fullWidthStyle,
-          className,
-        )}
+        className={cx(button({ variant, size, isLoading, fullWidth }), className)}
         disabled={disabled || isLoading}
         onClick={onClick ? newOnClick : undefined}
       >
-        <span className={buttonContent}>
+        <span className={buttonContent({ isVisible: !isLoading })}>
           {isValidElement<Record<string, unknown>>(iconBefore) &&
             cloneElement(iconBefore, {
               "aria-hidden": "true",
+              className: svg({ size: size === "small" ? "small" : "normal" }),
             })}
           {children ? (
             iconOnly ? (
@@ -121,9 +120,10 @@ const Button = polyRef<"button" | "a", Props>(
           {isValidElement<Record<string, unknown>>(iconAfter) &&
             cloneElement(iconAfter, {
               "aria-hidden": "true",
+              className: svg({ size: size === "small" ? "small" : "normal" }),
             })}
         </span>
-        <Spinner />
+        <Spinner className={spinner({ isVisible: isLoading })} />
       </Element>
     );
   },

@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
 
-import { list } from "./List.styles.css";
+import { list } from "./List.styles";
 
 const List: FC<InferComponentProps<"div">> = ({ children, className, ...props }) => {
   return (

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import ReactSelect from "react-select";
 import icon from "@tabler/icons/at.svg";
 import searchIcon from "@tabler/icons/search.svg";
 
@@ -15,7 +14,6 @@ import List from "../collection/List";
 import Checkbox from "../collection/checkbox/Checkbox";
 import SvgSprite from "../../svg-sprite/SvgSprite";
 import Toggle from "../toggle/Toggle";
-import ReactSelectContainer from "../react-select/ReactSelect";
 import PasswordInput from "../input/PasswordInput";
 
 import Input from "./../input/Input";
@@ -209,85 +207,5 @@ export const WithCheckboxList: Story = {
     },
     inputWrapper: List,
     asFieldSet: true,
-  },
-};
-
-interface ColourOption {
-  readonly value: string;
-  readonly label: string;
-  readonly color: string;
-  readonly isFixed?: boolean;
-  readonly isDisabled?: boolean;
-}
-
-const colourOptions: readonly ColourOption[] = [
-  { value: "ocean", label: "Ocean", color: "#00B8D9", isFixed: true },
-  { value: "blue", label: "Blue", color: "#0052CC", isDisabled: true },
-  { value: "purple", label: "Purple", color: "#5243AA" },
-  { value: "red", label: "Red", color: "#FF5630", isFixed: true },
-  { value: "orange", label: "Orange", color: "#FF8B00" },
-  { value: "yellow", label: "Yellow", color: "#FFC400" },
-  { value: "green", label: "Green", color: "#36B37E" },
-  { value: "forest", label: "Forest", color: "#00875A" },
-  { value: "slate", label: "Slate", color: "#253858" },
-  { value: "silver", label: "Silver", color: "#666666" },
-];
-
-export const WithReactSelect: Story = {
-  render: (args) => (
-    <Form onSubmit={() => {}}>
-      <FormField {...args} />
-    </Form>
-  ),
-  args: {
-    label: "Choose",
-    name: "emailAddress",
-    inputWrapper: ReactSelectContainer,
-    options: {
-      ...required,
-    },
-    asFieldSet: true,
-    children: ({ field, props: { id, ...props } }) => (
-      <ReactSelect
-        {...field}
-        {...props}
-        inputId={id}
-        isClearable
-        defaultValue={colourOptions[0]}
-        className="react-select"
-        classNamePrefix="react-select"
-        options={colourOptions}
-      />
-    ),
-  },
-};
-
-export const WithMultiReactSelect: Story = {
-  render: (args) => (
-    <Form onSubmit={() => {}}>
-      <FormField {...args} />
-    </Form>
-  ),
-  args: {
-    label: "Choose",
-    name: "emailAddress",
-    inputWrapper: ReactSelectContainer,
-    options: {
-      ...required,
-    },
-    asFieldSet: true,
-    children: ({ field, props: { id, ...props } }) => (
-      <ReactSelect
-        {...field}
-        {...props}
-        isMulti
-        inputId={id}
-        defaultValue={colourOptions[0]}
-        className="react-select"
-        menuIsOpen
-        classNamePrefix="react-select"
-        options={colourOptions}
-      />
-    ),
   },
 };

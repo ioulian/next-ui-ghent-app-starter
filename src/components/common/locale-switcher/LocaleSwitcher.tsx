@@ -2,8 +2,8 @@ import React, { FC, memo } from "react";
 
 import { locales } from "@/i18n";
 
+import { ul } from "./LocaleSwitcher.styles";
 import LocaleItem from "./LocaleItem";
-import { ul } from "./LocaleSwitcher.styles.css";
 
 const LocaleSwitcher: FC = () => {
   return (

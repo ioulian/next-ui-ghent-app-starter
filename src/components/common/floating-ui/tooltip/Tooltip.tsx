@@ -1,3 +1,5 @@
+"use client";
+
 import { FloatingPortal, useMergeRefs, useTransitionStyles } from "@floating-ui/react";
 import {
   cloneElement,
@@ -9,8 +11,8 @@ import {
   useMemo,
 } from "react";
 
-import { defaultTheme } from "@/styles/theme.css";
 import { convertThemeVarToNumber } from "@/styles/utils";
+import { token } from "@/styled-system/tokens";
 
 import Floater from "../floater/Floater";
 
@@ -54,8 +56,8 @@ const TooltipContent = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((pr
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
   const { isMounted, styles } = useTransitionStyles(context.context, {
     duration: {
-      open: convertThemeVarToNumber(defaultTheme.timing.normal),
-      close: convertThemeVarToNumber(defaultTheme.timing.fast),
+      open: convertThemeVarToNumber(token("durations.normal")),
+      close: convertThemeVarToNumber(token("durations.fast")),
     },
   });
   const position = useMemo(

@@ -14,8 +14,8 @@ import {
 } from "@floating-ui/react";
 import { createContext, useCallback, useContext, useMemo, useRef, useState } from "react";
 
-import { defaultTheme } from "@/styles/theme.css";
 import { convertThemeVarToNumber } from "@/styles/utils";
+import { token } from "@/styled-system/tokens";
 
 export interface PopoverOptions {
   initialOpen?: boolean;
@@ -48,16 +48,16 @@ export const usePopover = ({
     onOpenChange: setOpen,
     whileElementsMounted: autoUpdate,
     middleware: [
-      offset(convertThemeVarToNumber(defaultTheme.floatingUI.popover.offset)),
+      offset(convertThemeVarToNumber(token("spacing.floating.tooltip.offset"))),
       flip({
         crossAxis: placement.includes("-"),
         fallbackAxisSideDirection: "start",
-        padding: convertThemeVarToNumber(defaultTheme.floatingUI.floater.flip),
+        padding: convertThemeVarToNumber(token("spacing.floating.floater.flip")),
       }),
-      shift({ padding: convertThemeVarToNumber(defaultTheme.floatingUI.floater.shift) }),
+      shift({ padding: convertThemeVarToNumber(token("spacing.floating.floater.shift")) }),
       arrow({
         element: arrowRef,
-        padding: convertThemeVarToNumber(defaultTheme.floatingUI.floater.arrow.padding),
+        padding: convertThemeVarToNumber(token("spacing.floating.floater.arrow.padding")),
       }),
     ],
   });

@@ -10,6 +10,9 @@ const meta: Meta<typeof ButtonGroup> = {
   title: "UI/Button/Group",
   component: ButtonGroup,
   tags: ["autodocs"],
+  parameters: {
+    layout: "padded",
+  },
 };
 
 export default meta;
@@ -26,7 +29,9 @@ export const Default: Story = {
       </Button>
     </ButtonGroup>
   ),
-  args: {},
+  args: {
+    alignRight: false,
+  },
 };
 
 export const AlignRight: Story = {

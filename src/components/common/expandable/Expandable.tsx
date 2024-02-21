@@ -5,18 +5,17 @@ import { useUpdateEffect } from "react-use";
 import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
-import { defaultTheme } from "@/styles/theme.css";
 import { convertThemeVarToNumber } from "@/styles/utils";
+import { token } from "@/styled-system/tokens";
 
 import SvgSprite from "../svg-sprite/SvgSprite";
 
 import {
   expandable,
   expandableContainer,
-  expandableOpen,
   expandableSummary,
   expandableSummaryIcon,
-} from "./Expandable.styles.css";
+} from "./Expandable.styles";
 
 const Expandable: FC<
   {
@@ -54,7 +53,7 @@ const Expandable: FC<
   }, []);
 
   return (
-    <div {...props} className={clsx(expandable, isOpen && expandableOpen, className)}>
+    <div {...props} className={clsx(expandable, className)}>
       <button
         type="button"
         aria-expanded={isOpen}
@@ -63,11 +62,15 @@ const Expandable: FC<
         className={expandableSummary}
       >
         <span>{summary}</span>
-        <SvgSprite className={clsx(expandableSummaryIcon)} src={iconChevron} aria-hidden />
+        <SvgSprite
+          className={clsx(expandableSummaryIcon({ isOpen }))}
+          src={iconChevron}
+          aria-hidden
+        />
       </button>
       <AnimateHeight
         id={id}
-        duration={convertThemeVarToNumber(defaultTheme.timing.slow)}
+        duration={convertThemeVarToNumber(token("durations.slow"))}
         height={isOpen ? "auto" : 0}
       >
         <div className={expandableContainer}>{children}</div>

@@ -1,9 +1,9 @@
 import { forwardRef, memo } from "react";
-import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
+import { cx } from "@/styled-system/css";
 
-import { heading } from "./Heading.styles.css";
+import { heading } from "./Heading.styles";
 
 export type HeadingType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 export type HeadingSize = "display" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -18,7 +18,7 @@ const Heading = forwardRef<
   const Element = type;
 
   return (
-    <Element {...props} className={clsx(heading[size], className)} ref={ref}>
+    <Element {...props} className={cx(heading({ size }), className)} ref={ref}>
       {children}
     </Element>
   );

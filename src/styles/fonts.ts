@@ -1,10 +1,10 @@
 import { Source_Sans_3 } from "next/font/google";
 
-const sourceSansPro = Source_Sans_3({
+export const sourceSansPro = Source_Sans_3({
   weight: ["400", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--app-font-body",
+  variable: "--font-heading",
 });
 
 export const htmlFontClass = sourceSansPro.variable;

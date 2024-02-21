@@ -32,7 +32,6 @@ export const WithCustomColors: Story = {
 
 export const FullSize: Story = {
   args: {
-    fullWidth: true,
-    fullHeight: true,
+    size: "full",
   },
 };

@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
 
-import { tagList } from "./TagList.styles.css";
+import { tagList } from "./TagList.styles";
 
 const TagList: FC<InferComponentProps<"ul">> = ({ children, className, ...props }) => {
   return (

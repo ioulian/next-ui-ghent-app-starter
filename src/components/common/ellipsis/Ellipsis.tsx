@@ -1,11 +1,11 @@
-import { FC, memo, useCallback, useEffect, useId, useState } from "react";
+import { FC, memo, useCallback, useEffect, useId, useMemo, useState } from "react";
 import { useUpdateEffect } from "react-use";
 import { useTranslations } from "next-intl";
 import clsx from "clsx";
-import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 import { InferComponentProps } from "@/types/component";
 import useResizeObserver from "@/hooks/useResizeObserver";
+import { css } from "@/styled-system/css";
 
 import Button from "../button/Button";
 
@@ -16,7 +16,7 @@ import {
   ellipsisHelperContent,
   ellipsisLineClamp,
   numberOfLinesVar,
-} from "./Ellipsis.styles.css";
+} from "./Ellipsis.styles";
 
 const Ellipsis: FC<
   {
@@ -63,16 +63,17 @@ const Ellipsis: FC<
     setIsOpen((v) => !v);
   }, []);
 
+  const numberOfLinesStyle = useMemo(
+    () => ({
+      [numberOfLinesVar]: numberOfLines.toString(),
+    }),
+    [numberOfLines],
+  );
+
   return (
-    <div
-      {...props}
-      className={clsx(ellipsis, className)}
-      style={assignInlineVars({
-        [numberOfLinesVar]: numberOfLines.toString(),
-      })}
-    >
+    <div {...props} className={clsx(ellipsis, className)} style={numberOfLinesStyle}>
       <div className={ellipsisContentContainer}>
-        <div className={clsx(ellipsisContent, !isOpen && ellipsisLineClamp)} id={id}>
+        <div className={clsx(css(ellipsisContent), !isOpen && css(ellipsisLineClamp))} id={id}>
           {children}
         </div>
         {/* This is a helper div to check collapsed dimensions against */}
@@ -80,9 +81,7 @@ const Ellipsis: FC<
           className={ellipsisHelperContent}
           ref={ref}
           aria-hidden="true"
-          style={assignInlineVars({
-            [numberOfLinesVar]: numberOfLines.toString(),
-          })}
+          style={numberOfLinesStyle}
         >
           {children}
         </div>

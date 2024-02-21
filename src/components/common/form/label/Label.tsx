@@ -1,11 +1,11 @@
 import { memo } from "react";
 import { useTranslations } from "next-intl";
-import clsx from "clsx";
 import { PolymorphicComponent } from "react-polymorphed";
 
 import { InferComponentProps } from "@/types/component";
+import { cx } from "@/styled-system/css";
 
-import { label, labelAsterisk } from "./Label.styles.css";
+import { label, labelAsterisk } from "./Label.styles";
 
 const Label: PolymorphicComponent<
   "label",
@@ -16,7 +16,7 @@ const Label: PolymorphicComponent<
   const t = useTranslations("common.form");
 
   return (
-    <Component {...props} className={clsx(label, className)}>
+    <Component {...props} className={cx(label, className)}>
       {children}
       {required ? (
         <span

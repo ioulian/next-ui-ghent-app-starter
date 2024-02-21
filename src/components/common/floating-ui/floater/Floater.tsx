@@ -3,11 +3,11 @@ import { Coords, Placement, Strategy } from "@floating-ui/react";
 import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
-import { defaultTheme } from "@/styles/theme.css";
+import { token } from "@/styled-system/tokens";
 import { convertThemeVarToNumber } from "@/styles/utils";
 
 import { roundByDPR } from "./utils";
-import { floater, floaterArrow } from "./Floater.styles.css";
+import { floater, floaterArrow } from "./Floater.styles";
 
 const Floater = forwardRef<
   HTMLDivElement,
@@ -73,7 +73,7 @@ const Floater = forwardRef<
             typeof arrowPosition?.y !== "undefined" && arrowPosition?.y !== null
               ? `${arrowPosition.y}px`
               : "",
-          [staticSide]: `-${convertThemeVarToNumber(defaultTheme.floatingUI.floater.arrow.size) / 2}px`,
+          [staticSide]: `-${convertThemeVarToNumber(token("spacing.floating.floater.arrow.size")) / 2}px`,
           transform: rotation,
         };
       }

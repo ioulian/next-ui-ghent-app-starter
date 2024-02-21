@@ -6,7 +6,7 @@ import { InferComponentProps } from "@/types/component";
 
 import VisuallyHidden from "../../visually-hidden/VisuallyHidden";
 
-import { error } from "./Error.styles.css";
+import { error } from "./Error.styles";
 
 const Error: FC<{ id: string } & InferComponentProps<"div">> = ({
   id,

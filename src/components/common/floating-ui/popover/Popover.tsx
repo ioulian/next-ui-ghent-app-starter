@@ -21,8 +21,8 @@ import {
   useMemo,
 } from "react";
 
-import { defaultTheme } from "@/styles/theme.css";
 import { convertThemeVarToNumber } from "@/styles/utils";
+import { token } from "@/styled-system/tokens";
 
 import Floater from "../floater/Floater";
 
@@ -68,8 +68,8 @@ const PopoverContent = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((pr
   const parentId = useFloatingParentNodeId();
   const { isMounted, styles } = useTransitionStyles(context.context, {
     duration: {
-      open: convertThemeVarToNumber(defaultTheme.timing.normal),
-      close: convertThemeVarToNumber(defaultTheme.timing.fast),
+      open: convertThemeVarToNumber(token("durations.normal")),
+      close: convertThemeVarToNumber(token("durations.fast")),
     },
   });
 

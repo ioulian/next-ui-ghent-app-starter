@@ -1,6 +1,6 @@
 import { FC, HTMLProps, memo, useId } from "react";
 
-import { getSpritesheetUrl } from "@/components/common/svg-sprite/utils";
+import { getSpritesheetUrl } from "./utils";
 
 const SvgSprite: FC<{ src: { id: string; viewBox: string } } & HTMLProps<SVGElement>> = ({
   src,

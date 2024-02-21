@@ -1,13 +1,13 @@
-import { style } from "@vanilla-extract/css";
+import { css } from "@/styled-system/css";
 
-import { vars } from "@/styles/theme.css";
-
-export const tag = style({
+export const tag = css({
   fontSize: "0.625rem",
   lineHeight: "calc(1.5rem - 2px)",
   paddingLeft: "0.5rem",
   paddingRight: "0.5rem",
-  border: `1px solid ${vars.color.body}`,
+  borderWidth: "1px",
+  borderStyle: "solid",
+  borderColor: "body/50",
   display: "inline-block",
   fontWeight: 700,
   borderRadius: "3px",

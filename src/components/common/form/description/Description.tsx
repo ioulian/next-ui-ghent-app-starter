@@ -6,7 +6,7 @@ import { InferComponentProps } from "@/types/component";
 
 import VisuallyHidden from "../../visually-hidden/VisuallyHidden";
 
-import { description } from "./Description.styles.css";
+import { description } from "./Description.styles";
 
 const Description: FC<{ id: string } & InferComponentProps<"div">> = ({
   id,

@@ -2,15 +2,16 @@ import { forwardRef, memo } from "react";
 import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
+import { baseFormField } from "@/components/common/form/form-field/FormField.styles";
 
 import Label from "../../label/Label";
-import { input } from "../../input/Input.styles.css";
+import { input } from "../../input/Input.styles";
 
-import { checkboxContainer } from "./Checkbox.styles.css";
+import { checkboxContainer } from "./Checkbox.styles";
 
 const Checkbox = forwardRef<
   HTMLInputElement,
-  { inputValue: string } & InferComponentProps<"input">
+  { inputValue: string; isError?: boolean } & InferComponentProps<"input">
 >(
   (
     {
@@ -19,6 +20,7 @@ const Checkbox = forwardRef<
       name,
       inputValue,
       children,
+      isError,
       className,
       ...props
     },
@@ -30,7 +32,7 @@ const Checkbox = forwardRef<
       <div className={checkboxContainer}>
         <input
           {...props}
-          className={clsx(input, className)}
+          className={clsx(baseFormField({ isError }), input, className)}
           name={name}
           type="checkbox"
           id={linkedId}

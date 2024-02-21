@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
 
-import { tag } from "./Tag.styles.css";
+import { tag } from "./Tag.styles";
 
 const Tag: FC<InferComponentProps<"span">> = ({ children, className, ...props }) => {
   return (

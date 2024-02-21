@@ -2,13 +2,11 @@
 
 import withPlugins from "next-compose-plugins";
 import createNextIntlPlugin from "next-intl/plugin";
-import { createVanillaExtractPlugin } from "@vanilla-extract/next-plugin";
 import createBundleAnalyzer from "@next/bundle-analyzer";
 
 import { injectToWebpackConfig } from "./scripts/svg-sprite-sheet.mjs";
 
 const withNextIntl = createNextIntlPlugin();
-const withVanillaExtract = createVanillaExtractPlugin();
 const withBundleAnalyzer = createBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
@@ -23,4 +21,4 @@ const nextConfig = {
   },
 };
 
-export default withPlugins([withBundleAnalyzer, withNextIntl, withVanillaExtract], nextConfig);
+export default withPlugins([withBundleAnalyzer, withNextIntl], nextConfig);

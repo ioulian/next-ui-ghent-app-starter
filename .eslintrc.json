@@ -10,6 +10,7 @@
     "plugin:react-hooks/recommended"
   ],
   "rules": {
+    "sonarjs/no-duplicate-string": "off",
     "padding-line-between-statements": [
       "error",
       {

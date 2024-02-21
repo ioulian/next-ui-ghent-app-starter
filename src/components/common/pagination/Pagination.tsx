@@ -1,17 +1,16 @@
+"use client";
+
 import { FC, memo } from "react";
 import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 import clsx from "clsx";
 
 import {
   pagination,
-  paginationBreakPageLink,
   paginationDisabled,
-  paginationNextPageLink,
   paginationPage,
   paginationPageLink,
   paginationPageSelected,
-  paginationPreviousPageLink,
-} from "./Pagination.styles.css";
+} from "./Pagination.styles";
 
 const Pagination: FC<ReactPaginateProps> = (props) => {
   return (
@@ -22,9 +21,9 @@ const Pagination: FC<ReactPaginateProps> = (props) => {
         pageClassName: clsx(paginationPage, props.pageClassName),
         pageLinkClassName: clsx(paginationPageLink, props.pageLinkClassName),
         disabledClassName: clsx(paginationDisabled, props.disabledClassName),
-        nextLinkClassName: clsx(paginationNextPageLink, props.nextLinkClassName),
-        previousLinkClassName: clsx(paginationPreviousPageLink, props.previousLinkClassName),
-        breakLinkClassName: clsx(paginationBreakPageLink, props.breakLinkClassName),
+        nextLinkClassName: clsx(paginationPageLink, props.nextLinkClassName),
+        previousLinkClassName: clsx(paginationPageLink, props.previousLinkClassName),
+        breakLinkClassName: clsx(paginationPageLink, props.breakLinkClassName),
         activeClassName: clsx(paginationPageSelected, props.activeClassName),
       }}
     />
