@@ -1,7 +1,11 @@
 import { forwardRef, memo } from "react";
 import clsx from "clsx";
 
-import { toggleInput, toggleLabel } from "@/components/common/form/toggle/Toggle.styles";
+import {
+  toggleContainer,
+  toggleInput,
+  toggleLabel,
+} from "@/components/common/form/toggle/Toggle.styles";
 import { InferComponentProps } from "@/types/component";
 import { cx } from "@/styled-system/css";
 import { baseFormField } from "@/components/common/form/form-field/FormField.styles";
@@ -13,7 +17,7 @@ const Toggle = forwardRef<
   // We set aria-hidden to true, as we have another label for that element
   return (
     // FIXME: try and use a prop?
-    <div className="toggle">
+    <div className={cx(toggleContainer, "toggle")}>
       <input {...props} className={clsx(toggleInput, className)} type="checkbox" ref={ref} />
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label

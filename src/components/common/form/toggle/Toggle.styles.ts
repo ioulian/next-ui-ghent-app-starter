@@ -18,6 +18,15 @@ export const toggleInput = css({
   },
 });
 
+export const toggleContainer = css({
+  "& + *": {
+    marginTop: "0.25rem",
+  },
+  "& ~ *": {
+    width: "100%",
+  },
+});
+
 export const toggleLabel = css({
   outlineOffset: "4px",
   width: "2.5rem",

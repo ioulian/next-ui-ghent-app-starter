@@ -27,11 +27,13 @@ export const formFieldToggle = css({
   "& > .toggle": {
     order: -1,
   },
+  "& input + *": {
+    marginTop: "0.25rem",
+  },
+  "& input ~ *": {
+    width: "100%",
+  },
 });
-
-//globalStyle(`${formFieldToggle} > ${description}, ${formFieldToggle} > ${error}`, {
-//  width: "100%",
-//});
 
 export const baseFormField = cva({
   base: {

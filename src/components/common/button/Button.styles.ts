@@ -17,8 +17,8 @@ export const button = cva({
     borderStyle: "solid",
     borderColor: "primary.500",
     borderRadius: "4px",
-    transition:
-      "border-color {durations.fast}, background-color {durations.fast}, color {durations.fast}, opacity {durations.fast}",
+    transition: "common",
+    transitionDuration: "fast",
     _disabled: {
       opacity: 0.5,
       cursor: "not-allowed",
@@ -29,7 +29,11 @@ export const button = cva({
       primary: {
         color: "white",
         backgroundColor: "primary.500",
-        "&:hover, &:focus": {
+        _hover: {
+          backgroundColor: "primary.600",
+          borderColor: "primary.600",
+        },
+        _focus: {
           backgroundColor: "primary.600",
           borderColor: "primary.600",
         },
@@ -37,7 +41,12 @@ export const button = cva({
       secondary: {
         color: "primary.500",
         backgroundColor: "white",
-        "&:hover, &:focus": {
+        _hover: {
+          color: "white",
+          backgroundColor: "primary.600",
+          borderColor: "primary.600",
+        },
+        _focus: {
           color: "white",
           backgroundColor: "primary.600",
           borderColor: "primary.600",
@@ -47,7 +56,10 @@ export const button = cva({
       link: {
         borderColor: "transparent",
         textDecoration: "underline",
-        "&:hover, &:focus": {
+        _hover: {
+          textDecoration: "none",
+        },
+        _focus: {
           textDecoration: "none",
         },
       },
@@ -56,11 +68,11 @@ export const button = cva({
       small: { padding: "0.5rem 0.75rem", fontSize: "0.875rem", lineHeight: "1rem" },
       normal: { padding: "0.625rem 1.25rem" },
       large: { padding: "1.125rem 2rem" },
-      base: { borderWidth: "0" },
+      base: { borderWidth: 0 },
     },
     isLoading: {
       true: {
-        "&:disabled": {
+        _disabled: {
           cursor: "wait",
         },
       },
@@ -82,7 +94,8 @@ export const buttonContent = cva({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    transition: "opacity {durations.fast}",
+    transition: "opacity",
+    transitionDuration: "fast",
     opacity: 0,
     gap: "0.5rem",
   },
@@ -102,7 +115,8 @@ export const spinner = cva({
     left: "50%",
     transform: "translate(-50%, -50%)",
     opacity: 0,
-    transition: "opacity {durations.fast}",
+    transition: "opacity",
+    transitionDuration: "fast",
     pointerEvents: "none",
   },
   variants: {

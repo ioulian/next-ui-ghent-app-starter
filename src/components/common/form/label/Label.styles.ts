@@ -7,5 +7,5 @@ export const label = css({
 });
 
 export const labelAsterisk = css({
-  color: "asterisk",
+  color: "form.asterisk",
 });
