@@ -95,8 +95,8 @@ export default defineConfig({
           },
           checkbox: {
             checked: {
-              border: { value: "#f38a5d" },
-              background: { value: "#f38a5d" },
+              border: { value: "{colors.primary.500}" },
+              background: { value: "{colors.primary.500}" },
               color: { value: "#fff" },
             },
           },

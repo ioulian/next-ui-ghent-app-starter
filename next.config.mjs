@@ -1,4 +1,5 @@
 // @ts-check
+import crypto from "crypto";
 
 import withPlugins from "next-compose-plugins";
 import createNextIntlPlugin from "next-intl/plugin";
@@ -11,9 +12,17 @@ const withBundleAnalyzer = createBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
+const customBuildId = crypto.randomBytes(16).toString("hex");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  generateBuildId: () => {
+    return customBuildId;
+  },
+  env: {
+    NEXT_CUSTOM_BUILD_ID: customBuildId,
+  },
   webpack: (config, { buildId }) => {
     injectToWebpackConfig(config, buildId);
 

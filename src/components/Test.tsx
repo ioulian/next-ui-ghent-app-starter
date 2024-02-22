@@ -2,6 +2,7 @@
 
 /* eslint-disable i18next/no-literal-string */
 import { FC } from "react";
+import iconChevron from "@tabler/icons/chevron-right.svg";
 
 import Tooltip from "@/components/common/floating-ui/tooltip/Tooltip";
 import Breadcrumb from "@/components/common/breadcrumb/Breadcrumb";
@@ -16,6 +17,8 @@ import Input from "@/components/common/form/input/Input";
 import Checkbox from "@/components/common/form/collection/checkbox/Checkbox";
 import SingleCheckbox from "@/components/common/form/single-checkbox/SingleCheckbox";
 import List from "@/components/common/form/collection/List";
+import PasswordInput from "@/components/common/form/input/PasswordInput";
+import SvgSprite from "@/components/common/svg-sprite/SvgSprite";
 
 type SampleFormData = {
   firstName: string;
@@ -58,14 +61,20 @@ const Test: FC = () => {
         <DropdownMenuItem typeaheadKey="Cut" disabled>
           <Button>Cut</Button>
         </DropdownMenuItem>
-        <Dropdown trigger={<Button>Copy as</Button>} typeaheadKey="Copy as">
+        <Dropdown
+          trigger={<Button iconAfter={<SvgSprite src={iconChevron} />}>Copy as</Button>}
+          typeaheadKey="Copy as"
+        >
           <DropdownMenuItem typeaheadKey="Text">
             <Button>Text</Button>
           </DropdownMenuItem>
           <DropdownMenuItem typeaheadKey="Video">
             <Button>Video</Button>
           </DropdownMenuItem>
-          <Dropdown trigger={<Button>Image</Button>} typeaheadKey="Image">
+          <Dropdown
+            trigger={<Button iconAfter={<SvgSprite src={iconChevron} />}>Image</Button>}
+            typeaheadKey="Image"
+          >
             <DropdownMenuItem typeaheadKey=".png">
               <Button>.png</Button>
             </DropdownMenuItem>
@@ -152,6 +161,17 @@ const Test: FC = () => {
             gap: "1.25rem",
           }}
         >
+          <FormField<SampleFormData>
+            style={{
+              flexGrow: 1,
+            }}
+            label="Password"
+            name="password"
+            description="At least 9 chars, lowercase, uppercase, special char and number"
+            options={{}}
+          >
+            <PasswordInput />
+          </FormField>
           <FormField<SampleFormData>
             style={{
               flexGrow: 1,
