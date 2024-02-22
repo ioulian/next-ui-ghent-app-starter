@@ -8,16 +8,22 @@ import { InferComponentProps } from "@/types/component";
 
 import { tabDisabled, tabPanelSelected, tabSelected, tabs, tabsContainer } from "./Tabs.styles";
 
-const Tabs: FC<InferComponentProps<typeof ReactTabs>> = ({ children, className, ...props }) => {
+const Tabs: FC<InferComponentProps<typeof ReactTabs>> = ({
+  children,
+  className,
+  disabledTabClassName,
+  selectedTabClassName,
+  selectedTabPanelClassName,
+  ...props
+}) => {
   return (
     <div className={tabsContainer}>
       <ReactTabs
         {...props}
         className={cx(tabs, typeof className === "string" ? className : undefined)}
-        // TODO: merge with original values
-        disabledTabClassName={tabDisabled}
-        selectedTabClassName={tabSelected}
-        selectedTabPanelClassName={tabPanelSelected}
+        disabledTabClassName={cx(tabDisabled, disabledTabClassName)}
+        selectedTabClassName={cx(tabSelected, selectedTabClassName)}
+        selectedTabPanelClassName={cx(tabPanelSelected, selectedTabPanelClassName)}
       >
         {children}
       </ReactTabs>

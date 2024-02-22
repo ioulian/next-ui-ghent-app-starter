@@ -43,11 +43,6 @@ export const tabDisabled = css({
   cursor: "default",
 });
 
-export const tabPanel = css({
-  "& > *": {
-    marginTop: "1.25rem",
-  },
-});
 export const tabPanelSelected = css({
   display: "block",
 });

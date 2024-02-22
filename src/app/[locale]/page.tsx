@@ -14,8 +14,7 @@ import Test from "@/components/Test";
 import ButtonGroup from "@/components/common/button-group/ButtonGroup";
 import Button from "@/components/common/button/Button";
 import Ellipsis from "@/components/common/ellipsis/Ellipsis";
-// TODO: fix this client component, svg spritesheet should not depend on FS
-// import Expandable from "@/components/common/expandable/Expandable";
+import Expandable from "@/components/common/expandable/Expandable";
 
 import styles from "./styles.module.css";
 
@@ -77,14 +76,14 @@ export default function Page({}: Props) {
           varius
         </p>
       </Ellipsis>
-      {/*<Expandable summary="Click">
+      <Expandable summary="Click">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porta dolor mi, at
           venenatis urna elementum a. Etiam quis diam non massa tempor blandit at nec nibh.
           Pellentesque non magna ac quam cursus mollis. Nunc urna dui, lobortis non nulla tempus,
           varius
         </p>
-  </Expandable>*/}
+      </Expandable>
       <Pagination
         {...{
           breakLabel: "...",

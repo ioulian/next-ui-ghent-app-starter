@@ -20,7 +20,6 @@ const Spinner: FC<
     primaryColor?: string;
     secondaryColor?: string;
     backgroundColor?: string;
-    // TODO: type this
     size?: ArrayElement<(typeof spinner.variantMap)["size"]>;
   } & InferComponentProps<"div">
 > = ({
