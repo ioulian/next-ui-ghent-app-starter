@@ -16,6 +16,8 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
+  conditions: { notLastChild: "&:not(:last-child)", notFirstChild: "&:not(:first-child)" },
+
   // Useful for theme customization
   theme: {
     extend: {},

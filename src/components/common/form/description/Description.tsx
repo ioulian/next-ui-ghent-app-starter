@@ -1,8 +1,8 @@
 import { FC, memo } from "react";
 import { useTranslations } from "next-intl";
-import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
+import { cx } from "@/styled-system/css";
 
 import VisuallyHidden from "../../visually-hidden/VisuallyHidden";
 
@@ -17,7 +17,7 @@ const Description: FC<{ id: string } & InferComponentProps<"div">> = ({
   const t = useTranslations("common.form");
 
   return (
-    <div id={id} {...props} className={clsx(description, className)}>
+    <div id={id} {...props} className={cx(description, className)}>
       <VisuallyHidden>{t("description.prefix")}</VisuallyHidden>
       {children}
     </div>

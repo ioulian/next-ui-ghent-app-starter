@@ -1,12 +1,14 @@
+"use client";
+
 import { FC, ReactNode, memo, useCallback, useEffect, useId, useState } from "react";
 import iconChevron from "@tabler/icons/chevron-down.svg";
 import AnimateHeight from "react-animate-height";
 import { useUpdateEffect } from "react-use";
-import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
 import { convertThemeVarToNumber } from "@/styles/utils";
 import { token } from "@/styled-system/tokens";
+import { cx } from "@/styled-system/css";
 
 import SvgSprite from "../svg-sprite/SvgSprite";
 
@@ -53,7 +55,7 @@ const Expandable: FC<
   }, []);
 
   return (
-    <div {...props} className={clsx(expandable, className)}>
+    <div {...props} className={cx(expandable, className)}>
       <button
         type="button"
         aria-expanded={isOpen}
@@ -63,7 +65,7 @@ const Expandable: FC<
       >
         <span>{summary}</span>
         <SvgSprite
-          className={clsx(expandableSummaryIcon({ isOpen }))}
+          className={cx(expandableSummaryIcon({ isOpen }))}
           src={iconChevron}
           aria-hidden
         />

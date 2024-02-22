@@ -1,10 +1,10 @@
 import { CSSProperties, forwardRef, useMemo } from "react";
 import { Coords, Placement, Strategy } from "@floating-ui/react";
-import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
 import { token } from "@/styled-system/tokens";
 import { convertThemeVarToNumber } from "@/styles/utils";
+import { cx } from "@/styled-system/css";
 
 import { roundByDPR } from "./utils";
 import { floater, floaterArrow } from "./Floater.styles";
@@ -80,7 +80,7 @@ const Floater = forwardRef<
     }, [arrowPosition?.x, arrowPosition?.y, placement]);
 
     return (
-      <div ref={ref} {...props} className={clsx(floater, className)} style={style}>
+      <div ref={ref} {...props} className={cx(floater, className)} style={style}>
         {children}
         {showArrow && arrowCallback ? (
           <div ref={arrowCallback} className={floaterArrow} style={arrowStyle} />

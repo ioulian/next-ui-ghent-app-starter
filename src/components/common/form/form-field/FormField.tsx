@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Children,
   cloneElement,
@@ -21,9 +23,9 @@ import {
 } from "react-hook-form";
 import merge from "lodash/merge";
 import { useTranslations } from "next-intl";
-import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
+import { cx } from "@/styled-system/css";
 
 import Description from "../description/Description";
 import Error from "../error/Error";
@@ -92,7 +94,7 @@ const FormField = <T extends FormValueType>({
 
   return (
     // @ts-expect-error TODO: fixme
-    <Component {...props} className={clsx(formField, isToggle && formFieldToggle, className)}>
+    <Component {...props} className={cx(formField, isToggle && formFieldToggle, className)}>
       {!!label && (
         <Label
           as={asFieldSet ? "legend" : "label"}

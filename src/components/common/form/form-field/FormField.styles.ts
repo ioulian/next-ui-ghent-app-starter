@@ -4,7 +4,7 @@ export const formField = css({
   borderWidth: 0,
   margin: 0,
   padding: 0,
-  "&:not(:last-child)": {
+  _notLastChild: {
     marginBottom: "1.25rem",
   },
   "& > label": {

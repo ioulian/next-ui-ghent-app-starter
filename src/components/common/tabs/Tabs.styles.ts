@@ -17,10 +17,11 @@ export const tab = css({
   listStyle: "none",
   cursor: "pointer",
   letterSpacing: "-0.02em",
-  transition: "color {duration.fast}",
+  transition: "colors",
+  transitionDuration: "fast",
   marginBottom: "-1px",
   outlineOffset: "4px",
-  "&:not(:last-child)": {
+  _notLastChild: {
     marginRight: "1.75rem",
   },
   "& > span": {

@@ -20,9 +20,9 @@ export const paginationPage = css({
   borderWidth: "1px",
   borderStyle: "solid",
   borderColor: "black/10",
-  transition:
-    "color {durations.fast}, background-color {durations.fast}, border-color {durations.fast}",
-  "&:hover": {
+  transition: "colors",
+  transitionDuration: "fast",
+  _hover: {
     backgroundColor: "primary.500",
     color: "white",
   },

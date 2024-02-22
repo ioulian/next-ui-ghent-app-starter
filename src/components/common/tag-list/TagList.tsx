@@ -1,13 +1,13 @@
 import { Children, FC, memo } from "react";
-import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
+import { cx } from "@/styled-system/css";
 
 import { tagList } from "./TagList.styles";
 
 const TagList: FC<InferComponentProps<"ul">> = ({ children, className, ...props }) => {
   return (
-    <ul {...props} className={clsx(tagList, className)}>
+    <ul {...props} className={cx(tagList, className)}>
       {Children.map(children, (child) => (
         <li>{child}</li>
       ))}

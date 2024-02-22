@@ -1,5 +1,6 @@
+"use client";
+
 import { forwardRef, memo } from "react";
-import clsx from "clsx";
 
 import {
   toggleContainer,
@@ -18,7 +19,7 @@ const Toggle = forwardRef<
   return (
     // FIXME: try and use a prop?
     <div className={cx(toggleContainer, "toggle")}>
-      <input {...props} className={clsx(toggleInput, className)} type="checkbox" ref={ref} />
+      <input {...props} className={cx(toggleInput, className)} type="checkbox" ref={ref} />
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label
         htmlFor={props.id}

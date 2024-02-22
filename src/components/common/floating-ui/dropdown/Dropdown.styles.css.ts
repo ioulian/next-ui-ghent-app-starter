@@ -4,7 +4,7 @@ export const menuWrapper = css({
   "& > button": {
     width: "100%",
     display: "block",
-    "&:not(:first-child)": {
+    _notFirstChild: {
       marginTop: "0.25rem",
     },
   },

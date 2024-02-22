@@ -1,11 +1,12 @@
+"use client";
+
 import { FC, memo, useCallback, useEffect, useId, useMemo, useState } from "react";
 import { useUpdateEffect } from "react-use";
 import { useTranslations } from "next-intl";
-import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
 import useResizeObserver from "@/hooks/useResizeObserver";
-import { css } from "@/styled-system/css";
+import { css, cx } from "@/styled-system/css";
 
 import Button from "../button/Button";
 
@@ -46,7 +47,6 @@ const Ellipsis: FC<
       const isEllipsisActive =
         ref.current.offsetWidth < ref.current.scrollWidth ||
         ref.current.offsetHeight < ref.current.scrollHeight;
-      console.log(ref.current.offsetHeight, ref.current.scrollHeight);
       setShowButton(isEllipsisActive);
     }
   }, [rect, ref]);
@@ -71,9 +71,9 @@ const Ellipsis: FC<
   );
 
   return (
-    <div {...props} className={clsx(ellipsis, className)} style={numberOfLinesStyle}>
+    <div {...props} className={cx(ellipsis, className)} style={numberOfLinesStyle}>
       <div className={ellipsisContentContainer}>
-        <div className={clsx(css(ellipsisContent), !isOpen && css(ellipsisLineClamp))} id={id}>
+        <div className={cx(css(ellipsisContent), !isOpen && css(ellipsisLineClamp))} id={id}>
           {children}
         </div>
         {/* This is a helper div to check collapsed dimensions against */}

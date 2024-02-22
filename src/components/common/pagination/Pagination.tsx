@@ -2,7 +2,8 @@
 
 import { FC, memo } from "react";
 import ReactPaginate, { ReactPaginateProps } from "react-paginate";
-import clsx from "clsx";
+
+import { cx } from "@/styled-system/css";
 
 import {
   pagination,
@@ -17,14 +18,14 @@ const Pagination: FC<ReactPaginateProps> = (props) => {
     <ReactPaginate
       {...{
         ...props,
-        className: clsx(pagination, props.className),
-        pageClassName: clsx(paginationPage, props.pageClassName),
-        pageLinkClassName: clsx(paginationPageLink, props.pageLinkClassName),
-        disabledClassName: clsx(paginationDisabled, props.disabledClassName),
-        nextLinkClassName: clsx(paginationPageLink, props.nextLinkClassName),
-        previousLinkClassName: clsx(paginationPageLink, props.previousLinkClassName),
-        breakLinkClassName: clsx(paginationPageLink, props.breakLinkClassName),
-        activeClassName: clsx(paginationPageSelected, props.activeClassName),
+        className: cx(pagination, props.className),
+        pageClassName: cx(paginationPage, props.pageClassName),
+        pageLinkClassName: cx(paginationPageLink, props.pageLinkClassName),
+        disabledClassName: cx(paginationDisabled, props.disabledClassName),
+        nextLinkClassName: cx(paginationPageLink, props.nextLinkClassName),
+        previousLinkClassName: cx(paginationPageLink, props.previousLinkClassName),
+        breakLinkClassName: cx(paginationPageLink, props.breakLinkClassName),
+        activeClassName: cx(paginationPageSelected, props.activeClassName),
       }}
     />
   );

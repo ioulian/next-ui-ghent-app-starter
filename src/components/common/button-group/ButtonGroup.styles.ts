@@ -7,7 +7,7 @@ export const buttonGroup = css({
   gap: "0.75rem",
   "& > hr": {
     width: "1px",
-    borderWidth: "0",
+    borderWidth: 0,
     backgroundColor: "currentColor",
     height: "1.25rem",
     marginLeft: "0.5rem",

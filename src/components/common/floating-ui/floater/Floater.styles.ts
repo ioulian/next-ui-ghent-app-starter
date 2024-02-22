@@ -11,7 +11,7 @@ export const floater = css({
   borderRadius: "normal",
   padding: "5px",
   maxWidth: "calc(100vw - {spacing.floating.floater.shift} * 2)",
-  "&:focus": {
+  _focus: {
     outline: "none",
   },
 });

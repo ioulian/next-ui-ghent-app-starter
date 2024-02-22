@@ -1,3 +1,5 @@
+/* eslint-disable i18next/no-literal-string */
+
 import { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
@@ -9,6 +11,11 @@ import SvgSprite from "@/components/common/svg-sprite/SvgSprite";
 import Text from "@/components/common/text/Text";
 import Pagination from "@/components/common/pagination/Pagination";
 import Test from "@/components/Test";
+import ButtonGroup from "@/components/common/button-group/ButtonGroup";
+import Button from "@/components/common/button/Button";
+import Ellipsis from "@/components/common/ellipsis/Ellipsis";
+// TODO: fix this client component, svg spritesheet should not depend on FS
+// import Expandable from "@/components/common/expandable/Expandable";
 
 import styles from "./styles.module.css";
 
@@ -34,30 +41,50 @@ export default function Page({}: Props) {
     <div>
       <div className={styles.test}>{t("home.title")}</div>
       <Text>
-        {/* eslint-disable-next-line i18next/no-literal-string */}
         <p>Paragraph 1</p>
-        {/* eslint-disable-next-line i18next/no-literal-string */}
         <p>Paragraph 2</p>
         <ul>
-          {/* eslint-disable-next-line i18next/no-literal-string */}
           <li>List item 1</li>
-          {/* eslint-disable-next-line i18next/no-literal-string */}
           <li>List item 2</li>
-          {/* eslint-disable-next-line i18next/no-literal-string */}
           <li>List item 3</li>
         </ul>
-        {/* eslint-disable-next-line i18next/no-literal-string */}
         <p>Paragraph 2</p>
         <ol>
-          {/* eslint-disable-next-line i18next/no-literal-string */}
           <li>List item 1</li>
-          {/* eslint-disable-next-line i18next/no-literal-string */}
           <li>List item 2</li>
-          {/* eslint-disable-next-line i18next/no-literal-string */}
           <li>List item 3</li>
         </ol>
       </Text>
       <Test />
+      <ButtonGroup>
+        <Button
+          iconBefore={<SvgSprite src={iconChevronLeft} title="test-title" />}
+          iconAfter={<SvgSprite src={iconChevronRight} title="test-title" />}
+        >
+          Primary Action
+        </Button>
+        <Button variant="secondary">Secondary Action</Button>
+        <hr />
+        <Button size="base" variant="simple">
+          Cancel
+        </Button>
+      </ButtonGroup>
+      <Ellipsis>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porta dolor mi, at
+          venenatis urna elementum a. Etiam quis diam non massa tempor blandit at nec nibh.
+          Pellentesque non magna ac quam cursus mollis. Nunc urna dui, lobortis non nulla tempus,
+          varius
+        </p>
+      </Ellipsis>
+      {/*<Expandable summary="Click">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porta dolor mi, at
+          venenatis urna elementum a. Etiam quis diam non massa tempor blandit at nec nibh.
+          Pellentesque non magna ac quam cursus mollis. Nunc urna dui, lobortis non nulla tempus,
+          varius
+        </p>
+  </Expandable>*/}
       <Pagination
         {...{
           breakLabel: "...",
@@ -67,6 +94,7 @@ export default function Page({}: Props) {
           previousLabel: <SvgSprite src={iconChevronLeft} />,
         }}
       />
+
       <SvgSprite src={sampleSvgSprite} />
     </div>
   );

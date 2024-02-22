@@ -1,6 +1,8 @@
 import { FC, memo } from "react";
 
-import { getSpritesheetUrl, hasSpriteSheet } from "./utils";
+import { hasSpriteSheet } from "@/components/common/svg-sprite/utils-server";
+
+import { getSpritesheetUrl } from "./utils";
 
 const SpriteSheetPreload: FC = () => {
   if (!hasSpriteSheet()) {

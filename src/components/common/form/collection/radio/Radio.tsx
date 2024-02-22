@@ -1,5 +1,6 @@
+"use client";
+
 import { forwardRef, memo } from "react";
-import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
 import { cx } from "@/styled-system/css";
@@ -34,7 +35,7 @@ const Radio = forwardRef<
       <div className={cx(checkboxContainer, radioContainer)}>
         <input
           {...props}
-          className={clsx(baseFormField({ isError }), input, className)}
+          className={cx(baseFormField({ isError }), input, className)}
           name={name}
           type="radio"
           id={linkedId}

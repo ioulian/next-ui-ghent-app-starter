@@ -1,8 +1,10 @@
+"use client";
+
 import { forwardRef, memo } from "react";
-import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
 import { baseFormField } from "@/components/common/form/form-field/FormField.styles";
+import { cx } from "@/styled-system/css";
 
 import Label from "../../label/Label";
 import { input } from "../../input/Input.styles";
@@ -32,7 +34,7 @@ const Checkbox = forwardRef<
       <div className={checkboxContainer}>
         <input
           {...props}
-          className={clsx(baseFormField({ isError }), input, className)}
+          className={cx(baseFormField({ isError }), input, className)}
           name={name}
           type="checkbox"
           id={linkedId}

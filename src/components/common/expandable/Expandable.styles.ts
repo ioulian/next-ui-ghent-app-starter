@@ -6,7 +6,8 @@ export const expandableSummaryIcon = cva({
   base: {
     width: "1.5rem",
     height: "1.5rem",
-    transition: "transform {durations.normal}",
+    transition: "transform",
+    transitionDuration: "normal",
   },
   variants: {
     isOpen: {

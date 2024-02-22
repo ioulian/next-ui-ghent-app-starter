@@ -13,7 +13,7 @@ export const ol = css({
 });
 
 export const li = css({
-  "&:not(:first-child)": {
+  _notFirstChild: {
     _before: {
       content: '"/"',
       marginRight: "0.75rem",

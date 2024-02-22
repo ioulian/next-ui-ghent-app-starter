@@ -1,13 +1,13 @@
 import { FC, memo } from "react";
-import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
+import { cx } from "@/styled-system/css";
 
 import { list } from "./List.styles";
 
 const List: FC<InferComponentProps<"div">> = ({ children, className, ...props }) => {
   return (
-    <div {...props} className={clsx(list, className)}>
+    <div {...props} className={cx(list, className)}>
       {children}
     </div>
   );

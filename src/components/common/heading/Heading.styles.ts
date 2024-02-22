@@ -5,7 +5,7 @@ export const heading = cva({
     fontFamily: "heading",
     fontWeight: "700",
     letterSpacing: "-0.02em",
-    margin: "0",
+    margin: 0,
   },
   variants: {
     size: {

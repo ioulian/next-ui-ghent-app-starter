@@ -36,7 +36,7 @@ export const toggleLabel = css({
   position: "relative",
   backgroundColor: "form.input.background",
   transition: "background-color {durations.normal}, border-color {durations.normal}",
-  "&::before": {
+  _before: {
     width: "14px",
     height: "14px",
     borderRadius: "50%",

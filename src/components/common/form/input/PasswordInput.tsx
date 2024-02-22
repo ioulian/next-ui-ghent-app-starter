@@ -1,3 +1,5 @@
+"use client";
+
 import { forwardRef, memo, useCallback, useState } from "react";
 import passwordShowIcon from "@tabler/icons/eye.svg";
 import passwordHideIcon from "@tabler/icons/eye-off.svg";

@@ -1,9 +1,11 @@
+"use client";
+
 import { useEffect } from "react";
 import { DeepPartial, DefaultValues, FormProvider, Mode, Path, useForm } from "react-hook-form";
-import clsx from "clsx";
 
 import { ApiError } from "@/components/common/form/types";
 import { InferComponentProps } from "@/types/component";
+import { cx } from "@/styled-system/css";
 
 import ApiFormError from "../ApiFormError";
 
@@ -91,7 +93,7 @@ const Form = <T extends FormValueType>({
     <FormProvider {...methods}>
       <form
         {...props}
-        className={clsx(form, className)}
+        className={cx(form, className)}
         onSubmit={!isLoading ? handleSubmit(onSubmit) : () => {}}
       >
         {error ? <ApiFormError error={error} /> : null}

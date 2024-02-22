@@ -1,8 +1,10 @@
+"use client";
+
 import { forwardRef, memo, ReactNode } from "react";
-import clsx from "clsx";
 
 import { InferComponentProps } from "@/types/component";
 import { baseFormField } from "@/components/common/form/form-field/FormField.styles";
+import { cx } from "@/styled-system/css";
 
 import { input, inputIconContainer } from "./Input.styles";
 
@@ -15,7 +17,7 @@ const Input = forwardRef<
   } & InferComponentProps<"input">
 >(({ iconBefore, iconAfter, className, isError, ...props }, ref) => {
   const element = (
-    <input {...props} className={clsx(baseFormField({ isError }), input, className)} ref={ref} />
+    <input {...props} className={cx(baseFormField({ isError }), input, className)} ref={ref} />
   );
 
   if ((iconBefore || iconAfter) && !["checkbox", "radio"].includes(props.type ?? "")) {
