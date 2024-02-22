@@ -43,9 +43,7 @@ export const PopoverInPopover: Story = {
             <Popover.Trigger>My trigger 2</Popover.Trigger>
             <Popover.Content>
               <Popover.Heading>My popover heading 2</Popover.Heading>
-              <Popover.Description>
-                My popover description 2
-              </Popover.Description>
+              <Popover.Description>My popover description 2</Popover.Description>
               <Popover.Close>Close 2</Popover.Close>
             </Popover.Content>
           </Popover>
