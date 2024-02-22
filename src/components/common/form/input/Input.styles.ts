@@ -1,6 +1,4 @@
 import { css } from "@/styled-system/css";
-import { token } from "@/styled-system/tokens";
-import { escapeSVG } from "@/utils/svg";
 
 export const input = css({
   appearance: "none",
@@ -15,6 +13,7 @@ export const input = css({
     fontSize: "inherit",
   },
   '&[type="checkbox"], &[type="radio"]': {
+    color: "white",
     height: "1.25rem",
     width: "1.25rem",
     backgroundRepeat: "no-repeat",
@@ -29,18 +28,14 @@ export const input = css({
     backgroundSize: "0.75rem",
   },
   '&[type="checkbox"]:checked': {
-    backgroundImage: `url("${escapeSVG(
-      `<svg width='24' height='24' viewBox='0 0 24 24' fill='${token("colors.form.checkbox.checked.color")}' xmlns='http://www.w3.org/2000/svg'><path d='M9 22l-10-10.598 2.798-2.859 7.149 7.473 13.144-14.016 2.909 2.806z' /></svg>`,
-    )}")`,
+    backgroundImage: "checkbox",
   },
   '&[type="radio"]': {
     borderRadius: "50%",
     backgroundSize: "10px",
   },
   '&[type="radio"]:checked': {
-    backgroundImage: `url("${escapeSVG(
-      `<svg width='24' height='24' viewBox='0 0 24 24' fill='${token("colors.form.checkbox.checked.color")}' xmlns='http://www.w3.org/2000/svg'><circle cx='12' cy='12' r='12' /></svg>`,
-    )}")`,
+    backgroundImage: "radio",
   },
   //[`${formFieldToggle} > &`]: {
   //  order: -1,

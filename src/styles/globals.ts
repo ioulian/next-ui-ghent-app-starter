@@ -23,8 +23,8 @@ export const globalCss = defineGlobalStyles({
   },
   body: {
     fontFamily: "body",
-    fontSize: "1rem",
-    lineHeight: "1.5rem",
+    fontSize: { base: "1rem", lg: "1.125rem" },
+    lineHeight: { base: "1.25rem", lg: "1.5rem" },
     color: "body",
     letterSpacing: "0.01em",
   },
