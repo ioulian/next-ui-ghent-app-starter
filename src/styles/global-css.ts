@@ -66,9 +66,11 @@ export const globalCss = defineGlobalStyles({
     touchAction: "manipulation",
   },
   "button, input, select, textarea, a": {
-    outlineOffset: "4px",
     _focusVisible: {
-      outline: "2px solid primary",
+      outline: "2px",
+      outlineColor: "primary.500",
+      outlineOffset: "4px",
+      outlineStyle: "solid",
     },
   },
   "picture, img, svg, video": {
