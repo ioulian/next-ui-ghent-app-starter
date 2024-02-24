@@ -16,7 +16,7 @@ import Button from "@/components/common/button/Button";
 import Ellipsis from "@/components/common/ellipsis/Ellipsis";
 import Expandable from "@/components/common/expandable/Expandable";
 
-import styles from "./styles.module.css";
+import styles from "./_styles/styles.module.css";
 
 type Props = Readonly<{
   params: { locale: string };
