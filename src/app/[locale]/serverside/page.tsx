@@ -14,7 +14,7 @@ export async function generateMetadata(
 ): Promise<Metadata | ResolvedMetadata> {
   const parentMetadata = await parent;
 
-  return merge({ title: "Serverside" }, parentMetadata);
+  return merge(parentMetadata, { title: "Serverside" });
 }
 
 export default async function Page({}: Props) {

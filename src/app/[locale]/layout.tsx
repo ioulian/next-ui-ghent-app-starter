@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { getTranslations } from "next-intl/server";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { ReactNode } from "react";
@@ -12,6 +12,14 @@ type Props = Readonly<{
   children: ReactNode;
   params: { locale: string };
 }>;
+
+export function generateViewport(): Viewport {
+  return {
+    themeColor: "#0017ee",
+    initialScale: 1,
+    userScalable: true,
+  };
+}
 
 export async function generateMetadata({
   params: { locale },
