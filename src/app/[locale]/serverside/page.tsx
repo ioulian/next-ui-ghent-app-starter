@@ -1,4 +1,6 @@
 import merge from "lodash/merge";
+import omitBy from "lodash/omitBy";
+import isNil from "lodash/isNil";
 import { Metadata, ResolvedMetadata, ResolvingMetadata } from "next";
 import { Suspense } from "react";
 
@@ -14,7 +16,7 @@ export async function generateMetadata(
 ): Promise<Metadata | ResolvedMetadata> {
   const parentMetadata = await parent;
 
-  return merge(parentMetadata, { title: "Serverside" });
+  return merge(omitBy(parentMetadata, isNil), { title: "Serverside" });
 }
 
 export default async function Page({}: Props) {
