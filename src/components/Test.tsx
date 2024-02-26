@@ -38,25 +38,25 @@ const Test: FC = () => {
         <Tooltip.Content>My tooltip</Tooltip.Content>
       </Tooltip>
       <Breadcrumb>
-        <Button href="/" as={Link} variant="link" size="base">
+        <Button href="/" as={Link} intent="link" size="base">
           Home
         </Button>
-        <Button href="/" as={Link} variant="link" size="base">
+        <Button href="/" as={Link} intent="link" size="base">
           Parent 1
         </Button>
-        <Button href="/" as={Link} variant="link" size="base">
+        <Button href="/" as={Link} intent="link" size="base">
           Parent 2
         </Button>
-        <Button href="/" as={Link} variant="link" size="base">
+        <Button href="/" as={Link} intent="link" size="base">
           Current
         </Button>
       </Breadcrumb>
       <Dropdown trigger={<Button>Open dropdown</Button>}>
         <DropdownMenuItem typeaheadKey="Undo">
-          <Button variant="secondary">Undo</Button>
+          <Button intent="secondary">Undo</Button>
         </DropdownMenuItem>
         <DropdownMenuItem typeaheadKey="Redo">
-          <Button variant="secondary">Redo</Button>
+          <Button intent="secondary">Redo</Button>
         </DropdownMenuItem>
         <DropdownMenuItem typeaheadKey="Cut" disabled>
           <Button>Cut</Button>

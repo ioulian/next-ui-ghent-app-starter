@@ -25,7 +25,7 @@ export const button = cva({
     },
   },
   variants: {
-    variant: {
+    intent: {
       primary: {
         color: "white",
         backgroundColor: "primary.500",
@@ -82,7 +82,7 @@ export const button = cva({
     },
   },
   defaultVariants: {
-    variant: "primary",
+    intent: "primary",
     size: "normal",
     isLoading: false,
     fullWidth: false,

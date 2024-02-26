@@ -56,10 +56,10 @@ export const CustomElements: Story = {
   render: (args) => (
     <Dropdown {...args}>
       <DropdownMenuItem typeaheadKey="Undo">
-        <Button variant="secondary">Undo</Button>
+        <Button intent="secondary">Undo</Button>
       </DropdownMenuItem>
       <DropdownMenuItem typeaheadKey="Redo">
-        <Button variant="secondary">Redo</Button>
+        <Button intent="secondary">Redo</Button>
       </DropdownMenuItem>
       <DropdownMenuItem typeaheadKey="Cut" disabled>
         <Button>Cut</Button>

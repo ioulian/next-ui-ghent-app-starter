@@ -19,16 +19,16 @@ type Story = StoryObj<typeof Breadcrumb>;
 export const Default: Story = {
   render: (args) => (
     <Breadcrumb {...args}>
-      <Button href="/" as={Link} variant="link" size="base">
+      <Button href="/" as={Link} intent="link" size="base">
         Home
       </Button>
-      <Button href="/parent-1" as={Link} variant="link" size="base">
+      <Button href="/parent-1" as={Link} intent="link" size="base">
         Parent 1
       </Button>
-      <Button href="/parent-2" as={Link} variant="link" size="base">
+      <Button href="/parent-2" as={Link} intent="link" size="base">
         Parent 2
       </Button>
-      <Button href="/current" as={Link} variant="link" size="base">
+      <Button href="/current" as={Link} intent="link" size="base">
         Current
       </Button>
     </Breadcrumb>

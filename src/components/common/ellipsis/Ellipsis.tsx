@@ -89,7 +89,7 @@ const Ellipsis: FC<
       {showButton ? (
         <Button
           size="base"
-          variant="simple"
+          intent="simple"
           aria-expanded={isOpen}
           aria-controls={id}
           onClick={onClick}

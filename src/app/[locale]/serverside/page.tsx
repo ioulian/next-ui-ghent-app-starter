@@ -1,7 +1,7 @@
 import merge from "lodash/merge";
 import omitBy from "lodash/omitBy";
 import isNil from "lodash/isNil";
-import { Metadata, ResolvedMetadata, ResolvingMetadata } from "next";
+import { Metadata, NextPage, ResolvedMetadata, ResolvingMetadata } from "next";
 import { Suspense } from "react";
 
 import { GithubDataTest } from "@/app/[locale]/serverside/_components/GithubDataTest";
@@ -19,7 +19,7 @@ export async function generateMetadata(
   return merge(omitBy(parentMetadata, isNil), { title: "Serverside" });
 }
 
-export default async function Page({}: Props) {
+const Page: NextPage<Props> = async ({}) => {
   const data = await (
     await fetch("https://api.github.com/repos/vercel/swr", { next: { revalidate: 60 } })
   ).json();
@@ -40,4 +40,6 @@ export default async function Page({}: Props) {
       </Suspense>
     </>
   );
-}
+};
+
+export default Page;

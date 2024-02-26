@@ -22,9 +22,9 @@ export const Default: Story = {
   render: (args) => (
     <ButtonGroup {...args}>
       <Button>Primary Action</Button>
-      <Button variant="secondary">Secondary Action</Button>
+      <Button intent="secondary">Secondary Action</Button>
       <hr />
-      <Button size="base" variant="simple">
+      <Button size="base" intent="simple">
         Cancel
       </Button>
     </ButtonGroup>
@@ -37,7 +37,7 @@ export const Default: Story = {
 export const AlignRight: Story = {
   render: (args) => (
     <ButtonGroup {...args}>
-      <Button size="base" variant="simple">
+      <Button size="base" intent="simple">
         Cancel
       </Button>
       <hr />

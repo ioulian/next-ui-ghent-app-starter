@@ -30,7 +30,7 @@ const PasswordInput = forwardRef<HTMLInputElement, InferComponentProps<"input">>
           iconBefore={<SvgSprite src={showPassword ? passwordHideIcon : passwordShowIcon} />}
           iconOnly
           size="base"
-          variant="simple"
+          intent="simple"
           onClick={onClickCallback}
         >
           {t(`passwordInput.${showPassword ? "revealPassword" : "hidePassword"}`)}

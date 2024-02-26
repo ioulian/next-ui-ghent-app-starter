@@ -1,6 +1,6 @@
 /* eslint-disable i18next/no-literal-string */
 
-import { Metadata } from "next";
+import { Metadata, NextPage } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import sampleSvgSprite from "@tabler/icons/arrow-right-circle.svg";
@@ -33,7 +33,7 @@ export async function generateMetadata({
   };
 }
 
-export default function Page({}: Props) {
+const Page: NextPage<Props> = ({}) => {
   const t = useTranslations("pages");
 
   return (
@@ -62,9 +62,9 @@ export default function Page({}: Props) {
         >
           Primary Action
         </Button>
-        <Button variant="secondary">Secondary Action</Button>
+        <Button intent="secondary">Secondary Action</Button>
         <hr />
-        <Button size="base" variant="simple">
+        <Button size="base" intent="simple">
           Cancel
         </Button>
       </ButtonGroup>
@@ -97,4 +97,6 @@ export default function Page({}: Props) {
       <SvgSprite src={sampleSvgSprite} />
     </div>
   );
-}
+};
+
+export default Page;
