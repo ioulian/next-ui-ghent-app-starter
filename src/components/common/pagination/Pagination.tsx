@@ -1,6 +1,6 @@
 "use client";
 
-import { Component, FC, memo, useEffect, useRef } from "react";
+import { FC, memo } from "react";
 import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 import { useTranslations } from "next-intl";
 
@@ -16,18 +16,10 @@ import {
 
 const Pagination: FC<ReactPaginateProps> = (props) => {
   const t = useTranslations("common.pagination");
-  const ref = useRef<Component<ReactPaginateProps> | null>(null);
-
-  useEffect(() => {
-    if (ref.current) {
-      console.log(ref.current);
-    }
-  }, [ref]);
 
   return (
     <div role="navigation">
       <ReactPaginate
-        ref={ref}
         {...{
           ...props,
           breakAriaLabels: {

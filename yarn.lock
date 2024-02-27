@@ -12948,7 +12948,7 @@ __metadata:
     react-animate-height: "npm:^3.2.3"
     react-dom: "npm:^18"
     react-hook-form: "npm:^7.50.1"
-    react-paginate: "npm:^8.2.0"
+    react-paginate: "patch:react-paginate@npm%3A8.2.0#~/.yarn/patches/react-paginate-npm-8.2.0-5a1e23f790.patch"
     react-polymorphed: "npm:^2.2.2"
     react-select: "npm:^5.8.0"
     react-tabs: "npm:^6.0.2"
@@ -14915,7 +14915,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-paginate@npm:^8.2.0":
+"react-paginate@npm:8.2.0":
   version: 8.2.0
   resolution: "react-paginate@npm:8.2.0"
   dependencies:
@@ -14923,6 +14923,17 @@ __metadata:
   peerDependencies:
     react: ^16 || ^17 || ^18
   checksum: 10c0/3d436f5e56e6b14b809767718da46f22d4315221c972c4990e7c22de3b8074235852fa2ad00f6849aad50fa0df16aa14adc2243e767fe4851f0c1ba154ef8b15
+  languageName: node
+  linkType: hard
+
+"react-paginate@patch:react-paginate@npm%3A8.2.0#~/.yarn/patches/react-paginate-npm-8.2.0-5a1e23f790.patch":
+  version: 8.2.0
+  resolution: "react-paginate@patch:react-paginate@npm%3A8.2.0#~/.yarn/patches/react-paginate-npm-8.2.0-5a1e23f790.patch::version=8.2.0&hash=d14fc3"
+  dependencies:
+    prop-types: "npm:^15"
+  peerDependencies:
+    react: ^16 || ^17 || ^18
+  checksum: 10c0/05572e439da2c25be5cbade9bf8a99f7f6c972aea9c32c6ccbed62b8cd21f407808aa7cef195aa85b55db17b600fd557f7f92050e3856c20930429ba1e70c072
   languageName: node
   linkType: hard
 
