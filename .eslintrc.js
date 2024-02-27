@@ -1,55 +1,58 @@
-{
-  "plugins": ["@typescript-eslint", "i18next", "jsx-a11y", "sonarjs", "react-hooks", "@stylistic"],
-  "extends": [
+// @ts-check
+
+/** @type {import("eslint").Linter.Config} */
+const config = {
+  plugins: ["@typescript-eslint", "i18next", "jsx-a11y", "sonarjs", "react-hooks", "@stylistic"],
+  extends: [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
     "plugin:storybook/recommended",
     "plugin:i18next/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:sonarjs/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
   ],
-  "rules": {
+  rules: {
     "sonarjs/no-duplicate-string": "off",
     "padding-line-between-statements": [
       "error",
       {
-        "blankLine": "always",
-        "prev": "const",
-        "next": "return"
+        blankLine: "always",
+        prev: "const",
+        next: "return",
       },
       {
-        "blankLine": "always",
-        "prev": "let",
-        "next": "return"
-      }
+        blankLine: "always",
+        prev: "let",
+        next: "return",
+      },
     ],
-    "quotes": ["error", "double", { "allowTemplateLiterals": false, "avoidEscape": true }],
-    "curly": ["error", "all"],
+    quotes: ["error", "double", { allowTemplateLiterals: false, avoidEscape: true }],
+    curly: ["error", "all"],
     "object-shorthand": "error",
     "nonblock-statement-body-position": ["error", "below"],
     "react/button-has-type": "error",
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
-        "varsIgnorePattern": "^_",
-        "destructuredArrayIgnorePattern": "^_"
-      }
+        varsIgnorePattern: "^_",
+        destructuredArrayIgnorePattern: "^_",
+      },
     ],
     "import/order": [
       "error",
       {
-        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
-        "pathGroups": [
+        groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
+        pathGroups: [
           {
-            "pattern": "@/**",
-            "group": "internal",
-            "position": "after"
-          }
+            pattern: "@/**",
+            group: "internal",
+            position: "after",
+          },
         ],
         "newlines-between": "always",
-        "pathGroupsExcludedImportTypes": ["builtin"]
-      }
+        pathGroupsExcludedImportTypes: ["builtin"],
+      },
     ],
     "react/jsx-no-constructed-context-values": "error",
     "react/jsx-no-useless-fragment": "error",
@@ -59,11 +62,13 @@
     "react/no-object-type-as-default-prop": "error",
     "react/self-closing-comp": "error",
     "react/void-dom-elements-no-children": "error",
-    "react/jsx-no-target-blank": ["error", { "warnOnSpreadAttributes": true }],
+    "react/jsx-no-target-blank": ["error", { warnOnSpreadAttributes: true }],
     "no-constant-binary-expression": "error",
-    "sonarjs/cognitive-complexity": "off"
+    "sonarjs/cognitive-complexity": "off",
   },
-  "settings": {
-    "linkComponents": ["Link"]
-  }
-}
+  settings: {
+    linkComponents: ["Link"],
+  },
+};
+
+module.exports = config;
