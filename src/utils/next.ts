@@ -13,7 +13,9 @@ export const getBuildId = (): string | "development" => {
     return "development";
   }
 
-  return process.env.NODE_ENV === "development" ? "development" : process.env.NEXT_CUSTOM_BUILD_ID!;
+  return process.env.NODE_ENV === "development"
+    ? "development"
+    : process.env.NEXT_PUBLIC_CUSTOM_BUILD_ID!;
 };
 
 /**

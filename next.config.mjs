@@ -21,7 +21,7 @@ const nextConfig = {
     return customBuildId;
   },
   env: {
-    NEXT_CUSTOM_BUILD_ID: customBuildId,
+    NEXT_PUBLIC_CUSTOM_BUILD_ID: customBuildId,
   },
   webpack: (config, { buildId }) => {
     injectToWebpackConfig(config, buildId);
