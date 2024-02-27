@@ -38,6 +38,17 @@
     "ellipsis": {
       "expand": "Read more",
       "collapse": "Collapse"
+    },
+    "pagination": {
+      "aria": {
+        "break": {
+          "forward": "Jump forward",
+          "backward": "Jump backward"
+        },
+        "page": "Page {page}",
+        "previous": "Previous page",
+        "next": "Next page"
+      }
     }
   }
 }
