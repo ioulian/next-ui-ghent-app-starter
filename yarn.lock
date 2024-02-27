@@ -12942,6 +12942,7 @@ __metadata:
     next: "npm:14.1.0"
     next-compose-plugins: "npm:^2.2.1"
     next-intl: "npm:^3.7.0"
+    postcss: "npm:^8.4.35"
     prettier: "npm:^3.2.5"
     react: "npm:^18"
     react-animate-height: "npm:^3.2.3"
@@ -14354,7 +14355,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.35, postcss@npm:^8.2.14, postcss@npm:^8.4.21, postcss@npm:^8.4.33":
+"postcss@npm:8.4.35, postcss@npm:^8.2.14, postcss@npm:^8.4.21, postcss@npm:^8.4.33, postcss@npm:^8.4.35":
   version: 8.4.35
   resolution: "postcss@npm:8.4.35"
   dependencies:

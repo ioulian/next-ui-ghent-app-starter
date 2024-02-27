@@ -1,23 +1,22 @@
-import merge from "lodash/merge";
-import omitBy from "lodash/omitBy";
-import isNil from "lodash/isNil";
-import { Metadata, NextPage, ResolvedMetadata, ResolvingMetadata } from "next";
+import { NextPage } from "next";
 import { Suspense } from "react";
+import { getTranslations } from "next-intl/server";
 
 import { GithubDataTest } from "@/app/[locale]/serverside/_components/GithubDataTest";
+import { generateSanitizedMetadata } from "@/utils/next";
 
 type Props = Readonly<{
   params: { locale: string };
 }>;
 
-export async function generateMetadata(
-  {}: Omit<Props, "children">,
-  parent: ResolvingMetadata,
-): Promise<Metadata | ResolvedMetadata> {
-  const parentMetadata = await parent;
+export const generateMetadata = generateSanitizedMetadata<Props>(async ({ params: { locale } }) => {
+  const t = await getTranslations({ locale, namespace: "pages.serverside.meta" });
 
-  return merge(omitBy(parentMetadata, isNil), { title: "Serverside" });
-}
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+});
 
 const Page: NextPage<Props> = async ({}) => {
   const data = await (

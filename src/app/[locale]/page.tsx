@@ -1,6 +1,6 @@
 /* eslint-disable i18next/no-literal-string */
 
-import { Metadata, NextPage } from "next";
+import { NextPage } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import sampleSvgSprite from "@tabler/icons/arrow-right-circle.svg";
@@ -15,6 +15,7 @@ import ButtonGroup from "@/components/common/button-group/ButtonGroup";
 import Button from "@/components/common/button/Button";
 import Ellipsis from "@/components/common/ellipsis/Ellipsis";
 import Expandable from "@/components/common/expandable/Expandable";
+import { generateSanitizedMetadata } from "@/utils/next";
 
 import styles from "./_styles/styles.module.css";
 
@@ -22,16 +23,14 @@ type Props = Readonly<{
   params: { locale: string };
 }>;
 
-export async function generateMetadata({
-  params: { locale },
-}: Omit<Props, "children">): Promise<Metadata> {
+export const generateMetadata = generateSanitizedMetadata<Props>(async ({ params: { locale } }) => {
   const t = await getTranslations({ locale, namespace: "pages.home.meta" });
 
   return {
     title: t("title"),
     description: t("description"),
   };
-}
+});
 
 const Page: NextPage<Props> = ({}) => {
   const t = useTranslations("pages");
