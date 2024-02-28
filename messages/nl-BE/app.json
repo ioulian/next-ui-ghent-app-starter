@@ -21,14 +21,13 @@
         "title": "Homepage",
         "description": "Homepage description"
       },
-      "title": "Homepage"
+      "title": "Homepage FR"
     },
     "serverside": {
       "meta": {
         "title": "Serverside",
         "description": "Serverside description"
-      },
-      "title": "Homepage"
+      }
     }
   }
 }
