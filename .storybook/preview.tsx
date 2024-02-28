@@ -5,7 +5,7 @@ import type { Preview } from "@storybook/react";
 import messages from "../messages/en-GB/common.json";
 import { htmlFontClass } from "../src/styles/fonts";
 
-import "./../src/app/globals.css";
+import "./../src/app/_styles/globals.css";
 
 const preview: Preview = {
   parameters: {

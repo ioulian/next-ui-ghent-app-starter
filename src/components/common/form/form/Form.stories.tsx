@@ -2,7 +2,9 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import ReactSelect from "react-select";
 
+import { ColourOption, colourOptions } from "../form-field/FormField.data";
 import { email, password, passwordRepeat, required } from "../rules";
 import Form from "../form/Form";
 import SingleCheckbox from "../single-checkbox/SingleCheckbox";
@@ -11,6 +13,7 @@ import Checkbox from "../collection/checkbox/Checkbox";
 import Heading from "../../heading/Heading";
 import Button from "../../button/Button";
 import PasswordInput from "../input/PasswordInput";
+import ReactSelectContainer from "../react-select/ReactSelectContainer";
 
 import Input from "./../input/Input";
 import FormField from "./../form-field/FormField";
@@ -46,6 +49,7 @@ type SampleFormData = {
   lastName: string;
   emailAddress: string;
   hobbies: string[];
+  color: ColourOption;
   password: string;
   passwordRepeat: string;
   privacy: string;
@@ -96,6 +100,27 @@ export const Example: Story = {
         }}
       >
         <Input type="email" />
+      </FormField>
+      <FormField<SampleFormData>
+        label="Favorite color"
+        name="color"
+        inputWrapper={ReactSelectContainer}
+        options={{
+          ...required,
+        }}
+      >
+        {({ field, props: { id, ...props } }) => {
+          return (
+            <ReactSelect
+              {...field}
+              {...props}
+              inputId={id}
+              className="react-select"
+              classNamePrefix="react-select"
+              options={colourOptions}
+            />
+          );
+        }}
       </FormField>
       <FormField<SampleFormData>
         label="Hobbies"

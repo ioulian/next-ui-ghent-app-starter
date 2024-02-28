@@ -7,7 +7,7 @@ export const formField = css({
   _notLastChild: {
     marginBottom: "1.25rem",
   },
-  "& > label": {
+  "& > label, & > legend": {
     marginBottom: "0.5rem",
   },
 });

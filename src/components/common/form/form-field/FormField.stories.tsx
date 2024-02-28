@@ -1,8 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import ReactSelect from "react-select";
 import icon from "@tabler/icons/at.svg";
 import searchIcon from "@tabler/icons/search.svg";
 
 /* eslint-disable i18next/no-literal-string */
+
+import { colourOptions } from "@/components/common/form/form-field/FormField.data";
 
 import { email, required } from "../rules";
 import Form from "../form/Form";
@@ -15,8 +18,9 @@ import Checkbox from "../collection/checkbox/Checkbox";
 import SvgSprite from "../../svg-sprite/SvgSprite";
 import Toggle from "../toggle/Toggle";
 import PasswordInput from "../input/PasswordInput";
+import ReactSelectContainer from "../react-select/ReactSelectContainer";
+import Input from "../input/Input";
 
-import Input from "./../input/Input";
 import FormField from "./FormField";
 
 const ExampleApiError = {
@@ -207,5 +211,64 @@ export const WithCheckboxList: Story = {
     },
     inputWrapper: List,
     asFieldSet: true,
+  },
+};
+
+export const WithReactSelect: Story = {
+  render: (args) => (
+    <Form onSubmit={() => {}}>
+      <FormField {...args} />
+    </Form>
+  ),
+  args: {
+    label: "Choose",
+    name: "emailAddress",
+    inputWrapper: ReactSelectContainer,
+    options: {
+      ...required,
+    },
+    asFieldSet: true,
+    children: ({ field, props: { id, ...props } }) => (
+      <ReactSelect
+        {...field}
+        {...props}
+        inputId={id}
+        isClearable
+        defaultValue={colourOptions[0]}
+        className="react-select"
+        classNamePrefix="react-select"
+        options={colourOptions}
+      />
+    ),
+  },
+};
+
+export const WithMultiReactSelect: Story = {
+  render: (args) => (
+    <Form onSubmit={() => {}}>
+      <FormField {...args} />
+    </Form>
+  ),
+  args: {
+    label: "Choose",
+    name: "emailAddress",
+    inputWrapper: ReactSelectContainer,
+    options: {
+      ...required,
+    },
+    asFieldSet: true,
+    children: ({ field, props: { id, ...props } }) => (
+      <ReactSelect
+        {...field}
+        {...props}
+        isMulti
+        inputId={id}
+        defaultValue={colourOptions[0]}
+        className="react-select"
+        menuIsOpen
+        classNamePrefix="react-select"
+        options={colourOptions}
+      />
+    ),
   },
 };

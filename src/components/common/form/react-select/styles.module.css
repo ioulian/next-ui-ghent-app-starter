@@ -1,0 +1,88 @@
+/* TODO: rewrite to panda-css later and pass everything to react-select, if needed, will be a lot of work */
+/* TODO: panda-css styles use layers, they are being overwritten by the "normal" css */
+
+.react-select-container {
+  :global(.react-select__control) {
+    color: var(--colors-form-input-color);
+    background-color: var(--colors-form-input-background);
+    border-radius: var(--radii-normal);
+    outline-color: var(--colors-form-outline);
+    box-shadow: var(--shadows-input);
+    border: 1px solid var(--colors-form-input-border);
+    margin: 0;
+
+    &:hover {
+      border-color: var(--colors-form-input-border);
+    }
+  }
+
+  :global(.react-select__indicators) {
+    height: 42px;
+  }
+
+  :global(.react-select__indicator-separator) {
+    background-color: var(--colors-form-input-border);
+
+    &:first-child {
+      display: none;
+    }
+  }
+
+  :global(.react-select__dropdown-indicator) {
+    background-image: var(--assets-select-indicator);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 0.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
+
+    > svg {
+      display: none;
+    }
+  }
+
+  :global(.react-select__clear-indicator) {
+    width: 2.25rem;
+
+    &,
+    &:hover {
+      color: var(--colors-form-select-indicator);
+    }
+  }
+
+  :global(.react-select__value-container) {
+    padding-left: 15px;
+
+    &--is-multi {
+      padding-left: 4px;
+
+      .react-select__placeholder {
+        margin-left: 11px;
+      }
+
+      .react-select__input-container {
+        margin-left: 11px;
+      }
+    }
+  }
+
+  :global(.react-select__input-container) {
+    padding: 0;
+    margin: 0;
+    color: inherit;
+  }
+
+  :global(.react-select__placeholder) {
+    margin: 0;
+    color: inherit;
+  }
+
+  :global(.react-select__option--is-selected) {
+    background-color: var(--colors-primary-500);
+  }
+
+  :global(.react-select__multi-value) {
+    background-color: transparent;
+    border: 1px solid var(--colors-form-input-border);
+  }
+}
