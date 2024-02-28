@@ -24,8 +24,19 @@ if (
 ) {
   envFileError = true;
   console.error(
-    getErrorMessage("Site URL is still set to LOCALHOST, please set this to the correct URL!"),
+    getErrorMessage(
+      "NEXT_PUBLIC_SITE_URL is still set to LOCALHOST, please set this to the correct URL!",
+    ),
   );
+}
+
+// Check if user has forgot to change NEXTAUTH_SECRET
+if (typeof process.env.NEXTAUTH_SECRET !== "string") {
+  envFileError = true;
+  console.error(getErrorMessage("NEXTAUTH_SECRET is not defined!"));
+} else if (process.env.NEXTAUTH_SECRET.length < 32) {
+  envFileError = true;
+  console.error(getErrorMessage("NEXTAUTH_SECRET is not strong enough!"));
 }
 
 // Check if manifest file contains default values

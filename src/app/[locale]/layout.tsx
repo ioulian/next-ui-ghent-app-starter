@@ -7,6 +7,7 @@ import Link from "next/link";
 import LocaleSwitcher from "@/components/common/locale-switcher/LocaleSwitcher";
 import { htmlFontClass } from "@/styles/fonts";
 import SpriteSheetPreload from "@/components/common/svg-sprite/SpriteSheetPreload";
+import Header from "@/components/Header";
 
 type Props = Readonly<{
   children: ReactNode;
@@ -45,6 +46,7 @@ export default function RootLayout({ children, params: { locale } }: Props) {
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
+          <Header />
           <LocaleSwitcher />
           <Link href="/">{"Home"}</Link>
           <Link href="/serverside">{"Serverside"}</Link>

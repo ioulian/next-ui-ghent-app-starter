@@ -3,7 +3,8 @@
 import path from "path";
 import fs from "fs";
 
-import { locales } from "./../src/i18n";
+import { locales } from "../src/i18n/index";
+
 import { getErrorMessage, getSimpleErrorMessage, getSimpleSuccessMessage } from "./utils";
 
 // Colors: https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color

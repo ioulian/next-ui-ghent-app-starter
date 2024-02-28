@@ -3,7 +3,7 @@
 import React, { FC, memo, useCallback, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
-import { usePathname, useRouter } from "@/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { cx } from "@/styled-system/css";
 import { LocaleType } from "@/i18n";
 

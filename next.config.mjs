@@ -7,7 +7,7 @@ import createBundleAnalyzer from "@next/bundle-analyzer";
 
 import { injectToWebpackConfig } from "./scripts/svg-sprite-sheet.mjs";
 
-const withNextIntl = createNextIntlPlugin();
+const withNextIntl = createNextIntlPlugin("./src/i18n/index.ts");
 const withBundleAnalyzer = createBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });

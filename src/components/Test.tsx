@@ -7,7 +7,7 @@ import iconChevron from "@tabler/icons/chevron-right.svg";
 import Tooltip from "@/components/common/floating-ui/tooltip/Tooltip";
 import Breadcrumb from "@/components/common/breadcrumb/Breadcrumb";
 import Button from "@/components/common/button/Button";
-import { Link } from "@/navigation";
+import { Link } from "@/i18n/navigation";
 import Dropdown, { DropdownMenuItem } from "@/components/common/floating-ui/dropdown/Dropdown";
 import Form from "@/components/common/form/form/Form";
 import Heading from "@/components/common/heading/Heading";
