@@ -2,29 +2,22 @@
 
 import { FC } from "react";
 
-import { auth, signIn, signOut } from "@/auth";
+import { auth, signOut } from "@/auth";
 import Button from "@/components/common/button/Button";
+import LoginButton from "@/components/auth/LoginButton";
+
 const Header: FC = async () => {
   const session = await auth();
-  console.log(session);
+
   if (!session?.user) {
-    return (
-      <form
-        action={async () => {
-          "use server";
-          await signIn();
-        }}
-      >
-        <Button type="submit">Sign In</Button>
-      </form>
-    );
+    return <LoginButton />;
   }
+
   return (
     <>
-      <span>
-        {session?.user.name} {session?.user.test}
-      </span>
+      <span>{session?.user.name}</span>
       <form
+        key="logout"
         action={async () => {
           "use server";
           await signOut();

@@ -16,17 +16,15 @@ const SHOULD_FAIL_ON_ERROR = false;
 let envFileError = false;
 let manifestFileError = false;
 
-// Check if user has forgot to change NEXT_PUBLIC_SITE_URL
+// Check if user has forgot to change SITE_URL
 if (
-  typeof process.env.NEXT_PUBLIC_SITE_URL === "undefined" ||
-  process.env.NEXT_PUBLIC_SITE_URL.startsWith("http://localhost") ||
-  process.env.NEXT_PUBLIC_SITE_URL.startsWith("https://localhost")
+  typeof process.env.SITE_URL === "undefined" ||
+  process.env.SITE_URL.startsWith("http://localhost") ||
+  process.env.SITE_URL.startsWith("https://localhost")
 ) {
   envFileError = true;
   console.error(
-    getErrorMessage(
-      "NEXT_PUBLIC_SITE_URL is still set to LOCALHOST, please set this to the correct URL!",
-    ),
+    getErrorMessage("SITE_URL is still set to LOCALHOST, please set this to the correct URL!"),
   );
 }
 

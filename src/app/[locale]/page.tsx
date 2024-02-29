@@ -16,6 +16,7 @@ import Button from "@/components/common/button/Button";
 import Ellipsis from "@/components/common/ellipsis/Ellipsis";
 import Expandable from "@/components/common/expandable/Expandable";
 import { generateSanitizedMetadata } from "@/utils/next";
+import Test2 from "@/components/Test2";
 
 import styles from "./_styles/styles.module.css";
 
@@ -92,6 +93,7 @@ const Page: NextPage<Props> = ({}) => {
           previousLabel: <SvgSprite src={iconChevronLeft} />,
         }}
       />
+      <Test2 />
 
       <SvgSprite src={sampleSvgSprite} />
     </div>

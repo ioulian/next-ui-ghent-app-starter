@@ -5,9 +5,9 @@
   "scripts": {
     "prepare": "husky && panda codegen",
     "postinstall": "husky && panda codegen",
-    "dev": " rm -rf .next && cross-env NODE_ENV=development panda codegen && next dev",
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 rm -rf .next && cross-env NODE_ENV=development panda codegen && next dev --experimental-https",
     "analyze": "cross-env ANALYZE=true yarn build",
-    "build": "yarn yarn check-translations && yarn check-build-prerequisites && rm -rf .next && panda codegen && next build",
+    "build": "yarn check-translations && yarn check-build-prerequisites && rm -rf .next && panda codegen && next build",
     "start": "next start",
     "check-types": "tsc --noemit",
     "format-code": "prettier --write .",
