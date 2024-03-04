@@ -1,14 +1,7 @@
 import { defineConfig } from "@pandacss/dev";
 
 import { globalCss } from "@/styles/global-css";
-import { colors } from "@/styles/theme/colors";
-import { fonts } from "@/styles/theme/fonts";
-import { durations } from "@/styles/theme/durations";
-import { animations } from "@/styles/theme/animations";
-import { radii } from "@/styles/theme/radii";
-import { spacing } from "@/styles/theme/spacing";
-import { assets } from "@/styles/theme/assets";
-import { shadows } from "@/styles/theme/shadows";
+import tokens from "@/styles/theme/tokens";
 
 export default defineConfig({
   importMap: "@/styled-system",
@@ -36,16 +29,7 @@ export default defineConfig({
   // Useful for theme customization
   theme: {
     extend: {},
-    tokens: {
-      assets,
-      spacing,
-      shadows,
-      colors,
-      radii,
-      fonts,
-      animations,
-      durations,
-    },
+    tokens,
   },
 
   // The output directory for your css system

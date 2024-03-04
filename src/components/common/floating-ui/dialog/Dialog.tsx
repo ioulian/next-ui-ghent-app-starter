@@ -23,6 +23,7 @@ import { useCallback } from "react";
 
 import { convertThemeVarToNumber } from "@/styles/utils";
 import { token } from "@/styled-system/tokens";
+import CloseButton from "@/components/common/floating-ui/close-button/CloseButton";
 
 import Floater from "../floater/Floater";
 
@@ -63,7 +64,10 @@ const DialogTrigger = forwardRef<HTMLElement, HTMLProps<HTMLElement>>(
   },
 );
 
-const DialogContent = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((props, propRef) => {
+const DialogContent = forwardRef<
+  HTMLDivElement,
+  { withCloseButton?: boolean } & HTMLProps<HTMLDivElement>
+>(({ withCloseButton, ...props }, propRef) => {
   const context = useDialogContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
   const parentId = useFloatingParentNodeId();
@@ -73,6 +77,9 @@ const DialogContent = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((pro
       close: convertThemeVarToNumber(token("durations.fast")),
     },
   });
+  const onClick = useCallback(() => {
+    context.setOpen(false);
+  }, [context]);
 
   if (!isMounted) {
     return null;
@@ -93,6 +100,7 @@ const DialogContent = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((pro
                 {...context.getFloatingProps(props)}
               >
                 {props.children}
+                {withCloseButton ? <CloseButton onClick={onClick} /> : null}
               </Floater>
             </FloatingFocusManager>
           </FloatingOverlay>

@@ -2,10 +2,12 @@ import type { Meta, StoryObj } from "@storybook/react";
 import ReactSelect from "react-select";
 import icon from "@tabler/icons/at.svg";
 import searchIcon from "@tabler/icons/search.svg";
+import { DayPicker } from "react-day-picker";
 
 /* eslint-disable i18next/no-literal-string */
 
 import { colourOptions } from "@/components/common/form/form-field/FormField.data";
+import ReactDayPickerContainer from "@/components/common/form/react-day-picker/ReactDayPickerContainer";
 
 import { email, required } from "../rules";
 import Form from "../form/Form";
@@ -118,6 +120,40 @@ export const WithSelect: Story = {
         </optgroup>
       </Select>
     ),
+  },
+};
+
+export const WithDate: Story = {
+  render: (args) => (
+    <Form onSubmit={() => {}}>
+      <FormField {...args} />
+    </Form>
+  ),
+  args: {
+    label: "Date",
+    name: "date",
+    options: {
+      ...required,
+    },
+    description: "Description",
+    children: <Input type="date" />,
+  },
+};
+
+export const WithDateTime: Story = {
+  render: (args) => (
+    <Form onSubmit={() => {}}>
+      <FormField {...args} />
+    </Form>
+  ),
+  args: {
+    label: "Date and time",
+    name: "date",
+    options: {
+      ...required,
+    },
+    description: "Description",
+    children: <Input type="datetime-local" />,
   },
 };
 
@@ -270,5 +306,36 @@ export const WithMultiReactSelect: Story = {
         options={colourOptions}
       />
     ),
+  },
+};
+
+export const WithReactDayPicker: Story = {
+  render: (args) => (
+    <Form onSubmit={() => {}}>
+      <FormField {...args} />
+    </Form>
+  ),
+  args: {
+    label: "Choose",
+    name: "emailAddress",
+    inputWrapper: ReactDayPickerContainer,
+    options: {
+      ...required,
+    },
+    asFieldSet: true,
+    children: ({ field: { onChange, value, ...field }, props: { ...props } }) => {
+      return (
+        <DayPicker
+          {...field}
+          {...props}
+          mode="range"
+          captionLayout="dropdown-buttons"
+          fromYear={2020}
+          toYear={new Date().getFullYear()}
+          selected={value}
+          onSelect={onChange}
+        />
+      );
+    },
   },
 };

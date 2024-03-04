@@ -1,23 +1,42 @@
 import NextAuth, { type NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { JWT } from "next-auth/jwt";
 
-import { login } from "@/services/auth-api.service";
+import { AuthToken, login, refreshToken } from "@/services/auth-api.service";
 
+// TODO: put declarations somewhere else
 declare module "next-auth" {
-  interface User {
+  interface User extends AuthToken {
     name?: string | null;
-    token: string;
-    refreshToken: string;
   }
-  interface Session {
-    token: string;
-    refreshToken: string;
-  }
+  interface Session extends AuthToken {}
+}
+
+//import "next-auth/jwt";
+declare module "next-auth/jwt" {
+  interface JWT extends AuthToken {}
 }
 
 export type CredentialsType = {
   username: string;
   password: string;
+};
+
+const refreshAccessToken = async (token: JWT): Promise<JWT> => {
+  try {
+    const newToken = await refreshToken(token.refresh_token);
+
+    return {
+      ...token,
+      ...newToken,
+      expires_in: Date.now() + newToken.expires_in * 1000,
+    };
+  } catch (error) {
+    return {
+      ...token,
+      error: "RefreshAccessTokenError",
+    };
+  }
 };
 
 export const config = {
@@ -27,18 +46,30 @@ export const config = {
   },
   callbacks: {
     jwt: async ({ token, user }) => {
+      // Initial sign in
       if (user) {
         token.id = user.id;
         token.email = user.email;
-        token.token = user.token;
-        token.refreshToken = user.refreshToken;
+
+        // TODO: typescheck these:
+        token.access_token = user.access_token;
+        token.refresh_token = user.refresh_token;
+
+        token.expires_in = Date.now() + user.expires_in * 1000; // TODO: this logic needs to be adjusted
       }
-      return token;
+
+      // Return previous token if the access token has not expired yet
+      if (Date.now() < token.expires_in) {
+        return token;
+      }
+      // Access token has expired, try to update it
+      // TODO: We should logout the user here if this fails
+      return await refreshAccessToken(token);
     },
     session: async ({ session, token }) => {
       return {
         ...session,
-        token: token.token,
+        access_token: token.access_token,
       };
     },
   },
@@ -54,9 +85,9 @@ export const config = {
           throw new Error("Invalid login data");
         }
 
-        const { token, refreshToken } = await login(credentials.username, credentials.password);
+        const response = await login(credentials.username, credentials.password);
 
-        return { name: credentials.username as string, id: "122", token, refreshToken };
+        return { name: credentials.username as string, id: "122", ...response };
       },
 
       name: "Credentials",

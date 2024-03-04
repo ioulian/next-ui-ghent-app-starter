@@ -31,6 +31,19 @@ export const Uncontrolled: Story = {
   ),
 };
 
+export const WithCloseButton: Story = {
+  render: (args) => (
+    <Popover {...args}>
+      <Popover.Trigger>My trigger</Popover.Trigger>
+      <Popover.Content withCloseButton>
+        <Popover.Heading>My popover heading</Popover.Heading>
+        <Popover.Description>My popover description</Popover.Description>
+        <Popover.Close>Close</Popover.Close>
+      </Popover.Content>
+    </Popover>
+  ),
+};
+
 export const PopoverInPopover: Story = {
   render: (args) => (
     <Popover {...args}>

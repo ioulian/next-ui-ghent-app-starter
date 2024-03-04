@@ -5,8 +5,8 @@ export type API_REQUEST_STATUS = "idle" | "loading" | "succeeded" | "failed";
 export const apiToJson =
   <TResponse extends Record<string, unknown>>() =>
   (res: Response): Promise<TResponse> => {
+    const contentType = res.headers.get("content-type");
     if (res.ok) {
-      const contentType = res.headers.get("content-type");
       if (contentType?.includes("application/json")) {
         return res.json();
       }
@@ -19,7 +19,7 @@ export const apiToJson =
             resolve({} as TResponse);
           })
           .catch(() => {
-            reject(res.status.toString());
+            reject({ error: res.status });
           });
       });
     }
@@ -31,7 +31,7 @@ export const apiToJson =
           reject(json);
         })
         .catch(() => {
-          reject(res.status.toString());
+          reject({ error: res.status });
         });
     });
   };
@@ -85,7 +85,7 @@ export const getAuthorizationHeaders = async (): Promise<HeadersInit> => {
   const session = await auth();
   // TODO: handle expired token
   if (session) {
-    return { Authorization: `Bearer ${session.token}` };
+    return { Authorization: `Bearer ${session.access_token}` };
   }
 
   return {};

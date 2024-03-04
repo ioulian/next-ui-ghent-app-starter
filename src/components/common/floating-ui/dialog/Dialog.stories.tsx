@@ -133,6 +133,19 @@ export const Uncontrolled: Story = {
   ),
 };
 
+export const WithCloseButton: Story = {
+  render: (args) => (
+    <Dialog {...args}>
+      <Dialog.Trigger>My trigger</Dialog.Trigger>
+      <Dialog.Content withCloseButton>
+        <Dialog.Heading>My dialog heading</Dialog.Heading>
+        <Dialog.Description>My dialog description</Dialog.Description>
+        <Dialog.Close>Close</Dialog.Close>
+      </Dialog.Content>
+    </Dialog>
+  ),
+};
+
 export const PopoverInDialog: Story = {
   render: (args) => (
     <Dialog {...args}>
@@ -251,25 +264,17 @@ const ControlledOverlayComponent = () => {
         <SampleLargeText />
       </div>
       <Dialog open={isOpen} onOpenChange={(isNewOpen) => setIsOpen(isNewOpen)}>
-        <Dialog.Content>
+        <Dialog.Content withCloseButton>
           <Dialog.Heading>My dialog heading</Dialog.Heading>
           <Dialog.Description>
             <SampleLargeText />
           </Dialog.Description>
-          <Dialog.Close>
-            <button
-              type="button"
-              style={{
-                position: "fixed",
-                right: "1rem",
-                top: "1rem",
-              }}
-              onClick={() => {
-                setIsOpen(false);
-              }}
-            >
-              Close
-            </button>
+          <Dialog.Close
+            onClick={() => {
+              setIsOpen(false);
+            }}
+          >
+            Close
           </Dialog.Close>
         </Dialog.Content>
       </Dialog>

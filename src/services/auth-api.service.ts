@@ -1,28 +1,58 @@
 import { getFetcher, validateData } from "@/services/api.service";
 
-export type AuthTokens = {
-  token: string;
-  refreshToken: string;
-  refreshTokenExpiration: string;
+export type AuthToken = {
+  access_token: string;
+  refresh_token: string;
+  expires_in: number;
 };
 
-export const login = (username: string, password: string): Promise<AuthTokens> => {
+const validateToken = validateData<AuthToken>(
+  ["access_token", "refresh_token"],
+  // TODO: we can translate this
+  "No token received, please try again later.",
+);
+
+export const login = (username: string, password: string): Promise<AuthToken> => {
   return new Promise((resolve, reject) => {
-    getFetcher<AuthTokens>()(`${process.env.API_DOMAIN}${process.env.AUTH_LOGIN_URL}`, {
+    getFetcher<AuthToken>()(`${process.env.API_DOMAIN}${process.env.AUTH_LOGIN_URL}`, {
       method: "POST",
       body: JSON.stringify({
+        grant_type: "password", // TODO: delete
         username,
         password,
+        client_id: process.env.AUTH_CLIENT_ID, // TODO: delete
+        client_secret: process.env.AUTH_CLIENT_SECRET, // TODO: delete
       }),
+      cache: "no-store",
     })
-      .then(
-        validateData<AuthTokens>(
-          ["token", "refreshToken"],
-          // TODO: we can translate this
-          "No tokens received, please try again later.",
-        ),
-      )
+      .then(validateToken)
       .then(resolve)
+      .catch(reject);
+  });
+};
+
+let refreshAbortController: AbortController | null = null;
+export const refreshToken = (refreshToken: AuthToken["refresh_token"]): Promise<AuthToken> => {
+  return new Promise((resolve, reject) => {
+    // TODO: check if needed
+    refreshAbortController?.abort();
+    refreshAbortController = new AbortController();
+
+    getFetcher<AuthToken>()(`${process.env.API_DOMAIN}${process.env.AUTH_REFRESH_URL}`, {
+      method: "POST",
+      body: JSON.stringify({
+        grant_type: "refresh_token", // TODO: delete
+        refresh_token: refreshToken,
+        client_id: process.env.AUTH_CLIENT_ID, // TODO: delete
+        client_secret: process.env.AUTH_CLIENT_SECRET, // TODO: delete
+      }),
+      signal: refreshAbortController.signal,
+      cache: "no-store",
+    })
+      .then(validateToken)
+      .then((body) => {
+        resolve(body);
+      })
       .catch(reject);
   });
 };

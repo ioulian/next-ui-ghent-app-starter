@@ -28,7 +28,7 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   render: (args) => <Button {...args} />,
   args: {
-    variant: "primary",
+    intent: "primary",
     size: "normal",
     isLoading: false,
     children: "Button",
@@ -41,7 +41,7 @@ export const Default: Story = {
 export const WithIcons: Story = {
   render: (args) => <Button {...args} />,
   args: {
-    variant: "primary",
+    intent: "primary",
     size: "normal",
     isLoading: false,
     children: "Button",
@@ -57,7 +57,7 @@ export const IconOnly: Story = {
   render: (args) => <Button {...args} />,
   args: {
     size: "base",
-    variant: "simple",
+    intent: "simple",
     children: "Settings",
     disabled: false,
     isLoading: false,
@@ -71,7 +71,7 @@ export const Text: Story = {
   render: (args) => <Button {...args} />,
   args: {
     size: "base",
-    variant: "simple",
+    intent: "simple",
     children: "Settings",
     disabled: false,
     isLoading: false,
@@ -103,7 +103,7 @@ export const Text: Story = {
 export const NextLink: Story = {
   render: (args) => <Button as={Link} href="/test" target="_blank" {...args} />,
   args: {
-    variant: "primary",
+    intent: "primary",
     as: "a",
     children: "Navigate to another page",
     disabled: false,

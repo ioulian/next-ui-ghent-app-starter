@@ -12,7 +12,6 @@ import { floater, floaterArrow } from "./Floater.styles";
 const Floater = forwardRef<
   HTMLDivElement,
   {
-    // state: TooltipState | PopoverState | DialogState;
     position?: { x: number | null; y: number | null };
     arrowPosition?: Partial<Coords>;
     strategy?: Strategy;
@@ -40,7 +39,7 @@ const Floater = forwardRef<
         transform: position
           ? `translate3d(${roundByDPR(position.x ?? 0)}px, ${roundByDPR(position.y ?? 0)}px, 0)`
           : undefined,
-        position: strategy ?? undefined,
+        position: strategy ?? "relative",
         visibility: position ? (position.x === null ? "hidden" : "visible") : undefined,
         ...props.style,
       }),
