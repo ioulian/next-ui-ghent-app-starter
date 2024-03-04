@@ -7,4 +7,7 @@ export const sourceSansPro = Source_Sans_3({
   variable: "--font-heading",
 });
 
+/**
+ * This class should be added to the html to allow custom fonts to be used
+ */
 export const htmlFontClass = sourceSansPro.variable;

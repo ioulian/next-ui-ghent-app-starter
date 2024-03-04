@@ -7,6 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "iO Ghent Next.js starter kit",
     start_url: "/",
     display: "standalone",
+    // TODO: We can use tokens here!
     background_color: "#fff",
     theme_color: "#0017ee",
     icons: [

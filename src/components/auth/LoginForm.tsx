@@ -16,7 +16,6 @@ import { API_REQUEST_STATUS } from "@/services/api.service";
 const LoginForm: FC = () => {
   const [status, setStatus] = useState<API_REQUEST_STATUS>("idle");
 
-  // TODO: use actions!
   const onSubmit = useCallback((data?: CredentialsType) => {
     setStatus("loading");
 

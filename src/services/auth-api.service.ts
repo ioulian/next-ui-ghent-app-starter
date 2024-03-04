@@ -6,12 +6,18 @@ export type AuthToken = {
   expires_in: number;
 };
 
+/**
+ * Helper function to validate returned token (basic validation)
+ */
 const validateToken = validateData<AuthToken>(
   ["access_token", "refresh_token"],
   // TODO: we can translate this
   "No token received, please try again later.",
 );
 
+/**
+ * Will send a request to the backend to try to authorize the user
+ */
 export const login = (username: string, password: string): Promise<AuthToken> => {
   return new Promise((resolve, reject) => {
     getFetcher<AuthToken>()(`${process.env.API_DOMAIN}${process.env.AUTH_LOGIN_URL}`, {
@@ -32,6 +38,10 @@ export const login = (username: string, password: string): Promise<AuthToken> =>
 };
 
 let refreshAbortController: AbortController | null = null;
+
+/**
+ * Will send a request to the backend to try to refresh token
+ */
 export const refreshToken = (refreshToken: AuthToken["refresh_token"]): Promise<AuthToken> => {
   return new Promise((resolve, reject) => {
     // TODO: check if needed

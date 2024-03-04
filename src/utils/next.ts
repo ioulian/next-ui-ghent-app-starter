@@ -6,7 +6,7 @@ import isEmpty from "lodash/isEmpty";
 import isObject from "lodash/isObject";
 
 /**
- * Will get build ID, is useful for cache busting
+ * Will get build ID of current application build, is useful for cache busting
  */
 export const getBuildId = (): string | "development" => {
   if (process.env.IS_STORYBOOK === "true") {

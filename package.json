@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.9",
+    "@serwist/next": "^8.4.4",
+    "@serwist/sw": "^8.4.4",
     "@tabler/icons": "^2.47.0",
     "colorjs.io": "^0.5.0",
     "date-fns": "^3.3.1",

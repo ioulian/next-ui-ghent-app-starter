@@ -10,13 +10,13 @@ import iconChevronLeft from "@tabler/icons/chevron-left.svg";
 import SvgSprite from "@/components/common/svg-sprite/SvgSprite";
 import Text from "@/components/common/text/Text";
 import Pagination from "@/components/common/pagination/Pagination";
-import Test from "@/components/Test";
+import Test from "@/app/[locale]/_components/Test";
 import ButtonGroup from "@/components/common/button-group/ButtonGroup";
 import Button from "@/components/common/button/Button";
 import Ellipsis from "@/components/common/ellipsis/Ellipsis";
 import Expandable from "@/components/common/expandable/Expandable";
 import { generateSanitizedMetadata } from "@/utils/next";
-import Test2 from "@/components/Test2";
+import Test2 from "@/app/[locale]/_components/Test2";
 
 import styles from "./_styles/styles.module.css";
 

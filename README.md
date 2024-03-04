@@ -1,40 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# next-io-ghent-app-starter kit (Next.js v14) (App router)
+
+This is a [Next.js](https://nextjs.org/) starter kit created to be used as a template to start new projects in iO Ghent campus. The idea behind is that you can directly start on working on your project instead of setting up Next.js first.
+
+It contains a lot of useful presets and common components to be used in your project. Using latest technologies and dev tools we allow developers to focus on the project first.
+
+## Features
+
+- "Full" Typescript: All project code is written in Typescript where possible. Some other JS files are (where possible) also typed;
+- Translations ([next-intl](https://github.com/amannn/next-intl)): Allow using intellisense (with TS) for translations and custom scripts to check if translations are complete. Both server and client components support using translations;
+- Styling using [panda-css](https://panda-css.com/);
+- Favicons: Using default metadata API from Next.js. Only a few specific sizes are needed. (Use <https://realfavicongenerator.net/> with <https://maskable.app/editor>);
+- Avif/webm conversion of images (Provided by Next.js);
+- Bundle analyser (Provided by Next.js);
+- [NVM](https://github.com/nvm-sh/nvm) preset;
+- .env variables (Provided by Next.js);
+- [Auth.js](https://authjs.dev/) preset;
+- [SVG Sprites](https://www.npmjs.com/package/svg-sprite-loader) (Custom or with [Tabler icons](https://tabler-icons.io/)). SVG spritesheet is exported to .svg file;
+- Font optimisation (Provided by Next.js);
+- [Storybook](https://github.com/storybookjs/storybook) with a11y checks, next-intl support and Next.js support;
+- Common components preset (with a11y in mind): <https://ioulian.github.io/next-io-ghent-app-starter/>;
+- ESLint, Prettier + Husky and lint-staged pre-commit hooks;
+- Yarn v4
 
 ## Getting Started
 
-First, run the development server:
+### Install
+
+Make sure you have Yarn v4 installed
 
 ```bash
-npm run dev
-# or
+yarn create next-app --example https://github.com/ioulian/next-io-ghent-app-starter
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+After installation, you'll probably want to use correct node version and install dependencies again.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+nvm use && yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Remove demo content
 
-## Learn More
+- Remove content from `src/app/[locale]/page.tsx` and remove folders: `src/app/[locale]/serverside` and `src/app/[locale]/_components`
 
-To learn more about Next.js, take a look at the following resources:
+## Go live checklist
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+There are some basic GO-live checks implemented when you run `yarn build`, but these files should be checked:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- `.env`
+- Meta: `src/app/apple-icon.png`, `src/app/favicon.ico`, `src/app/icon.png`, `src/app/manifest.ts`
+- `src/middleware.ts` check if the i18n locales match with the config
 
-## Deploy on Vercel
+## Issues/TODO's
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Issues and TODO's can be found here: <https://github.com/ioulian/next-io-ghent-starter/issues>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Component export convention
 
-## TODO
-
-- React paginate remove patch when it's fixed
+We use `export default` in an component, see discussion here: <https://esdiscuss.org/topic/moduleimport>
