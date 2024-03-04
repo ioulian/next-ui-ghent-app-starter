@@ -3671,7 +3671,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@serwist/precaching@npm:8.4.4":
+"@serwist/precaching@npm:8.4.4, @serwist/precaching@npm:^8.4.4":
   version: 8.4.4
   resolution: "@serwist/precaching@npm:8.4.4"
   dependencies:
@@ -13524,6 +13524,7 @@ __metadata:
     "@next/bundle-analyzer": "npm:14.1.1-canary.81"
     "@pandacss/dev": "npm:^0.33.0"
     "@serwist/next": "npm:^8.4.4"
+    "@serwist/precaching": "npm:^8.4.4"
     "@serwist/sw": "npm:^8.4.4"
     "@storybook/addon-essentials": "npm:^7.6.17"
     "@storybook/addon-interactions": "npm:^7.6.17"
