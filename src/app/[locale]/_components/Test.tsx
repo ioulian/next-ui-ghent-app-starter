@@ -1,7 +1,7 @@
 "use client";
 
 /* eslint-disable i18next/no-literal-string */
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import iconChevron from "@tabler/icons/chevron-right.svg";
 
 import Tooltip from "@/components/common/floating-ui/tooltip/Tooltip";
@@ -19,6 +19,7 @@ import SingleCheckbox from "@/components/common/form/single-checkbox/SingleCheck
 import List from "@/components/common/form/collection/List";
 import PasswordInput from "@/components/common/form/input/PasswordInput";
 import SvgSprite from "@/components/common/svg-sprite/SvgSprite";
+import { success } from "@/components/common/toast/notify";
 
 type SampleFormData = {
   firstName: string;
@@ -31,8 +32,13 @@ type SampleFormData = {
 };
 
 const Test: FC = () => {
+  const testToast = useCallback(() => {
+    success("Toastify loaded dynamically!");
+  }, []);
+
   return (
     <div>
+      <Button onClick={testToast}>Test toast</Button>
       <Tooltip>
         <Tooltip.Trigger>My trigger</Tooltip.Trigger>
         <Tooltip.Content>My tooltip</Tooltip.Content>
