@@ -76,25 +76,33 @@ export const config = {
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
+        const { username, password } = credentials as {
+          username?: unknown;
+          password?: unknown;
+        };
+
         if (
-          typeof credentials.username !== "string" ||
-          credentials.username.trim() === "" ||
-          typeof credentials.password !== "string" ||
-          credentials.password.trim() === ""
+          typeof username !== "string" ||
+          username.trim() === "" ||
+          typeof password !== "string" ||
+          password.trim() === ""
         ) {
+          // TODO: translate maybe?
           throw new Error("Invalid login data");
         }
 
-        const response = await login(credentials.username, credentials.password);
+        // TODO: we should catch errors here
+        try {
+          const response = await login(username, password);
 
-        return { name: credentials.username as string, id: "122", ...response };
+          return { name: username as string, id: "122", ...response };
+        } catch (e) {
+          return null;
+        }
       },
 
       name: "Credentials",
-      credentials: {
-        username: { label: "Username", type: "text", placeholder: "Email" },
-        password: { label: "Password", type: "password" },
-      },
+      credentials: {},
     }),
   ],
   debug: process.env.NODE_ENV === "development",

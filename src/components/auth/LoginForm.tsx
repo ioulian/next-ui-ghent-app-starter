@@ -24,7 +24,8 @@ const LoginForm: FC = () => {
       .then(() => {
         setStatus("succeeded");
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e);
         setStatus("failed");
       });
   }, []);

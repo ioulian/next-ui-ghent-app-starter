@@ -328,6 +328,36 @@ export const WithReactDayPicker: Story = {
         <DayPicker
           {...field}
           {...props}
+          mode="single"
+          fromYear={2020}
+          toYear={new Date().getFullYear()}
+          selected={value}
+          onSelect={onChange}
+        />
+      );
+    },
+  },
+};
+
+export const WithReactDateRangePicker: Story = {
+  render: (args) => (
+    <Form onSubmit={() => {}}>
+      <FormField {...args} />
+    </Form>
+  ),
+  args: {
+    label: "Choose",
+    name: "emailAddress",
+    inputWrapper: ReactDayPickerContainer,
+    options: {
+      ...required,
+    },
+    asFieldSet: true,
+    children: ({ field: { onChange, value, ...field }, props: { ...props } }) => {
+      return (
+        <DayPicker
+          {...field}
+          {...props}
           mode="range"
           captionLayout="dropdown-buttons"
           fromYear={2020}
