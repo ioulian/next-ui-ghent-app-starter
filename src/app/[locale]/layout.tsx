@@ -2,9 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { getTranslations } from "next-intl/server";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { ReactNode } from "react";
-import Link from "next/link";
 
-import LocaleSwitcher from "@/components/common/locale-switcher/LocaleSwitcher";
 import { htmlFontClass } from "@/styles/fonts";
 import Header from "@/app/[locale]/_components/Header";
 
@@ -43,9 +41,6 @@ export default function RootLayout({ children, params: { locale } }: Props) {
       <body>
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <LocaleSwitcher />
-          <Link href="/">{"Home"}</Link>
-          <Link href="/serverside">{"Serverside"}</Link>
           {children}
         </NextIntlClientProvider>
       </body>

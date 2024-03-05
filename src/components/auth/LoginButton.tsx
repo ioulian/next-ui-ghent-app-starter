@@ -14,16 +14,13 @@ const LoginButton: FC = () => {
       <Popover.Trigger>
         <Button>Login</Button>
       </Popover.Trigger>
-      <Popover.Content>
+      <Popover.Content withCloseButton>
         <Popover.Heading>
           <Heading>Login</Heading>
         </Popover.Heading>
         <Popover.Description>
           <LoginForm />
         </Popover.Description>
-        <Popover.Close>
-          <Button>Close</Button>
-        </Popover.Close>
       </Popover.Content>
     </Popover>
   );
