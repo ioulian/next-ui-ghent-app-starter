@@ -20,4 +20,7 @@ const CloseButton: FC<InferComponentProps<typeof Button>> = ({ className, ...pro
   );
 };
 
+/**
+ * Close button to be used inside <Floater> used by floating-ui
+ */
 export default memo(CloseButton);

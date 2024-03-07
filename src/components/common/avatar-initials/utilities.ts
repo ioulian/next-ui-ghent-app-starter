@@ -1,5 +1,13 @@
 import { escapeSVG } from "@/utils/svg";
 
+/**
+ * Will create a simple image with some text in it. Useful when you don't have any image for an user
+ *
+ * @param initials String to show in the image
+ * @param backgroundColor
+ * @param textColor
+ * @returns svg string
+ */
 export const getAvatarInitials = (
   initials: string,
   backgroundColor: string = "currentColor",

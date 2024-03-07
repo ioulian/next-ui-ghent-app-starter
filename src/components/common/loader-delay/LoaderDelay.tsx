@@ -1,6 +1,15 @@
 import { FC, memo, PropsWithChildren, useEffect, useState } from "react";
 
-const LoaderDelay: FC<PropsWithChildren<{ delay?: number }>> = ({ children, delay = 100 }) => {
+import { LOADER_DELAY } from "@/utils/constants";
+
+const LoaderDelay: FC<
+  PropsWithChildren<{
+    /**
+     * Delay after which to show the children
+     */
+    delay?: number;
+  }>
+> = ({ children, delay = LOADER_DELAY }) => {
   const [isShown, setIsShown] = useState<boolean>(false);
 
   useEffect(() => {
@@ -16,4 +25,8 @@ const LoaderDelay: FC<PropsWithChildren<{ delay?: number }>> = ({ children, dela
   return isShown ? children : null;
 };
 
+/**
+ * Component will delay rendering of the children.
+ * Usefull when showing loaders
+ */
 export default memo(LoaderDelay);

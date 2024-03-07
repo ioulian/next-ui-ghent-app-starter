@@ -17,9 +17,24 @@ import {
 
 const Spinner: FC<
   {
+    /**
+     * Main color of the spinner
+     */
     primaryColor?: string;
+
+    /**
+     * Secondary color of the spinner, but is by default not visible
+     */
     secondaryColor?: string;
+
+    /**
+     * Background color of the spinner, usefull when using a spinner inside a component as full size
+     */
     backgroundColor?: string;
+
+    /**
+     * Size of the spinner
+     */
     size?: ArrayElement<(typeof spinner.variantMap)["size"]>;
   } & InferComponentProps<"div">
 > = ({
@@ -57,4 +72,7 @@ const Spinner: FC<
   );
 };
 
+/**
+ * Spinner component. You can provide an optional string to render beside the spinner.
+ */
 export default memo(Spinner);

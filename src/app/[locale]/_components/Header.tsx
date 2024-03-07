@@ -1,7 +1,6 @@
 /* eslint-disable i18next/no-literal-string */
 
 import { FC } from "react";
-import Link from "next/link";
 
 import { auth, signOut } from "@/auth";
 import Button from "@/components/common/button/Button";
@@ -10,6 +9,7 @@ import LocaleSwitcher from "@/components/common/locale-switcher/LocaleSwitcher";
 import { container, hstack } from "@/styled-system/patterns";
 import { css, cx } from "@/styled-system/css";
 import Heading from "@/components/common/heading/Heading";
+import { Link } from "@/i18n/navigation";
 
 const Header: FC = async () => {
   const session = await auth();

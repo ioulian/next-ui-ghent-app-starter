@@ -32,4 +32,9 @@ const SvgSprite: FC<{ src: { id: string; viewBox: string } } & HTMLProps<SVGElem
   );
 };
 
+/**
+ * Will render an SVG sprite using `<use>` component in svg.
+ *
+ * Provide an icon as `src`: `import icon from './icon.svg'`
+ */
 export default memo(SvgSprite);

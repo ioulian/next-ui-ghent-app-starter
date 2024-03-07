@@ -14,4 +14,7 @@ const Slider: FC<PropsWithChildren<SwiperProps>> = ({ children, modules, ...prop
   );
 };
 
+/**
+ * Wrapper around `swiper` component.
+ */
 export default memo(Slider);

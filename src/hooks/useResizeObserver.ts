@@ -15,6 +15,11 @@ const defaultState: ObserverRect = {
   right: 0,
 };
 
+/**
+ * This will trigger a new "contentRect" every time the resize observer is triggered.
+ * This is a better way to detect resize of an element,
+ * as otherwise you'll need to add a lot of event listeners on window.
+ */
 export function useResizeObserver<T extends HTMLElement = HTMLElement>() {
   const frameID = useRef(0);
   const ref = useRef<T>(null);

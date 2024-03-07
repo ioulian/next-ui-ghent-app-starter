@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 
 import { htmlFontClass } from "@/styles/fonts";
 import Header from "@/app/[locale]/_components/Header";
+import Providers from "@/components/providers/Providers";
 
 type Props = Readonly<{
   children: ReactNode;
@@ -40,8 +41,10 @@ export default function RootLayout({ children, params: { locale } }: Props) {
     <html lang={locale} className={htmlFontClass}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <Header />
-          {children}
+          <Providers>
+            <Header />
+            {children}
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>

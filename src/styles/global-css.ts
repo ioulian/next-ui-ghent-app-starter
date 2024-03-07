@@ -32,7 +32,6 @@ export const globalCss = defineGlobalStyles({
     paddingLeft: 0,
   },
   a: {
-    color: "primary",
     _hover: {
       textDecoration: "none",
     },

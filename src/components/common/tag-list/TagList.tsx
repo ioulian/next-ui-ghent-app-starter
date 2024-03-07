@@ -15,4 +15,7 @@ const TagList: FC<InferComponentProps<"ul">> = ({ children, className, ...props 
   );
 };
 
+/**
+ * List of tags
+ */
 export default memo(TagList);

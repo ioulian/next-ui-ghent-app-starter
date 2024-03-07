@@ -5,12 +5,14 @@ import { cx } from "@/styled-system/css";
 
 import { buttonGroup, alignRight as alignRightStyle } from "./ButtonGroup.styles";
 
-const ButtonGroup: FC<{ alignRight?: boolean } & InferComponentProps<"div">> = ({
-  children,
-  className,
-  alignRight,
-  ...props
-}) => {
+const ButtonGroup: FC<
+  {
+    /**
+     * Will align right all the buttons
+     */
+    alignRight?: boolean;
+  } & InferComponentProps<"div">
+> = ({ children, className, alignRight, ...props }) => {
   return (
     <div {...props} className={cx(buttonGroup, alignRight && alignRightStyle, className)}>
       {children}
@@ -18,4 +20,7 @@ const ButtonGroup: FC<{ alignRight?: boolean } & InferComponentProps<"div">> = (
   );
 };
 
+/**
+ * Will render buttons as a group
+ */
 export default memo(ButtonGroup);

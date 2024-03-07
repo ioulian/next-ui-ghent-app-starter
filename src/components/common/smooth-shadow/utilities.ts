@@ -19,11 +19,35 @@ export interface SmoothShadowOptionsType {
   distanceEasing: string;
 }
 
+/**
+ * Create a smooth shadow composed of different "normal" shadows in css.
+ *
+ * @returns String to be used in css `box-shadow`
+ */
 export const createSmoothShadow = ({
+  /**
+   * Start opacity of the shadow
+   */
   startAlpha,
+
+  /**
+   * End opacity of the shadow
+   */
   endAlpha,
+
+  /**
+   * Start blur  of the shadow
+   */
   startBlur,
+
+  /**
+   * End blur  of the shadow
+   */
   endBlur,
+
+  /**
+   * Number of "normal" css shadows to generate. More is more smooth, but will tank performance quite fast
+   */
   layers,
   x,
   y,

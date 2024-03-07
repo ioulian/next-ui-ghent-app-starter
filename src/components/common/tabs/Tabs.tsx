@@ -31,4 +31,7 @@ const Tabs: FC<InferComponentProps<typeof ReactTabs>> = ({
   );
 };
 
+/**
+ * Wrapper around `react-tabs` with correct styling
+ */
 export default memo(Tabs);

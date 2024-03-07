@@ -13,4 +13,7 @@ const Tag: FC<InferComponentProps<"span">> = ({ children, className, ...props })
   );
 };
 
+/**
+ * Tag component
+ */
 export default memo(Tag);

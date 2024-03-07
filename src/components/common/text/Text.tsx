@@ -13,4 +13,7 @@ const Text: FC<InferComponentProps<"div">> = ({ children, className, ...props })
   );
 };
 
+/**
+ * Text component will apply styles to different components inside. Is useful when using WYSIWYG content.
+ */
 export default memo(Text);

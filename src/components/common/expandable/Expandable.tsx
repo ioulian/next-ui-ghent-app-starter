@@ -81,4 +81,7 @@ const Expandable: FC<
   );
 };
 
+/**
+ * Basic, animated, <summary> alternative
+ */
 export default memo(Expandable);

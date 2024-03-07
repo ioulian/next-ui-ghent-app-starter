@@ -33,4 +33,7 @@ const Breadcrumb: FC<InferComponentProps<"nav">> = ({ children, className, ...pr
   );
 };
 
+/**
+ * Breadcrumb component, just render some links in it, it will handle the separation of them
+ */
 export default memo(Breadcrumb);

@@ -8,8 +8,11 @@ import { Pathnames } from "next-intl/navigation";
 export const locales = ["en-GB", "fr-BE", "nl-BE"] as const;
 export const defaultLocale: LocaleType = locales[0];
 
+// TODO: this is not plug-n-play, do not use these but disable ts checks?
+// https://next-intl-docs.vercel.app/docs/routing/navigation#localized-pathnames
 export const pathnames = {
   "/": "/",
+  "/serverside": "/serverside",
 } satisfies Pathnames<typeof locales>;
 
 // Use the default: `always`

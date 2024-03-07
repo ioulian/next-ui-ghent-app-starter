@@ -21,14 +21,18 @@ import {
 
 const Ellipsis: FC<
   {
+    /**
+     * Number of lines to trunctate the text
+     */
     numberOfLines?: number;
+
     /**
      * Controlled
      */
     open?: boolean;
 
     /**
-     * Is expandable currently open or not?
+     * Is ellipsis showing all text or is truncated?
      *
      * @param isOpen
      */
@@ -101,4 +105,8 @@ const Ellipsis: FC<
   );
 };
 
+/**
+ * Ellipis component that will automatically truncate/clamp the text inside.
+ * It's possible to adutomatically hide the "more" button when it's not needed.
+ */
 export default memo(Ellipsis);

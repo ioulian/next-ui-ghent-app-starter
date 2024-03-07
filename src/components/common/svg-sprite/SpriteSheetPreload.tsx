@@ -21,4 +21,7 @@ const SpriteSheetPreload: FC = () => {
   );
 };
 
+/**
+ * Will render a preload tag for the spritesheet
+ */
 export default memo(SpriteSheetPreload);

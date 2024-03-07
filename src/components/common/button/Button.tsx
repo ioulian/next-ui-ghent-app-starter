@@ -133,4 +133,7 @@ if (process.env.NODE_ENV === "development") {
   Button.displayName = "Button";
 }
 
+/**
+ * Generic button component
+ */
 export default memo(Button) as PolyForwardMemoComponent<"button", Props>;

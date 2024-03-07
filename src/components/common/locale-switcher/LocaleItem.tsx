@@ -9,7 +9,12 @@ import { LocaleType } from "@/i18n";
 
 import { a, activeA } from "./LocaleItem.styles";
 
-const LocaleItem: FC<{ locale: LocaleType }> = ({ locale }) => {
+const LocaleItem: FC<{
+  /**
+   * Locale to switch to
+   */
+  locale: LocaleType;
+}> = ({ locale }) => {
   const t = useTranslations("common.localeSwitcher");
   const currentLocale = useLocale();
   const pathname = usePathname();

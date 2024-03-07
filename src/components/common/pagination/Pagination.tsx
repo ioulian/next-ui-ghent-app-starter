@@ -43,4 +43,7 @@ const Pagination: FC<ReactPaginateProps> = (props) => {
   );
 };
 
+/**
+ * Pagination wrapper around `react-paginate`, providing correct translations and styling.
+ */
 export default memo(Pagination);

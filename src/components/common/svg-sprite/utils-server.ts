@@ -2,6 +2,9 @@ import fs from "fs";
 
 import { getBuildId } from "@/utils/next";
 
+/**
+ * Will check if svg spritesheet exists
+ */
 export const hasSpriteSheet = () => {
   const fileUrl = `${process.cwd()}/.next/static/media/sprite-${getBuildId()}.svg`;
 

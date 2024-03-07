@@ -2,6 +2,7 @@ import { defineConfig } from "@pandacss/dev";
 
 import { globalCss } from "@/styles/global-css";
 import tokens from "@/styles/theme/tokens";
+import semanticTokens from "@/styles/theme/semanticTokens";
 
 export default defineConfig({
   importMap: "@/styled-system",
@@ -30,6 +31,7 @@ export default defineConfig({
   theme: {
     extend: {},
     tokens,
+    semanticTokens,
   },
 
   // The output directory for your css system

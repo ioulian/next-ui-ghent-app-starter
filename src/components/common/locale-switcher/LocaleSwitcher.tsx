@@ -19,4 +19,7 @@ const LocaleSwitcher: FC = () => {
   );
 };
 
+/**
+ * Locale switcher component. Will render buttons to switch different locales.
+ */
 export default memo(LocaleSwitcher);
