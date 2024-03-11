@@ -5,15 +5,7 @@ import { InferComponentProps } from "@/types/component";
 import { cx } from "@/styled-system/css";
 import { ArrayElement } from "@/types/helpers";
 
-import {
-  backgroundColorVar,
-  primaryColorVar,
-  secondaryColorVar,
-  spinner,
-  spinnerElement,
-  spinnerInner,
-  spinnerLabel,
-} from "./Spinner.styles";
+import { backgroundColorVar, primaryColorVar, secondaryColorVar, spinner } from "./Spinner.styles";
 
 const Spinner: FC<
   {
@@ -62,12 +54,14 @@ const Spinner: FC<
     [primaryColor, secondaryColor],
   );
 
+  const classes = spinner({ size });
+
   return (
-    <span {...props} className={cx(spinner({ size }), className)} style={spinnerStyle}>
-      <span className={spinnerInner}>
-        <span className={spinnerElement} style={spinnerElementStyle} />
+    <span {...props} className={cx(classes.root, className)} style={spinnerStyle}>
+      <span className={classes.inner}>
+        <span className={classes.element} style={spinnerElementStyle} />
       </span>
-      {children ? <span className={spinnerLabel}>{children}</span> : null}
+      {children ? <span className={classes.label}>{children}</span> : null}
     </span>
   );
 };
