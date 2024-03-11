@@ -52,4 +52,7 @@ if (process.env.NODE_ENV === "development") {
   Radio.displayName = "Radio";
 }
 
+/**
+ * Radio input field
+ */
 export default memo(Radio);

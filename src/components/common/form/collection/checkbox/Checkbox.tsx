@@ -51,4 +51,7 @@ if (process.env.NODE_ENV === "development") {
   Checkbox.displayName = "Checkbox";
 }
 
+/**
+ * Checkbox field
+ */
 export default memo(Checkbox);

@@ -8,6 +8,13 @@ export const getErrorId = (id: string): string => {
   return `${id}Error`;
 };
 
+/**
+ * Will get correct `aria-describedby` attribute for a form field
+ *
+ * @param id Id of the form field
+ * @param hasDescription Does this formfield have a description
+ * @param hasError Does this formfield have an error
+ */
 export const getAriaDescribedBy = (
   id: string,
   hasDescription: boolean = false,

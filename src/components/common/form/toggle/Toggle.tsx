@@ -34,4 +34,7 @@ if (process.env.NODE_ENV === "development") {
   Toggle.displayName = "Toggle";
 }
 
+/**
+ * Checkbox component styled as a toggle
+ */
 export default memo(Toggle);

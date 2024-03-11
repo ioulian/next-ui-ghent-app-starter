@@ -9,7 +9,7 @@ import VisuallyHidden from "../../visually-hidden/VisuallyHidden";
 import { error } from "./Error.styles";
 
 const Error: FC<{ id: string } & InferComponentProps<"div">> = ({
-  id,
+  id, // Require ID
   children,
   className,
   ...props
@@ -24,4 +24,7 @@ const Error: FC<{ id: string } & InferComponentProps<"div">> = ({
   );
 };
 
+/**
+ * Error message for the form field
+ */
 export default memo(Error);

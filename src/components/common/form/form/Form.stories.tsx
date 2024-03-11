@@ -167,7 +167,7 @@ export const Example: Story = {
           }}
           label="Repeat password"
           name="passwordRepeat"
-          watchValidate={passwordRepeat("password")}
+          watchValidate={passwordRepeat<SampleFormData>("password")}
         >
           <Input type="password" />
         </FormField>

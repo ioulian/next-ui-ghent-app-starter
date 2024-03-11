@@ -44,4 +44,7 @@ if (process.env.NODE_ENV === "development") {
   PasswordInput.displayName = "PasswordInput";
 }
 
+/**
+ * Base input field but with some logic so show/hide password
+ */
 export default memo(PasswordInput);

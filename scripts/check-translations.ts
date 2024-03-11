@@ -12,16 +12,18 @@ import { getErrorMessage, getSimpleErrorMessage, getSimpleSuccessMessage } from 
 // const PRIMARY_LOCALE = i18nextConfig.i18n.defaultLocale;
 const POSSIBLE_LOCALES = locales;
 
-const getKeysOfObjectRecursively = (object = {}, parentKey = ""): string[] => {
-  // @ts-expect-error FIXME:
-  return Object.entries(object).reduce((list, [key, value]) => {
+const getKeysOfObjectRecursively = (
+  object: Record<string, unknown>,
+  parentKey: string = "",
+): string[] => {
+  return Object.entries(object).reduce<string[]>((list, [key, value]) => {
     const currentKey = parentKey ? `${parentKey}.${key}` : key;
-    if (typeof value === "object" && value !== null) {
-      return [...list, ...getKeysOfObjectRecursively(value, currentKey)];
+    if (typeof value === "object" && value !== null && !Array.isArray(value)) {
+      return [...list, ...getKeysOfObjectRecursively(value as Record<string, unknown>, currentKey)];
     } else {
       return [...list, currentKey];
     }
-  }, []) as string[];
+  }, []);
 };
 
 const getTranslationFiles = (locale: string): string[] =>
@@ -56,7 +58,9 @@ const check = async (): Promise<boolean> =>
           primaryLocale,
           primaryTranslationFileName,
         );
-        const primaryTranslationFileKeys = getKeysOfObjectRecursively(primaryTranslationFile);
+        const primaryTranslationFileKeys = primaryTranslationFile
+          ? getKeysOfObjectRecursively(primaryTranslationFile)
+          : [];
 
         // Check the rest of the locales
         for (const locale of POSSIBLE_LOCALES.filter(

@@ -1,3 +1,5 @@
+import { FieldPath, FieldValues, UseFormWatch } from "react-hook-form";
+
 export const required = {
   required: {
     value: true,
@@ -21,10 +23,12 @@ export const password = {
 
 // FIXME:
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const passwordRepeat = (otherField: string) => (watch: any) => ({
-  validate: (val: string) => {
-    if (watch(otherField) !== val) {
-      return "passwordMatch";
-    }
-  },
-});
+export const passwordRepeat =
+  <T extends FieldValues>(otherField: FieldPath<T>) =>
+  (watch: UseFormWatch<T>) => ({
+    validate: (val: FieldPath<T>) => {
+      if (watch(otherField) !== val) {
+        return "passwordMatch";
+      }
+    },
+  });

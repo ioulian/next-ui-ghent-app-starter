@@ -13,16 +13,38 @@ import { form } from "./Form.styles";
 
 export const BE_VALIDATION: string = "BE";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type FormValueType = Record<string, any>;
+export type FormValueType = Record<string, unknown>;
 
-// TODO: find a way to pass type to children, maybe use a function that we pass
-// to form, from wich every child can get it types?
+/**
+ * Wrapper around `react-hook-form`.
+ *
+ * TODO: find a way to pass type to children, maybe use a function that we pass
+ * to form, from wich every child can get it types?
+ */
 const Form = <T extends FormValueType>({
+  /**
+   * Is current form loading, will not trigger onSubmit when loading
+   */
   isLoading,
+
+  /**
+   * Error to show above the form
+   */
   error,
+
+  /**
+   * Values to preset the form with
+   */
   defaultValues,
+
+  /**
+   * Triggered on form submit
+   */
   onSubmit,
+
+  /**
+   * Triggered on change of any field
+   */
   onChange,
   children,
   mode = "onChange",
@@ -102,8 +124,5 @@ const Form = <T extends FormValueType>({
     </FormProvider>
   );
 };
-if (process.env.NODE_ENV === "development") {
-  Form.whyDidYouRender = true;
-}
 
 export default Form;

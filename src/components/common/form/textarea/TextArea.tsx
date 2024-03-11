@@ -25,4 +25,7 @@ if (process.env.NODE_ENV === "development") {
   TextArea.displayName = "TextArea";
 }
 
+/**
+ * Text component
+ */
 export default memo(TextArea);

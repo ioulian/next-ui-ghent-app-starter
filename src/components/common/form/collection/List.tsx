@@ -13,4 +13,7 @@ const List: FC<InferComponentProps<"div">> = ({ children, className, ...props })
   );
 };
 
+/**
+ * List wrapper that will render children inline
+ */
 export default memo(List);

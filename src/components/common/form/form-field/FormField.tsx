@@ -20,6 +20,7 @@ import {
   RegisterOptions,
   useFormContext,
   UseFormStateReturn,
+  UseFormWatch,
 } from "react-hook-form";
 import merge from "lodash/merge";
 import { useTranslations } from "next-intl";
@@ -44,10 +45,69 @@ type RenderProps<T extends FormValueType> = (props: {
   props: {
     "aria-describedby"?: string;
     "aria-invalid"?: "false" | "true";
+    isError?: boolean;
     id: string;
   };
 }) => ReactElement;
 
+type FormFieldProps<T extends FormValueType> = {
+  /**
+   * Render this field as a toggle (toggle or checkbox), meaning it will put the input first and label next on the same line
+   */
+  isToggle?: boolean;
+
+  /**
+   * Setting this option to `true` will render `<fieldset>` as a wrapper, this should be used when using multiple radio buttons or checkboxes
+   */
+  asFieldSet?: boolean;
+
+  /**
+   * Options to pass to react-hook-form
+   */
+  options?: RegisterOptions<T, FieldPath<T>>;
+
+  /**
+   * Name of the input field inside. Will inject it into children
+   */
+  name: Path<T>;
+
+  /**
+   * Label of the form field
+   */
+  label?: ReactNode;
+
+  /**
+   * Description of the form field
+   */
+  description?: ReactNode;
+
+  /**
+   * Renders a wrapper around input field, useful if you want more control of the styling of the input (third party libraries, multi-radio/checkboxes)
+   */
+  inputWrapper?: FC<PropsWithChildren>;
+
+  /**
+   * Provide a function to watch another field for value changes
+   */
+  watchValidate?: (watch: UseFormWatch<T>) => {
+    validate: (val: FieldPath<T>) => string | undefined;
+  };
+
+  /**
+   * Normal children or render function (use this for third party components, or if you want more control of the data flow)
+   */
+  children?: // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  | ReactElement<any, JSXElementConstructor<any>>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    | ReactElement<any, JSXElementConstructor<any>>[]
+    | RenderProps<T>;
+} & Omit<InferComponentProps<"div" | "fieldset">, "children">;
+
+/**
+ * Wrapper for a formfield that will handle injection of required properties to children (input, select, ...).
+ *
+ * The wrapper also adds correct label, description and error messages for the current form element.
+ */
 const FormField = <T extends FormValueType>({
   asFieldSet,
   isToggle,
@@ -60,23 +120,7 @@ const FormField = <T extends FormValueType>({
   watchValidate,
   className,
   ...props
-}: {
-  isToggle?: boolean;
-  asFieldSet?: boolean;
-  options?: RegisterOptions<T, FieldPath<T>>;
-  name: Path<T>;
-  label?: ReactNode;
-  description?: ReactNode;
-  inputWrapper?: FC<PropsWithChildren>;
-  // FIXME:
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  watchValidate?: any;
-  children?: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  | ReactElement<any, JSXElementConstructor<any>>
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    | ReactElement<any, JSXElementConstructor<any>>[]
-    | RenderProps<T>;
-} & Omit<InferComponentProps<"div" | "fieldset">, "children">) => {
+}: FormFieldProps<T>) => {
   const { register, unregister, watch, control, formState, getFieldState } = useFormContext<T>();
   const t = useTranslations("common.form");
 
@@ -114,7 +158,6 @@ const FormField = <T extends FormValueType>({
                 ...args,
                 props: {
                   id: name,
-                  // @ts-expect-error FIXME:
                   isError: !!error,
                   ...(describedBy && { "aria-describedby": describedBy }),
                   ...(error && { "aria-invalid": "true" }),
@@ -145,16 +188,12 @@ const FormField = <T extends FormValueType>({
           {error.type === BE_VALIDATION
             ? (error.message as unknown as string)
             : // @ts-expect-error This is dynamic
-              t(`validationErrors.${error.message as string}`)}
+              t(`validationErrors.${error.message as unknown as string}`)}
         </Error>
       ) : null}
       {description ? <Description id={getDescriptionId(name)}>{description}</Description> : null}
     </Component>
   );
 };
-
-if (process.env.NODE_ENV === "development") {
-  FormField.whyDidYouRender = true;
-}
 
 export default FormField;

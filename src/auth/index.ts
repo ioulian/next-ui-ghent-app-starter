@@ -62,6 +62,7 @@ export const config = {
       if (Date.now() < token.expires_in) {
         return token;
       }
+
       // Access token has expired, try to update it
       // TODO: We should logout the user here if this fails
       return await refreshAccessToken(token);

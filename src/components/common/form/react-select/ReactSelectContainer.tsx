@@ -12,4 +12,7 @@ const ReactSelectContainer: FC<InferComponentProps<"div">> = ({ children }) => {
   );
 };
 
+/**
+ * Styling wrapper for `react-select`.
+ */
 export default memo(ReactSelectContainer);

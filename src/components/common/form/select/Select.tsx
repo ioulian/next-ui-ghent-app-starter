@@ -10,6 +10,9 @@ import { select } from "./Select.styles";
 const Select = forwardRef<
   HTMLSelectElement,
   {
+    /**
+     * Add empty option as first item
+     */
     addEmptyOption?: boolean;
     isError?: boolean;
   } & InferComponentProps<"select">
@@ -28,4 +31,7 @@ if (process.env.NODE_ENV === "development") {
   Select.displayName = "Select";
 }
 
+/**
+ * Select field
+ */
 export default memo(Select);

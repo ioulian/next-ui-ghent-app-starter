@@ -16,4 +16,7 @@ const ReactDayPickerContainer: FC<InferComponentProps<"div">> = ({ children }) =
   );
 };
 
+/**
+ * Styling container for `react-day-picker`. Will also load needed css for the library
+ */
 export default memo(ReactDayPickerContainer);

@@ -26,6 +26,16 @@ const config = {
         prev: "let",
         next: "return",
       },
+      {
+        blankLine: "always",
+        prev: "if",
+        next: "return",
+      },
+      {
+        blankLine: "always",
+        prev: "block",
+        next: "return",
+      },
     ],
     quotes: ["error", "double", { allowTemplateLiterals: false, avoidEscape: true }],
     curly: ["error", "all"],

@@ -11,7 +11,14 @@ import { input, inputIconContainer } from "./Input.styles";
 const Input = forwardRef<
   HTMLInputElement,
   {
+    /**
+     * Add a node before
+     */
     iconBefore?: ReactNode;
+
+    /**
+     * Add a node after
+     */
     iconAfter?: ReactNode;
     isError?: boolean;
   } & InferComponentProps<"input">
@@ -29,6 +36,7 @@ const Input = forwardRef<
       </div>
     );
   }
+
   return element;
 });
 
@@ -36,4 +44,7 @@ if (process.env.NODE_ENV === "development") {
   Input.displayName = "Input";
 }
 
+/**
+ * Input field
+ */
 export default memo(Input);

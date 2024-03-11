@@ -31,4 +31,7 @@ const Label: PolymorphicComponent<
   );
 };
 
+/**
+ * Label component for the form field
+ */
 export default memo(Label);

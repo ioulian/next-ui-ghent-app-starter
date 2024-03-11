@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import ReactSelect from "react-select";
 import icon from "@tabler/icons/at.svg";
 import searchIcon from "@tabler/icons/search.svg";
-import { DayPicker } from "react-day-picker";
+import { DateRange, DayPicker, Matcher } from "react-day-picker";
 
 /* eslint-disable i18next/no-literal-string */
 
@@ -311,18 +311,17 @@ export const WithMultiReactSelect: Story = {
 
 export const WithReactDayPicker: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form<{ inputName: Matcher | Matcher[] }> onSubmit={() => {}}>
       <FormField {...args} />
     </Form>
   ),
   args: {
     label: "Choose",
-    name: "emailAddress",
+    name: "inputName",
     inputWrapper: ReactDayPickerContainer,
     options: {
       ...required,
     },
-    asFieldSet: true,
     children: ({ field: { onChange, value, ...field }, props: { ...props } }) => {
       return (
         <DayPicker
@@ -331,7 +330,7 @@ export const WithReactDayPicker: Story = {
           mode="single"
           fromYear={2020}
           toYear={new Date().getFullYear()}
-          selected={value}
+          selected={value as Date}
           onSelect={onChange}
         />
       );
@@ -352,7 +351,6 @@ export const WithReactDateRangePicker: Story = {
     options: {
       ...required,
     },
-    asFieldSet: true,
     children: ({ field: { onChange, value, ...field }, props: { ...props } }) => {
       return (
         <DayPicker
@@ -362,7 +360,7 @@ export const WithReactDateRangePicker: Story = {
           captionLayout="dropdown-buttons"
           fromYear={2020}
           toYear={new Date().getFullYear()}
-          selected={value}
+          selected={value as DateRange}
           onSelect={onChange}
         />
       );

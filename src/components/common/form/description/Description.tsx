@@ -9,7 +9,7 @@ import VisuallyHidden from "../../visually-hidden/VisuallyHidden";
 import { description } from "./Description.styles";
 
 const Description: FC<{ id: string } & InferComponentProps<"div">> = ({
-  id,
+  id, // Require ID
   children,
   className,
   ...props
@@ -24,4 +24,7 @@ const Description: FC<{ id: string } & InferComponentProps<"div">> = ({
   );
 };
 
+/**
+ * Description of the form field
+ */
 export default memo(Description);
