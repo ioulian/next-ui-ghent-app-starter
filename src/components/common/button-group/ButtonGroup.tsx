@@ -2,19 +2,20 @@ import { FC, memo } from "react";
 
 import { InferComponentProps } from "@/types/component";
 import { cx } from "@/styled-system/css";
+import { ArrayElement } from "@/types/helpers";
 
-import { buttonGroup, alignRight as alignRightStyle } from "./ButtonGroup.styles";
+import { buttonGroup } from "./ButtonGroup.styles";
 
 const ButtonGroup: FC<
   {
     /**
      * Will align right all the buttons
      */
-    alignRight?: boolean;
+    align?: ArrayElement<(typeof buttonGroup.variantMap)["align"]>;
   } & InferComponentProps<"div">
-> = ({ children, className, alignRight, ...props }) => {
+> = ({ children, className, align, ...props }) => {
   return (
-    <div {...props} className={cx(buttonGroup, alignRight && alignRightStyle, className)}>
+    <div {...props} className={cx(buttonGroup({ align }), className)}>
       {children}
     </div>
   );

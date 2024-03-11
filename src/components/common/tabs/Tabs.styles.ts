@@ -4,6 +4,7 @@ export const tabsContainer = css({
   WebkitTapHighlightColor: "transparent",
 });
 
+// TODO: use SVA?
 export const tabs = css({});
 
 export const tabList = css({

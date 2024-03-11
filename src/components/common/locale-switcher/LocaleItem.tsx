@@ -7,7 +7,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { cx } from "@/styled-system/css";
 import { LocaleType } from "@/i18n";
 
-import { a, activeA } from "./LocaleItem.styles";
+import { a } from "./LocaleItem.styles";
 
 const LocaleItem: FC<{
   /**
@@ -32,7 +32,7 @@ const LocaleItem: FC<{
       locale={locale}
       lang={locale}
       hrefLang={locale}
-      className={cx(a, isActive && activeA)}
+      className={cx(a({ isActive }))}
       title={ariaLabel}
       aria-label={ariaLabel}
     >

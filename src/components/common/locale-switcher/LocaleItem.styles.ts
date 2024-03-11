@@ -1,15 +1,20 @@
-import { css } from "@/styled-system/css";
+import { cva } from "@/styled-system/css";
 
-export const a = css({
-  textDecoration: "none",
-  _hover: {
-    textDecoration: "underline",
+export const a = cva({
+  base: {
+    textDecoration: "none",
+    _hover: {
+      textDecoration: "underline",
+    },
+    _focus: {
+      textDecoration: "underline",
+    },
   },
-  _focus: {
-    textDecoration: "underline",
+  variants: {
+    isActive: {
+      true: {
+        textDecoration: "underline",
+      },
+    },
   },
-});
-
-export const activeA = css({
-  textDecoration: "underline",
 });

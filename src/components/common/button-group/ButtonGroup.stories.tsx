@@ -29,12 +29,10 @@ export const Default: Story = {
       </Button>
     </ButtonGroup>
   ),
-  args: {
-    alignRight: false,
-  },
+  args: {},
 };
 
-export const AlignRight: Story = {
+export const AlignEnd: Story = {
   render: (args) => (
     <ButtonGroup {...args}>
       <Button size="base" intent="simple">
@@ -45,6 +43,6 @@ export const AlignRight: Story = {
     </ButtonGroup>
   ),
   args: {
-    alignRight: true,
+    align: "end",
   },
 };

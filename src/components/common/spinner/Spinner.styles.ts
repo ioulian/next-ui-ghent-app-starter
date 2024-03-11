@@ -4,6 +4,7 @@ export const backgroundColorVar = "--spinner-background-color";
 export const primaryColorVar = "--spinner-primary-color";
 export const secondaryColorVar = "--spinner-secondary-color";
 
+// TODO: use SVA
 export const spinner = cva({
   base: {
     display: "inline-flex",
