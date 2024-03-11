@@ -27,10 +27,10 @@ export const formFieldToggle = css({
   "& > .toggle": {
     order: -1,
   },
-  "& input + *": {
+  "& > input + *": {
     marginTop: "0.25rem",
   },
-  "& input ~ *": {
+  "& > input ~ *": {
     width: "100%",
   },
 });

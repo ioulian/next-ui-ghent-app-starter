@@ -60,9 +60,7 @@ export const refreshToken = (refreshToken: AuthToken["refresh_token"]): Promise<
       cache: "no-store",
     })
       .then(validateToken)
-      .then((body) => {
-        resolve(body);
-      })
+      .then(resolve)
       .catch(reject);
   });
 };

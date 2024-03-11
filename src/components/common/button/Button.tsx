@@ -18,7 +18,7 @@ import { ArrayElement } from "@/types/helpers";
 import Spinner from "../spinner/Spinner";
 import VisuallyHidden from "../visually-hidden/VisuallyHidden";
 
-import { button, buttonContent, spinner, svg } from "./Button.styles";
+import { button } from "./Button.styles";
 
 type Props = {
   /**
@@ -95,20 +95,22 @@ const Button = polyRef<"button" | "a", Props>(
       [onClick, isLoading, disabled],
     );
 
+    const classes = button({ intent, size, isLoading, fullWidth });
+
     return (
       <Element
         ref={ref}
         type={!Element || Element === "button" ? props.type ?? "button" : undefined}
         {...props}
-        className={cx(button({ intent, size, isLoading, fullWidth }), className)}
+        className={cx(classes.root, className)}
         disabled={disabled || isLoading}
         onClick={onClick ? newOnClick : undefined}
       >
-        <span className={buttonContent({ isVisible: !isLoading })}>
+        <span className={classes.content}>
           {isValidElement<Record<string, unknown>>(iconBefore) &&
             cloneElement(iconBefore, {
               "aria-hidden": "true",
-              className: svg({ size: size === "small" ? "small" : "normal" }),
+              className: classes.svg,
             })}
           {children ? (
             iconOnly ? (
@@ -120,10 +122,10 @@ const Button = polyRef<"button" | "a", Props>(
           {isValidElement<Record<string, unknown>>(iconAfter) &&
             cloneElement(iconAfter, {
               "aria-hidden": "true",
-              className: svg({ size: size === "small" ? "small" : "normal" }),
+              className: classes.svg,
             })}
         </span>
-        <Spinner className={spinner({ isVisible: isLoading })} />
+        <Spinner className={classes.spinner} />
       </Element>
     );
   },

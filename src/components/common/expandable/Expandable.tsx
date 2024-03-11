@@ -9,6 +9,7 @@ import { InferComponentProps } from "@/types/component";
 import { convertThemeVarToNumber } from "@/styles/utils";
 import { token } from "@/styled-system/tokens";
 import { cx } from "@/styled-system/css";
+import { easings } from "@/utils/easings";
 
 import SvgSprite from "../svg-sprite/SvgSprite";
 
@@ -72,6 +73,7 @@ const Expandable: FC<
       </button>
       <AnimateHeight
         id={id}
+        easing={easings.easeOutCubic}
         duration={convertThemeVarToNumber(token("durations.slow"))}
         height={isOpen ? "auto" : 0}
       >
