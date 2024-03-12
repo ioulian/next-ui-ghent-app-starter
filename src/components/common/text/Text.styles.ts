@@ -1,9 +1,6 @@
 import { css } from "@/styled-system/css";
 
 export const text = css({
-  //fontSize: "1rem",
-  //lineHeight: "150%",
-  letterSpacing: "-0.02em",
   "& > * + *": {
     marginTop: { base: "1.25rem", lg: "1.5rem" },
   },

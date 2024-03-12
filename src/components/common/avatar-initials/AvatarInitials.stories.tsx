@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
 
+import { cx } from "@/styled-system/css";
+import { circle } from "@/styled-system/patterns";
+
 import { getAvatarInitials } from "./utilities";
 
 const AvatarInitials: FC<{
@@ -11,12 +14,7 @@ const AvatarInitials: FC<{
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      style={{
-        width: 42,
-        height: 42,
-        overflow: "hidden",
-        borderRadius: "50%",
-      }}
+      className={cx(circle({ size: "42px", overflow: "hidden" }))}
       src={getAvatarInitials(initials, backgroundColor, textColor)}
       alt=""
     />

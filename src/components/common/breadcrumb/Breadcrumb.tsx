@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 
 import { InferComponentProps } from "@/types/component";
 import { cx } from "@/styled-system/css";
+import { hstack } from "@/styled-system/patterns";
 
 import { li, nav, ol } from "./Breadcrumb.styles";
 
@@ -11,7 +12,7 @@ const Breadcrumb: FC<InferComponentProps<"nav">> = ({ children, className, ...pr
 
   return (
     <nav aria-label={t("breadcrumb.label")} {...props} className={cx(nav, className)}>
-      <ol className={ol}>
+      <ol className={cx(hstack({ gap: "0.75rem" }), ol)}>
         {Children.map(children, (child, i) => {
           if (!isValidElement(child)) {
             return null;

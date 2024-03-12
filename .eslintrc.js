@@ -37,6 +37,7 @@ const config = {
         next: "return",
       },
     ],
+    "react/jsx-curly-brace-presence": ["warn", { props: "never", children: "never" }],
     quotes: ["error", "double", { allowTemplateLiterals: false, avoidEscape: true }],
     curly: ["error", "all"],
     "object-shorthand": "error",
