@@ -28,8 +28,8 @@ const Header: FC = async () => {
           <Heading type="h2">next-io-ghent-app-starter</Heading>
         </div>
         <div className={hstack({ gap: "1rem" })}>
-          <Link href="/">{"Home"}</Link>
-          <Link href="/serverside">{"Serverside"}</Link>
+          <Link href="/">Home</Link>
+          <Link href="/serverside">Serverside</Link>
         </div>
         <div className={cx(css({ marginLeft: "auto" }), hstack({ gap: "1rem" }))}>
           <LocaleSwitcher />
