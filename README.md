@@ -20,23 +20,20 @@ It contains a lot of useful presets and common components to be used in your pro
 - [Storybook](https://github.com/storybookjs/storybook) with a11y checks, next-intl support and Next.js support;
 - Common components preset (with a11y in mind): <https://ioulian.github.io/next-io-ghent-app-starter/>;
 - ESLint, Prettier + Husky and lint-staged pre-commit hooks;
-- Yarn v4
 
 ## Getting Started
 
 ### Install
 
-Make sure you have Yarn v4 installed
-
 ```bash
-yarn create next-app --example https://github.com/ioulian/next-io-ghent-app-starter
-yarn dev
+npx create-next-app --example https://github.com/ioulian/next-io-ghent-app-starter
+npm run dev
 ```
 
 After installation, you'll probably want to use correct node version and install dependencies again.
 
 ```bash
-nvm use && yarn install
+nvm use && npm install
 ```
 
 ### Remove demo content
@@ -45,7 +42,7 @@ nvm use && yarn install
 
 ## Go live checklist
 
-There are some basic GO-live checks implemented when you run `yarn build`, but these files should be checked:
+There are some basic GO-live checks implemented when you run `npm run build`, but these files should be checked:
 
 - `.env`
 - Meta: `src/app/apple-icon.png`, `src/app/favicon.ico`, `src/app/icon.png`, `src/app/manifest.ts`

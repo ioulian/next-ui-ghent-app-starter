@@ -1,1 +1,1 @@
-yarn lint && yarn check-translations
+npm run lint && npm run check-translations

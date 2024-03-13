@@ -4,14 +4,13 @@
   "private": true,
   "scripts": {
     "prepare": "husky && panda codegen",
-    "postinstall": "husky && panda codegen",
     "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 rm -rf .next && cross-env NODE_ENV=development panda codegen && next dev --experimental-https",
-    "analyze": "cross-env ANALYZE=true yarn build",
-    "build": "yarn check-translations && yarn check-build-prerequisites && rm -rf .next && panda codegen && next build",
+    "analyze": "cross-env ANALYZE=true npm run build",
+    "build": "npm run check-translations && npm run check-build-prerequisites && rm -rf .next && panda codegen && next build",
     "start": "next start",
     "check-types": "tsc --noemit",
     "format-code": "prettier --write .",
-    "lint": "yarn check-types && next lint --fix",
+    "lint": "npm run check-types && next lint --fix",
     "check-translations": "ts-node -O '{\"module\":\"commonjs\"}' scripts/check-translations.ts",
     "check-build-prerequisites": "ts-node -O '{\"module\":\"commonjs\"}' scripts/check-build-prerequisites.ts",
     "storybook": "cross-env NODE_ENV=development panda codegen && storybook dev -p 6006",
@@ -27,7 +26,7 @@
     "date-fns": "^3.3.1",
     "easing-coordinates": "^2.0.2",
     "lodash": "^4.17.21",
-    "next": "14.1.1-canary.81",
+    "next": "14.1.3",
     "next-auth": "5.0.0-beta.15",
     "next-intl": "^3.9.1",
     "next-nprogress-bar": "^2.3.2",
@@ -37,7 +36,7 @@
     "react-day-picker": "^8.10.0",
     "react-dom": "^18",
     "react-hook-form": "^7.51.0",
-    "react-paginate": "patch:react-paginate@npm%3A8.2.0#~/.yarn/patches/react-paginate-npm-8.2.0-5a1e23f790.patch",
+    "react-paginate": "8.2.0",
     "react-select": "^5.8.0",
     "react-tabs": "^6.0.2",
     "react-toastify": "^10.0.4",
@@ -48,7 +47,7 @@
   },
   "devDependencies": {
     "@csstools/postcss-cascade-layers": "^4.0.3",
-    "@next/bundle-analyzer": "14.1.1-canary.81",
+    "@next/bundle-analyzer": "14.1.3",
     "@pandacss/dev": "^0.33.0",
     "@storybook/addon-essentials": "^7.6.17",
     "@storybook/addon-interactions": "^7.6.17",
@@ -71,7 +70,7 @@
     "css-loader": "^6.10.0",
     "cssnano": "^6.0.5",
     "eslint": "^8",
-    "eslint-config-next": "14.1.1-canary.81",
+    "eslint-config-next": "14.1.3",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-i18next": "^6.0.3",
     "eslint-plugin-import": "^2.29.1",
@@ -91,6 +90,5 @@
     "svgo-loader": "^4.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5"
-  },
-  "packageManager": "yarn@4.1.0"
+  }
 }
