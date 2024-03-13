@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "prepare": "husky && panda codegen",
+    "postinstall": "husky && panda codegen && patch-package",
     "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 rm -rf .next && cross-env NODE_ENV=development panda codegen && next dev --experimental-https",
     "analyze": "cross-env ANALYZE=true npm run build",
     "build": "npm run check-translations && npm run check-build-prerequisites && rm -rf .next && panda codegen && next build",
@@ -30,6 +31,7 @@
     "next-auth": "5.0.0-beta.15",
     "next-intl": "^3.9.1",
     "next-nprogress-bar": "^2.3.2",
+    "patch-package": "^8.0.0",
     "postcss": "^8.4.35",
     "react": "^18",
     "react-animate-height": "^3.2.3",
