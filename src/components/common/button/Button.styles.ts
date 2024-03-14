@@ -1,5 +1,6 @@
 import { sva } from "@/styled-system/css";
 
+// We can also use "defineSlotRecipe" and enable staticCss in config to generate styles to be used directly in css modules.
 export const button = sva({
   slots: ["root", "content", "spinner", "svg"],
   base: {
