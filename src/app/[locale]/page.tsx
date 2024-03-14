@@ -125,7 +125,7 @@ const Page: NextPage<Props> = ({}) => {
         </Dropdown>
       </Dropdown>
       <Dialog>
-        <DialogTrigger>My trigger</DialogTrigger>
+        <DialogTrigger>Open dialog</DialogTrigger>
         <DialogContent withCloseButton>
           <DialogHeading>My dialog heading</DialogHeading>
           <DialogDescription>My dialog description</DialogDescription>
@@ -133,11 +133,11 @@ const Page: NextPage<Props> = ({}) => {
         </DialogContent>
       </Dialog>
       <Tooltip>
-        <TooltipTrigger>My trigger</TooltipTrigger>
+        <TooltipTrigger>Open tooltip</TooltipTrigger>
         <TooltipContent>My tooltip</TooltipContent>
       </Tooltip>
       <Popover>
-        <PopoverTrigger>My trigger</PopoverTrigger>
+        <PopoverTrigger>Open popover</PopoverTrigger>
         <PopoverContent withCloseButton>
           <PopoverHeading>My popover heading</PopoverHeading>
           <PopoverDescription>My popover description</PopoverDescription>

@@ -14,7 +14,7 @@ const withBundleAnalyzer = createBundleAnalyzer({
 });
 
 const withSerwist = withSerwistInit({
-  cacheOnFrontEndNav: true,
+  disable: process.env.NODE_ENV !== "production",
   swSrc: "src/app/sw.ts",
   swDest: "public/sw.js",
 });
