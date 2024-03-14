@@ -6,6 +6,8 @@ import { useState } from "react";
 import Button from "../../button/Button";
 
 import Tooltip from "./Tooltip";
+import TooltipTrigger from "./TooltipTrigger";
+import TooltipContent from "./TooltipContent";
 
 const meta: Meta<typeof Tooltip> = {
   title: "UI/Floating UI/Tooltip",
@@ -19,8 +21,8 @@ type Story = StoryObj<typeof Tooltip>;
 export const Uncontrolled: Story = {
   render: (args) => (
     <Tooltip {...args}>
-      <Tooltip.Trigger>My trigger</Tooltip.Trigger>
-      <Tooltip.Content>My tooltip</Tooltip.Content>
+      <TooltipTrigger>My trigger</TooltipTrigger>
+      <TooltipContent>My tooltip</TooltipContent>
     </Tooltip>
   ),
 };
@@ -30,7 +32,7 @@ const ControlledTooltip = () => {
 
   return (
     <Tooltip open={isOpen} onOpenChange={(isNewOpen) => setIsOpen(isNewOpen)}>
-      <Tooltip.Trigger
+      <TooltipTrigger
         onMouseEnter={() => {
           setIsOpen(true);
         }}
@@ -39,8 +41,8 @@ const ControlledTooltip = () => {
         }}
       >
         My trigger
-      </Tooltip.Trigger>
-      <Tooltip.Content>My tooltip</Tooltip.Content>
+      </TooltipTrigger>
+      <TooltipContent>My tooltip</TooltipContent>
     </Tooltip>
   );
 };
@@ -55,10 +57,10 @@ export const Controlled: Story = {
 export const CustomElements: Story = {
   render: (args) => (
     <Tooltip {...args}>
-      <Tooltip.Trigger>
+      <TooltipTrigger>
         <Button>My trigger</Button>
-      </Tooltip.Trigger>
-      <Tooltip.Content>My tooltip</Tooltip.Content>
+      </TooltipTrigger>
+      <TooltipContent>My tooltip</TooltipContent>
     </Tooltip>
   ),
 };
@@ -66,10 +68,10 @@ export const CustomElements: Story = {
 export const Placement: Story = {
   render: (args) => (
     <Tooltip {...args}>
-      <Tooltip.Trigger>
+      <TooltipTrigger>
         <Button>My trigger</Button>
-      </Tooltip.Trigger>
-      <Tooltip.Content>My tooltip</Tooltip.Content>
+      </TooltipTrigger>
+      <TooltipContent>My tooltip</TooltipContent>
     </Tooltip>
   ),
   args: {

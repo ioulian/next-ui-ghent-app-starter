@@ -2,13 +2,10 @@
 
 /* eslint-disable i18next/no-literal-string */
 import { FC, useCallback } from "react";
-import iconChevron from "@tabler/icons/chevron-right.svg";
 
-import Tooltip from "@/components/common/floating-ui/tooltip/Tooltip";
 import Breadcrumb from "@/components/common/breadcrumb/Breadcrumb";
 import Button from "@/components/common/button/Button";
 import { Link } from "@/i18n/navigation";
-import Dropdown, { DropdownMenuItem } from "@/components/common/floating-ui/dropdown/Dropdown";
 import Form from "@/components/common/form/form/Form";
 import Heading from "@/components/common/heading/Heading";
 import FormField from "@/components/common/form/form-field/FormField";
@@ -18,7 +15,6 @@ import Checkbox from "@/components/common/form/collection/checkbox/Checkbox";
 import SingleCheckbox from "@/components/common/form/single-checkbox/SingleCheckbox";
 import List from "@/components/common/form/collection/List";
 import PasswordInput from "@/components/common/form/input/PasswordInput";
-import SvgSprite from "@/components/common/svg-sprite/SvgSprite";
 import { success } from "@/components/common/toast/notify";
 
 type SampleFormData = {
@@ -39,10 +35,6 @@ const Test: FC = () => {
   return (
     <div>
       <Button onClick={testToast}>Test toast</Button>
-      <Tooltip>
-        <Tooltip.Trigger>My trigger</Tooltip.Trigger>
-        <Tooltip.Content>My tooltip</Tooltip.Content>
-      </Tooltip>
       <Breadcrumb>
         <Button href="/" as={Link} intent="link" size="base">
           Home
@@ -57,56 +49,6 @@ const Test: FC = () => {
           Current
         </Button>
       </Breadcrumb>
-      <Dropdown trigger={<Button>Open dropdown</Button>}>
-        <DropdownMenuItem typeaheadKey="Undo">
-          <Button intent="secondary">Undo</Button>
-        </DropdownMenuItem>
-        <DropdownMenuItem typeaheadKey="Redo">
-          <Button intent="secondary">Redo</Button>
-        </DropdownMenuItem>
-        <DropdownMenuItem typeaheadKey="Cut" disabled>
-          <Button>Cut</Button>
-        </DropdownMenuItem>
-        <Dropdown
-          trigger={<Button iconAfter={<SvgSprite src={iconChevron} />}>Copy as</Button>}
-          typeaheadKey="Copy as"
-        >
-          <DropdownMenuItem typeaheadKey="Text">
-            <Button>Text</Button>
-          </DropdownMenuItem>
-          <DropdownMenuItem typeaheadKey="Video">
-            <Button>Video</Button>
-          </DropdownMenuItem>
-          <Dropdown
-            trigger={<Button iconAfter={<SvgSprite src={iconChevron} />}>Image</Button>}
-            typeaheadKey="Image"
-          >
-            <DropdownMenuItem typeaheadKey=".png">
-              <Button>.png</Button>
-            </DropdownMenuItem>
-            <DropdownMenuItem typeaheadKey=".jpg">
-              <Button>.jpg</Button>
-            </DropdownMenuItem>
-            <DropdownMenuItem typeaheadKey=".svg">
-              <Button>.svg</Button>
-            </DropdownMenuItem>
-            <DropdownMenuItem typeaheadKey=".gif">
-              <Button>.gif</Button>
-            </DropdownMenuItem>
-          </Dropdown>
-          <DropdownMenuItem typeaheadKey="Audio">
-            <Button>Audio</Button>
-          </DropdownMenuItem>
-        </Dropdown>
-        <Dropdown trigger={<Button>Share</Button>} typeaheadKey="Share">
-          <DropdownMenuItem typeaheadKey="Mail">
-            <Button>Mail</Button>
-          </DropdownMenuItem>
-          <DropdownMenuItem typeaheadKey="Instagram">
-            <Button>Instagram</Button>
-          </DropdownMenuItem>
-        </Dropdown>
-      </Dropdown>
 
       {/* @ts-expect-error will be deleted */}
       <Form<SampleFormData> defaultValues={{}}>

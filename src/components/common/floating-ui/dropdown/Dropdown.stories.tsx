@@ -5,11 +5,15 @@ import iconChevron from "@tabler/icons/chevron-right.svg";
 import { useState } from "react";
 import { action } from "@storybook/addon-actions";
 
+import DialogTrigger from "@/components/common/floating-ui/dialog/DialogTrigger";
+import DialogContent from "@/components/common/floating-ui/dialog/DialogContent";
+import DropdownMenuItem from "@/components/common/floating-ui/dropdown/DropdownMenuItem";
+
 import Button from "../../button/Button";
 import SvgSprite from "../../svg-sprite/SvgSprite";
 import Dialog from "../dialog/Dialog";
 
-import Dropdown, { DropdownMenuItem } from "./Dropdown";
+import Dropdown from "./Dropdown";
 
 const meta: Meta<typeof Dropdown> = {
   title: "UI/Floating UI/Dropdown",
@@ -125,7 +129,7 @@ const WithOverlayComponent = () => {
         <Button>Edit</Button>
       </DropdownMenuItem>
       <Dialog open={isOpen} onOpenChange={(isNewOpen) => setIsOpen(isNewOpen)}>
-        <Dialog.Trigger>
+        <DialogTrigger>
           <DropdownMenuItem
             typeaheadKey="Delete"
             closeOnClick={false}
@@ -135,8 +139,8 @@ const WithOverlayComponent = () => {
           >
             <Button>Delete</Button>
           </DropdownMenuItem>
-        </Dialog.Trigger>
-        <Dialog.Content>
+        </DialogTrigger>
+        <DialogContent>
           Delete this item?
           <Button
             onClick={() => {
@@ -152,7 +156,7 @@ const WithOverlayComponent = () => {
           >
             Ok
           </Button>
-        </Dialog.Content>
+        </DialogContent>
       </Dialog>
     </Dropdown>
   );

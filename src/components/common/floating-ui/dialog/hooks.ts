@@ -1,3 +1,5 @@
+"use client";
+
 import {
   useClick,
   useDismiss,
@@ -6,14 +8,7 @@ import {
   useInteractions,
   useRole,
 } from "@floating-ui/react";
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, Dispatch, SetStateAction, useContext, useMemo, useState } from "react";
 
 export interface DialogOptions {
   initialOpen?: boolean;
@@ -26,8 +21,7 @@ export const useDialog = ({
   open: controlledOpen,
   onOpenChange: setControlledOpen,
 }: DialogOptions = {}) => {
-  const [uncontrolledOpen, setUncontrolledOpen] =
-    useState<boolean>(initialOpen);
+  const [uncontrolledOpen, setUncontrolledOpen] = useState<boolean>(initialOpen);
   const [labelId, setLabelId] = useState<string | undefined>();
   const [descriptionId, setDescriptionId] = useState<string | undefined>();
   const nodeId = useFloatingNodeId();

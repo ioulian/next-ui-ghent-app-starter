@@ -8,6 +8,11 @@ import Heading from "../../heading/Heading";
 import Text from "../../text/Text";
 
 import Popover from "./Popover";
+import PopoverTrigger from "./PopoverTrigger";
+import PopoverContent from "./PopoverContent";
+import PopoverHeading from "./PopoverHeading";
+import PopoverDescription from "./PopoverDescription";
+import PopoverClose from "./PopoverClose";
 
 const meta: Meta<typeof Popover> = {
   title: "UI/Floating UI/Popover",
@@ -21,12 +26,12 @@ type Story = StoryObj<typeof Popover>;
 export const Uncontrolled: Story = {
   render: (args) => (
     <Popover {...args}>
-      <Popover.Trigger>My trigger</Popover.Trigger>
-      <Popover.Content>
-        <Popover.Heading>My popover heading</Popover.Heading>
-        <Popover.Description>My popover description</Popover.Description>
-        <Popover.Close>Close</Popover.Close>
-      </Popover.Content>
+      <PopoverTrigger>My trigger</PopoverTrigger>
+      <PopoverContent>
+        <PopoverHeading>My popover heading</PopoverHeading>
+        <PopoverDescription>My popover description</PopoverDescription>
+        <PopoverClose>Close</PopoverClose>
+      </PopoverContent>
     </Popover>
   ),
 };
@@ -34,12 +39,12 @@ export const Uncontrolled: Story = {
 export const WithCloseButton: Story = {
   render: (args) => (
     <Popover {...args}>
-      <Popover.Trigger>My trigger</Popover.Trigger>
-      <Popover.Content withCloseButton>
-        <Popover.Heading>My popover heading</Popover.Heading>
-        <Popover.Description>My popover description</Popover.Description>
-        <Popover.Close>Close</Popover.Close>
-      </Popover.Content>
+      <PopoverTrigger>My trigger</PopoverTrigger>
+      <PopoverContent withCloseButton>
+        <PopoverHeading>My popover heading</PopoverHeading>
+        <PopoverDescription>My popover description</PopoverDescription>
+        <PopoverClose>Close</PopoverClose>
+      </PopoverContent>
     </Popover>
   ),
 };
@@ -47,22 +52,22 @@ export const WithCloseButton: Story = {
 export const PopoverInPopover: Story = {
   render: (args) => (
     <Popover {...args}>
-      <Popover.Trigger>My trigger</Popover.Trigger>
-      <Popover.Content>
-        <Popover.Heading>My popover heading</Popover.Heading>
-        <Popover.Description>
+      <PopoverTrigger>My trigger</PopoverTrigger>
+      <PopoverContent>
+        <PopoverHeading>My popover heading</PopoverHeading>
+        <PopoverDescription>
           My popover description
           <Popover>
-            <Popover.Trigger>My trigger 2</Popover.Trigger>
-            <Popover.Content>
-              <Popover.Heading>My popover heading 2</Popover.Heading>
-              <Popover.Description>My popover description 2</Popover.Description>
-              <Popover.Close>Close 2</Popover.Close>
-            </Popover.Content>
+            <PopoverTrigger>My trigger 2</PopoverTrigger>
+            <PopoverContent>
+              <PopoverHeading>My popover heading 2</PopoverHeading>
+              <PopoverDescription>My popover description 2</PopoverDescription>
+              <PopoverClose>Close 2</PopoverClose>
+            </PopoverContent>
           </Popover>
-        </Popover.Description>
-        <Popover.Close>Close</Popover.Close>
-      </Popover.Content>
+        </PopoverDescription>
+        <PopoverClose>Close</PopoverClose>
+      </PopoverContent>
     </Popover>
   ),
 };
@@ -72,24 +77,24 @@ const ControlledPopover = () => {
 
   return (
     <Popover open={isOpen} onOpenChange={(isNewOpen) => setIsOpen(isNewOpen)}>
-      <Popover.Trigger
+      <PopoverTrigger
         onClick={() => {
           setIsOpen(!isOpen);
         }}
       >
         My trigger
-      </Popover.Trigger>
-      <Popover.Content>
-        <Popover.Heading>My popover heading</Popover.Heading>
-        <Popover.Description>My popover description</Popover.Description>
-        <Popover.Close
+      </PopoverTrigger>
+      <PopoverContent>
+        <PopoverHeading>My popover heading</PopoverHeading>
+        <PopoverDescription>My popover description</PopoverDescription>
+        <PopoverClose
           onClick={() => {
             setIsOpen(false);
           }}
         >
           Close
-        </Popover.Close>
-      </Popover.Content>
+        </PopoverClose>
+      </PopoverContent>
     </Popover>
   );
 };
@@ -101,22 +106,22 @@ export const Controlled: Story = {
 export const CustomElements: Story = {
   render: (args) => (
     <Popover {...args}>
-      <Popover.Trigger>
+      <PopoverTrigger>
         <Button>My trigger</Button>
-      </Popover.Trigger>
-      <Popover.Content>
-        <Popover.Heading>
+      </PopoverTrigger>
+      <PopoverContent>
+        <PopoverHeading>
           <Heading>My popover heading</Heading>
-        </Popover.Heading>
-        <Popover.Description>
+        </PopoverHeading>
+        <PopoverDescription>
           <Text>
             <p>My popover description</p>
           </Text>
-        </Popover.Description>
-        <Popover.Close>
+        </PopoverDescription>
+        <PopoverClose>
           <Button>Close</Button>
-        </Popover.Close>
-      </Popover.Content>
+        </PopoverClose>
+      </PopoverContent>
     </Popover>
   ),
 };
@@ -124,14 +129,14 @@ export const CustomElements: Story = {
 export const Placement: Story = {
   render: (args) => (
     <Popover {...args}>
-      <Popover.Trigger>
+      <PopoverTrigger>
         <Button>My trigger</Button>
-      </Popover.Trigger>
-      <Popover.Content>
-        <Popover.Heading>My popover heading</Popover.Heading>
-        <Popover.Description>My popover description</Popover.Description>
-        <Popover.Close>Close</Popover.Close>
-      </Popover.Content>
+      </PopoverTrigger>
+      <PopoverContent>
+        <PopoverHeading>My popover heading</PopoverHeading>
+        <PopoverDescription>My popover description</PopoverDescription>
+        <PopoverClose>Close</PopoverClose>
+      </PopoverContent>
     </Popover>
   ),
   args: {

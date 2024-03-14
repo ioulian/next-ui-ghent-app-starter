@@ -3,10 +3,21 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC, useState } from "react";
 
-import Button from "../../button/Button";
-import Heading from "../../heading/Heading";
-import Text from "../../text/Text";
+import DialogTrigger from "@/components/common/floating-ui/dialog/DialogTrigger";
+import DialogContent from "@/components/common/floating-ui/dialog/DialogContent";
+import DialogHeading from "@/components/common/floating-ui/dialog/DialogHeading";
+import DialogDescription from "@/components/common/floating-ui/dialog/DialogDescription";
+import DialogClose from "@/components/common/floating-ui/dialog/DialogClose";
+import PopoverTrigger from "@/components/common/floating-ui/popover/PopoverTrigger";
+import PopoverContent from "@/components/common/floating-ui/popover/PopoverContent";
+import PopoverHeading from "@/components/common/floating-ui/popover/PopoverHeading";
+import PopoverDescription from "@/components/common/floating-ui/popover/PopoverDescription";
+import PopoverClose from "@/components/common/floating-ui/popover/PopoverClose";
+
 import Popover from "../popover/Popover";
+import Text from "../../text/Text";
+import Heading from "../../heading/Heading";
+import Button from "../../button/Button";
 
 import Dialog from "./Dialog";
 
@@ -123,12 +134,12 @@ type Story = StoryObj<typeof Dialog>;
 export const Uncontrolled: Story = {
   render: (args) => (
     <Dialog {...args}>
-      <Dialog.Trigger>My trigger</Dialog.Trigger>
-      <Dialog.Content>
-        <Dialog.Heading>My dialog heading</Dialog.Heading>
-        <Dialog.Description>My dialog description</Dialog.Description>
-        <Dialog.Close>Close</Dialog.Close>
-      </Dialog.Content>
+      <DialogTrigger>My trigger</DialogTrigger>
+      <DialogContent>
+        <DialogHeading>My dialog heading</DialogHeading>
+        <DialogDescription>My dialog description</DialogDescription>
+        <DialogClose>Close</DialogClose>
+      </DialogContent>
     </Dialog>
   ),
 };
@@ -136,12 +147,12 @@ export const Uncontrolled: Story = {
 export const WithCloseButton: Story = {
   render: (args) => (
     <Dialog {...args}>
-      <Dialog.Trigger>My trigger</Dialog.Trigger>
-      <Dialog.Content withCloseButton>
-        <Dialog.Heading>My dialog heading</Dialog.Heading>
-        <Dialog.Description>My dialog description</Dialog.Description>
-        <Dialog.Close>Close</Dialog.Close>
-      </Dialog.Content>
+      <DialogTrigger>My trigger</DialogTrigger>
+      <DialogContent withCloseButton>
+        <DialogHeading>My dialog heading</DialogHeading>
+        <DialogDescription>My dialog description</DialogDescription>
+        <DialogClose>Close</DialogClose>
+      </DialogContent>
     </Dialog>
   ),
 };
@@ -149,22 +160,22 @@ export const WithCloseButton: Story = {
 export const PopoverInDialog: Story = {
   render: (args) => (
     <Dialog {...args}>
-      <Dialog.Trigger>My trigger</Dialog.Trigger>
-      <Dialog.Content>
-        <Dialog.Heading>My dialog heading</Dialog.Heading>
-        <Dialog.Description>
+      <DialogTrigger>My trigger</DialogTrigger>
+      <DialogContent>
+        <DialogHeading>My dialog heading</DialogHeading>
+        <DialogDescription>
           My dialog description
           <Popover>
-            <Popover.Trigger>My trigger</Popover.Trigger>
-            <Popover.Content>
-              <Popover.Heading>My popover heading</Popover.Heading>
-              <Popover.Description>My popover description</Popover.Description>
-              <Popover.Close>Close</Popover.Close>
-            </Popover.Content>
+            <PopoverTrigger>My trigger</PopoverTrigger>
+            <PopoverContent>
+              <PopoverHeading>My popover heading</PopoverHeading>
+              <PopoverDescription>My popover description</PopoverDescription>
+              <PopoverClose>Close</PopoverClose>
+            </PopoverContent>
           </Popover>
-        </Dialog.Description>
-        <Dialog.Close>Close</Dialog.Close>
-      </Dialog.Content>
+        </DialogDescription>
+        <DialogClose>Close</DialogClose>
+      </DialogContent>
     </Dialog>
   ),
 };
@@ -172,22 +183,22 @@ export const PopoverInDialog: Story = {
 export const DialogInDialog: Story = {
   render: (args) => (
     <Dialog {...args}>
-      <Dialog.Trigger>My trigger</Dialog.Trigger>
-      <Dialog.Content>
-        <Dialog.Heading>My dialog heading</Dialog.Heading>
-        <Dialog.Description>
+      <DialogTrigger>My trigger</DialogTrigger>
+      <DialogContent>
+        <DialogHeading>My dialog heading</DialogHeading>
+        <DialogDescription>
           My dialog description
           <Dialog>
-            <Dialog.Trigger>My trigger 2</Dialog.Trigger>
-            <Dialog.Content>
-              <Dialog.Heading>My dialog heading 2</Dialog.Heading>
-              <Dialog.Description>My dialog description 2</Dialog.Description>
-              <Dialog.Close>Close 2</Dialog.Close>
-            </Dialog.Content>
+            <DialogTrigger>My trigger 2</DialogTrigger>
+            <DialogContent>
+              <DialogHeading>My dialog heading 2</DialogHeading>
+              <DialogDescription>My dialog description 2</DialogDescription>
+              <DialogClose>Close 2</DialogClose>
+            </DialogContent>
           </Dialog>
-        </Dialog.Description>
-        <Dialog.Close>Close</Dialog.Close>
-      </Dialog.Content>
+        </DialogDescription>
+        <DialogClose>Close</DialogClose>
+      </DialogContent>
     </Dialog>
   ),
 };
@@ -205,17 +216,17 @@ const ControlledDialog = () => {
         Open Dialog
       </Button>
       <Dialog open={isOpen} onOpenChange={(isNewOpen) => setIsOpen(isNewOpen)}>
-        <Dialog.Content>
-          <Dialog.Heading>My dialog heading</Dialog.Heading>
-          <Dialog.Description>My dialog description</Dialog.Description>
-          <Dialog.Close
+        <DialogContent>
+          <DialogHeading>My dialog heading</DialogHeading>
+          <DialogDescription>My dialog description</DialogDescription>
+          <DialogClose
             onClick={() => {
               setIsOpen(false);
             }}
           >
             Close
-          </Dialog.Close>
-        </Dialog.Content>
+          </DialogClose>
+        </DialogContent>
       </Dialog>
     </>
   );
@@ -228,22 +239,22 @@ export const Controlled: Story = {
 export const CustomElements: Story = {
   render: (args) => (
     <Dialog {...args}>
-      <Dialog.Trigger>
+      <DialogTrigger>
         <Button>My trigger</Button>
-      </Dialog.Trigger>
-      <Dialog.Content>
-        <Dialog.Heading>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeading>
           <Heading>My popover heading</Heading>
-        </Dialog.Heading>
-        <Dialog.Description>
+        </DialogHeading>
+        <DialogDescription>
           <Text>
             <p>My popover description</p>
           </Text>
-        </Dialog.Description>
-        <Dialog.Close>
+        </DialogDescription>
+        <DialogClose>
           <Button>Close</Button>
-        </Dialog.Close>
-      </Dialog.Content>
+        </DialogClose>
+      </DialogContent>
     </Dialog>
   ),
 };
@@ -264,19 +275,19 @@ const ControlledOverlayComponent = () => {
         <SampleLargeText />
       </div>
       <Dialog open={isOpen} onOpenChange={(isNewOpen) => setIsOpen(isNewOpen)}>
-        <Dialog.Content withCloseButton>
-          <Dialog.Heading>My dialog heading</Dialog.Heading>
-          <Dialog.Description>
+        <DialogContent withCloseButton>
+          <DialogHeading>My dialog heading</DialogHeading>
+          <DialogDescription>
             <SampleLargeText />
-          </Dialog.Description>
-          <Dialog.Close
+          </DialogDescription>
+          <DialogClose
             onClick={() => {
               setIsOpen(false);
             }}
           >
             Close
-          </Dialog.Close>
-        </Dialog.Content>
+          </DialogClose>
+        </DialogContent>
       </Dialog>
     </>
   );
