@@ -23,6 +23,7 @@ export default defineConfig({
       notFirstChild: "&:not(:first-child)",
       dark: '.dark &, [data-theme="dark"] &',
       light: ".light &",
+      isHoverFocus: "&:is(:hover, :focus)",
     },
   },
 

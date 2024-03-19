@@ -57,11 +57,7 @@ export const button = sva({
         root: {
           color: "white",
           backgroundColor: "primary.500",
-          _hover: {
-            backgroundColor: "primary.600",
-            borderColor: "primary.600",
-          },
-          _focus: {
+          _isHoverFocus: {
             backgroundColor: "primary.600",
             borderColor: "primary.600",
           },
@@ -71,12 +67,7 @@ export const button = sva({
         root: {
           color: "primary.500",
           backgroundColor: "white",
-          _hover: {
-            color: "white",
-            backgroundColor: "primary.600",
-            borderColor: "primary.600",
-          },
-          _focus: {
+          _isHoverFocus: {
             color: "white",
             backgroundColor: "primary.600",
             borderColor: "primary.600",
@@ -88,10 +79,7 @@ export const button = sva({
         root: {
           borderColor: "transparent",
           textDecoration: "underline",
-          _hover: {
-            textDecoration: "none",
-          },
-          _focus: {
+          _isHoverFocus: {
             textDecoration: "none",
           },
         },

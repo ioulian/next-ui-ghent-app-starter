@@ -32,7 +32,7 @@ export const globalCss = defineGlobalStyles({
     paddingLeft: 0,
   },
   a: {
-    _hover: {
+    _isHoverFocus: {
       textDecoration: "none",
     },
   },

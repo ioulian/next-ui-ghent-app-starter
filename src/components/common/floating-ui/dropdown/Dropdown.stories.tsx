@@ -4,10 +4,14 @@ import type { Meta, StoryObj } from "@storybook/react";
 import iconChevron from "@tabler/icons/chevron-right.svg";
 import { useState } from "react";
 import { action } from "@storybook/addon-actions";
+import { userEvent, within, expect } from "@storybook/test";
 
 import DialogTrigger from "@/components/common/floating-ui/dialog/DialogTrigger";
 import DialogContent from "@/components/common/floating-ui/dialog/DialogContent";
 import DropdownMenuItem from "@/components/common/floating-ui/dropdown/DropdownMenuItem";
+import { convertThemeVarToNumber } from "@/styles/utils";
+import { token } from "@/styled-system/tokens";
+import { wait } from "@/utils/promises";
 
 import Button from "../../button/Button";
 import SvgSprite from "../../svg-sprite/SvgSprite";
@@ -25,6 +29,24 @@ export default meta;
 type Story = StoryObj<typeof Dropdown>;
 
 export const Basic: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByTestId("trigger"));
+    await wait(convertThemeVarToNumber(token("durations.normal")));
+    await expect(document.body.querySelector("[data-testid='trigger2']")).toBeVisible();
+
+    await userEvent.hover(document.body.querySelector("[data-testid='trigger2']")!);
+    await wait(convertThemeVarToNumber(token("durations.normal")));
+    await expect(document.body.querySelector("[data-testid='trigger3']")).toBeVisible();
+
+    await userEvent.hover(document.body.querySelector("[data-testid='trigger3']")!);
+    await wait(convertThemeVarToNumber(token("durations.normal")));
+    await expect(document.body.querySelector("[data-testid='trigger4']")).toBeVisible();
+
+    await userEvent.click(document.body.querySelector("[data-testid='trigger4']")!);
+    await wait(convertThemeVarToNumber(token("durations.fast")));
+    await expect(document.body.querySelector("[data-testid='trigger4']")).toBeNull();
+  },
   render: (args) => (
     <Dropdown {...args}>
       <DropdownMenuItem onClick={action("Undo")} typeaheadKey="Undo">
@@ -34,12 +56,28 @@ export const Basic: Story = {
       <DropdownMenuItem typeaheadKey="Cut" disabled>
         Cut
       </DropdownMenuItem>
-      <Dropdown trigger="Copy as >" typeaheadKey="Copy as">
+      <Dropdown
+        trigger={
+          <button type="button" data-testid="trigger2">
+            Copy as &gt;
+          </button>
+        }
+        typeaheadKey="Copy as"
+      >
         <DropdownMenuItem typeaheadKey="Text">Text</DropdownMenuItem>
         <DropdownMenuItem typeaheadKey="Video">Video</DropdownMenuItem>
-        <Dropdown trigger="Image >" typeaheadKey="Image">
+        <Dropdown
+          trigger={
+            <button type="button" data-testid="trigger3">
+              Image &gt;
+            </button>
+          }
+          typeaheadKey="Image"
+        >
           <DropdownMenuItem typeaheadKey=".png">.png</DropdownMenuItem>
-          <DropdownMenuItem typeaheadKey=".jpg">.jpg</DropdownMenuItem>
+          <DropdownMenuItem typeaheadKey=".jpg" data-testid="trigger4">
+            .jpg
+          </DropdownMenuItem>
           <DropdownMenuItem typeaheadKey=".svg">.svg</DropdownMenuItem>
           <DropdownMenuItem typeaheadKey=".gif">.gif</DropdownMenuItem>
         </Dropdown>
@@ -52,7 +90,11 @@ export const Basic: Story = {
     </Dropdown>
   ),
   args: {
-    trigger: "Menu",
+    trigger: (
+      <button type="button" data-testid="trigger">
+        Menu
+      </button>
+    ),
   },
 };
 

@@ -22,7 +22,7 @@ export const paginationPage = css({
   borderColor: "black/10",
   transition: "colors",
   transitionDuration: "fast",
-  _hover: {
+  _isHoverFocus: {
     backgroundColor: "primary.500",
     color: "white",
   },
