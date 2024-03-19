@@ -2,6 +2,11 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
+import { userEvent, within, expect, screen } from "@storybook/test";
+
+import { wait } from "@/utils/promises";
+import { convertThemeVarToNumber } from "@/styles/utils";
+import { token } from "@/styled-system/tokens";
 
 import Button from "../../button/Button";
 import Heading from "../../heading/Heading";
@@ -24,13 +29,23 @@ export default meta;
 type Story = StoryObj<typeof Popover>;
 
 export const Uncontrolled: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByTestId("trigger"));
+    await wait(convertThemeVarToNumber(token("durations.normal")));
+    await expect(screen.getByTestId("content")).toBeVisible();
+
+    await userEvent.click(screen.getByTestId("close"));
+    await wait(convertThemeVarToNumber(token("durations.fast")));
+    await expect(screen.queryByTestId("content")).toBeNull();
+  },
   render: (args) => (
     <Popover {...args}>
-      <PopoverTrigger>My trigger</PopoverTrigger>
-      <PopoverContent>
+      <PopoverTrigger data-testid="trigger">My trigger</PopoverTrigger>
+      <PopoverContent data-testid="content">
         <PopoverHeading>My popover heading</PopoverHeading>
         <PopoverDescription>My popover description</PopoverDescription>
-        <PopoverClose>Close</PopoverClose>
+        <PopoverClose data-testid="close">Close</PopoverClose>
       </PopoverContent>
     </Popover>
   ),

@@ -2,23 +2,27 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC, useState } from "react";
+import { userEvent, within, expect, screen } from "@storybook/test";
 
-import DialogTrigger from "@/components/common/floating-ui/dialog/DialogTrigger";
-import DialogContent from "@/components/common/floating-ui/dialog/DialogContent";
-import DialogHeading from "@/components/common/floating-ui/dialog/DialogHeading";
-import DialogDescription from "@/components/common/floating-ui/dialog/DialogDescription";
-import DialogClose from "@/components/common/floating-ui/dialog/DialogClose";
-import PopoverTrigger from "@/components/common/floating-ui/popover/PopoverTrigger";
-import PopoverContent from "@/components/common/floating-ui/popover/PopoverContent";
-import PopoverHeading from "@/components/common/floating-ui/popover/PopoverHeading";
-import PopoverDescription from "@/components/common/floating-ui/popover/PopoverDescription";
-import PopoverClose from "@/components/common/floating-ui/popover/PopoverClose";
+import { token } from "@/styled-system/tokens";
+import { convertThemeVarToNumber } from "@/styles/utils";
+import { wait } from "@/utils/promises";
 
+import PopoverTrigger from "../popover/PopoverTrigger";
+import PopoverContent from "../popover/PopoverContent";
+import PopoverHeading from "../popover/PopoverHeading";
+import PopoverDescription from "../popover/PopoverDescription";
+import PopoverClose from "../popover/PopoverClose";
 import Popover from "../popover/Popover";
 import Text from "../../text/Text";
 import Heading from "../../heading/Heading";
 import Button from "../../button/Button";
 
+import DialogClose from "./DialogClose";
+import DialogDescription from "./DialogDescription";
+import DialogHeading from "./DialogHeading";
+import DialogContent from "./DialogContent";
+import DialogTrigger from "./DialogTrigger";
 import Dialog from "./Dialog";
 
 const SampleLargeText: FC = () => (
@@ -132,13 +136,23 @@ export default meta;
 type Story = StoryObj<typeof Dialog>;
 
 export const Uncontrolled: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByTestId("trigger"));
+    await wait(convertThemeVarToNumber(token("durations.normal")));
+    await expect(screen.getByTestId("content")).toBeVisible();
+
+    await userEvent.click(screen.getByTestId("close"));
+    await wait(convertThemeVarToNumber(token("durations.fast")));
+    await expect(screen.queryByTestId("content")).toBeNull();
+  },
   render: (args) => (
     <Dialog {...args}>
-      <DialogTrigger>My trigger</DialogTrigger>
-      <DialogContent>
+      <DialogTrigger data-testid="trigger">My trigger</DialogTrigger>
+      <DialogContent data-testid="content">
         <DialogHeading>My dialog heading</DialogHeading>
         <DialogDescription>My dialog description</DialogDescription>
-        <DialogClose>Close</DialogClose>
+        <DialogClose data-testid="close">Close</DialogClose>
       </DialogContent>
     </Dialog>
   ),

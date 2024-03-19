@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { userEvent, within, expect } from "@storybook/test";
+import { userEvent, within, expect, screen } from "@storybook/test";
 
 import { token } from "@/styled-system/tokens";
 import { convertThemeVarToNumber } from "@/styles/utils";
@@ -28,10 +28,11 @@ export const Uncontrolled: Story = {
     const canvas = within(canvasElement);
     await userEvent.hover(canvas.getByTestId("trigger"));
     await wait(convertThemeVarToNumber(token("durations.normal")));
-    await expect(document.body.querySelector("[data-testid='content']")).toBeVisible();
+    await expect(screen.getByTestId("content")).toBeVisible();
+
     await userEvent.unhover(canvas.getByTestId("trigger"));
     await wait(convertThemeVarToNumber(token("durations.fast")));
-    await expect(document.body.querySelector("[data-testid='content']")).toBeNull();
+    await expect(screen.queryByTestId("content")).toBeNull();
   },
   render: (args) => (
     <Tooltip {...args}>

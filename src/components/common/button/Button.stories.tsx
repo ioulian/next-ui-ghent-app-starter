@@ -8,8 +8,12 @@ import Link from "next/link";
 
 // import Tooltip from "../floating/tooltip/Tooltip";
 
-import Button from "./Button";
+import Tooltip from "../floating-ui/tooltip/Tooltip";
+import TooltipTrigger from "../floating-ui/tooltip/TooltipTrigger";
+import TooltipContent from "../floating-ui/tooltip/TooltipContent";
+
 import SvgSprite from "./../svg-sprite/SvgSprite";
+import Button from "./Button";
 
 const meta: Meta<typeof Button> = {
   title: "UI/Button/Button",
@@ -67,6 +71,27 @@ export const IconOnly: Story = {
   },
 };
 
+export const AccessibleIconButton: Story = {
+  render: (args) => (
+    <Tooltip placement="bottom">
+      <TooltipTrigger>
+        <Button {...args} />
+      </TooltipTrigger>
+      <TooltipContent>Settings</TooltipContent>
+    </Tooltip>
+  ),
+  args: {
+    size: "base",
+    intent: "simple",
+    children: "Settings",
+    disabled: false,
+    isLoading: false,
+    fullWidth: false,
+    iconBefore: <SvgSprite src={iconSettings} />,
+    iconOnly: true,
+  },
+};
+
 export const Text: Story = {
   render: (args) => <Button {...args} />,
   args: {
@@ -78,27 +103,6 @@ export const Text: Story = {
     fullWidth: false,
   },
 };
-
-//export const AccessibleIconButton: Story = {
-//  render: (args) => (
-//    <Tooltip placement="bottom">
-//      <Tooltip.Trigger>
-//        <Button {...args} />
-//      </Tooltip.Trigger>
-//      <Tooltip.Content>Settings</Tooltip.Content>
-//    </Tooltip>
-//  ),
-//  args: {
-//    $size: "base",
-//    $type: "simple",
-//    children: "Settings",
-//    disabled: false,
-//    isLoading: false,
-//    $fullWidth: false,
-//    iconBefore: <SvgSprite src={iconSettings} />,
-//    iconOnly: true,
-//  },
-//};
 
 export const NextLink: Story = {
   render: (args) => <Button as={Link} href="/test" target="_blank" {...args} />,

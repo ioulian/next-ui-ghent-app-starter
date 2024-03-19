@@ -1,4 +1,4 @@
-import { CSSProperties, forwardRef, useMemo } from "react";
+import { CSSProperties, forwardRef, memo, useMemo } from "react";
 import { Coords, Placement, Strategy } from "@floating-ui/react";
 
 import { InferComponentProps } from "@/types/component";
@@ -93,4 +93,7 @@ if (process.env.NODE_ENV === "development") {
   Floater.displayName = "Floater";
 }
 
-export default Floater;
+/**
+ * Floater window used in Floating UI Components
+ */
+export default memo(Floater);

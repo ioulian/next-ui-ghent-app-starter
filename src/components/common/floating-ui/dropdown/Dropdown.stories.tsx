@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import iconChevron from "@tabler/icons/chevron-right.svg";
 import { useState } from "react";
 import { action } from "@storybook/addon-actions";
-import { userEvent, within, expect } from "@storybook/test";
+import { userEvent, within, expect, screen } from "@storybook/test";
 
 import DialogTrigger from "@/components/common/floating-ui/dialog/DialogTrigger";
 import DialogContent from "@/components/common/floating-ui/dialog/DialogContent";
@@ -33,19 +33,19 @@ export const Basic: Story = {
     const canvas = within(canvasElement);
     await userEvent.click(canvas.getByTestId("trigger"));
     await wait(convertThemeVarToNumber(token("durations.normal")));
-    await expect(document.body.querySelector("[data-testid='trigger2']")).toBeVisible();
+    await expect(screen.getByTestId("trigger2")).toBeVisible();
 
-    await userEvent.hover(document.body.querySelector("[data-testid='trigger2']")!);
+    await userEvent.hover(screen.getByTestId("trigger2"));
     await wait(convertThemeVarToNumber(token("durations.normal")));
-    await expect(document.body.querySelector("[data-testid='trigger3']")).toBeVisible();
+    await expect(screen.getByTestId("trigger3")).toBeVisible();
 
-    await userEvent.hover(document.body.querySelector("[data-testid='trigger3']")!);
+    await userEvent.hover(screen.getByTestId("trigger3"));
     await wait(convertThemeVarToNumber(token("durations.normal")));
-    await expect(document.body.querySelector("[data-testid='trigger4']")).toBeVisible();
+    await expect(screen.getByTestId("trigger4")).toBeVisible();
 
-    await userEvent.click(document.body.querySelector("[data-testid='trigger4']")!);
+    await userEvent.click(screen.getByTestId("trigger4"));
     await wait(convertThemeVarToNumber(token("durations.fast")));
-    await expect(document.body.querySelector("[data-testid='trigger4']")).toBeNull();
+    await expect(screen.queryByTestId("trigger4")).toBeNull();
   },
   render: (args) => (
     <Dropdown {...args}>

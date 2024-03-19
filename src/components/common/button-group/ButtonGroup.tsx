@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 
 import { InferComponentProps } from "@/types/component";
 import { cx } from "@/styled-system/css";
-import { stack } from "@/styled-system/patterns";
+import { ArrayElement } from "@/types/helpers";
 
 import { buttonGroup } from "./ButtonGroup.styles";
 
@@ -11,18 +11,11 @@ const ButtonGroup: FC<
     /**
      * Will align right all the buttons
      */
-    align?: "end" | "start";
+    align?: ArrayElement<(typeof buttonGroup.variantMap)["align"]>;
   } & InferComponentProps<"div">
 > = ({ children, className, align = "start", ...props }) => {
   return (
-    <div
-      {...props}
-      className={cx(
-        stack({ gap: "0.75rem", justify: align, align: "center", direction: "row" }),
-        buttonGroup,
-        className,
-      )}
-    >
+    <div {...props} className={cx(buttonGroup({ align }), className)}>
       {children}
     </div>
   );

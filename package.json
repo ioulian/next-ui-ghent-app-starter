@@ -15,7 +15,8 @@
     "check-translations": "ts-node -O '{\"module\":\"commonjs\"}' scripts/check-translations.ts",
     "check-build-prerequisites": "ts-node -O '{\"module\":\"commonjs\"}' scripts/check-build-prerequisites.ts",
     "storybook": "cross-env NODE_ENV=development panda codegen && storybook dev -p 6006",
-    "build-storybook": "panda codegen && storybook build"
+    "build-storybook": "panda codegen && storybook build",
+    "test-storybook": "test-storybook"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.9",
@@ -59,6 +60,7 @@
     "@storybook/nextjs": "^8.0.0",
     "@storybook/react": "^8.0.0",
     "@storybook/test": "^8.0.0",
+    "@storybook/test-runner": "^0.17.0",
     "@stylistic/eslint-plugin": "^1.6.3",
     "@types/lodash": "^4",
     "@types/node": "^20",
