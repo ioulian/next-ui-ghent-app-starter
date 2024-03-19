@@ -1,11 +1,14 @@
-import { cva } from "@/styled-system/css";
+import { sva } from "@/styled-system/css";
 
-export const buttonGroup = cva({
+export const buttonGroup = sva({
+  slots: ["root", "separator"],
   base: {
-    display: "flex",
-    alignItems: "center",
-    gap: "0.75rem",
-    '& > [role="separator"]': {
+    root: {
+      display: "flex",
+      alignItems: "center",
+      gap: "0.75rem",
+    },
+    separator: {
       width: "1px",
       borderWidth: 0,
       backgroundColor: "currentColor",
@@ -17,10 +20,10 @@ export const buttonGroup = cva({
   variants: {
     align: {
       start: {
-        justifyContent: "flex-start",
+        root: { justifyContent: "flex-start" },
       },
       end: {
-        justifyContent: "flex-end",
+        root: { justifyContent: "flex-end" },
       },
     },
   },

@@ -57,7 +57,12 @@ const Spinner: FC<
   const classes = spinner({ size });
 
   return (
-    <span {...props} className={cx(classes.root, className)} style={spinnerStyle}>
+    <span
+      role="progressbar"
+      {...props}
+      className={cx(classes.root, className)}
+      style={spinnerStyle}
+    >
       <span className={classes.inner}>
         <span className={classes.element} style={spinnerElementStyle} />
       </span>

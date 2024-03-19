@@ -15,7 +15,7 @@ const ButtonGroup: FC<
   } & InferComponentProps<"div">
 > = ({ children, className, align = "start", ...props }) => {
   return (
-    <div {...props} className={cx(buttonGroup({ align }), className)}>
+    <div {...props} className={cx(buttonGroup({ align }).root, className)}>
       {children}
     </div>
   );

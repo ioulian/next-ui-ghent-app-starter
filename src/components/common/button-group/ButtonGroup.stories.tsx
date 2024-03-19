@@ -6,6 +6,7 @@ import { userEvent, within, expect } from "@storybook/test";
 import Button from "../button/Button";
 
 import ButtonGroup from "./ButtonGroup";
+import ButtonGroupSeparator from "./ButtonGroupSeparator";
 
 const meta: Meta<typeof ButtonGroup> = {
   title: "UI/Button/Group",
@@ -35,7 +36,7 @@ export const Default: Story = {
       <Button intent="secondary" data-testid="button2">
         Secondary Action
       </Button>
-      <div role="separator" aria-orientation="vertical" />
+      <ButtonGroupSeparator />
       <Button size="base" intent="simple" data-testid="button3">
         Cancel
       </Button>
@@ -50,7 +51,7 @@ export const AlignEnd: Story = {
       <Button size="base" intent="simple">
         Cancel
       </Button>
-      <div role="separator" aria-orientation="vertical" />
+      <ButtonGroupSeparator />
       <Button>Primary Action</Button>
     </ButtonGroup>
   ),

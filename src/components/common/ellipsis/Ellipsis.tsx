@@ -75,7 +75,12 @@ const Ellipsis: FC<
   );
 
   return (
-    <div {...props} className={cx(ellipsis, className)} style={numberOfLinesStyle}>
+    <div
+      {...props}
+      className={cx(ellipsis, className)}
+      style={numberOfLinesStyle}
+      aria-expanded={isOpen || !showButton}
+    >
       <div className={ellipsisContentContainer}>
         <div className={cx(css(ellipsisContent), !isOpen && css(ellipsisLineClamp))} id={id}>
           {children}
@@ -107,6 +112,6 @@ const Ellipsis: FC<
 
 /**
  * Ellipis component that will automatically truncate/clamp the text inside.
- * It's possible to adutomatically hide the "more" button when it's not needed.
+ * It's possible to automatically hide the "more" button when it's not needed.
  */
 export default memo(Ellipsis);
