@@ -21,6 +21,7 @@ It contains a lot of useful presets and common components to be used in your pro
 - Common components preset (with a11y in mind): <https://ioulian.github.io/next-io-ghent-app-starter/>;
 - ESLint, Prettier + Husky and lint-staged pre-commit hooks;
 - Jest (by Next.js). Most custom components are tested;
+- With [next-cache-toolbar](https://github.com/KajSzy/next-cache-toolbar) to easily debug cached api requests;
 
 ## Getting Started
 

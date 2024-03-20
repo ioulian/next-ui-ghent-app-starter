@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { getTranslations } from "next-intl/server";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { ReactNode } from "react";
+import dynamic from "next/dynamic";
 
 import { htmlFontClass } from "@/styles/fonts";
 import Header from "@/app/[locale]/_components/Header";
@@ -34,6 +35,12 @@ export async function generateMetadata({
   };
 }
 
+let Toolbar: React.ComponentType = () => null;
+
+if (process.env.NODE_ENV === "development") {
+  Toolbar = dynamic(() => import("../../components/providers/Toolbar"));
+}
+
 export default function RootLayout({ children, params: { locale } }: Props) {
   const messages = useMessages();
 
@@ -44,6 +51,7 @@ export default function RootLayout({ children, params: { locale } }: Props) {
           <Providers>
             <Header />
             {children}
+            <Toolbar />
           </Providers>
         </NextIntlClientProvider>
       </body>
