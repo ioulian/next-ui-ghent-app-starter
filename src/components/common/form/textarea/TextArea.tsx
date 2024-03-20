@@ -21,9 +21,7 @@ const TextArea = forwardRef<
   );
 });
 
-if (process.env.NODE_ENV === "development") {
-  TextArea.displayName = "TextArea";
-}
+TextArea.displayName = "TextArea";
 
 /**
  * Text component

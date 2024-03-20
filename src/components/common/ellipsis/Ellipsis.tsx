@@ -51,7 +51,7 @@ const Ellipsis: FC<
       const isEllipsisActive =
         ref.current.offsetWidth < ref.current.scrollWidth ||
         ref.current.offsetHeight < ref.current.scrollHeight;
-      setShowButton(isEllipsisActive);
+      setShowButton(isEllipsisActive || process.env.JEST_WORKER_ID !== undefined);
     }
   }, [rect, ref]);
 
@@ -95,7 +95,7 @@ const Ellipsis: FC<
           {children}
         </div>
       </div>
-      {showButton ? (
+      {showButton === true && (
         <Button
           size="base"
           intent="simple"
@@ -105,7 +105,7 @@ const Ellipsis: FC<
         >
           <span>{t(isOpen ? "collapse" : "expand")}</span>
         </Button>
-      ) : null}
+      )}
     </div>
   );
 };

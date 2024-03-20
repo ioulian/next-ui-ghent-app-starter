@@ -20,6 +20,7 @@ It contains a lot of useful presets and common components to be used in your pro
 - [Storybook](https://github.com/storybookjs/storybook) with a11y checks, next-intl support and Next.js support;
 - Common components preset (with a11y in mind): <https://ioulian.github.io/next-io-ghent-app-starter/>;
 - ESLint, Prettier + Husky and lint-staged pre-commit hooks;
+- Jest (by Next.js). Most custom components are tested;
 
 ## Getting Started
 

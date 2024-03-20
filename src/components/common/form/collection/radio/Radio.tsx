@@ -48,9 +48,7 @@ const Radio = forwardRef<
   },
 );
 
-if (process.env.NODE_ENV === "development") {
-  Radio.displayName = "Radio";
-}
+Radio.displayName = "Radio";
 
 /**
  * Radio input field

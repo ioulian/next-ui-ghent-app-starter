@@ -40,9 +40,7 @@ const Input = forwardRef<
   return element;
 });
 
-if (process.env.NODE_ENV === "development") {
-  Input.displayName = "Input";
-}
+Input.displayName = "Input";
 
 /**
  * Input field

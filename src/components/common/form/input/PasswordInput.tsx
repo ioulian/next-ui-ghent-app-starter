@@ -40,9 +40,7 @@ const PasswordInput = forwardRef<HTMLInputElement, InferComponentProps<"input">>
   );
 });
 
-if (process.env.NODE_ENV === "development") {
-  PasswordInput.displayName = "PasswordInput";
-}
+PasswordInput.displayName = "PasswordInput";
 
 /**
  * Base input field but with some logic so show/hide password

@@ -74,8 +74,6 @@ const PopoverContent = forwardRef<
   );
 });
 
-if (process.env.NODE_ENV === "development") {
-  PopoverContent.displayName = "PopoverContent";
-}
+PopoverContent.displayName = "PopoverContent";
 
 export default memo(PopoverContent);

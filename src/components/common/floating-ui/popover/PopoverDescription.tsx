@@ -33,8 +33,6 @@ const PopoverDescription = forwardRef<HTMLParagraphElement, HTMLProps<HTMLParagr
   },
 );
 
-if (process.env.NODE_ENV === "development") {
-  PopoverDescription.displayName = "PopoverDescription";
-}
+PopoverDescription.displayName = "PopoverDescription";
 
 export default memo(PopoverDescription);

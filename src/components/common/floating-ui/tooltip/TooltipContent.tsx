@@ -44,8 +44,6 @@ const TooltipContent = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((pr
   );
 });
 
-if (process.env.NODE_ENV === "development") {
-  TooltipContent.displayName = "TooltipContent";
-}
+TooltipContent.displayName = "TooltipContent";
 
 export default memo(TooltipContent);

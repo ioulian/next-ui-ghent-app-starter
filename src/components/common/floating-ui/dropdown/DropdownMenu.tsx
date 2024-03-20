@@ -235,8 +235,6 @@ const DropdownMenu = forwardRef<
   );
 });
 
-if (process.env.NODE_ENV === "development") {
-  DropdownMenu.displayName = "DropdownMenu";
-}
+DropdownMenu.displayName = "DropdownMenu";
 
 export default memo(DropdownMenu);

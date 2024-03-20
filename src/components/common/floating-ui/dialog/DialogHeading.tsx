@@ -33,8 +33,6 @@ const DialogHeading = forwardRef<HTMLHeadingElement, HTMLProps<HTMLHeadingElemen
   },
 );
 
-if (process.env.NODE_ENV === "development") {
-  DialogHeading.displayName = "DialogHeading";
-}
+DialogHeading.displayName = "DialogHeading";
 
 export default memo(DialogHeading);

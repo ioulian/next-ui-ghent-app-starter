@@ -27,8 +27,6 @@ const PopoverClose = forwardRef<HTMLButtonElement, HTMLProps<HTMLButtonElement>>
   },
 );
 
-if (process.env.NODE_ENV === "development") {
-  PopoverClose.displayName = "PopoverClose";
-}
+PopoverClose.displayName = "PopoverClose";
 
 export default memo(PopoverClose);

@@ -27,9 +27,7 @@ const Select = forwardRef<
   );
 });
 
-if (process.env.NODE_ENV === "development") {
-  Select.displayName = "Select";
-}
+Select.displayName = "Select";
 
 /**
  * Select field

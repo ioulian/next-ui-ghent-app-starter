@@ -89,9 +89,7 @@ const Floater = forwardRef<
   },
 );
 
-if (process.env.NODE_ENV === "development") {
-  Floater.displayName = "Floater";
-}
+Floater.displayName = "Floater";
 
 /**
  * Floater window used in Floating UI Components

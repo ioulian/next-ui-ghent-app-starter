@@ -38,8 +38,6 @@ const TooltipTrigger = forwardRef<HTMLElement, HTMLProps<HTMLElement>>(
   },
 );
 
-if (process.env.NODE_ENV === "development") {
-  TooltipTrigger.displayName = "TooltipTrigger";
-}
+TooltipTrigger.displayName = "TooltipTrigger";
 
 export default memo(TooltipTrigger);

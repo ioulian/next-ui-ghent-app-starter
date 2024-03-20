@@ -67,8 +67,6 @@ const DialogContent = forwardRef<
   );
 });
 
-if (process.env.NODE_ENV === "development") {
-  DialogContent.displayName = "DialogContent";
-}
+DialogContent.displayName = "DialogContent";
 
 export default memo(DialogContent);

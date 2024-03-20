@@ -39,8 +39,6 @@ const PopoverTrigger = forwardRef<HTMLElement, HTMLProps<HTMLElement>>(
   },
 );
 
-if (process.env.NODE_ENV === "development") {
-  PopoverTrigger.displayName = "PopoverTrigger";
-}
+PopoverTrigger.displayName = "PopoverTrigger";
 
 export default memo(PopoverTrigger);

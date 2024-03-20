@@ -27,8 +27,6 @@ const DialogClose = forwardRef<HTMLButtonElement, HTMLProps<HTMLButtonElement>>(
   },
 );
 
-if (process.env.NODE_ENV === "development") {
-  DialogClose.displayName = "DialogClose";
-}
+DialogClose.displayName = "DialogClose";
 
 export default memo(DialogClose);

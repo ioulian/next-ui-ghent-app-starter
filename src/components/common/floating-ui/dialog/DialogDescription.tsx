@@ -33,8 +33,6 @@ const DialogDescription = forwardRef<HTMLParagraphElement, HTMLProps<HTMLParagra
   },
 );
 
-if (process.env.NODE_ENV === "development") {
-  DialogDescription.displayName = "DialogDescription";
-}
+DialogDescription.displayName = "DialogDescription";
 
 export default memo(DialogDescription);

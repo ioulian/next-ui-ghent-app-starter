@@ -131,9 +131,7 @@ const Button = polyRef<"button" | "a", Props>(
   },
 );
 
-if (process.env.NODE_ENV === "development") {
-  Button.displayName = "Button";
-}
+Button.displayName = "Button";
 
 /**
  * Generic button component

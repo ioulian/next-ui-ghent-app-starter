@@ -21,9 +21,7 @@ const SingleCheckbox = forwardRef<
   );
 });
 
-if (process.env.NODE_ENV === "development") {
-  SingleCheckbox.displayName = "SingleCheckbox";
-}
+SingleCheckbox.displayName = "SingleCheckbox";
 
 /**
  * Single checkbox component, use this when the value should be a boolean (instead of an array/object).

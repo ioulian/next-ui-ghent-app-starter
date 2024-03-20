@@ -30,9 +30,7 @@ const Toggle = forwardRef<
   );
 });
 
-if (process.env.NODE_ENV === "development") {
-  Toggle.displayName = "Toggle";
-}
+Toggle.displayName = "Toggle";
 
 /**
  * Checkbox component styled as a toggle

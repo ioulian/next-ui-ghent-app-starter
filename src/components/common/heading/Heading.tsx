@@ -31,8 +31,6 @@ const Heading = forwardRef<
   );
 });
 
-if (process.env.NODE_ENV === "development") {
-  Heading.displayName = "Heading";
-}
+Heading.displayName = "Heading";
 
 export default memo(Heading);

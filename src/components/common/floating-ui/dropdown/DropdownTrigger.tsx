@@ -24,8 +24,6 @@ const DropdownTrigger = forwardRef<
   );
 });
 
-if (process.env.NODE_ENV === "development") {
-  DropdownTrigger.displayName = "DropdownTrigger";
-}
+DropdownTrigger.displayName = "DropdownTrigger";
 
 export default memo(DropdownTrigger);

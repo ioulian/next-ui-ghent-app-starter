@@ -2,7 +2,9 @@ import { FC, HTMLProps, memo, useId } from "react";
 
 import { getSpritesheetUrl } from "./utils";
 
-const SvgSprite: FC<{ src: { id: string; viewBox: string } } & HTMLProps<SVGElement>> = ({
+const SvgSprite: FC<
+  { src: { id: string; viewBox: string } } & Omit<HTMLProps<SVGElement>, "src">
+> = ({
   src,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   children,

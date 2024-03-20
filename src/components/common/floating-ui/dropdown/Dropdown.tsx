@@ -46,9 +46,6 @@ const Dropdown = forwardRef<
   return <DropdownMenu {...props} ref={ref} />;
 });
 
-if (process.env.NODE_ENV === "development") {
-  Dropdown.displayName = "Dropdown";
-  DropdownMenu.displayName = "DropdownMenu";
-}
+Dropdown.displayName = "Dropdown";
 
 export default memo(Dropdown);

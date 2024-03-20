@@ -38,8 +38,7 @@ const DialogTrigger = forwardRef<HTMLElement, HTMLProps<HTMLElement>>(
     );
   },
 );
-if (process.env.NODE_ENV === "development") {
-  DialogTrigger.displayName = "DialogTrigger";
-}
+
+DialogTrigger.displayName = "DialogTrigger";
 
 export default memo(DialogTrigger);

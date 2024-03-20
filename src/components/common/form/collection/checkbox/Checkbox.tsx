@@ -47,9 +47,7 @@ const Checkbox = forwardRef<
   },
 );
 
-if (process.env.NODE_ENV === "development") {
-  Checkbox.displayName = "Checkbox";
-}
+Checkbox.displayName = "Checkbox";
 
 /**
  * Checkbox field

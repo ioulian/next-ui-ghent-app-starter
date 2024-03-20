@@ -33,8 +33,6 @@ const PopoverHeading = forwardRef<HTMLHeadingElement, HTMLProps<HTMLHeadingEleme
   },
 );
 
-if (process.env.NODE_ENV === "development") {
-  PopoverHeading.displayName = "PopoverHeading";
-}
+PopoverHeading.displayName = "PopoverHeading";
 
 export default memo(PopoverHeading);
