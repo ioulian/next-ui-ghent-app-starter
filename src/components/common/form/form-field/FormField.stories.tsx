@@ -53,7 +53,7 @@ type Story = StoryObj<typeof FormField>;
 
 export const WithInput: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}} error={ExampleApiError}>
+    <Form error={ExampleApiError}>
       <FormField {...args} />
     </Form>
   ),
@@ -71,7 +71,7 @@ export const WithInput: Story = {
 
 export const WithSearch: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form>
       <FormField {...args} />
     </Form>
   ),
@@ -84,7 +84,7 @@ export const WithSearch: Story = {
 
 export const WithPassword: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form>
       <FormField {...args} />
     </Form>
   ),
@@ -97,7 +97,7 @@ export const WithPassword: Story = {
 
 export const WithSelect: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form>
       <FormField {...args} />
     </Form>
   ),
@@ -125,7 +125,7 @@ export const WithSelect: Story = {
 
 export const WithDate: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form>
       <FormField {...args} />
     </Form>
   ),
@@ -142,7 +142,7 @@ export const WithDate: Story = {
 
 export const WithDateTime: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form>
       <FormField {...args} />
     </Form>
   ),
@@ -159,7 +159,7 @@ export const WithDateTime: Story = {
 
 export const WithTextarea: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form>
       <FormField {...args} />
     </Form>
   ),
@@ -176,7 +176,7 @@ export const WithTextarea: Story = {
 
 export const WithSingleCheckbox: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form>
       <FormField {...args} />
     </Form>
   ),
@@ -191,9 +191,26 @@ export const WithSingleCheckbox: Story = {
   },
 };
 
+export const WithIndeterminateSingleCheckbox: Story = {
+  render: (args) => (
+    <Form>
+      <FormField {...args} />
+    </Form>
+  ),
+  args: {
+    label: "I accept privacy policy",
+    name: "emailAddress",
+    isToggle: true,
+    options: {
+      ...required,
+    },
+    children: <SingleCheckbox indeterminate />,
+  },
+};
+
 export const WithToggle: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form>
       <FormField {...args} />
     </Form>
   ),
@@ -210,7 +227,7 @@ export const WithToggle: Story = {
 
 export const WithRadioList: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form>
       <FormField {...args}>
         <Radio inputValue="value1">Value 1</Radio>
         <Radio inputValue="value2">Value 2</Radio>
@@ -231,7 +248,7 @@ export const WithRadioList: Story = {
 
 export const WithCheckboxList: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form>
       <FormField {...args}>
         <Checkbox inputValue="value1">Value 1</Checkbox>
         <Checkbox inputValue="value2">Value 2</Checkbox>
@@ -252,7 +269,7 @@ export const WithCheckboxList: Story = {
 
 export const WithReactSelect: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form>
       <FormField {...args} />
     </Form>
   ),
@@ -281,7 +298,7 @@ export const WithReactSelect: Story = {
 
 export const WithMultiReactSelect: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form>
       <FormField {...args} />
     </Form>
   ),
@@ -311,7 +328,7 @@ export const WithMultiReactSelect: Story = {
 
 export const WithReactDayPicker: Story = {
   render: (args) => (
-    <Form<{ inputName: Matcher | Matcher[] }> onSubmit={() => {}}>
+    <Form<{ inputName: Matcher | Matcher[] }>>
       <FormField {...args} />
     </Form>
   ),
@@ -340,7 +357,7 @@ export const WithReactDayPicker: Story = {
 
 export const WithReactDateRangePicker: Story = {
   render: (args) => (
-    <Form onSubmit={() => {}}>
+    <Form>
       <FormField {...args} />
     </Form>
   ),

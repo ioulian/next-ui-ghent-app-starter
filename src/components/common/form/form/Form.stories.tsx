@@ -4,6 +4,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import ReactSelect from "react-select";
 
+import { exampleApiError } from "@/components/common/form/form/Form.data";
+
 import { ColourOption, colourOptions } from "../form-field/FormField.data";
 import { email, password, passwordRepeat, required } from "../rules";
 import Form from "../form/Form";
@@ -17,20 +19,6 @@ import ReactSelectContainer from "../react-select/ReactSelectContainer";
 
 import Input from "./../input/Input";
 import FormField from "./../form-field/FormField";
-
-const ExampleApiError = {
-  type: "https://tools.ietf.org/html/rfc2616#section-10",
-  title: "An error occurred",
-  message: "emailAddress: This value is not a valid email address.",
-  error_code: "emailAddress: This value is not a valid email address.",
-  violations: [
-    {
-      propertyPath: "emailAddress",
-      message: "This value is not a valid email address.",
-      code: "bd79c0ab-ddba-46cc-a703-a7a4b08de310",
-    },
-  ],
-};
 
 const meta: Meta<typeof Form> = {
   title: "UI/Form/Form",
@@ -187,6 +175,6 @@ export const Example: Story = {
     </Form>
   ),
   args: {
-    error: ExampleApiError,
+    error: exampleApiError,
   },
 };

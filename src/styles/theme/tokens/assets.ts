@@ -15,6 +15,13 @@ export const assets = defineTokens.assets({
         "<svg width='24' height='24' viewBox='0 0 24 24' fill='#ffffff' xmlns='http://www.w3.org/2000/svg'><path d='M9 22l-10-10.598 2.798-2.859 7.149 7.473 13.144-14.016 2.909 2.806z' /></svg>",
     },
   },
+  indeterminateCheckbox: {
+    value: {
+      type: "svg",
+      value:
+        "<svg width='24' height='24' viewBox='0 0 24 24' stroke='#ffffff' xmlns='http://www.w3.org/2000/svg' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'><line x1='4' y1='12' x2='20' y2='12'></line></svg>",
+    },
+  },
   radio: {
     value: {
       type: "svg",

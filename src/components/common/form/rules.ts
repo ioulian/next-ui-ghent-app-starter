@@ -21,8 +21,6 @@ export const password = {
   },
 };
 
-// FIXME:
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const passwordRepeat =
   <T extends FieldValues>(otherField: FieldPath<T>) =>
   (watch: UseFormWatch<T>) => ({

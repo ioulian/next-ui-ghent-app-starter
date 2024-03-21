@@ -7,7 +7,7 @@ import { ApiError } from "@/components/common/form/types";
 import { InferComponentProps } from "@/types/component";
 import { cx } from "@/styled-system/css";
 
-import ApiFormError from "../ApiFormError";
+import ApiFormError from "../api-form-error/ApiFormError";
 
 import { form } from "./Form.styles";
 
@@ -55,7 +55,7 @@ const Form = <T extends FormValueType>({
   defaultValues?: DefaultValues<T>;
   isLoading?: boolean;
   mode?: Mode;
-  onSubmit: (data?: T) => void;
+  onSubmit?: (data?: T) => void;
   onChange?: (data?: DeepPartial<T> | T) => void;
 } & Omit<InferComponentProps<"form">, "onChange" | "onSubmit">) => {
   const methods = useForm<T>({
@@ -96,6 +96,7 @@ const Form = <T extends FormValueType>({
           try {
             // Can fail on HMR
             setFocus(propertyPath as Path<T>);
+            /* c8 ignore next */
           } catch (e) {}
         }
       });
@@ -116,7 +117,17 @@ const Form = <T extends FormValueType>({
       <form
         {...props}
         className={cx(form, className)}
-        onSubmit={!isLoading ? handleSubmit(onSubmit) : () => {}}
+        onSubmit={(e) => {
+          if (!isLoading) {
+            if (onSubmit) {
+              handleSubmit(onSubmit)(e);
+            } else {
+              e.preventDefault();
+            }
+          } else {
+            e.preventDefault();
+          }
+        }}
       >
         {error ? <ApiFormError error={error} /> : null}
         {children}

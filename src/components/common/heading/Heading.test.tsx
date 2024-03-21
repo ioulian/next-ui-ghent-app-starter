@@ -30,7 +30,7 @@ describe("Heading", () => {
     expect(screen.getByTestId("test")).toBeInTheDocument();
   });
 
-  it("renders with as different tag", () => {
+  it("renders as different tag", () => {
     render(
       <Heading data-testid="test" type="h1">
         test

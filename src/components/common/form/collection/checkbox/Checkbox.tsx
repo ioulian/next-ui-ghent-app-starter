@@ -3,11 +3,9 @@
 import { forwardRef, memo } from "react";
 
 import { InferComponentProps } from "@/types/component";
-import { baseFormField } from "@/components/common/form/form-field/FormField.styles";
-import { cx } from "@/styled-system/css";
 
 import Label from "../../label/Label";
-import { input } from "../../input/Input.styles";
+import SingleCheckbox from "../../single-checkbox/SingleCheckbox";
 
 import { checkboxContainer } from "./Checkbox.styles";
 
@@ -22,8 +20,6 @@ const Checkbox = forwardRef<
       name,
       inputValue,
       children,
-      isError,
-      className,
       ...props
     },
     ref,
@@ -32,15 +28,7 @@ const Checkbox = forwardRef<
 
     return (
       <div className={checkboxContainer}>
-        <input
-          {...props}
-          className={cx(baseFormField({ isError }), input, className)}
-          name={name}
-          type="checkbox"
-          id={linkedId}
-          ref={ref}
-          value={inputValue}
-        />
+        <SingleCheckbox {...props} id={linkedId} name={name} ref={ref} value={inputValue} />
         <Label htmlFor={linkedId}>{children}</Label>
       </div>
     );

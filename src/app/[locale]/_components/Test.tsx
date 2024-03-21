@@ -50,7 +50,6 @@ const Test: FC = () => {
         </Button>
       </Breadcrumb>
 
-      {/* @ts-expect-error will be deleted */}
       <Form<SampleFormData> defaultValues={{}}>
         <Heading>Register here</Heading>
         <div

@@ -179,7 +179,8 @@ const FormField = <T extends FormValueType>({
                   ...(describedBy && { "aria-describedby": describedBy }),
                   ...(error && { "aria-invalid": "true" }),
                 })
-              : null,
+              : /* c8 ignore next */
+                null,
           )}
         </InputWrapper>
       )}
