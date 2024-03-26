@@ -56,7 +56,12 @@ const Spinner: FC<
   const classes = spinner({ size });
 
   return (
-    <span role="progressbar" {...addClassNameToProps(props, classes.root)} style={spinnerStyle}>
+    <span
+      role="progressbar"
+      aria-busy
+      {...addClassNameToProps(props, classes.root)}
+      style={spinnerStyle}
+    >
       <span className={classes.inner}>
         <span className={classes.element} style={spinnerElementStyle} />
       </span>

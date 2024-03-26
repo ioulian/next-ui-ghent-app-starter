@@ -12,17 +12,21 @@ export default meta;
 type Story = StoryObj<typeof Spinner>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    "aria-label": "Loading",
+  },
 };
 
 export const WithLabel: Story = {
   args: {
     children: "Loading...",
+    "aria-label": "Loading",
   },
 };
 
 export const WithCustomColors: Story = {
   args: {
+    "aria-label": "Loading",
     primaryColor: "#fff",
     secondaryColor: "#647373",
     backgroundColor: "rgba(0, 0, 0, 0.25)",
@@ -32,6 +36,7 @@ export const WithCustomColors: Story = {
 
 export const FullSize: Story = {
   args: {
+    "aria-label": "Loading",
     size: "full",
   },
 };

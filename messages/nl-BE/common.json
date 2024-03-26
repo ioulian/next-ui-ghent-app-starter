@@ -1,5 +1,10 @@
 {
   "common": {
+    "button": {
+      "spinner": {
+        "aria-label": "Working"
+      }
+    },
     "form": {
       "description": {
         "prefix": "Description:"

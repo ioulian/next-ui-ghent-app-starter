@@ -7,6 +7,7 @@ import Form from "../form/Form";
 import Input from "../input/Input";
 
 import FormField from "./FormField";
+import { formFieldToggle } from "./FormField.styles";
 
 describe("FormField", () => {
   it("renders", () => {
@@ -75,5 +76,41 @@ describe("FormField", () => {
     );
 
     expect(screen.getByTestId("test")).toHaveAttribute("name", "test-name");
+  });
+
+  it("renders as fieldset", async () => {
+    render(
+      <Form defaultValues={{ "test-name": "test-value" }}>
+        <FormField name="test-name" asFieldSet data-testid="test" label="Test label" />
+      </Form>,
+    );
+
+    expect(screen.getByTestId("test").tagName).toBe("FIELDSET");
+    expect(screen.getByText("Test label").tagName).toBe("LEGEND");
+  });
+
+  it("renders with isToggle", async () => {
+    render(
+      <Form defaultValues={{ "test-name": "test-value" }}>
+        <FormField name="test-name" isToggle data-testid="test" />
+      </Form>,
+    );
+
+    expect(screen.getByTestId("test").className).toContain(formFieldToggle);
+  });
+
+  it("renders required label", async () => {
+    render(
+      <Form defaultValues={{ "test-name": "test-value" }}>
+        <FormField
+          name="test-name"
+          options={{ required: true }}
+          data-testid="test"
+          label="Test label"
+        />
+      </Form>,
+    );
+
+    expect(screen.getByText("Test label").innerHTML).toContain("*");
   });
 });

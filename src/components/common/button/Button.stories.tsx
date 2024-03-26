@@ -42,6 +42,19 @@ export const Default: Story = {
   },
 };
 
+export const Loading: Story = {
+  render: (args) => <Button {...args} data-foo="bar" />,
+  args: {
+    intent: "primary",
+    size: "normal",
+    isLoading: true,
+    children: "Button",
+    disabled: false,
+    iconOnly: false,
+    fullWidth: false,
+  },
+};
+
 export const WithIcons: Story = {
   render: (args) => <Button {...args} />,
   args: {
@@ -108,7 +121,6 @@ export const NextLink: Story = {
   render: (args) => <Button as={Link} href="/test" target="_blank" {...args} />,
   args: {
     intent: "primary",
-    as: "a",
     children: "Navigate to another page",
     disabled: false,
     isLoading: false,

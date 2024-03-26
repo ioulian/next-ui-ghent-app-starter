@@ -10,6 +10,7 @@ import {
   ReactElement,
   ReactNode,
   useEffect,
+  useId,
 } from "react";
 import {
   Controller,
@@ -31,7 +32,7 @@ import { addClassNameToProps } from "@/styles/utils";
 import Description from "../description/Description";
 import Error from "../error/Error";
 import Label from "../label/Label";
-import { getAriaDescribedBy, getDescriptionId, getErrorId } from "../utils";
+import { getAriaDescribedBy } from "../utils";
 import { BE_VALIDATION, type FormValueType } from "../form/Form";
 
 import { formField, formFieldToggle } from "./FormField.styles";
@@ -122,6 +123,8 @@ const FormField = <T extends FormValueType>({
 }: FormFieldProps<T>) => {
   const { register, unregister, watch, control, formState, getFieldState } = useFormContext<T>();
   const t = useTranslations("common.form");
+  const descriptionId = useId();
+  const errorId = useId();
 
   useEffect(() => {
     return () => {
@@ -131,7 +134,7 @@ const FormField = <T extends FormValueType>({
 
   const { error } = getFieldState(name, formState);
   const registerProps = register(name, merge(options, watchValidate ? watchValidate(watch) : {}));
-  const describedBy = getAriaDescribedBy(name, !!description, !!error);
+  const describedBy = getAriaDescribedBy(!!error && errorId, !!description && descriptionId);
 
   const Component = asFieldSet ? "fieldset" : "div";
 
@@ -184,14 +187,14 @@ const FormField = <T extends FormValueType>({
         )}
       </InputWrapper>
       {error ? (
-        <Error id={getErrorId(name)}>
+        <Error id={errorId}>
           {error.type === BE_VALIDATION
             ? (error.message as unknown as string)
             : // @ts-expect-error This is dynamic
               t(`validationErrors.${error.message as unknown as string}`)}
         </Error>
       ) : null}
-      {description ? <Description id={getDescriptionId(name)}>{description}</Description> : null}
+      {description ? <Description id={descriptionId}>{description}</Description> : null}
     </Component>
   );
 };

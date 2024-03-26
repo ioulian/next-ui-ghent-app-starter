@@ -76,11 +76,7 @@ const Ellipsis: FC<
   );
 
   return (
-    <div
-      {...addClassNameToProps(props, ellipsis)}
-      style={numberOfLinesStyle}
-      aria-expanded={isOpen || !showButton}
-    >
+    <div {...addClassNameToProps(props, ellipsis)} style={numberOfLinesStyle}>
       <div className={ellipsisContentContainer}>
         <div className={cx(css(ellipsisContent), !isOpen && css(ellipsisLineClamp))} id={id}>
           {children}

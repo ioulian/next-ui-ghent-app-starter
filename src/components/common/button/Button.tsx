@@ -10,6 +10,7 @@ import {
 } from "react";
 import { useCallback } from "react";
 import { PolyForwardMemoComponent, PolyRefFunction } from "react-polymorphed";
+import { useTranslations } from "next-intl";
 
 import { InferComponentProps } from "@/types/component";
 import { ArrayElement } from "@/types/helpers";
@@ -82,6 +83,7 @@ const Button = polyRef<"button" | "a", Props>(
     },
     ref,
   ) => {
+    const t = useTranslations("common.button");
     const newOnClick = useCallback(
       (
         e: ReactMouseEvent<HTMLButtonElement, MouseEvent> &
@@ -123,7 +125,12 @@ const Button = polyRef<"button" | "a", Props>(
               className: classes.svg,
             })}
         </span>
-        <Spinner className={classes.spinner} />
+        <Spinner
+          className={classes.spinner}
+          aria-hidden={!isLoading}
+          aria-label={isLoading ? t("spinner.aria-label") : ""}
+          aria-busy={isLoading}
+        />
       </Element>
     );
   },
