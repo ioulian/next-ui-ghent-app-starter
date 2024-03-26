@@ -2,20 +2,19 @@ import { forwardRef, memo } from "react";
 
 import { InferComponentProps } from "@/types/component";
 import { baseFormField } from "@/components/common/form/form-field/FormField.styles";
-import { cx } from "@/styled-system/css";
+import { addClassNameToProps } from "@/styles/utils";
 
 import { textarea } from "./Textarea.styles";
 
 const TextArea = forwardRef<
   HTMLTextAreaElement,
   { isError?: boolean } & InferComponentProps<"textarea">
->(({ className, isError, ...props }, ref) => {
+>(({ isError, ...props }, ref) => {
   return (
     <textarea
       cols={40}
       rows={5}
-      {...props}
-      className={cx(baseFormField({ isError }), textarea, className)}
+      {...addClassNameToProps(props, baseFormField({ isError }), textarea)}
       ref={ref}
     />
   );

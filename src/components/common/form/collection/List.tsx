@@ -1,16 +1,12 @@
 import { FC, memo } from "react";
 
 import { InferComponentProps } from "@/types/component";
-import { cx } from "@/styled-system/css";
+import { addClassNameToProps } from "@/styles/utils";
 
 import { list } from "./List.styles";
 
-const List: FC<InferComponentProps<"div">> = ({ children, className, ...props }) => {
-  return (
-    <div {...props} className={cx(list, className)}>
-      {children}
-    </div>
-  );
+const List: FC<InferComponentProps<"div">> = ({ children, ...props }) => {
+  return <div {...addClassNameToProps(props, list)}>{children}</div>;
 };
 
 /**

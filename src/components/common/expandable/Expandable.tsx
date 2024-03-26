@@ -6,7 +6,7 @@ import AnimateHeight from "react-animate-height";
 import { useUpdateEffect } from "react-use";
 
 import { InferComponentProps } from "@/types/component";
-import { convertThemeVarToNumber } from "@/styles/utils";
+import { addClassNameToProps, convertThemeVarToNumber } from "@/styles/utils";
 import { token } from "@/styled-system/tokens";
 import { cx } from "@/styled-system/css";
 import { easings } from "@/utils/easings";
@@ -39,7 +39,7 @@ const Expandable: FC<
      */
     onToggle?: (isOpen: boolean) => void;
   } & InferComponentProps<"div">
-> = ({ summary, children, open = false, onToggle, className, ...props }) => {
+> = ({ summary, children, open = false, onToggle, ...props }) => {
   const [isOpen, setIsOpen] = useState<boolean>(open);
   const id = useId();
 
@@ -56,7 +56,7 @@ const Expandable: FC<
   }, []);
 
   return (
-    <div {...props} className={cx(expandable, className)}>
+    <div {...addClassNameToProps(props, expandable)}>
       <button
         type="button"
         aria-expanded={isOpen}

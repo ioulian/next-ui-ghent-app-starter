@@ -1,14 +1,16 @@
 import { FC, memo } from "react";
 
 import { InferComponentProps } from "@/types/component";
-import { cx } from "@/styled-system/css";
+import { addClassNameToProps } from "@/styles/utils";
 
 import { reactSelectContainer } from "./ReactSelectContainer.styles";
 import styles from "./styles.module.css";
 
-const ReactSelectContainer: FC<InferComponentProps<"div">> = ({ children }) => {
+const ReactSelectContainer: FC<InferComponentProps<"div">> = ({ children, ...props }) => {
   return (
-    <div className={cx(styles["react-select-container"], reactSelectContainer)}>{children}</div>
+    <div {...addClassNameToProps(props, styles["react-select-container"], reactSelectContainer)}>
+      {children}
+    </div>
   );
 };
 

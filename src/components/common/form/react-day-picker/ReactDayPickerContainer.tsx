@@ -1,16 +1,18 @@
 import { FC, memo } from "react";
 
 import { InferComponentProps } from "@/types/component";
-import { cx } from "@/styled-system/css";
+import { addClassNameToProps } from "@/styles/utils";
 
 import { reactDayPickerContainer } from "./ReactDayPickerContainer.styles";
 import styles from "./styles.module.css";
 
 import "react-day-picker/dist/style.css";
 
-const ReactDayPickerContainer: FC<InferComponentProps<"div">> = ({ children }) => {
+const ReactDayPickerContainer: FC<InferComponentProps<"div">> = ({ children, ...props }) => {
   return (
-    <div className={cx(styles["react-day-picker-container"], reactDayPickerContainer)}>
+    <div
+      {...addClassNameToProps(props, styles["react-day-picker-container"], reactDayPickerContainer)}
+    >
       {children}
     </div>
   );

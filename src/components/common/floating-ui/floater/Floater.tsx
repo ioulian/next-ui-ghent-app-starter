@@ -3,8 +3,7 @@ import { Coords, Placement, Strategy } from "@floating-ui/react";
 
 import { InferComponentProps } from "@/types/component";
 import { token } from "@/styled-system/tokens";
-import { convertThemeVarToNumber } from "@/styles/utils";
-import { cx } from "@/styled-system/css";
+import { addClassNameToProps, convertThemeVarToNumber } from "@/styles/utils";
 
 import { roundByDPR } from "./utils";
 import { floater, floaterArrow } from "./Floater.styles";
@@ -28,7 +27,6 @@ const Floater = forwardRef<
       strategy,
       placement,
       arrowCallback,
-      className,
       showArrow = true,
       ...props
     },
@@ -79,7 +77,7 @@ const Floater = forwardRef<
     }, [arrowPosition?.x, arrowPosition?.y, placement]);
 
     return (
-      <div ref={ref} {...props} className={cx(floater, className)} style={style}>
+      <div ref={ref} {...addClassNameToProps(props, floater)} style={style}>
         {children}
         {showArrow && arrowCallback ? (
           <div ref={arrowCallback} className={floaterArrow} style={arrowStyle} />

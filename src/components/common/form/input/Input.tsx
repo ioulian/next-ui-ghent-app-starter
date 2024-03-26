@@ -4,7 +4,7 @@ import { forwardRef, memo, ReactNode } from "react";
 
 import { InferComponentProps } from "@/types/component";
 import { baseFormField } from "@/components/common/form/form-field/FormField.styles";
-import { cx } from "@/styled-system/css";
+import { addClassNameToProps } from "@/styles/utils";
 
 import { input, inputIconContainer } from "./Input.styles";
 
@@ -22,9 +22,9 @@ const Input = forwardRef<
     iconAfter?: ReactNode;
     isError?: boolean;
   } & InferComponentProps<"input">
->(({ iconBefore, iconAfter, className, isError, ...props }, ref) => {
+>(({ iconBefore, iconAfter, isError, ...props }, ref) => {
   const element = (
-    <input {...props} className={cx(baseFormField({ isError }), input, className)} ref={ref} />
+    <input {...addClassNameToProps(props, baseFormField({ isError }), input)} ref={ref} />
   );
 
   if ((iconBefore || iconAfter) && !["checkbox", "radio"].includes(props.type ?? "")) {

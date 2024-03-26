@@ -12,8 +12,8 @@ import { useCallback } from "react";
 import { PolyForwardMemoComponent, PolyRefFunction } from "react-polymorphed";
 
 import { InferComponentProps } from "@/types/component";
-import { cx } from "@/styled-system/css";
 import { ArrayElement } from "@/types/helpers";
+import { addClassNameToProps } from "@/styles/utils";
 
 import Spinner from "../spinner/Spinner";
 import VisuallyHidden from "../visually-hidden/VisuallyHidden";
@@ -77,7 +77,6 @@ const Button = polyRef<"button" | "a", Props>(
       isLoading = false,
       disabled = false,
       onClick,
-      className,
       children,
       ...props
     },
@@ -101,8 +100,7 @@ const Button = polyRef<"button" | "a", Props>(
       <Element
         ref={ref}
         type={!Element || Element === "button" ? props.type ?? "button" : undefined}
-        {...props}
-        className={cx(classes.root, className)}
+        {...addClassNameToProps(props, classes.root)}
         disabled={disabled || isLoading}
         onClick={onClick ? newOnClick : undefined}
       >

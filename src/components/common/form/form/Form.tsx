@@ -5,7 +5,7 @@ import { DeepPartial, DefaultValues, FormProvider, Mode, Path, useForm } from "r
 
 import { ApiError } from "@/components/common/form/types";
 import { InferComponentProps } from "@/types/component";
-import { cx } from "@/styled-system/css";
+import { addClassNameToProps } from "@/styles/utils";
 
 import ApiFormError from "../api-form-error/ApiFormError";
 
@@ -48,7 +48,6 @@ const Form = <T extends FormValueType>({
   onChange,
   children,
   mode = "onChange",
-  className,
   ...props
 }: {
   error?: ApiError;
@@ -115,8 +114,7 @@ const Form = <T extends FormValueType>({
   return (
     <FormProvider {...methods}>
       <form
-        {...props}
-        className={cx(form, className)}
+        {...addClassNameToProps(props, form)}
         onSubmit={(e) => {
           if (!isLoading) {
             if (onSubmit) {

@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { PolymorphicComponent } from "react-polymorphed";
 
 import { InferComponentProps } from "@/types/component";
-import { cx } from "@/styled-system/css";
+import { addClassNameToProps } from "@/styles/utils";
 
 import { label, labelAsterisk } from "./Label.styles";
 
@@ -12,11 +12,11 @@ const Label: PolymorphicComponent<
   {
     required?: boolean;
   } & InferComponentProps<"label">
-> = ({ required, as: Component = "label", children, className, ...props }) => {
+> = ({ required, as: Component = "label", children, ...props }) => {
   const t = useTranslations("common.form");
 
   return (
-    <Component {...props} className={cx(label, className)}>
+    <Component {...addClassNameToProps(props, label)}>
       {children}
       {required ? (
         <span

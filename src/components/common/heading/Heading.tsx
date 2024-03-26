@@ -1,7 +1,7 @@
 import { forwardRef, memo } from "react";
 
 import { InferComponentProps } from "@/types/component";
-import { cx } from "@/styled-system/css";
+import { addClassNameToProps } from "@/styles/utils";
 
 import { heading } from "./Heading.styles";
 
@@ -21,11 +21,11 @@ const Heading = forwardRef<
      */
     size?: HeadingSize;
   } & InferComponentProps<"h1">
->(({ type = "h2", size = type, className, children, ...props }, ref) => {
+>(({ type = "h2", size = type, children, ...props }, ref) => {
   const Element = type;
 
   return (
-    <Element {...props} className={cx(heading({ size }), className)} ref={ref}>
+    <Element {...addClassNameToProps(props, heading({ size }))} ref={ref}>
       {children}
     </Element>
   );

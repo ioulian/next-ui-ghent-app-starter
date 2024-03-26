@@ -1,8 +1,8 @@
 import { FC, memo } from "react";
 
 import { InferComponentProps } from "@/types/component";
-import { cx } from "@/styled-system/css";
 import { ArrayElement } from "@/types/helpers";
+import { addClassNameToProps } from "@/styles/utils";
 
 import { buttonGroup } from "./ButtonGroup.styles";
 
@@ -13,12 +13,8 @@ const ButtonGroup: FC<
      */
     align?: ArrayElement<(typeof buttonGroup.variantMap)["align"]>;
   } & InferComponentProps<"div">
-> = ({ children, className, align = "start", ...props }) => {
-  return (
-    <div {...props} className={cx(buttonGroup({ align }).root, className)}>
-      {children}
-    </div>
-  );
+> = ({ children, align = "start", ...props }) => {
+  return <div {...addClassNameToProps(props, buttonGroup({ align }).root)}>{children}</div>;
 };
 
 /**

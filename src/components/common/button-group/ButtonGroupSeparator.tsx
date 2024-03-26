@@ -1,17 +1,16 @@
 import { FC, memo } from "react";
 
 import { InferComponentProps } from "@/types/component";
-import { cx } from "@/styled-system/css";
+import { addClassNameToProps } from "@/styles/utils";
 
 import { buttonGroup } from "./ButtonGroup.styles";
 
-const ButtonGroupSeparator: FC<InferComponentProps<"div">> = ({ className, ...props }) => {
+const ButtonGroupSeparator: FC<InferComponentProps<"div">> = (props) => {
   return (
     <div
       role="separator"
       aria-orientation="vertical"
-      {...props}
-      className={cx(buttonGroup().separator, className)}
+      {...addClassNameToProps(props, buttonGroup().separator)}
     />
   );
 };

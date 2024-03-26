@@ -2,8 +2,8 @@ import { FC, memo, useMemo } from "react";
 import merge from "lodash/merge";
 
 import { InferComponentProps } from "@/types/component";
-import { cx } from "@/styled-system/css";
 import { ArrayElement } from "@/types/helpers";
+import { addClassNameToProps } from "@/styles/utils";
 
 import { backgroundColorVar, primaryColorVar, secondaryColorVar, spinner } from "./Spinner.styles";
 
@@ -32,7 +32,6 @@ const Spinner: FC<
 > = ({
   children,
   style,
-  className,
   primaryColor = "currentColor",
   secondaryColor = "transparent",
   backgroundColor = "transparent",
@@ -57,12 +56,7 @@ const Spinner: FC<
   const classes = spinner({ size });
 
   return (
-    <span
-      role="progressbar"
-      {...props}
-      className={cx(classes.root, className)}
-      style={spinnerStyle}
-    >
+    <span role="progressbar" {...addClassNameToProps(props, classes.root)} style={spinnerStyle}>
       <span className={classes.inner}>
         <span className={classes.element} style={spinnerElementStyle} />
       </span>

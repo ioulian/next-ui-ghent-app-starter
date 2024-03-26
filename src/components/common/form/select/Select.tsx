@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 
 import { InferComponentProps } from "@/types/component";
 import { baseFormField } from "@/components/common/form/form-field/FormField.styles";
-import { cx } from "@/styled-system/css";
+import { addClassNameToProps } from "@/styles/utils";
 
 import { select } from "./Select.styles";
 
@@ -16,11 +16,11 @@ const Select = forwardRef<
     addEmptyOption?: boolean;
     isError?: boolean;
   } & InferComponentProps<"select">
->(({ addEmptyOption = false, children, isError, className, ...props }, ref) => {
+>(({ addEmptyOption = false, children, isError, ...props }, ref) => {
   const t = useTranslations("common.form");
 
   return (
-    <select {...props} className={cx(baseFormField({ isError }), select, className)} ref={ref}>
+    <select {...addClassNameToProps(props, baseFormField({ isError }), select)} ref={ref}>
       {addEmptyOption ? <option value="">{t("select.emptyValue")}</option> : null}
       {children}
     </select>

@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { InferComponentProps } from "@/types/component";
 import useResizeObserver from "@/hooks/useResizeObserver";
 import { css, cx } from "@/styled-system/css";
+import { addClassNameToProps } from "@/styles/utils";
 
 import Button from "../button/Button";
 
@@ -38,7 +39,7 @@ const Ellipsis: FC<
      */
     onToggle?: (isOpen: boolean) => void;
   } & InferComponentProps<"div">
-> = ({ children, open = false, onToggle, numberOfLines = 2, className, ...props }) => {
+> = ({ children, open = false, onToggle, numberOfLines = 2, ...props }) => {
   const t = useTranslations("common.ellipsis");
   const [isOpen, setIsOpen] = useState<boolean>(open);
   const [showButton, setShowButton] = useState<boolean>(true);
@@ -76,8 +77,7 @@ const Ellipsis: FC<
 
   return (
     <div
-      {...props}
-      className={cx(ellipsis, className)}
+      {...addClassNameToProps(props, ellipsis)}
       style={numberOfLinesStyle}
       aria-expanded={isOpen || !showButton}
     >

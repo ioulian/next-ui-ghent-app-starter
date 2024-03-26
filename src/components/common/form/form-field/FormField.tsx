@@ -26,7 +26,7 @@ import merge from "lodash/merge";
 import { useTranslations } from "next-intl";
 
 import { InferComponentProps } from "@/types/component";
-import { cx } from "@/styled-system/css";
+import { addClassNameToProps } from "@/styles/utils";
 
 import Description from "../description/Description";
 import Error from "../error/Error";
@@ -118,7 +118,6 @@ const FormField = <T extends FormValueType>({
   options,
   children,
   watchValidate,
-  className,
   ...props
 }: FormFieldProps<T>) => {
   const { register, unregister, watch, control, formState, getFieldState } = useFormContext<T>();
@@ -138,7 +137,7 @@ const FormField = <T extends FormValueType>({
 
   return (
     // @ts-expect-error TODO: fixme
-    <Component {...props} className={cx(formField, isToggle && formFieldToggle, className)}>
+    <Component {...addClassNameToProps(props, formField, isToggle && formFieldToggle)}>
       {!!label && (
         <Label
           as={asFieldSet ? "legend" : "label"}
@@ -148,8 +147,8 @@ const FormField = <T extends FormValueType>({
           {label}
         </Label>
       )}
-      {typeof children === "function" ? (
-        <InputWrapper>
+      <InputWrapper>
+        {typeof children === "function" ? (
           <Controller
             control={control}
             {...{ name, options }}
@@ -165,25 +164,25 @@ const FormField = <T extends FormValueType>({
               });
             }}
           />
-        </InputWrapper>
-      ) : (
-        <InputWrapper>
-          {Children.map(children, (child) =>
-            isValidElement(child)
-              ? cloneElement(child, {
-                  ...child.props,
-                  ...registerProps,
-                  isError: !!error,
-                  name,
-                  id: name,
-                  ...(describedBy && { "aria-describedby": describedBy }),
-                  ...(error && { "aria-invalid": "true" }),
-                })
-              : /* c8 ignore next */
-                null,
-          )}
-        </InputWrapper>
-      )}
+        ) : (
+          <>
+            {Children.map(children, (child) =>
+              isValidElement(child)
+                ? cloneElement(child, {
+                    ...child.props,
+                    ...registerProps,
+                    isError: !!error,
+                    name,
+                    id: name,
+                    ...(describedBy && { "aria-describedby": describedBy }),
+                    ...(error && { "aria-invalid": "true" }),
+                  })
+                : /* c8 ignore next */
+                  null,
+            )}
+          </>
+        )}
+      </InputWrapper>
       {error ? (
         <Error id={getErrorId(name)}>
           {error.type === BE_VALIDATION

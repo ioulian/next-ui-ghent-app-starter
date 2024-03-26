@@ -4,14 +4,15 @@ import { useTranslations } from "next-intl";
 import { InferComponentProps } from "@/types/component";
 import { cx } from "@/styled-system/css";
 import { hstack } from "@/styled-system/patterns";
+import { addClassNameToProps } from "@/styles/utils";
 
 import { li, nav, ol } from "./Breadcrumb.styles";
 
-const Breadcrumb: FC<InferComponentProps<"nav">> = ({ children, className, ...props }) => {
+const Breadcrumb: FC<InferComponentProps<"nav">> = ({ children, ...props }) => {
   const t = useTranslations("common");
 
   return (
-    <nav aria-label={t("breadcrumb.label")} {...props} className={cx(nav, className)}>
+    <nav aria-label={t("breadcrumb.label")} {...addClassNameToProps(props, nav)}>
       <ol className={cx(hstack({ gap: "0.75rem" }), ol)}>
         {Children.map(children, (child, i) => {
           if (!isValidElement(child)) {
