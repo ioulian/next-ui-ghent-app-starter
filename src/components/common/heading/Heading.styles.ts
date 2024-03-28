@@ -4,6 +4,7 @@ export const heading = cva({
   base: {
     fontFamily: "heading",
     fontWeight: "700",
+    color: "heading",
     letterSpacing: "-0.02em",
     margin: 0,
   },

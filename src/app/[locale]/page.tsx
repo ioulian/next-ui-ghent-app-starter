@@ -35,6 +35,7 @@ import DialogDescription from "@/components/common/floating-ui/dialog/DialogDesc
 import DialogClose from "@/components/common/floating-ui/dialog/DialogClose";
 import Dropdown from "@/components/common/floating-ui/dropdown/Dropdown";
 import DropdownMenuItem from "@/components/common/floating-ui/dropdown/DropdownMenuItem";
+import ButtonGroupSeparator from "@/components/common/button-group/ButtonGroupSeparator";
 
 import styles from "./_styles/styles.module.css";
 
@@ -152,7 +153,7 @@ const Page: NextPage<Props> = ({}) => {
           Primary Action
         </Button>
         <Button variant="secondary">Secondary Action</Button>
-        <hr />
+        <ButtonGroupSeparator />
         <Button size="base" variant="simple">
           Cancel
         </Button>
