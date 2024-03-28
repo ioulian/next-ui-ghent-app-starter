@@ -31,16 +31,16 @@ export const Default: Story = {
   },
   render: (args) => (
     <Breadcrumb {...args}>
-      <Button href="/" as={Link} intent="link" size="base" data-testid="button1">
+      <Button href="/" as={Link} variant="link" size="base" data-testid="button1">
         Home
       </Button>
-      <Button href="/parent-1" as={Link} intent="link" size="base" data-testid="button2">
+      <Button href="/parent-1" as={Link} variant="link" size="base" data-testid="button2">
         Parent 1
       </Button>
-      <Button href="/parent-2" as={Link} intent="link" size="base" data-testid="button3">
+      <Button href="/parent-2" as={Link} variant="link" size="base" data-testid="button3">
         Parent 2
       </Button>
-      <Button href="/current" as={Link} intent="link" size="base" data-testid="button4">
+      <Button href="/current" as={Link} variant="link" size="base" data-testid="button4">
         Current
       </Button>
     </Breadcrumb>

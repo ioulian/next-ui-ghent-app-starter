@@ -33,11 +33,11 @@ export const Default: Story = {
   render: (args) => (
     <ButtonGroup {...args}>
       <Button data-testid="button1">Primary Action</Button>
-      <Button intent="secondary" data-testid="button2">
+      <Button variant="secondary" data-testid="button2">
         Secondary Action
       </Button>
       <ButtonGroupSeparator />
-      <Button size="base" intent="simple" data-testid="button3">
+      <Button size="base" variant="simple" data-testid="button3">
         Cancel
       </Button>
     </ButtonGroup>
@@ -48,7 +48,7 @@ export const Default: Story = {
 export const AlignEnd: Story = {
   render: (args) => (
     <ButtonGroup {...args}>
-      <Button size="base" intent="simple">
+      <Button size="base" variant="simple">
         Cancel
       </Button>
       <ButtonGroupSeparator />

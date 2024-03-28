@@ -25,7 +25,7 @@ type Props = {
   /**
    * Variant of the button
    */
-  intent?: ArrayElement<(typeof button.variantMap)["intent"]>;
+  variant?: ArrayElement<(typeof button.variantMap)["variant"]>;
 
   /**
    * Size of the button
@@ -69,7 +69,7 @@ const Button = polyRef<"button" | "a", Props>(
   (
     {
       as: Element = "button",
-      intent,
+      variant: intent,
       size,
       fullWidth,
       iconOnly,
@@ -96,7 +96,7 @@ const Button = polyRef<"button" | "a", Props>(
       [onClick, isLoading, disabled],
     );
 
-    const classes = button({ intent, size, isLoading, fullWidth });
+    const classes = button({ variant: intent, size, isLoading, fullWidth });
 
     return (
       <Element

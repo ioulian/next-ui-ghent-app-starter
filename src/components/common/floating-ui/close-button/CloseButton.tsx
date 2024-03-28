@@ -14,7 +14,7 @@ const CloseButton: FC<InferComponentProps<typeof Button>> = (props) => {
       iconOnly
       iconBefore={<SvgSprite src={iconX} />}
       size="base"
-      intent="simple"
+      variant="simple"
     />
   );
 };

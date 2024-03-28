@@ -6,7 +6,7 @@ export const alert = sva({
     root: {
       borderWidth: "1px",
       borderStyle: "solid",
-      borderColor: "currentColor",
+      borderColor: "current",
       display: "flex",
       alignItems: "flex-start",
       gap: "1rem",
@@ -17,7 +17,7 @@ export const alert = sva({
       "& svg": {
         width: "1.5rem",
         height: "1.5rem",
-        fill: "currentColor",
+        fill: "current",
       },
     },
     content: {},
@@ -31,17 +31,20 @@ export const alert = sva({
       },
       info: {
         root: {
-          color: "rgb(0, 171, 251)",
+          color: "primary.500",
+          backgroundColor: "primary.50",
         },
       },
       danger: {
         root: {
-          color: "rgb(255, 69, 0)",
+          color: "negative.500",
+          backgroundColor: "negative.50",
         },
       },
       success: {
         root: {
-          color: "rgb(0, 153, 136)",
+          color: "positive.500",
+          backgroundColor: "positive.50",
         },
       },
     },

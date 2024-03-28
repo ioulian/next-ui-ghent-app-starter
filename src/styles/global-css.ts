@@ -26,7 +26,7 @@ export const globalCss = defineGlobalStyles({
     width: "100%",
     height: "1px",
     border: 0,
-    backgroundColor: "currentColor",
+    backgroundColor: "current",
   },
   "ul, ol": {
     paddingLeft: 0,

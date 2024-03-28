@@ -81,7 +81,7 @@ const DialogContent = forwardRef<
           <FloatingOverlay
             lockScroll
             className={floatingOverlay({ asSheet })}
-            style={{ ...styles, overflow: "hidden" }}
+            style={{ ...styles, overflow: asSheet ? "hidden" : "auto" }}
           >
             <FloatingFocusManager context={context.context} modal>
               <Floater

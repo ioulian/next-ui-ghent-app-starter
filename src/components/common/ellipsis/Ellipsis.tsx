@@ -95,7 +95,7 @@ const Ellipsis = forwardRef<
       {showButton === true && (
         <Button
           size="base"
-          intent="simple"
+          variant="simple"
           aria-expanded={isOpen}
           aria-controls={id}
           onClick={onClick}

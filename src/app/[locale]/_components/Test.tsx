@@ -36,16 +36,16 @@ const Test: FC = () => {
     <div>
       <Button onClick={testToast}>Test toast</Button>
       <Breadcrumb>
-        <Button href="/" as={Link} intent="link" size="base">
+        <Button href="/" as={Link} variant="link" size="base">
           Home
         </Button>
-        <Button href="/" as={Link} intent="link" size="base">
+        <Button href="/" as={Link} variant="link" size="base">
           Parent 1
         </Button>
-        <Button href="/" as={Link} intent="link" size="base">
+        <Button href="/" as={Link} variant="link" size="base">
           Parent 2
         </Button>
-        <Button href="/" as={Link} intent="link" size="base">
+        <Button href="/" as={Link} variant="link" size="base">
           Current
         </Button>
       </Breadcrumb>

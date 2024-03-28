@@ -18,7 +18,7 @@ export const button = sva({
       lineHeight: "1.5rem",
       borderWidth: "1px",
       borderStyle: "solid",
-      borderColor: "primary.500",
+      borderColor: "transparent",
       borderRadius: "4px",
       transition: "common",
       transitionDuration: "fast",
@@ -56,25 +56,73 @@ export const button = sva({
     },
   },
   variants: {
-    intent: {
+    variant: {
       primary: {
         root: {
+          colorPalette: "primary",
           color: "white",
-          backgroundColor: "primary.500",
+          backgroundColor: "colorPalette.500",
+          borderColor: "colorPalette.500",
           _isHoverFocus: {
-            backgroundColor: "primary.600",
-            borderColor: "primary.600",
+            backgroundColor: "colorPalette.400",
+            borderColor: "colorPalette.400",
+          },
+        },
+      },
+      negative: {
+        root: {
+          colorPalette: "negative",
+          color: "white",
+          backgroundColor: "colorPalette.500",
+          borderColor: "colorPalette.500",
+          _isHoverFocus: {
+            backgroundColor: "colorPalette.400",
+            borderColor: "colorPalette.400",
+          },
+        },
+      },
+      positive: {
+        root: {
+          colorPalette: "positive",
+          color: "white",
+          backgroundColor: "colorPalette.500",
+          borderColor: "colorPalette.500",
+          _isHoverFocus: {
+            backgroundColor: "colorPalette.400",
+            borderColor: "colorPalette.400",
           },
         },
       },
       secondary: {
         root: {
-          color: "primary.500",
-          backgroundColor: "white",
+          colorPalette: "secondary",
+          color: "body",
+          backgroundColor: "colorPalette.500",
+          borderColor: "colorPalette.500",
           _isHoverFocus: {
-            color: "white",
-            backgroundColor: "primary.600",
-            borderColor: "primary.600",
+            backgroundColor: "colorPalette.400",
+            borderColor: "colorPalette.400",
+          },
+        },
+      },
+      outline: {
+        root: {
+          colorPalette: "secondary",
+          color: "body",
+          backgroundColor: "transparent",
+          borderColor: "colorPalette.500",
+          _isHoverFocus: {
+            backgroundColor: "colorPalette.400",
+          },
+        },
+      },
+      ghost: {
+        root: {
+          colorPalette: "secondary",
+          color: "body",
+          borderColor: "transparent",
+          _isHoverFocus: {
+            backgroundColor: "colorPalette.400",
           },
         },
       },
@@ -119,7 +167,7 @@ export const button = sva({
     },
   },
   defaultVariants: {
-    intent: "primary",
+    variant: "primary",
     size: "normal",
     isLoading: false,
     fullWidth: false,

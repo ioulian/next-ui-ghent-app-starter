@@ -76,10 +76,10 @@ const Page: NextPage<Props> = ({}) => {
       <Test />
       <Dropdown trigger={<Button>Open dropdown</Button>}>
         <DropdownMenuItem typeaheadKey="Undo">
-          <Button intent="secondary">Undo</Button>
+          <Button variant="secondary">Undo</Button>
         </DropdownMenuItem>
         <DropdownMenuItem typeaheadKey="Redo">
-          <Button intent="secondary">Redo</Button>
+          <Button variant="secondary">Redo</Button>
         </DropdownMenuItem>
         <DropdownMenuItem typeaheadKey="Cut" disabled>
           <Button>Cut</Button>
@@ -151,9 +151,9 @@ const Page: NextPage<Props> = ({}) => {
         >
           Primary Action
         </Button>
-        <Button intent="secondary">Secondary Action</Button>
+        <Button variant="secondary">Secondary Action</Button>
         <hr />
-        <Button size="base" intent="simple">
+        <Button size="base" variant="simple">
           Cancel
         </Button>
       </ButtonGroup>
