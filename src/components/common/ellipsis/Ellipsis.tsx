@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, memo, useCallback, useEffect, useId, useMemo, useState } from "react";
+import { forwardRef, memo, useCallback, useEffect, useId, useMemo, useState } from "react";
 import { useUpdateEffect } from "react-use";
 import { useTranslations } from "next-intl";
 
@@ -20,7 +20,8 @@ import {
   numberOfLinesVar,
 } from "./Ellipsis.styles";
 
-const Ellipsis: FC<
+const Ellipsis = forwardRef<
+  HTMLDivElement,
   {
     /**
      * Number of lines to trunctate the text
@@ -39,22 +40,22 @@ const Ellipsis: FC<
      */
     onToggle?: (isOpen: boolean) => void;
   } & InferComponentProps<"div">
-> = ({ children, open = false, onToggle, numberOfLines = 2, ...props }) => {
+>(({ children, open = false, onToggle, numberOfLines = 2, ...props }, ref) => {
   const t = useTranslations("common.ellipsis");
   const [isOpen, setIsOpen] = useState<boolean>(open);
   const [showButton, setShowButton] = useState<boolean>(true);
   const id = useId();
 
   // Use resize observer against the collapsed helper content
-  const [ref, rect] = useResizeObserver<HTMLDivElement>();
+  const [contentRef, rect] = useResizeObserver<HTMLDivElement>();
   useEffect(() => {
-    if (ref.current) {
+    if (contentRef.current) {
       const isEllipsisActive =
-        ref.current.offsetWidth < ref.current.scrollWidth ||
-        ref.current.offsetHeight < ref.current.scrollHeight;
+        contentRef.current.offsetWidth < contentRef.current.scrollWidth ||
+        contentRef.current.offsetHeight < contentRef.current.scrollHeight;
       setShowButton(isEllipsisActive || process.env.JEST_WORKER_ID !== undefined);
     }
-  }, [rect, ref]);
+  }, [rect, contentRef]);
 
   useEffect(() => {
     setIsOpen(open);
@@ -76,7 +77,7 @@ const Ellipsis: FC<
   );
 
   return (
-    <div {...addClassNameToProps(props, ellipsis)} style={numberOfLinesStyle}>
+    <div {...addClassNameToProps(props, ellipsis)} style={numberOfLinesStyle} ref={ref}>
       <div className={ellipsisContentContainer}>
         <div className={cx(css(ellipsisContent), !isOpen && css(ellipsisLineClamp))} id={id}>
           {children}
@@ -104,7 +105,9 @@ const Ellipsis: FC<
       )}
     </div>
   );
-};
+});
+
+Ellipsis.displayName = "Ellipsis";
 
 /**
  * Ellipis component that will automatically truncate/clamp the text inside.

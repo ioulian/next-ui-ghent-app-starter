@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, ReactNode, memo, useCallback, useEffect, useId, useState } from "react";
+import { ReactNode, forwardRef, memo, useCallback, useEffect, useId, useState } from "react";
 import iconChevron from "@tabler/icons/chevron-down.svg";
 import AnimateHeight from "react-animate-height";
 import { useUpdateEffect } from "react-use";
@@ -20,7 +20,8 @@ import {
   expandableSummaryIcon,
 } from "./Expandable.styles";
 
-const Expandable: FC<
+const Expandable = forwardRef<
+  HTMLDivElement,
   {
     /**
      * Title of the block
@@ -39,7 +40,7 @@ const Expandable: FC<
      */
     onToggle?: (isOpen: boolean) => void;
   } & InferComponentProps<"div">
-> = ({ summary, children, open = false, onToggle, ...props }) => {
+>(({ summary, children, open = false, onToggle, ...props }, ref) => {
   const [isOpen, setIsOpen] = useState<boolean>(open);
   const id = useId();
 
@@ -56,7 +57,7 @@ const Expandable: FC<
   }, []);
 
   return (
-    <div {...addClassNameToProps(props, expandable)}>
+    <div {...addClassNameToProps(props, expandable)} ref={ref}>
       <button
         type="button"
         aria-expanded={isOpen}
@@ -81,7 +82,9 @@ const Expandable: FC<
       </AnimateHeight>
     </div>
   );
-};
+});
+
+Expandable.displayName = "Expandable";
 
 /**
  * Basic, animated, <summary> alternative
