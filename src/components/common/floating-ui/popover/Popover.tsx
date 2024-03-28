@@ -7,7 +7,7 @@ import { PopoverContext, PopoverOptions, usePopover } from "./hooks";
 // Based on: https://floating-ui.com/docs/popover
 const Popover: FC<PropsWithChildren & PopoverOptions> = ({
   children,
-  modal = false,
+  modal = true,
   ...restOptions
 }) => {
   // This can accept any props as options, e.g. `placement`,

@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Side,
   useClick,
   useDismiss,
   useFloating,
@@ -13,12 +14,14 @@ import { createContext, Dispatch, SetStateAction, useContext, useMemo, useState 
 export interface DialogOptions {
   initialOpen?: boolean;
   open?: boolean;
+  sheetSide?: Side;
   onOpenChange?: (open: boolean) => void;
 }
 
 export const useDialog = ({
   initialOpen = false,
   open: controlledOpen,
+  sheetSide = "right",
   onOpenChange: setControlledOpen,
 }: DialogOptions = {}) => {
   const [uncontrolledOpen, setUncontrolledOpen] = useState<boolean>(initialOpen);
@@ -32,6 +35,7 @@ export const useDialog = ({
   const data = useFloating({
     nodeId,
     open,
+    placement: sheetSide,
     onOpenChange: setOpen,
   });
 

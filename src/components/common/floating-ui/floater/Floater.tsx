@@ -15,6 +15,7 @@ const Floater = forwardRef<
     arrowPosition?: Partial<Coords>;
     strategy?: Strategy;
     placement?: Placement;
+    asSheet?: boolean;
     arrowCallback?: (node: HTMLDivElement | null) => void;
     showArrow?: boolean;
   } & InferComponentProps<"div">
@@ -26,6 +27,7 @@ const Floater = forwardRef<
       arrowPosition,
       strategy,
       placement,
+      asSheet = false,
       arrowCallback,
       showArrow = true,
       ...props
@@ -77,7 +79,19 @@ const Floater = forwardRef<
     }, [arrowPosition?.x, arrowPosition?.y, placement]);
 
     return (
-      <div ref={ref} {...addClassNameToProps(props, floater)} style={style}>
+      <div
+        ref={ref}
+        {...addClassNameToProps(
+          props,
+          floater({
+            asSheet,
+            placement: asSheet
+              ? (placement?.split("-")[0] as "top" | "bottom" | "right" | "left")
+              : undefined,
+          }),
+        )}
+        style={style}
+      >
         {children}
         {showArrow && arrowCallback ? (
           <div ref={arrowCallback} className={floaterArrow} style={arrowStyle} />

@@ -3,17 +3,24 @@ import { FC, memo } from "react";
 import { ApiError } from "@/components/common/form/types";
 import { InferComponentProps } from "@/types/component";
 import { addClassNameToProps } from "@/styles/utils";
+import Alert from "@/components/common/alert/Alert";
+import Heading from "@/components/common/heading/Heading";
+import Text from "@/components/common/text/Text";
 
 import { apiFormError } from "./ApiFormError.styles";
 
-const ApiFormError: FC<{ error: ApiError } & Omit<InferComponentProps<"div">, "children">> = ({
-  error,
-  ...props
-}) => {
+const ApiFormError: FC<
+  { error: ApiError } & Omit<InferComponentProps<typeof Alert>, "children">
+> = ({ error, ...props }) => {
   return (
-    <div {...addClassNameToProps(props, apiFormError)}>
-      <p>{error.title}</p>
-    </div>
+    <Alert variant="danger" {...addClassNameToProps(props, apiFormError)}>
+      <Heading type="h2" size="h3">
+        {error.title}
+      </Heading>
+      <Text>
+        <p>{error.message}</p>
+      </Text>
+    </Alert>
   );
 };
 

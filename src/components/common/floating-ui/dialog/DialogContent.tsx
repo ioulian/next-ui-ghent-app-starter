@@ -34,6 +34,36 @@ const DialogContent = forwardRef<
       close: convertThemeVarToNumber(token("durations.fast")),
     },
   });
+
+  const { styles: stylesFloater } = useTransitionStyles(context.context, {
+    duration: {
+      open: convertThemeVarToNumber(token("durations.normal")),
+      close: convertThemeVarToNumber(token("durations.fast")),
+    },
+    initial: ({ side }) => {
+      let transform: string | undefined;
+      if (side === "top") {
+        transform = "translate3d(0, -50px, 0)";
+      }
+
+      if (side === "bottom") {
+        transform = "translate3d(0, 50px, 0)";
+      }
+
+      if (side === "left") {
+        transform = "translate3d(-50px, 0, 0)";
+      }
+
+      if (side === "right") {
+        transform = "translate3d(50px, 0, 0)";
+      }
+
+      return {
+        transform,
+      };
+    },
+  });
+
   const onClick = useCallback(() => {
     context.setOpen(false);
   }, [context]);
@@ -48,13 +78,21 @@ const DialogContent = forwardRef<
     <Wrapper>
       <FloatingNode id={context.nodeId}>
         <FloatingPortal>
-          <FloatingOverlay lockScroll className={floatingOverlay({ asSheet })} style={styles}>
-            <FloatingFocusManager context={context.context}>
+          <FloatingOverlay
+            lockScroll
+            className={floatingOverlay({ asSheet })}
+            style={{ ...styles, overflow: "hidden" }}
+          >
+            <FloatingFocusManager context={context.context} modal>
               <Floater
                 ref={ref}
+                placement={context.placement}
+                strategy={asSheet ? "absolute" : undefined}
+                asSheet={asSheet}
                 aria-labelledby={context.labelId}
                 aria-describedby={context.descriptionId}
                 {...context.getFloatingProps(props)}
+                style={asSheet ? stylesFloater : undefined}
               >
                 {props.children}
                 {withCloseButton ? <CloseButton onClick={onClick} /> : null}
