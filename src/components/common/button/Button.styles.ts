@@ -26,6 +26,10 @@ export const button = sva({
         opacity: 0.5,
         cursor: "not-allowed",
       },
+      "&[aria-disabled='true']": {
+        opacity: 0.5,
+        cursor: "not-allowed",
+      },
     },
     content: {
       display: "flex",
@@ -100,9 +104,7 @@ export const button = sva({
     isLoading: {
       true: {
         root: {
-          _disabled: {
-            cursor: "wait",
-          },
+          cursor: "wait",
         },
         content: {
           opacity: 0,

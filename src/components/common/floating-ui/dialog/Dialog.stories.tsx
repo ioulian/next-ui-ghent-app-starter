@@ -158,6 +158,19 @@ export const Uncontrolled: Story = {
   ),
 };
 
+export const AsSheet: Story = {
+  render: (args) => (
+    <Dialog {...args}>
+      <DialogTrigger>My trigger</DialogTrigger>
+      <DialogContent withCloseButton asSheet>
+        <DialogHeading>My dialog heading</DialogHeading>
+        <DialogDescription>My dialog description</DialogDescription>
+        <DialogClose>Close</DialogClose>
+      </DialogContent>
+    </Dialog>
+  ),
+};
+
 export const WithCloseButton: Story = {
   render: (args) => (
     <Dialog {...args}>

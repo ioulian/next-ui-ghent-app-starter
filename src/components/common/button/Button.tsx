@@ -103,7 +103,8 @@ const Button = polyRef<"button" | "a", Props>(
         ref={ref}
         type={!Element || Element === "button" ? props.type ?? "button" : undefined}
         {...addClassNameToProps(props, classes.root)}
-        disabled={disabled || isLoading}
+        disabled={disabled}
+        aria-disabled={isLoading || disabled}
         onClick={onClick ? newOnClick : undefined}
       >
         <span className={classes.content}>
@@ -129,7 +130,6 @@ const Button = polyRef<"button" | "a", Props>(
           className={classes.spinner}
           aria-hidden={!isLoading}
           aria-label={isLoading ? t("spinner.aria-label") : ""}
-          aria-busy={isLoading}
         />
       </Element>
     );

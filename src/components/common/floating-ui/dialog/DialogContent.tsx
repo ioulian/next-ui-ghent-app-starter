@@ -23,8 +23,8 @@ import { floatingOverlay } from "./Dialog.styles.css";
 
 const DialogContent = forwardRef<
   HTMLDivElement,
-  { withCloseButton?: boolean } & HTMLProps<HTMLDivElement>
->(({ withCloseButton, ...props }, propRef) => {
+  { withCloseButton?: boolean; asSheet?: boolean } & HTMLProps<HTMLDivElement>
+>(({ withCloseButton, asSheet = false, ...props }, propRef) => {
   const context = useDialogContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
   const parentId = useFloatingParentNodeId();
@@ -48,7 +48,7 @@ const DialogContent = forwardRef<
     <Wrapper>
       <FloatingNode id={context.nodeId}>
         <FloatingPortal>
-          <FloatingOverlay lockScroll className={floatingOverlay} style={styles}>
+          <FloatingOverlay lockScroll className={floatingOverlay({ asSheet })} style={styles}>
             <FloatingFocusManager context={context.context}>
               <Floater
                 ref={ref}

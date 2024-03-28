@@ -30,7 +30,7 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
-  render: (args) => <Button {...args} data-foo="bar" />,
+  render: (args) => <Button {...args} />,
   args: {
     intent: "primary",
     size: "normal",
@@ -43,7 +43,7 @@ export const Default: Story = {
 };
 
 export const Loading: Story = {
-  render: (args) => <Button {...args} data-foo="bar" />,
+  render: (args) => <Button {...args} />,
   args: {
     intent: "primary",
     size: "normal",

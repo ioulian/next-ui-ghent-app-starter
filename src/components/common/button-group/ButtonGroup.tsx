@@ -13,8 +13,8 @@ const ButtonGroup: FC<
      */
     align?: ArrayElement<(typeof buttonGroup.variantMap)["align"]>;
   } & InferComponentProps<"div">
-> = ({ children, align = "start", ...props }) => {
-  return <div {...addClassNameToProps(props, buttonGroup({ align }).root)}>{children}</div>;
+> = ({ align = "start", ...props }) => {
+  return <div {...addClassNameToProps(props, buttonGroup({ align }).root)} />;
 };
 
 /**

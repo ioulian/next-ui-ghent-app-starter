@@ -1,9 +1,17 @@
-import { css } from "@/styled-system/css";
+import { cva } from "@/styled-system/css";
 
-export const floatingOverlay = css({
-  backgroundColor: "black/50",
-  display: "grid",
-  placeItems: "center",
-  padding: "1rem",
-  backdropFilter: "blur(10px)",
+export const floatingOverlay = cva({
+  base: {
+    backgroundColor: "black/50",
+    backdropFilter: "blur(10px)",
+  },
+  variants: {
+    asSheet: {
+      false: {
+        display: "grid",
+        placeItems: "center",
+        padding: "1rem",
+      },
+    },
+  },
 });

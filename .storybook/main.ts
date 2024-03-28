@@ -23,6 +23,10 @@ const config: StorybookConfig = {
       nextConfigPath: path.resolve(__dirname, "../next.config.mjs"),
     },
   },
+  typescript: {
+    check: true,
+    reactDocgen: "react-docgen-typescript",
+  },
   docs: {
     autodocs: "tag",
   },

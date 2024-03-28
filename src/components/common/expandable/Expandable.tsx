@@ -28,7 +28,7 @@ const Expandable: FC<
     summary: ReactNode;
 
     /**
-     * Controlled
+     * Controlled mode
      */
     open?: boolean;
 
