@@ -61,7 +61,7 @@ export const Example: Story = {
           label="First name"
           name="firstName"
           options={{
-            ...required,
+            required,
           }}
         >
           <Input />
@@ -73,7 +73,7 @@ export const Example: Story = {
           label="Last name"
           name="lastName"
           options={{
-            ...required,
+            required,
           }}
         >
           <Input />
@@ -83,8 +83,8 @@ export const Example: Story = {
         label="Email address"
         name="emailAddress"
         options={{
-          ...required,
-          ...email,
+          required,
+          pattern: email,
         }}
       >
         <Input type="email" />
@@ -94,7 +94,7 @@ export const Example: Story = {
         name="color"
         inputWrapper={ReactSelectContainer}
         options={{
-          ...required,
+          required,
         }}
       >
         {({ field, props: { id, ...props } }) => {
@@ -115,7 +115,7 @@ export const Example: Story = {
         name="hobbies"
         inputWrapper={List}
         options={{
-          ...required,
+          required,
         }}
       >
         <Checkbox key="1" inputValue="value1">
@@ -142,9 +142,9 @@ export const Example: Story = {
           }}
           label="Password"
           name="password"
-          description="At least 9 chars, lowercase, uppercase, special char and number"
+          description="At least 8 chars, lowercase, uppercase, special char and number"
           options={{
-            ...password,
+            pattern: password,
           }}
         >
           <PasswordInput />
@@ -166,7 +166,7 @@ export const Example: Story = {
         name="privacy"
         isToggle
         options={{
-          ...required,
+          required,
         }}
       >
         <SingleCheckbox />

@@ -138,6 +138,13 @@ const FormField = <T extends FormValueType>({
 
   const Component = asFieldSet ? "fieldset" : "div";
 
+  const sharedProps = {
+    id: name,
+    isError: !!error,
+    ...(describedBy && { "aria-describedby": describedBy }),
+    "aria-invalid": !!error ? ("true" as const) : undefined,
+  };
+
   return (
     // @ts-expect-error TODO: fixme
     <Component {...addClassNameToProps(props, formField, isToggle && formFieldToggle)}>
@@ -159,10 +166,7 @@ const FormField = <T extends FormValueType>({
               return children({
                 ...args,
                 props: {
-                  id: name,
-                  isError: !!error,
-                  ...(describedBy && { "aria-describedby": describedBy }),
-                  ...(error && { "aria-invalid": "true" }),
+                  ...sharedProps,
                 },
               });
             }}
@@ -174,11 +178,8 @@ const FormField = <T extends FormValueType>({
                 ? cloneElement(child, {
                     ...child.props,
                     ...registerProps,
-                    isError: !!error,
                     name,
-                    id: name,
-                    ...(describedBy && { "aria-describedby": describedBy }),
-                    ...(error && { "aria-invalid": "true" }),
+                    ...sharedProps,
                   })
                 : /* c8 ignore next */
                   null,

@@ -61,8 +61,8 @@ export const WithInput: Story = {
     label: "Email Address",
     name: "emailAddress",
     options: {
-      ...required,
-      ...email,
+      required,
+      pattern: email,
     },
     description: "Description",
     children: <Input iconBefore={<SvgSprite src={icon} />} />,
@@ -105,7 +105,7 @@ export const WithSelect: Story = {
     label: "Role",
     name: "emailAddress",
     options: {
-      ...required,
+      required,
     },
     description: "Description",
     children: (
@@ -133,7 +133,7 @@ export const WithDate: Story = {
     label: "Date",
     name: "date",
     options: {
-      ...required,
+      required,
     },
     description: "Description",
     children: <Input type="date" />,
@@ -150,7 +150,7 @@ export const WithDateTime: Story = {
     label: "Date and time",
     name: "date",
     options: {
-      ...required,
+      required,
     },
     description: "Description",
     children: <Input type="datetime-local" />,
@@ -167,7 +167,7 @@ export const WithTextarea: Story = {
     label: "Textarea",
     name: "emailAddress",
     options: {
-      ...required,
+      required,
     },
     description: "Description",
     children: <TextArea />,
@@ -185,7 +185,7 @@ export const WithSingleCheckbox: Story = {
     name: "emailAddress",
     isToggle: true,
     options: {
-      ...required,
+      required,
     },
     children: <SingleCheckbox />,
   },
@@ -202,7 +202,7 @@ export const WithIndeterminateSingleCheckbox: Story = {
     name: "emailAddress",
     isToggle: true,
     options: {
-      ...required,
+      required,
     },
     children: <SingleCheckbox indeterminate />,
   },
@@ -219,7 +219,7 @@ export const WithToggle: Story = {
     name: "emailAddress",
     isToggle: true,
     options: {
-      ...required,
+      required,
     },
     children: <Toggle />,
   },
@@ -239,7 +239,7 @@ export const WithRadioList: Story = {
     label: "Choose one",
     name: "emailAddress",
     options: {
-      ...required,
+      required,
     },
     inputWrapper: List,
     asFieldSet: true,
@@ -260,7 +260,7 @@ export const WithCheckboxList: Story = {
     label: "Choose one",
     name: "emailAddress",
     options: {
-      ...required,
+      required,
     },
     inputWrapper: List,
     asFieldSet: true,
@@ -278,7 +278,7 @@ export const WithReactSelect: Story = {
     name: "emailAddress",
     inputWrapper: ReactSelectContainer,
     options: {
-      ...required,
+      required,
     },
     asFieldSet: true,
     children: ({ field, props: { id, ...props } }) => (
@@ -307,7 +307,7 @@ export const WithMultiReactSelect: Story = {
     name: "emailAddress",
     inputWrapper: ReactSelectContainer,
     options: {
-      ...required,
+      required,
     },
     asFieldSet: true,
     children: ({ field, props: { id, ...props } }) => (
@@ -337,7 +337,7 @@ export const WithReactDayPicker: Story = {
     name: "inputName",
     inputWrapper: ReactDayPickerContainer,
     options: {
-      ...required,
+      required,
     },
     children: ({ field: { onChange, value, ...field }, props: { ...props } }) => {
       return (
@@ -366,7 +366,7 @@ export const WithReactDateRangePicker: Story = {
     name: "emailAddress",
     inputWrapper: ReactDayPickerContainer,
     options: {
-      ...required,
+      required,
     },
     children: ({ field: { onChange, value, ...field }, props: { ...props } }) => {
       return (

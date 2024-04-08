@@ -32,7 +32,7 @@ describe("Form", () => {
     const spy = jest.fn();
     render(
       <Form onSubmit={spy} data-testid="test">
-        <FormField name="test-name" options={{ ...required }} description="test">
+        <FormField name="test-name" options={{ required }} description="test">
           <Input />
         </FormField>
         <button type="submit" data-testid="submit">

@@ -66,7 +66,7 @@ const Test: FC = () => {
             label="First name"
             name="firstName"
             options={{
-              ...required,
+              required,
             }}
           >
             <Input />
@@ -76,8 +76,8 @@ const Test: FC = () => {
           label="Email address"
           name="emailAddress"
           options={{
-            ...required,
-            ...email,
+            required,
+            pattern: email,
           }}
         >
           <Input type="email" />
@@ -87,7 +87,7 @@ const Test: FC = () => {
           name="hobbies"
           inputWrapper={List}
           options={{
-            ...required,
+            required,
           }}
         >
           <Checkbox key="1" inputValue="value1">
@@ -136,7 +136,7 @@ const Test: FC = () => {
           name="privacy"
           isToggle
           options={{
-            ...required,
+            required,
           }}
         >
           <SingleCheckbox />

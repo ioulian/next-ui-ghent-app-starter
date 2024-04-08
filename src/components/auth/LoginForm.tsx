@@ -38,7 +38,7 @@ const LoginForm: FC = () => {
         label="Username"
         name="username"
         options={{
-          ...required,
+          required,
         }}
       >
         <Input />
@@ -50,7 +50,7 @@ const LoginForm: FC = () => {
         label="Password"
         name="password"
         options={{
-          ...required,
+          required,
         }}
       >
         <PasswordInput />

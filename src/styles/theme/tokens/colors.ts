@@ -56,13 +56,13 @@ export const colors = defineTokens.colors({
     900: { value: "#49130E" },
     950: { value: "#330D0A" },
   },
-  body: { value: "{colors.secondary.900}" },
-  heading: { value: "{colors.primary.700}" },
+  body: { value: "{colors.secondary.950}" },
+  heading: { value: "current" },
   overlay: { value: "{colors.primary.950}" },
   form: {
     input: {
       color: { value: "{colors.body}" },
-      border: { value: "{colors.secondary.700}" },
+      border: { value: "{colors.secondary.900}" },
       background: { value: "{colors.secondary.50}" },
     },
     select: {

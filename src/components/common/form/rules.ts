@@ -1,24 +1,18 @@
-import { FieldPath, FieldValues, UseFormWatch } from "react-hook-form";
+import { FieldPath, FieldValues, RegisterOptions, UseFormWatch } from "react-hook-form";
 
-export const required = {
-  required: {
-    value: true,
-    message: "required",
-  },
+export const required: RegisterOptions["required"] = {
+  value: true,
+  message: "required",
 };
 
-export const email = {
-  pattern: {
-    value: /^\S+@\S+$/,
-    message: "email",
-  },
+export const email: RegisterOptions["pattern"] = {
+  value: /^\S+@\S+$/,
+  message: "email",
 };
 
-export const password = {
-  pattern: {
-    value: /(?=^.{9,}$)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9]).*/,
-    message: "password",
-  },
+export const password: RegisterOptions["pattern"] = {
+  value: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,}$/,
+  message: "password",
 };
 
 export const passwordRepeat =
