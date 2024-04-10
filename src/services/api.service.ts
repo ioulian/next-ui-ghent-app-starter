@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { getAccessToken, signOut } from "@/auth";
 
 /**
  * Request statusses to be used in data fetching flow
@@ -101,17 +101,22 @@ export const getAuthFetcher =
     const [input, init] = args;
     const newInit = injectHeaders(await getAuthorizationHeaders(), init);
 
-    return getFetcher<T>()(input, newInit);
+    return getFetcher<T>()(input, newInit).catch((err: { error: number }) => {
+      if (err.error === 401) {
+        signOut();
+      }
+      throw err;
+    });
   };
 
 /**
  * Will return correct Authorization header with JWT access token (if the user is logged in)
  */
 export const getAuthorizationHeaders = async (): Promise<HeadersInit> => {
-  const session = await auth();
-  // TODO: handle expired token
-  if (session) {
-    return { Authorization: `Bearer ${session.access_token}` };
+  const token = await getAccessToken();
+
+  if (token) {
+    return { Authorization: `Bearer ${token}` };
   }
 
   return {};

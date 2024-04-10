@@ -37,17 +37,11 @@ export const login = (username: string, password: string): Promise<AuthToken> =>
   });
 };
 
-let refreshAbortController: AbortController | null = null;
-
 /**
  * Will send a request to the backend to try to refresh token
  */
 export const refreshToken = (refreshToken: AuthToken["refresh_token"]): Promise<AuthToken> => {
   return new Promise((resolve, reject) => {
-    // TODO: check if needed
-    refreshAbortController?.abort();
-    refreshAbortController = new AbortController();
-
     getFetcher<AuthToken>()(`${process.env.API_DOMAIN}${process.env.AUTH_REFRESH_URL}`, {
       method: "POST",
       body: JSON.stringify({
@@ -56,7 +50,6 @@ export const refreshToken = (refreshToken: AuthToken["refresh_token"]): Promise<
         client_id: process.env.AUTH_CLIENT_ID, // TODO: delete
         client_secret: process.env.AUTH_CLIENT_SECRET, // TODO: delete
       }),
-      signal: refreshAbortController.signal,
       cache: "no-store",
     })
       .then(validateToken)

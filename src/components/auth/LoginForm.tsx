@@ -6,11 +6,10 @@ import { FC, memo, useCallback, useState } from "react";
 import FormField from "@/components/common/form/form-field/FormField";
 import Form from "@/components/common/form/form/Form";
 import { required } from "@/components/common/form/rules";
-import { type CredentialsType } from "@/auth";
 import Input from "@/components/common/form/input/Input";
 import PasswordInput from "@/components/common/form/input/PasswordInput";
 import Button from "@/components/common/button/Button";
-import { login } from "@/components/auth/utils";
+import { CredentialsType, login } from "@/components/auth/utils";
 import { API_REQUEST_STATUS } from "@/services/api.service";
 
 const LoginForm: FC = () => {

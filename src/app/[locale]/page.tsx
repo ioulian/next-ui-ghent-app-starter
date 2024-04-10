@@ -18,6 +18,7 @@ import Ellipsis from "@/components/common/ellipsis/Ellipsis";
 import Expandable from "@/components/common/expandable/Expandable";
 import { generateSanitizedMetadata } from "@/utils/next";
 import Test2 from "@/app/[locale]/_components/Test2";
+import Test3 from "@/app/[locale]/_components/Test3";
 import Popover from "@/components/common/floating-ui/popover/Popover";
 import PopoverTrigger from "@/components/common/floating-ui/popover/PopoverTrigger";
 import PopoverContent from "@/components/common/floating-ui/popover/PopoverContent";
@@ -199,6 +200,7 @@ const Page: NextPage<Props> = ({}) => {
       </Ellipsis>
 
       <Test2 />
+      <Test3 />
 
       <SvgSprite src={sampleSvgSprite} />
     </div>

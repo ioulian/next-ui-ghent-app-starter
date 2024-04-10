@@ -5,7 +5,7 @@ import { FC } from "react";
 import { getSession } from "@/auth";
 import { getAuthFetcher } from "@/services/api.service";
 
-const Test2: FC = async () => {
+const Test3: FC = async () => {
   const session = await getSession();
 
   if (!session?.token.access) {
@@ -14,14 +14,14 @@ const Test2: FC = async () => {
 
   try {
     const body = await getAuthFetcher<{ totalItems: number }>()(
-      `${process.env.API_DOMAIN}/api/customer_projects`,
+      `${process.env.API_DOMAIN}/api/contacts`,
       { cache: "no-store" },
     );
 
     return (
       <>
         <div>{session?.user?.username}</div>
-        <div>Projects: {body.totalItems}</div>
+        <div>Contacts: {body.totalItems}</div>
       </>
     );
   } catch (e) {
@@ -31,4 +31,4 @@ const Test2: FC = async () => {
   }
 };
 
-export default Test2;
+export default Test3;

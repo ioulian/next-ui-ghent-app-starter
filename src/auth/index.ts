@@ -1,112 +1,164 @@
-import NextAuth, { type NextAuthConfig } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { JWT } from "next-auth/jwt";
+import merge from "lodash/merge";
 
-import { AuthToken, login, refreshToken } from "@/services/auth-api.service";
+import { login, refreshToken } from "@/services/auth-api.service";
+import {
+  getFromSessionStorage,
+  getSessionId,
+  removeFromSessionStorage,
+  setToSessionStorage,
+} from "@/services/session.service";
+import storage from "@/lib/storage";
+import tokenRefreshMap from "@/auth/tokenRefreshMap";
+import { redirect } from "@/i18n/navigation";
 
-// TODO: put declarations somewhere else
-declare module "next-auth" {
-  interface User extends AuthToken {
-    name?: string | null;
-  }
-  interface Session extends AuthToken {}
-}
+export const SESSION_STORAGE_KEY = "auth" as const;
 
-//import "next-auth/jwt";
-declare module "next-auth/jwt" {
-  interface JWT extends AuthToken {}
-}
-
-export type CredentialsType = {
-  username: string;
-  password: string;
+export type AuthSessionType = {
+  user: {
+    id: string;
+    username: string;
+  };
+  token: {
+    access: string;
+    refresh: string;
+    expires: number;
+    isRefreshing: boolean;
+  };
 };
 
-const refreshAccessToken = async (token: JWT): Promise<JWT> => {
+/**
+ * Will try to sign in the user and set user data/tokens in session
+ *
+ * @param username Username to send to API
+ * @param password Password to send to API
+ */
+export const signIn = async (username: string, password: string): Promise<void> => {
   try {
-    const newToken = await refreshToken(token.refresh_token);
+    const response = await login(username, password);
 
-    return {
-      ...token,
-      ...newToken,
-      expires_in: Date.now() + newToken.expires_in * 1000,
+    const storageItem: AuthSessionType = {
+      // TODO:
+      user: {
+        id: "test",
+        username: "username",
+      },
+      token: {
+        access: response.access_token,
+        refresh: response.refresh_token,
+        expires: Date.now() + response.expires_in * 1000,
+        isRefreshing: false,
+      },
     };
-  } catch (error) {
-    return {
-      ...token,
-      error: "RefreshAccessTokenError",
-    };
+    await setToSessionStorage(SESSION_STORAGE_KEY, JSON.stringify(storageItem));
+  } catch (e) {
+    console.error(e);
   }
 };
 
-export const config = {
-  session: {
-    strategy: "jwt",
-    maxAge: parseInt(process.env.AUTH_COOKIE_MAX_AGE ?? "30", 10) * 24 * 60 * 60, // 30 days by default
-  },
-  callbacks: {
-    jwt: async ({ token, user }) => {
-      // Initial sign in
-      if (user) {
-        token.id = user.id;
-        token.email = user.email;
+/**
+ * Will clear auth session data, thus signing off the user
+ */
+export const signOut = async () => {
+  await removeFromSessionStorage(SESSION_STORAGE_KEY);
+};
 
-        // TODO: typescheck these:
-        token.access_token = user.access_token;
-        token.refresh_token = user.refresh_token;
+/**
+ * @returns User auth session if set
+ */
+export const getSession = async (): Promise<AuthSessionType | undefined> => {
+  const item = await getFromSessionStorage(SESSION_STORAGE_KEY);
+  if (typeof item === "undefined") {
+    return undefined;
+  }
 
-        token.expires_in = Date.now() + user.expires_in * 1000; // TODO: this logic needs to be adjusted
+  return item as unknown as AuthSessionType;
+};
+
+/**
+ * Will return if user is logged in
+ */
+export const getIsLoggedIn = async () => {
+  const session = await getSession();
+
+  return typeof session?.token.access === "string";
+};
+
+/**
+ * Will auto refresh token if it's expired
+ *
+ * @returns Access token if set
+ */
+export const getAccessToken = async (): Promise<string | undefined> => {
+  const session = await getSession();
+  const sessionId = getSessionId();
+
+  // If no sessionID is found or no tokens have been set, do nothing
+  // This means the user hasn't been logged in
+  if (!session?.token || !session?.token?.access || !sessionId) {
+    return undefined;
+  }
+
+  // Check if token is expired
+  if (Date.now() > (session?.token?.expires ?? 0)) {
+    const isRefreshing = tokenRefreshMap[sessionId] === true;
+
+    // Check if the token is already being refreshed (this will be the case if you have multiple simultaneous requests)
+    if (!isRefreshing) {
+      // TODO: find a cleaner way to store these objects
+      tokenRefreshMap[sessionId] = true;
+
+      try {
+        const newToken = await refreshToken(session?.token.refresh);
+        const storageItem = merge(session, {
+          token: {
+            access: newToken.access_token,
+            refresh: newToken.refresh_token,
+            expires: Date.now() + newToken.expires_in * 1000,
+            isRefreshing: false,
+          },
+        });
+        await setToSessionStorage(SESSION_STORAGE_KEY, JSON.stringify(storageItem));
+
+        delete tokenRefreshMap[sessionId];
+        return newToken.access_token;
+      } catch (e) {
+        console.error(e);
       }
 
-      // Return previous token if the access token has not expired yet
-      if (Date.now() < token.expires_in) {
-        return token;
-      }
+      delete tokenRefreshMap[sessionId];
+      return undefined;
+    } else {
+      // If the token is already refreshing, wait for changes and return the latest token
+      return new Promise(async (resolve) => {
+        const unwatch = await storage.watch(async () => {
+          if (tokenRefreshMap[sessionId] !== true) {
+            await unwatch();
+            const newSession = await getSession();
 
-      // Access token has expired, try to update it
-      // TODO: We should logout the user here if this fails
-      return await refreshAccessToken(token);
-    },
-    session: async ({ session, token }) => {
-      return {
-        ...session,
-        access_token: token.access_token,
-      };
-    },
-  },
-  providers: [
-    CredentialsProvider({
-      async authorize(credentials) {
-        const { username, password } = credentials as {
-          username?: unknown;
-          password?: unknown;
-        };
+            resolve(newSession?.token.access);
+          }
+        });
+      });
+    }
+  }
 
-        if (
-          typeof username !== "string" ||
-          username.trim() === "" ||
-          typeof password !== "string" ||
-          password.trim() === ""
-        ) {
-          // TODO: translate maybe?
-          throw new Error("Invalid login data");
-        }
+  return session?.token?.access;
+};
 
-        // TODO: we should catch errors here
-        try {
-          const response = await login(username, password);
+/**
+ * Will mark current page as authenticated only and will redirect user if he's not logged in
+ */
+export const requireLoggedIn = async (redirectTo?: string) => {
+  const isLoggedIn = await getIsLoggedIn();
 
-          return { name: username as string, id: "122", ...response };
-        } catch (e) {
-          return null;
-        }
+  if (!isLoggedIn) {
+    redirect({
+      // TODO: redirect to .env var? Login page?
+      // @ts-expect-error FIXME:
+      pathname: redirectTo,
+      query: {
+        isNotLoggedIn: true,
       },
-
-      name: "Credentials",
-      credentials: {},
-    }),
-  ],
-  debug: process.env.NODE_ENV === "development",
-} satisfies NextAuthConfig;
-
-export const { handlers, auth, signIn, signOut } = NextAuth(config);
+    });
+  }
+};

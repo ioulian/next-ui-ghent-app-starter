@@ -59,6 +59,7 @@ const Spinner: FC<
     <span
       role="progressbar"
       aria-busy
+      aria-label={typeof children === "string" ? children : undefined}
       {...addClassNameToProps(props, classes.root)}
       style={spinnerStyle}
     >

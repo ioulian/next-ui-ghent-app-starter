@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 
-import { auth, signOut } from "@/auth";
+import { signOut, getIsLoggedIn } from "@/auth";
 import Button from "@/components/common/button/Button";
 import LoginButton from "@/components/auth/LoginButton";
 import LocaleSwitcher from "@/components/common/locale-switcher/LocaleSwitcher";
@@ -12,7 +12,7 @@ import Heading from "@/components/common/heading/Heading";
 import { Link } from "@/i18n/navigation";
 
 const Header: FC = async () => {
-  const session = await auth();
+  const isLoggedIn = await getIsLoggedIn();
 
   return (
     <div
@@ -33,7 +33,7 @@ const Header: FC = async () => {
         </div>
         <div className={cx(css({ marginLeft: "auto" }), hstack({ gap: "1rem" }))}>
           <LocaleSwitcher />
-          {!session?.user ? (
+          {!isLoggedIn ? (
             <LoginButton />
           ) : (
             <form

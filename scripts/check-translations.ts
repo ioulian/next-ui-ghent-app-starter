@@ -111,6 +111,6 @@ check().then((isCorrect) => {
     process.exit(1);
   }
 
-  console.log(getSimpleSuccessMessage("Everything checks out!"));
+  console.log(getSimpleSuccessMessage("Translations structure checks out!"));
   process.exit(0);
 });
