@@ -1,6 +1,6 @@
 import { css } from "@/styled-system/css";
 
-export const textarea = css({
+export const textArea = css({
   fontFamily: "inherit",
   lineHeight: "1.5rem",
   padding: "9px 17px",

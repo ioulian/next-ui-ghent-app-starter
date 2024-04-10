@@ -4,7 +4,7 @@ import { InferComponentProps } from "@/types/component";
 import { baseFormField } from "@/components/common/form/form-field/FormField.styles";
 import { addClassNameToProps } from "@/styles/utils";
 
-import { textarea } from "./Textarea.styles";
+import { textArea } from "./TextArea.styles";
 
 const TextArea = forwardRef<
   HTMLTextAreaElement,
@@ -14,7 +14,7 @@ const TextArea = forwardRef<
     <textarea
       cols={40}
       rows={5}
-      {...addClassNameToProps(props, baseFormField({ isError }), textarea)}
+      {...addClassNameToProps(props, baseFormField({ isError }), textArea)}
       ref={ref}
     />
   );

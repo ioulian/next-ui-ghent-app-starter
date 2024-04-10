@@ -12,7 +12,7 @@ import ReactDayPickerContainer from "@/components/common/form/react-day-picker/R
 import { email, required } from "../rules";
 import Form from "../form/Form";
 import Select from "../select/Select";
-import TextArea from "../textarea/TextArea";
+import TextArea from "../text-area/TextArea";
 import SingleCheckbox from "../single-checkbox/SingleCheckbox";
 import Radio from "../collection/radio/Radio";
 import List from "../collection/List";
@@ -164,7 +164,7 @@ export const WithTextarea: Story = {
     </Form>
   ),
   args: {
-    label: "Textarea",
+    label: "TextArea",
     name: "emailAddress",
     options: {
       required,
