@@ -1,5 +1,3 @@
-import { getAccessToken, signOut } from "@/auth";
-
 /**
  * Request statusses to be used in data fetching flow
  */
@@ -55,14 +53,50 @@ export const getContentTypeHeaders = (): HeadersInit => {
 };
 
 /**
+ * General (typed) fetcher of the application, will inject needed headers and try to return (typed) parsed json response object.
+ */
+export const getFetcher =
+  <TResponse extends Record<string, unknown>>() =>
+  async (...args: [input: RequestInfo, init?: RequestInit]) => {
+    const [input, init] = args;
+    const newInit = injectHeaders(getContentTypeHeaders(), init);
+    const res = await fetch(input, newInit);
+
+    return apiToJson<TResponse>()(res);
+  };
+
+/**
+ * Helper function to inject headers to existing RequestInit
+ *
+ * @param headers Headers to inject
+ * @param init
+ */
+export const injectHeaders = (headers: HeadersInit, init?: RequestInit): RequestInit => {
+  let toReturn: RequestInit = {};
+
+  if (init) {
+    toReturn = init;
+  }
+
+  toReturn.headers ??= {};
+
+  toReturn.headers = {
+    ...headers,
+    ...toReturn.headers,
+  };
+
+  return toReturn;
+};
+
+/**
  * Helper function to validate the json response (basic). Will look for specific keys in the response and fail if they are not provided.
  *
  * @param keys Keys to look for in the response object
  * @param errorMessage Error message to return when the check fails
  */
 export const validateData =
-  <T extends Record<string, unknown>>(keys: (keyof T)[], errorMessage: string) =>
-  (body: T): Promise<T> =>
+  <TResponse extends Record<string, unknown>>(keys: (keyof TResponse)[], errorMessage: string) =>
+  (body: TResponse): Promise<TResponse> =>
     new Promise((resolve, reject) => {
       const isValid = keys.every((key) => {
         if (typeof body[key] === "undefined") {
@@ -78,72 +112,3 @@ export const validateData =
         reject(errorMessage);
       }
     });
-
-/**
- * General (typed) fetcher of the application, will inject needed headers and try to return (typed) parsed json response object.
- */
-export const getFetcher =
-  <T extends Record<string, unknown>>() =>
-  async (...args: [input: RequestInfo, init?: RequestInit]) => {
-    const [input, init] = args;
-    const newInit = injectHeaders(getContentTypeHeaders(), init);
-    const res = await fetch(input, newInit);
-
-    return apiToJson<T>()(res);
-  };
-
-/**
- * Wrapper for getFetcher to be used for getting protected data where Authorization header(s) are needed.
- */
-export const getAuthFetcher =
-  <T extends Record<string, unknown>>() =>
-  async (...args: [input: RequestInfo, init?: RequestInit]) => {
-    const [input, init] = args;
-    const newInit = injectHeaders(await getAuthorizationHeaders(), init);
-
-    return getFetcher<T>()(input, newInit).catch((err: { error: number }) => {
-      if (err.error === 401) {
-        signOut();
-      }
-      throw err;
-    });
-  };
-
-/**
- * Will return correct Authorization header with JWT access token (if the user is logged in)
- */
-export const getAuthorizationHeaders = async (): Promise<HeadersInit> => {
-  const token = await getAccessToken();
-
-  if (token) {
-    return { Authorization: `Bearer ${token}` };
-  }
-
-  return {};
-};
-
-/**
- * Helper function to inject headers to existing RequestInit
- *
- * @param headers Headers to inject
- * @param init
- */
-const injectHeaders = (headers: HeadersInit, init?: RequestInit): RequestInit => {
-  let toReturn: RequestInit = {};
-
-  if (init) {
-    toReturn = init;
-  }
-
-  // TODO: test of this works: `toReturn.headers ??= {}`
-  if (!toReturn.headers) {
-    toReturn.headers = {};
-  }
-
-  toReturn.headers = {
-    ...headers,
-    ...toReturn.headers,
-  };
-
-  return toReturn;
-};

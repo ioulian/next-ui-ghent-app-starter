@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import { htmlFontClass } from "@/styles/fonts";
 import Header from "@/app/[locale]/_components/Header";
 import Providers from "@/components/providers/Providers";
+import { token } from "@/styled-system/tokens";
 
 type Props = Readonly<{
   children: ReactNode;
@@ -15,7 +16,7 @@ type Props = Readonly<{
 
 export function generateViewport(): Viewport {
   return {
-    themeColor: "#0017ee",
+    themeColor: token("colors.primary.500"),
     initialScale: 1,
     userScalable: true,
   };
@@ -36,7 +37,6 @@ export async function generateMetadata({
 }
 
 let Toolbar: React.ComponentType = () => null;
-
 if (process.env.NODE_ENV === "development") {
   Toolbar = dynamic(() => import("../../components/providers/Toolbar"));
 }

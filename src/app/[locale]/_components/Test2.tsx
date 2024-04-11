@@ -3,7 +3,7 @@
 import { FC } from "react";
 
 import { getSession } from "@/auth";
-import { getAuthFetcher } from "@/services/api.service";
+import { getAuthFetcher } from "@/services/auth-api.service";
 
 const Test2: FC = async () => {
   const session = await getSession();

@@ -14,7 +14,7 @@ It contains a lot of useful presets and common components to be used in your pro
 - Bundle analyser (Provided by Next.js);
 - [NVM](https://github.com/nvm-sh/nvm) preset;
 - .env variables (Provided by Next.js);
-- [Auth.js](https://authjs.dev/) preset;
+- Custom auth implementation using JWT;
 - [SVG Sprites](https://www.npmjs.com/package/svg-sprite-loader) (Custom or with [Tabler icons](https://tabler-icons.io/)). SVG spritesheet is exported to .svg file;
 - Font optimisation (Provided by Next.js);
 - [Storybook](https://github.com/storybookjs/storybook) with a11y checks, next-intl support and Next.js support;
@@ -38,9 +38,15 @@ After installation, you'll probably want to use correct node version and install
 nvm use && npm install
 ```
 
+### Storybook
+
+```bash
+npm run storybook
+```
+
 ### Remove demo content
 
-- Remove content from `src/app/[locale]/page.tsx` and remove folders: `src/app/[locale]/serverside` and `src/app/[locale]/_components`
+- Remove content from `src/app/[locale]/page.tsx` and remove folders: `src/app/[locale]/serverside`, `src/app/[locale]/auth-only` and `src/app/[locale]/_components`
 
 ## Go live checklist
 

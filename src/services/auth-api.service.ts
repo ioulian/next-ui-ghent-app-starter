@@ -1,4 +1,5 @@
-import { getFetcher, validateData } from "@/services/api.service";
+import { getAccessToken, signOut } from "@/auth";
+import { getFetcher, injectHeaders, validateData } from "@/services/api.service";
 
 export type AuthToken = {
   access_token: string;
@@ -7,9 +8,39 @@ export type AuthToken = {
 };
 
 /**
+ * Wrapper for getFetcher to be used for getting protected data where Authorization header(s) are needed.
+ */
+export const getAuthFetcher =
+  <TResponse extends Record<string, unknown>>() =>
+  async (...args: [input: RequestInfo, init?: RequestInit]) => {
+    const [input, init] = args;
+    const newInit = injectHeaders(await getAuthorizationHeaders(), init);
+
+    return getFetcher<TResponse>()(input, newInit).catch((err: { error: number }) => {
+      if (err.error === 401) {
+        signOut();
+      }
+      throw err;
+    });
+  };
+
+/**
+ * Will return correct Authorization header with JWT access token (if the user is logged in)
+ */
+export const getAuthorizationHeaders = async (): Promise<HeadersInit> => {
+  const token = await getAccessToken();
+
+  if (token) {
+    return { Authorization: `Bearer ${token}` };
+  }
+
+  return {};
+};
+
+/**
  * Helper function to validate returned token (basic validation)
  */
-const validateToken = validateData<AuthToken>(
+export const validateToken = validateData<AuthToken>(
   ["access_token", "refresh_token"],
   // TODO: we can translate this
   "No token received, please try again later.",

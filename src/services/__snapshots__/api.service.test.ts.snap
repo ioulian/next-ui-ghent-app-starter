@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`api.service injectHeaders works correctly 1`] = `
+{
+  "headers": {
+    "Authorization": "1",
+  },
+}
+`;
+
+exports[`api.service injectHeaders works correctly 2`] = `
+{
+  "headers": {
+    "Authorization": "1",
+  },
+}
+`;
+
+exports[`api.service injectHeaders works correctly 3`] = `
+{
+  "headers": {
+    "Authorization": "1",
+    "Content-Type": "application/json",
+  },
+}
+`;
+
+exports[`api.service injectHeaders works correctly 4`] = `
+{
+  "headers": {
+    "Authorization": "none",
+  },
+}
+`;

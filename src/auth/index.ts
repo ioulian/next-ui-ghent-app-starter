@@ -39,7 +39,7 @@ export const signIn = async (username: string, password: string): Promise<void> 
       // TODO:
       user: {
         id: "test",
-        username: "username",
+        username,
       },
       token: {
         access: response.access_token,
@@ -57,6 +57,7 @@ export const signIn = async (username: string, password: string): Promise<void> 
  * Will clear auth session data, thus signing off the user
  */
 export const signOut = async () => {
+  // TODO: we need to find a way to cleanup old/expired sessions
   await removeFromSessionStorage(SESSION_STORAGE_KEY);
 };
 
