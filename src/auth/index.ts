@@ -22,7 +22,6 @@ export type AuthSessionType = {
     access: string;
     refresh: string;
     expires: number;
-    isRefreshing: boolean;
   };
 };
 
@@ -46,7 +45,6 @@ export const signIn = async (username: string, password: string): Promise<void> 
         access: response.access_token,
         refresh: response.refresh_token,
         expires: Date.now() + response.expires_in * 1000,
-        isRefreshing: false,
       },
     };
     await setToSessionStorage(SESSION_STORAGE_KEY, JSON.stringify(storageItem));
@@ -104,7 +102,6 @@ export const getAccessToken = async (): Promise<string | undefined> => {
 
     // Check if the token is already being refreshed (this will be the case if you have multiple simultaneous requests)
     if (!isRefreshing) {
-      // TODO: find a cleaner way to store these objects
       tokenRefreshMap[sessionId] = true;
 
       try {
@@ -114,7 +111,6 @@ export const getAccessToken = async (): Promise<string | undefined> => {
             access: newToken.access_token,
             refresh: newToken.refresh_token,
             expires: Date.now() + newToken.expires_in * 1000,
-            isRefreshing: false,
           },
         });
         await setToSessionStorage(SESSION_STORAGE_KEY, JSON.stringify(storageItem));

@@ -5,6 +5,16 @@
         "aria-label": "Working"
       }
     },
+    "dataTable": {
+      "sorting": {
+        "asc": "Sort ascending",
+        "desc": "Sort descending",
+        "clear": "Clear sorting"
+      },
+      "pageSize": {
+        "label": "Show {pageSize} per page"
+      }
+    },
     "form": {
       "description": {
         "prefix": "Description:"
