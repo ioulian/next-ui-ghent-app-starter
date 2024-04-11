@@ -4,62 +4,42 @@ import type { Meta, StoryObj } from "@storybook/react";
 import iconChevronRight from "@tabler/icons/chevron-right.svg";
 import iconChevronLeft from "@tabler/icons/chevron-left.svg";
 import iconSettings from "@tabler/icons/settings.svg";
+import Link from "next/link";
 
 import Tooltip from "../floating-ui/tooltip/Tooltip";
 import TooltipTrigger from "../floating-ui/tooltip/TooltipTrigger";
 import TooltipContent from "../floating-ui/tooltip/TooltipContent";
 
 import SvgSprite from "./../svg-sprite/SvgSprite";
-import Button from "./Button";
+import LinkButton from "./LinkButton";
 
-const meta: Meta<typeof Button> = {
-  title: "UI/Button/Button",
-  component: Button,
+const meta: Meta<typeof LinkButton> = {
+  title: "UI/Button/Link Button",
+  component: LinkButton,
   tags: ["autodocs"],
-  argTypes: {
-    disabled: {
-      control: "boolean",
-    },
-  },
+  argTypes: {},
 };
 
 export default meta;
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof LinkButton>;
 
 export const Default: Story = {
-  render: (args) => <Button {...args} />,
+  render: (args) => <LinkButton {...args} />,
   args: {
     variant: "primary",
     size: "normal",
-    isLoading: false,
     children: "Button",
-    disabled: false,
-    iconOnly: false,
-    fullWidth: false,
-  },
-};
-
-export const Loading: Story = {
-  render: (args) => <Button {...args} />,
-  args: {
-    variant: "primary",
-    size: "normal",
-    isLoading: true,
-    children: "Button",
-    disabled: false,
     iconOnly: false,
     fullWidth: false,
   },
 };
 
 export const WithIcons: Story = {
-  render: (args) => <Button {...args} />,
+  render: (args) => <LinkButton {...args} />,
   args: {
     variant: "primary",
     size: "normal",
-    isLoading: false,
     children: "Button",
-    disabled: false,
     iconOnly: false,
     fullWidth: false,
     iconBefore: <SvgSprite src={iconChevronLeft} title="test-title" />,
@@ -68,13 +48,11 @@ export const WithIcons: Story = {
 };
 
 export const IconOnly: Story = {
-  render: (args) => <Button {...args} />,
+  render: (args) => <LinkButton {...args} />,
   args: {
     size: "base",
     variant: "simple",
     children: "Settings",
-    disabled: false,
-    isLoading: false,
     fullWidth: false,
     iconBefore: <SvgSprite src={iconSettings} />,
     iconOnly: true,
@@ -85,7 +63,7 @@ export const AccessibleIconButton: Story = {
   render: (args) => (
     <Tooltip placement="bottom">
       <TooltipTrigger>
-        <Button {...args} />
+        <LinkButton {...args} />
       </TooltipTrigger>
       <TooltipContent>Settings</TooltipContent>
     </Tooltip>
@@ -94,8 +72,6 @@ export const AccessibleIconButton: Story = {
     size: "base",
     variant: "simple",
     children: "Settings",
-    disabled: false,
-    isLoading: false,
     fullWidth: false,
     iconBefore: <SvgSprite src={iconSettings} />,
     iconOnly: true,
@@ -103,13 +79,25 @@ export const AccessibleIconButton: Story = {
 };
 
 export const Text: Story = {
-  render: (args) => <Button {...args} />,
+  render: (args) => <LinkButton {...args} />,
   args: {
     size: "base",
     variant: "simple",
     children: "Settings",
+    fullWidth: false,
+  },
+};
+
+export const NextLink: Story = {
+  render: (args) => <LinkButton as={Link} href="/test" target="_blank" {...args} />,
+  args: {
+    variant: "primary",
+    children: "Navigate to another page",
     disabled: false,
     isLoading: false,
+    iconOnly: false,
     fullWidth: false,
+    size: "normal",
+    iconAfter: <SvgSprite src={iconChevronRight} />,
   },
 };

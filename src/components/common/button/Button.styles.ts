@@ -127,15 +127,15 @@ export const button = sva({
         },
       },
       simple: { root: { borderColor: "transparent" } },
-      link: {
-        root: {
-          borderColor: "transparent",
-          textDecoration: "underline",
-          _isHoverFocus: {
-            textDecoration: "none",
-          },
-        },
-      },
+      //link: {
+      //  root: {
+      //    borderColor: "transparent",
+      //    textDecoration: "underline",
+      //    _isHoverFocus: {
+      //      textDecoration: "none",
+      //    },
+      //  },
+      //},
     },
     size: {
       small: {

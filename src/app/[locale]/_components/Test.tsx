@@ -16,6 +16,7 @@ import SingleCheckbox from "@/components/common/form/single-checkbox/SingleCheck
 import List from "@/components/common/form/collection/List";
 import PasswordInput from "@/components/common/form/input/PasswordInput";
 import { success } from "@/components/common/toast/notify";
+import LinkButton from "@/components/common/link-button/LinkButton";
 
 type SampleFormData = {
   firstName: string;
@@ -36,18 +37,18 @@ const Test: FC = () => {
     <div>
       <Button onClick={testToast}>Test toast</Button>
       <Breadcrumb>
-        <Button href="/" as={Link} variant="link" size="base">
+        <LinkButton href="/" as={Link} variant="simple" size="base">
           Home
-        </Button>
-        <Button href="/" as={Link} variant="link" size="base">
+        </LinkButton>
+        <LinkButton href="/" as={Link} variant="simple" size="base">
           Parent 1
-        </Button>
-        <Button href="/" as={Link} variant="link" size="base">
+        </LinkButton>
+        <LinkButton href="/" as={Link} variant="simple" size="base">
           Parent 2
-        </Button>
-        <Button href="/" as={Link} variant="link" size="base">
+        </LinkButton>
+        <LinkButton href="/" as={Link} variant="simple" size="base">
           Current
-        </Button>
+        </LinkButton>
       </Breadcrumb>
 
       <Form<SampleFormData> defaultValues={{}}>

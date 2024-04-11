@@ -9,7 +9,6 @@ import {
   memo,
 } from "react";
 import { useCallback } from "react";
-import { PolyForwardMemoComponent, PolyRefFunction } from "react-polymorphed";
 import { useTranslations } from "next-intl";
 
 import { InferComponentProps } from "@/types/component";
@@ -61,15 +60,12 @@ type Props = {
    * Should the element be able to be clicked on
    */
   disabled?: boolean;
-} & InferComponentProps<"button" | "a">;
+} & InferComponentProps<"button">;
 
-const polyRef = forwardRef as PolyRefFunction;
-
-const Button = polyRef<"button" | "a", Props>(
+const Button = forwardRef<HTMLButtonElement, Props>(
   (
     {
-      as: Element = "button",
-      variant: intent,
+      variant,
       size,
       fullWidth,
       iconOnly,
@@ -96,16 +92,17 @@ const Button = polyRef<"button" | "a", Props>(
       [onClick, isLoading, disabled],
     );
 
-    const classes = button({ variant: intent, size, isLoading, fullWidth });
+    const classes = button({ variant, size, isLoading, fullWidth });
 
     return (
-      <Element
+      <button
         ref={ref}
-        type={!Element || Element === "button" ? props.type ?? "button" : undefined}
+        type="button"
         {...addClassNameToProps(props, classes.root)}
         disabled={disabled}
         aria-disabled={isLoading || disabled}
         onClick={onClick ? newOnClick : undefined}
+        {...props}
       >
         <span className={classes.content}>
           {isValidElement<Record<string, unknown>>(iconBefore) &&
@@ -128,10 +125,11 @@ const Button = polyRef<"button" | "a", Props>(
         </span>
         <Spinner
           className={classes.spinner}
+          aria-live={isLoading ? "assertive" : "off"}
           aria-hidden={!isLoading}
           aria-label={isLoading ? t("spinner.aria-label") : ""}
         />
-      </Element>
+      </button>
     );
   },
 );
@@ -141,4 +139,4 @@ Button.displayName = "Button";
 /**
  * Generic button component
  */
-export default memo(Button) as PolyForwardMemoComponent<"button", Props>;
+export default memo(Button);

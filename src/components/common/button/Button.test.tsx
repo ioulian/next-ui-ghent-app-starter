@@ -7,7 +7,7 @@ import Button from "./Button";
 
 describe("Button", () => {
   it("renders", () => {
-    render(<Button data-testid="test" />);
+    render(<Button data-testid="test">test</Button>);
     expect(screen.getByTestId("test")).toBeInTheDocument();
   });
 
@@ -85,14 +85,5 @@ describe("Button", () => {
       </Button>,
     );
     expect(screen.getByTestId("test")).toBeInTheDocument();
-  });
-
-  it("renders as A", () => {
-    render(
-      <Button as="a" data-testid="test">
-        test
-      </Button>,
-    );
-    expect(screen.getByTestId("test").tagName).toBe("A");
   });
 });

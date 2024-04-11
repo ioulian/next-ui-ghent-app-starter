@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`api.service getContentTypeHeaders works correctly 1`] = `
+{
+  "Accept": "application/json",
+  "Content-Type": "application/json",
+}
+`;
+
 exports[`api.service injectHeaders works correctly 1`] = `
 {
   "headers": {

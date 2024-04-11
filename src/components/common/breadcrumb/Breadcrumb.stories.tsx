@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Link from "next/link";
 import { userEvent, within, expect } from "@storybook/test";
 
-import Button from "@/components/common/button/Button";
+import LinkButton from "@/components/common/link-button/LinkButton";
 
 import Breadcrumb from "./Breadcrumb";
 
@@ -31,18 +31,18 @@ export const Default: Story = {
   },
   render: (args) => (
     <Breadcrumb {...args}>
-      <Button href="/" as={Link} variant="link" size="base" data-testid="button1">
+      <LinkButton href="/" as={Link} size="base" variant="simple" data-testid="button1">
         Home
-      </Button>
-      <Button href="/parent-1" as={Link} variant="link" size="base" data-testid="button2">
+      </LinkButton>
+      <LinkButton href="/parent-1" as={Link} size="base" variant="simple" data-testid="button2">
         Parent 1
-      </Button>
-      <Button href="/parent-2" as={Link} variant="link" size="base" data-testid="button3">
+      </LinkButton>
+      <LinkButton href="/parent-2" as={Link} size="base" variant="simple" data-testid="button3">
         Parent 2
-      </Button>
-      <Button href="/current" as={Link} variant="link" size="base" data-testid="button4">
+      </LinkButton>
+      <LinkButton href="/current" as={Link} size="base" variant="simple" data-testid="button4">
         Current
-      </Button>
+      </LinkButton>
     </Breadcrumb>
   ),
 };

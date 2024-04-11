@@ -5,6 +5,10 @@ global-components:
     element: button
     attributes:
       - aria-*
+  LinkButton:
+    element: a
+    attributes:
+      - aria-*
   Image:
     element: img
     attributes:
