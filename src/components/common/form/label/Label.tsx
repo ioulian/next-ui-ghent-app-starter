@@ -19,11 +19,7 @@ const Label: PolymorphicComponent<
     <Component {...addClassNameToProps(props, label)}>
       {children}
       {required ? (
-        <span
-          aria-label={t("label.required")}
-          title={t("label.required")}
-          className={labelAsterisk}
-        >
+        <span aria-hidden="true" title={t("label.required")} className={labelAsterisk}>
           *
         </span>
       ) : null}

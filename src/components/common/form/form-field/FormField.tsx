@@ -141,6 +141,7 @@ const FormField = <T extends FormValueType>({
   const sharedProps = {
     id: name,
     isError: !!error,
+    required: !!options?.required,
     ...(describedBy && { "aria-describedby": describedBy }),
     "aria-invalid": !!error ? ("true" as const) : undefined,
   };
