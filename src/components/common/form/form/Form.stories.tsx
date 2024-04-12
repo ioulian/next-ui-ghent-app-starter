@@ -45,7 +45,7 @@ type SampleFormData = {
 
 export const Example: Story = {
   render: (args) => (
-    <Form<SampleFormData> {...args} defaultValues={{}} onSubmit={action("onSubmit")}>
+    <Form<SampleFormData> {...args} defaultValues={{}} onSubmit={action("onSubmit")} noValidate>
       <Heading>Register here</Heading>
       <div
         style={{

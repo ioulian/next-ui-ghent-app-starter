@@ -31,7 +31,7 @@ describe("Form", () => {
   it("will handle form flow", async () => {
     const spy = jest.fn();
     render(
-      <Form onSubmit={spy} data-testid="test">
+      <Form onSubmit={spy} data-testid="test" noValidate>
         <FormField name="test-name" options={{ required }} description="test">
           <Input />
         </FormField>

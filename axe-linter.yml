@@ -7,8 +7,6 @@ global-components:
       - aria-*
   LinkButton:
     element: a
-    attributes:
-      - aria-*
   Image:
     element: img
     attributes:

@@ -24,7 +24,7 @@ describe("Label", () => {
   it("renders required label", () => {
     render(<Label required />);
     expect(screen.getByText("*")).toBeInTheDocument();
-    expect(screen.getByText("*")).toHaveAttribute("aria-label");
+    expect(screen.getByText("*")).toHaveAttribute("aria-hidden");
     expect(screen.getByText("*")).toHaveAttribute("title");
   });
 });

@@ -7,6 +7,8 @@ import storage from "@/lib/storage";
 /**
  * Will init session cookie if none exists
  *
+ * TODO: we probably want to extend this cookie each time the user logins, or maybe more frequently?
+ *
  * @param req Next request
  * @param res Next response
  */
