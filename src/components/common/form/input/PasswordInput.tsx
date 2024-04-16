@@ -1,8 +1,8 @@
 "use client";
 
 import { forwardRef, memo, useCallback, useState } from "react";
-import passwordShowIcon from "@tabler/icons/eye.svg";
-import passwordHideIcon from "@tabler/icons/eye-off.svg";
+import passwordShowIcon from "@tabler/icons/outline/eye.svg";
+import passwordHideIcon from "@tabler/icons/outline/eye-off.svg";
 import { useTranslations } from "next-intl";
 
 import { InferComponentProps } from "@/types/component";

@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, forwardRef, memo, useCallback, useEffect, useId, useState } from "react";
-import iconChevron from "@tabler/icons/chevron-down.svg";
+import iconChevron from "@tabler/icons/outline/chevron-down.svg";
 import AnimateHeight from "react-animate-height";
 import { useUpdateEffect } from "react-use";
 

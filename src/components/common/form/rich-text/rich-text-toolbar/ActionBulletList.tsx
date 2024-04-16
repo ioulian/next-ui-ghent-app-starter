@@ -2,7 +2,7 @@
 
 import { forwardRef, memo, useCallback } from "react";
 import { useCurrentEditor } from "@tiptap/react";
-import iconBulletList from "@tabler/icons/list.svg";
+import iconBulletList from "@tabler/icons/outline/list.svg";
 import { useTranslations } from "next-intl";
 
 import Tooltip from "@/components/common/floating-ui/tooltip/Tooltip";

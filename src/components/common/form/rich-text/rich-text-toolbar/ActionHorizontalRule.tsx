@@ -2,7 +2,7 @@
 
 import { forwardRef, memo, useCallback } from "react";
 import { useCurrentEditor } from "@tiptap/react";
-import iconHorizontalRule from "@tabler/icons/separator-horizontal.svg";
+import iconHorizontalRule from "@tabler/icons/outline/separator-horizontal.svg";
 import { useTranslations } from "next-intl";
 
 import Tooltip from "@/components/common/floating-ui/tooltip/Tooltip";

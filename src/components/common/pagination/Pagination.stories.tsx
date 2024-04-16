@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import iconChevronRight from "@tabler/icons/chevron-right.svg";
-import iconChevronLeft from "@tabler/icons/chevron-left.svg";
+import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
+import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
 
 import Pagination from "./Pagination";
 import SvgSprite from "./../svg-sprite/SvgSprite";

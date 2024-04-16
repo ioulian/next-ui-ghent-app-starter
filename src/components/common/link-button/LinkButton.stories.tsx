@@ -1,9 +1,9 @@
 /* eslint-disable i18next/no-literal-string */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import iconChevronRight from "@tabler/icons/chevron-right.svg";
-import iconChevronLeft from "@tabler/icons/chevron-left.svg";
-import iconSettings from "@tabler/icons/settings.svg";
+import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
+import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
+import iconSettings from "@tabler/icons/outline/settings.svg";
 import Link from "next/link";
 
 import Tooltip from "../floating-ui/tooltip/Tooltip";

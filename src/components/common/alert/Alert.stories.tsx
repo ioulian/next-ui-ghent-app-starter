@@ -1,7 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import iconSettings from "@tabler/icons/settings.svg";
+import iconSettings from "@tabler/icons/outline/settings.svg";
 
 import Heading from "@/components/common/heading/Heading";
 import Text from "@/components/common/text/Text";

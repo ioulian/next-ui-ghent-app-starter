@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import ReactSelect from "react-select";
-import icon from "@tabler/icons/at.svg";
-import searchIcon from "@tabler/icons/search.svg";
+import icon from "@tabler/icons/outline/at.svg";
+import searchIcon from "@tabler/icons/outline/search.svg";
 import { DateRange, DayPicker, Matcher } from "react-day-picker";
 
 /* eslint-disable i18next/no-literal-string */

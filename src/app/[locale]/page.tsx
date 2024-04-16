@@ -3,10 +3,10 @@
 import { NextPage } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import sampleSvgSprite from "@tabler/icons/arrow-right-circle.svg";
-import iconChevronRight from "@tabler/icons/chevron-right.svg";
-import iconChevronLeft from "@tabler/icons/chevron-left.svg";
-import iconChevron from "@tabler/icons/chevron-right.svg";
+import sampleSvgSprite from "@tabler/icons/outline/arrow-right-circle.svg";
+import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
+import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
+import iconChevron from "@tabler/icons/outline/chevron-right.svg";
 
 import SvgSprite from "@/components/common/svg-sprite/SvgSprite";
 import Text from "@/components/common/text/Text";

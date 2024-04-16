@@ -1,7 +1,7 @@
 import { ReactNode, forwardRef, memo } from "react";
-import iconVariantNormal from "@tabler/icons/info-circle.svg";
-import iconVariantDanger from "@tabler/icons/alert-circle.svg";
-import iconVariantSuccess from "@tabler/icons/circle-check.svg";
+import iconVariantNormal from "@tabler/icons/outline/info-circle.svg";
+import iconVariantDanger from "@tabler/icons/outline/alert-circle.svg";
+import iconVariantSuccess from "@tabler/icons/outline/circle-check.svg";
 
 import { InferComponentProps } from "@/types/component";
 import { addClassNameToProps } from "@/styles/utils";

@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import iconX from "@tabler/icons/x.svg";
+import iconX from "@tabler/icons/outline/x.svg";
 
 import { InferComponentProps } from "@/types/component";
 import Button from "@/components/common/button/Button";

@@ -2,9 +2,9 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within, expect } from "@storybook/test";
-import iconVariantNormal from "@tabler/icons/info-circle.svg";
-import iconVariantDanger from "@tabler/icons/alert-circle.svg";
-import iconVariantSuccess from "@tabler/icons/circle-check.svg";
+import iconVariantNormal from "@tabler/icons/outline/info-circle.svg";
+import iconVariantDanger from "@tabler/icons/outline/alert-circle.svg";
+import iconVariantSuccess from "@tabler/icons/outline/circle-check.svg";
 
 import SvgSprite from "@/components/common/svg-sprite/SvgSprite";
 

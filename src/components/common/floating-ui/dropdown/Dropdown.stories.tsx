@@ -1,7 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import iconChevron from "@tabler/icons/chevron-right.svg";
+import iconChevron from "@tabler/icons/outline/chevron-right.svg";
 import { useState } from "react";
 import { action } from "@storybook/addon-actions";
 import { userEvent, within, expect, screen } from "@storybook/test";

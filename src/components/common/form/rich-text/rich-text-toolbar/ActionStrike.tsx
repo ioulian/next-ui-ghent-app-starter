@@ -2,7 +2,7 @@
 
 import { forwardRef, memo, useCallback } from "react";
 import { useCurrentEditor } from "@tiptap/react";
-import iconStrikethrough from "@tabler/icons/strikethrough.svg";
+import iconStrikethrough from "@tabler/icons/outline/strikethrough.svg";
 import { useTranslations } from "next-intl";
 
 import Tooltip from "@/components/common/floating-ui/tooltip/Tooltip";

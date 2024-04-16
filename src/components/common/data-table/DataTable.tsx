@@ -1,9 +1,9 @@
 "use client";
 
 import { Table, flexRender } from "@tanstack/react-table";
-import iconSort from "@tabler/icons/arrows-sort.svg";
-import iconSortAsc from "@tabler/icons/sort-ascending.svg";
-import iconSortDesc from "@tabler/icons/sort-descending.svg";
+import iconSort from "@tabler/icons/outline/arrows-sort.svg";
+import iconSortAsc from "@tabler/icons/outline/sort-ascending.svg";
+import iconSortDesc from "@tabler/icons/outline/sort-descending.svg";
 import { useTranslations } from "next-intl";
 import { ChangeEvent, useCallback } from "react";
 
