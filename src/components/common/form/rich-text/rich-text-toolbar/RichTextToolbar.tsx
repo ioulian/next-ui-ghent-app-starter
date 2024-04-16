@@ -21,7 +21,7 @@ const RichTextToolbar = forwardRef<HTMLDivElement, InferComponentProps<"div">>(
     const { editor } = useCurrentEditor();
     const delay = useMemo(() => ({ open: 1000, close: 200 }), []);
 
-    // TODO: add more buttons and use callbacks
+    // TODO: add more buttons?
     if (!editor) {
       return null;
     }
