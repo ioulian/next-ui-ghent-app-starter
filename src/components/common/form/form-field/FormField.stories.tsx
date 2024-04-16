@@ -8,6 +8,7 @@ import { DateRange, DayPicker, Matcher } from "react-day-picker";
 
 import { colourOptions } from "@/components/common/form/form-field/FormField.data";
 import ReactDayPickerContainer from "@/components/common/form/react-day-picker/ReactDayPickerContainer";
+import RichText from "@/components/common/form/rich-text/RichText";
 
 import { email, required } from "../rules";
 import Form from "../form/Form";
@@ -379,6 +380,39 @@ export const WithReactDateRangePicker: Story = {
           toYear={new Date().getFullYear()}
           selected={value as DateRange}
           onSelect={onChange}
+        />
+      );
+    },
+  },
+};
+
+export const WithRichTextEditor: Story = {
+  render: (args) => (
+    <Form
+      defaultValues={{
+        content:
+          "<h1>Heading 1</h1><h2>Heading 2</h2><h3>Heading 3</h3><h4>Heading 4</h4><h5>Heading 5</h5><h6>Heading 6</h6><hr /><p>Paragraph 1</p><p>Paragraph 2</p><ul><li>List item 1</li><li>List item 2</li><li>List item 3</li></ul><p>Paragraph 2</p><ol><li>List item 1</li><li>List item 2</li><li>List item 3</li></ol>",
+      }}
+    >
+      <FormField {...args} />
+    </Form>
+  ),
+  args: {
+    label: "Content",
+    name: "content",
+    options: {
+      required,
+    },
+
+    children: ({ field: { onChange, value, ...field }, props: { ...props } }) => {
+      return (
+        <RichText
+          {...field}
+          {...props}
+          content={value as string}
+          onBlur={(editor) => {
+            onChange(editor.editor.getHTML());
+          }}
         />
       );
     },

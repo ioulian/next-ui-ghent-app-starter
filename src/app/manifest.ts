@@ -9,7 +9,7 @@ export default function manifest(): MetadataRoute.Manifest {
     display: "standalone",
     // TODO: We can use tokens here!
     background_color: "#fff",
-    theme_color: "#0017ee",
+    theme_color: "#314C74",
     icons: [
       {
         src: "/favicon.ico",

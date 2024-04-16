@@ -16,6 +16,9 @@ export const globalCss = defineGlobalStyles({
       },
     },
   },
+  em: {
+    fontStyle: "italic",
+  },
   body: {
     fontSize: { base: "1rem", lg: "1.125rem" },
     lineHeight: { base: "1.25rem", lg: "1.5rem" },

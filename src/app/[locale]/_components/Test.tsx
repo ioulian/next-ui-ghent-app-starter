@@ -17,6 +17,7 @@ import List from "@/components/common/form/collection/List";
 import PasswordInput from "@/components/common/form/input/PasswordInput";
 import { success } from "@/components/common/toast/notify";
 import LinkButton from "@/components/common/link-button/LinkButton";
+import RichText from "@/components/common/form/rich-text/RichText";
 
 type SampleFormData = {
   firstName: string;
@@ -26,11 +27,16 @@ type SampleFormData = {
   password: string;
   passwordRepeat: string;
   privacy: string;
+  content: string;
 };
 
 const Test: FC = () => {
   const testToast = useCallback(() => {
     success("Toastify loaded dynamically!");
+  }, []);
+
+  const onSubmit = useCallback((data: SampleFormData | undefined) => {
+    console.log(data);
   }, []);
 
   return (
@@ -51,7 +57,11 @@ const Test: FC = () => {
         </LinkButton>
       </Breadcrumb>
 
-      <Form<SampleFormData> defaultValues={{}}>
+      <Form<SampleFormData>
+        noValidate
+        defaultValues={{ content: "<p>Test</p>" }}
+        onSubmit={onSubmit}
+      >
         <Heading>Register here</Heading>
         <div
           style={{
@@ -131,6 +141,20 @@ const Test: FC = () => {
             <Input type="password" />
           </FormField>
         </div>
+        <FormField<SampleFormData> name="content" label="Text">
+          {({ field: { onChange, value, ...field }, props: { ...props } }) => {
+            return (
+              <RichText
+                {...field}
+                {...props}
+                content={value as string}
+                onBlur={(editor) => {
+                  onChange(editor.editor.getHTML());
+                }}
+              />
+            );
+          }}
+        </FormField>
         <FormField<SampleFormData>
           label="I accept privacy policy"
           description="Read terms and conditions first"

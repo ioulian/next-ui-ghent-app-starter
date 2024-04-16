@@ -37,7 +37,7 @@ import { BE_VALIDATION, type FormValueType } from "../form/Form";
 
 import { formField, formFieldToggle } from "./FormField.styles";
 
-const BaseWrapper: FC<{ children?: ReactNode }> = ({ children }) => children;
+const BaseWrapper: FC<PropsWithChildren> = ({ children }) => children;
 
 type RenderProps<T extends FormValueType> = (props: {
   field: ControllerRenderProps<T, FieldPath<T>>;

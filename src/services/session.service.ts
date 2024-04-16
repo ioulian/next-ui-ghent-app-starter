@@ -31,7 +31,7 @@ export const initSession = (req: NextRequest, res: NextResponse): void => {
       value: newSessionID,
       path: "/",
       sameSite: "lax",
-      expires: Date.now() + parseInt(process.env.SESSION_COOKIE_MAX_AGE, 10) * 24 * 60 * 60 * 1000, // 7 days
+      expires: Date.now() + parseInt(process.env.SESSION_COOKIE_MAX_AGE, 10) * 24 * 60 * 60 * 1000, // Convert miliseconds to days
       httpOnly: true,
       secure: true,
     });

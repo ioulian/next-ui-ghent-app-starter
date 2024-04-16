@@ -7,6 +7,7 @@ import {
   offset,
   Placement,
   shift,
+  useDelayGroup,
   useDismiss,
   useFloating,
   useFocus,
@@ -67,10 +68,12 @@ export const useTooltip = ({
   );
 
   const context = data.context;
+  const { delay } = useDelayGroup(context);
 
   const hover = useHover(context, {
     move: false,
     enabled: typeof controlledOpen === "undefined",
+    delay,
   });
   const focus = useFocus(context, {
     enabled: typeof controlledOpen === "undefined",

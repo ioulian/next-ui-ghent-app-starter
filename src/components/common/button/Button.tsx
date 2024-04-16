@@ -96,13 +96,13 @@ const Button = forwardRef<HTMLButtonElement, Props>(
 
     return (
       <button
-        ref={ref}
         type="button"
-        {...addClassNameToProps(props, classes.root)}
-        disabled={disabled}
-        aria-disabled={isLoading || disabled}
-        onClick={onClick ? newOnClick : undefined}
         {...props}
+        ref={ref}
+        disabled={disabled}
+        aria-disabled={isLoading || disabled ? true : undefined}
+        onClick={onClick ? newOnClick : undefined}
+        {...addClassNameToProps(props, classes.root)}
       >
         <span className={classes.content}>
           {isValidElement<Record<string, unknown>>(iconBefore) &&

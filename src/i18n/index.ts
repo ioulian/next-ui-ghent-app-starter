@@ -13,6 +13,7 @@ export const defaultLocale: LocaleType = locales[0];
 export const pathnames = {
   "/": "/",
   "/serverside": "/serverside",
+  "/auth-only": "/auth-only",
 } satisfies Pathnames<typeof locales>;
 
 // Use the default: `always`
