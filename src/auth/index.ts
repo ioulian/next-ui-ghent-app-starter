@@ -55,6 +55,7 @@ export const signIn = async (username: string, password: string): Promise<void> 
     await setToSessionStorage(SESSION_STORAGE_KEY, JSON.stringify(storageItem));
   } catch (e) {
     console.error(e);
+    throw e;
   }
 };
 

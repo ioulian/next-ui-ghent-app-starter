@@ -24,7 +24,12 @@ export const injectToWebpackConfig = (config, buildId = "development") => {
       },
       "svgo-loader",
     ],
-    include: [resolve("node_modules/@tabler/icons"), resolve("src"), resolve("public")],
+    include: [
+      resolve("node_modules/@tabler/icons"),
+      resolve("node_modules/.pnpm/@tabler+icons"), // For .pnpm installations
+      resolve("src"),
+      resolve("public"),
+    ],
   });
   config.plugins.push(new SpriteLoaderPlugin());
 };

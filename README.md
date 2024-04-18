@@ -22,26 +22,40 @@ It contains a lot of useful presets and common components to be used in your pro
 - ESLint, Prettier + Husky and lint-staged pre-commit hooks;
 - Jest (by Next.js). Most custom components are tested;
 - With [next-cache-toolbar](https://github.com/KajSzy/next-cache-toolbar) to easily debug cached api requests;
+- Use with PNPM or NPM.
 
 ## Getting Started
 
 ### Install
 
 ```bash
+# NPM
 npx create-next-app --example https://github.com/ioulian/next-io-ghent-app-starter
 npm run dev
+
+# PNPM
+pnpm create next-app --example https://github.com/ioulian/next-io-ghent-app-starter
+pnpm run dev
 ```
 
 After installation, you'll probably want to use correct node version and install dependencies again.
 
 ```bash
+# NPM
 nvm use && npm install
+
+# PNPM
+nvm use && pnpm install
 ```
 
 ### Storybook
 
 ```bash
+# NPM
 npm run storybook
+
+# PNPM
+pnpm run storybook
 ```
 
 ### Remove demo content
@@ -58,7 +72,7 @@ There are some basic GO-live checks implemented when you run `npm run build`, bu
 
 ## Issues/TODO's
 
-Issues and TODO's can be found here: <https://github.com/ioulian/next-io-ghent-starter/issues>
+Issues and TODO's can be found here: <https://github.com/ioulian/next-io-ghent-app-starter/issues>
 
 ## Component export convention
 
