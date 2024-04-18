@@ -96,6 +96,7 @@ const Test: FC = () => {
         <FormField<SampleFormData>
           label="Hobbies"
           name="hobbies"
+          asFieldSet
           inputWrapper={List}
           options={{
             required,

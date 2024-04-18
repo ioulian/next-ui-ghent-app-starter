@@ -49,8 +49,7 @@
     "react-use": "17.5.0",
     "server-only": "0.0.1",
     "swiper": "11.1.1",
-    "unstorage": "1.10.2",
-    "webpack": "5.91.0"
+    "unstorage": "1.10.2"
   },
   "devDependencies": {
     "@csstools/postcss-cascade-layers": "4.0.4",

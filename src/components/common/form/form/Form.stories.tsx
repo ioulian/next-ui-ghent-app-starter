@@ -113,6 +113,7 @@ export const Example: Story = {
       <FormField<SampleFormData>
         label="Hobbies"
         name="hobbies"
+        asFieldSet
         inputWrapper={List}
         options={{
           required,
