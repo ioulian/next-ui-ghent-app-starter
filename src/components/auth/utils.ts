@@ -1,5 +1,7 @@
 "use server";
 
+import "server-only";
+
 import { signIn } from "@/auth";
 
 export type CredentialsType = {

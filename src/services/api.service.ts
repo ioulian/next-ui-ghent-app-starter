@@ -1,3 +1,5 @@
+import "server-only";
+
 /**
  * Request statusses to be used in data fetching flow
  */

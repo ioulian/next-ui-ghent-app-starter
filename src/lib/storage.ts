@@ -1,3 +1,5 @@
+import "server-only";
+
 import { Storage, createStorage } from "unstorage";
 
 // From: https://github.com/vercel/next.js/blob/canary/examples/with-mongodb/lib/mongodb.ts

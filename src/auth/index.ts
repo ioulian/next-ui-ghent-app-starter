@@ -1,3 +1,4 @@
+import "server-only";
 import merge from "lodash/merge";
 
 import { login, refreshToken } from "@/services/auth-api.service";

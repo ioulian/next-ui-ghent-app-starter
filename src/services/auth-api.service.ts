@@ -1,3 +1,5 @@
+import "server-only";
+
 import { getAccessToken, signOut } from "@/auth";
 import { getFetcher, injectHeaders, validateData } from "@/services/api.service";
 

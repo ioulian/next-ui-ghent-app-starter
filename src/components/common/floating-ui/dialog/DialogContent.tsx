@@ -10,7 +10,16 @@ import {
   useMergeRefs,
   useTransitionStyles,
 } from "@floating-ui/react";
-import { Fragment, HTMLProps, forwardRef, memo, useCallback, useMemo } from "react";
+import {
+  Fragment,
+  HTMLProps,
+  forwardRef,
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import { token } from "@/styled-system/tokens";
 import { convertThemeVarToNumber } from "@/styles/utils";
@@ -44,19 +53,19 @@ const DialogContent = forwardRef<
     initial: ({ side }) => {
       let transform: string | undefined;
       if (side === "top") {
-        transform = "translate3d(0, -50px, 0)";
+        transform = "translate3d(0, -100%, 0)";
       }
 
       if (side === "bottom") {
-        transform = "translate3d(0, 50px, 0)";
+        transform = "translate3d(0, 100%, 0)";
       }
 
       if (side === "left") {
-        transform = "translate3d(-50px, 0, 0)";
+        transform = "translate3d(-100%, 0, 0)";
       }
 
       if (side === "right") {
-        transform = "translate3d(50px, 0, 0)";
+        transform = "translate3d(100%, 0, 0)";
       }
 
       return {
@@ -74,20 +83,38 @@ const DialogContent = forwardRef<
     [styles, asSheet],
   );
 
+  // This will disable focus manager during animation thus preventing focussing items outside the viewport
+  const [focusDisabled, setFocusDisabled] = useState<boolean>(true);
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout> | undefined;
+    if (isMounted) {
+      timeout = setTimeout(
+        () => {
+          setFocusDisabled(false);
+        },
+        convertThemeVarToNumber(token("durations.normal")),
+      );
+    } else {
+      setFocusDisabled(true);
+    }
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [isMounted, asSheet]);
+
   if (!isMounted) {
     return null;
   }
 
   const Wrapper = parentId === null ? FloatingTree : Fragment;
 
-  // TODO: we need to disable FloatingFocusManager while animation is running
-
   return (
     <Wrapper>
       <FloatingNode id={context.nodeId}>
         <FloatingPortal>
           <FloatingOverlay lockScroll className={floatingOverlay({ asSheet })} style={style}>
-            <FloatingFocusManager context={context.context} modal>
+            <FloatingFocusManager context={context.context} modal disabled={focusDisabled}>
               {asSheet ? (
                 <Sheet
                   ref={ref}
