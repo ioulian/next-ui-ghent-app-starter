@@ -7,7 +7,7 @@ import FormField from "@/components/common/form/form-field/FormField";
 import Form from "@/components/common/form/form/Form";
 import { required } from "@/components/common/form/rules";
 import Input from "@/components/common/form/input/Input";
-import PasswordInput from "@/components/common/form/input/PasswordInput";
+import PasswordInput from "@/components/common/form/password/PasswordInput";
 import Button from "@/components/common/button/Button";
 import { CredentialsType, login } from "@/components/auth/utils";
 import { API_REQUEST_STATUS } from "@/services/api.service";

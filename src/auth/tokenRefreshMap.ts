@@ -1,3 +1,5 @@
+import "server-only";
+
 export type TokenRefreshMapType = Map<string, boolean>;
 
 let tokenRefreshMap: TokenRefreshMapType;

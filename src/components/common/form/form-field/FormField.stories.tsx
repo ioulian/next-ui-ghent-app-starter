@@ -20,7 +20,7 @@ import List from "../collection/List";
 import Checkbox from "../collection/checkbox/Checkbox";
 import SvgSprite from "../../svg-sprite/SvgSprite";
 import Toggle from "../toggle/Toggle";
-import PasswordInput from "../input/PasswordInput";
+import PasswordInput from "../password/PasswordInput";
 import ReactSelectContainer from "../react-select/ReactSelectContainer";
 import Input from "../input/Input";
 
@@ -92,7 +92,7 @@ export const WithPassword: Story = {
   args: {
     label: "Password",
     name: "password",
-    children: <PasswordInput />,
+    children: <PasswordInput showStrengthMeter />,
   },
 };
 

@@ -14,7 +14,7 @@ import Input from "@/components/common/form/input/Input";
 import Checkbox from "@/components/common/form/collection/checkbox/Checkbox";
 import SingleCheckbox from "@/components/common/form/single-checkbox/SingleCheckbox";
 import List from "@/components/common/form/collection/List";
-import PasswordInput from "@/components/common/form/input/PasswordInput";
+import PasswordInput from "@/components/common/form/password/PasswordInput";
 import { success } from "@/components/common/toast/notify";
 import LinkButton from "@/components/common/link-button/LinkButton";
 import RichText from "@/components/common/form/rich-text/RichText";
@@ -126,10 +126,10 @@ const Test: FC = () => {
             }}
             label="Password"
             name="password"
-            description="At least 9 chars, lowercase, uppercase, special char and number"
+            description="Password strength is indicative"
             options={{}}
           >
-            <PasswordInput />
+            <PasswordInput showStrengthMeter />
           </FormField>
           <FormField<SampleFormData>
             style={{

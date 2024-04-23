@@ -28,6 +28,8 @@
     "@tiptap/pm": "2.3.0",
     "@tiptap/react": "2.3.0",
     "@tiptap/starter-kit": "2.3.0",
+    "@zxcvbn-ts/core": "3.0.4",
+    "@zxcvbn-ts/language-common": "3.0.4",
     "colorjs.io": "0.5.0",
     "date-fns": "3.6.0",
     "easing-coordinates": "2.0.2",

@@ -28,6 +28,24 @@
       "select": {
         "emptyValue": "Select..."
       },
+      "passwordStrength": {
+        "messages": {
+          "ltSecond": "Cracked in less than {base} second",
+          "second": "Cracked in less than {base} second",
+          "seconds": "Cracked in less than {base} seconds",
+          "minute": "Cracked in less than {base} minute",
+          "minutes": "Cracked in less than {base} minutes",
+          "hour": "Cracked in less than {base} hour",
+          "hours": "Cracked in less than {base} hours",
+          "day": "Cracked in less than {base} day",
+          "days": "Cracked in less than {base} days",
+          "month": "Cracked in less than {base} month",
+          "months": "Cracked in less than {base} months",
+          "year": "Cracked in less than {base} year",
+          "years": "Cracked in less than {base} years",
+          "centuries": "Cracked in centuries"
+        }
+      },
       "passwordInput": {
         "revealPassword": "Reveal password",
         "hidePassword": "Hide password"

@@ -14,7 +14,7 @@ import List from "../collection/List";
 import Checkbox from "../collection/checkbox/Checkbox";
 import Heading from "../../heading/Heading";
 import Button from "../../button/Button";
-import PasswordInput from "../input/PasswordInput";
+import PasswordInput from "../password/PasswordInput";
 import ReactSelectContainer from "../react-select/ReactSelectContainer";
 
 import Input from "./../input/Input";
