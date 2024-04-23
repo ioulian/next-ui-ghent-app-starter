@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@csstools/postcss-cascade-layers": "4.0.4",
-    "@next/bundle-analyzer": "14.2.1",
+    "@next/bundle-analyzer": "14.2.2",
     "@next/env": "14.2.2",
     "@pandacss/dev": "0.37.2",
     "@storybook/addon-a11y": "8.0.8",
