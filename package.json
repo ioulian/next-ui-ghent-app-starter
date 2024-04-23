@@ -34,7 +34,7 @@
     "date-fns": "3.6.0",
     "easing-coordinates": "2.0.2",
     "lodash": "4.17.21",
-    "next": "14.2.1",
+    "next": "14.2.2",
     "next-intl": "3.11.1",
     "next-nprogress-bar": "2.3.11",
     "postcss": "8.4.38",
