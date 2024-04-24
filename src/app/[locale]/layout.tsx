@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { getTranslations } from "next-intl/server";
 import { NextIntlClientProvider, useMessages } from "next-intl";
-import { ReactNode } from "react";
+import { ComponentType, ReactNode } from "react";
 import dynamic from "next/dynamic";
 
 import { htmlFontClass } from "@/styles/fonts";
@@ -36,7 +36,7 @@ export async function generateMetadata({
   };
 }
 
-let Toolbar: React.ComponentType = () => null;
+let Toolbar: ComponentType = () => null;
 if (process.env.NODE_ENV === "development") {
   Toolbar = dynamic(() => import("../../components/providers/Toolbar"));
 }

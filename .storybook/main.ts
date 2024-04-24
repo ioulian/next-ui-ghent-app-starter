@@ -24,7 +24,7 @@ const config: StorybookConfig = {
     },
   },
   typescript: {
-    check: true,
+    check: process.env.NODE_ENV !== "production",
     reactDocgen: "react-docgen-typescript",
   },
   docs: {
