@@ -17,9 +17,7 @@ const customBuildId = crypto.randomBytes(16).toString("hex");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
-  generateBuildId: () => {
-    return customBuildId;
-  },
+  generateBuildId: () => customBuildId,
   env: {
     NEXT_PUBLIC_CUSTOM_BUILD_ID: customBuildId,
   },

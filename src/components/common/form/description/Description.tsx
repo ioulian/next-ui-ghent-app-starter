@@ -3,13 +3,14 @@ import { useTranslations } from "next-intl";
 
 import { InferComponentProps } from "@/types/component";
 import { addClassNameToProps } from "@/styles/utils";
+import { WithRequired } from "@/types/helpers";
 
 import VisuallyHidden from "../../visually-hidden/VisuallyHidden";
 
 import { description } from "./Description.styles";
 
-const Description: FC<{ id: string } & InferComponentProps<"div">> = ({
-  id, // Require ID
+const Description: FC<WithRequired<InferComponentProps<"div">, "id">> = ({
+  id,
   children,
   ...props
 }) => {

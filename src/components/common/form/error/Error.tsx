@@ -3,16 +3,13 @@ import { useTranslations } from "next-intl";
 
 import { InferComponentProps } from "@/types/component";
 import { addClassNameToProps } from "@/styles/utils";
+import { WithRequired } from "@/types/helpers";
 
 import VisuallyHidden from "../../visually-hidden/VisuallyHidden";
 
 import { error } from "./Error.styles";
 
-const Error: FC<{ id: string } & InferComponentProps<"div">> = ({
-  id, // Require ID
-  children,
-  ...props
-}) => {
+const Error: FC<WithRequired<InferComponentProps<"div">, "id">> = ({ id, children, ...props }) => {
   const t = useTranslations("common.form");
 
   return (
