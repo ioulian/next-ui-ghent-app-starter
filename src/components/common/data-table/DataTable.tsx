@@ -68,6 +68,13 @@ const DataTable = <T,>({
     [table],
   );
 
+  const onPageChange = useCallback(
+    (e: { selected: number }) => {
+      table.setPageIndex(e.selected);
+    },
+    [table],
+  );
+
   return (
     <div {...addClassNameToProps(props, wrapper)}>
       <table className={tableClassName}>
@@ -145,9 +152,7 @@ const DataTable = <T,>({
           {showPagination ? (
             <Pagination
               forcePage={table.getState().pagination.pageIndex}
-              onPageChange={(e) => {
-                table.setPageIndex(e.selected);
-              }}
+              onPageChange={onPageChange}
               pageCount={table.getPageCount()}
             />
           ) : null}
