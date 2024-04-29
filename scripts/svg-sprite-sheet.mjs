@@ -31,5 +31,5 @@ export const injectToWebpackConfig = (config, buildId = "development") => {
       resolve("public"),
     ],
   });
-  config.plugins.push(new SpriteLoaderPlugin());
+  config.plugins.push(new SpriteLoaderPlugin({ plainSprite: true }));
 };

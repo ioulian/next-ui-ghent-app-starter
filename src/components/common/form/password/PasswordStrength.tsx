@@ -35,7 +35,6 @@ const PasswordStrength = forwardRef<HTMLDivElement, { name: string } & InferComp
         ).then((result) => {
           setScore(result.score);
           setMessage(result.crackTimesDisplay.onlineNoThrottling10PerSecond);
-          console.log(result);
         });
       } else {
         setScore(-1);

@@ -1,7 +1,5 @@
 import { FC, HTMLProps, memo, useId } from "react";
 
-import { getSpritesheetUrl } from "./utils";
-
 const SvgSprite: FC<
   { src: { id: string; viewBox: string } } & Omit<HTMLProps<SVGElement>, "src">
 > = ({
@@ -29,7 +27,7 @@ const SvgSprite: FC<
       aria-labelledby={title ? titleId : undefined}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <use xlinkHref={`${getSpritesheetUrl()}#${src.id}`} />
+      <use xlinkHref={`#${src.id.slice(0, -"-usage".length)}`} />
     </svg>
   );
 };

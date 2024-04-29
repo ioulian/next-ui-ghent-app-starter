@@ -9,7 +9,7 @@ export type CredentialsType = {
   password: string;
 };
 
-export const login = async (data?: CredentialsType) => {
+export const login = async (data?: CredentialsType): Promise<void> => {
   if (data) {
     const { username, password } = data;
     await signIn(username, password);

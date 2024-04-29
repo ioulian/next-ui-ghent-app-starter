@@ -53,4 +53,6 @@ const Header: FC = async () => {
   );
 };
 
+Header.displayName = "Header";
+
 export default Header;

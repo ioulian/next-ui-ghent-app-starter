@@ -20,32 +20,33 @@ const ICON_MAP: Record<
   success: iconVariantSuccess,
 };
 
-const Alert = forwardRef<
-  HTMLDivElement,
-  {
-    /**
-     * Icon to show. Set to `false` for no icon. If nothing is passed, default icons are shown.
-     */
-    icon?: ReactNode | false;
+interface Props extends InferComponentProps<"div"> {
+  /**
+   * Icon to show. Set to `false` for no icon. If nothing is passed, default icons are shown.
+   */
+  icon?: ReactNode | false;
 
-    /**
-     * Variant of the button
-     */
-    variant?: ArrayElement<(typeof alert.variantMap)["variant"]>;
-  } & InferComponentProps<"div">
->(({ children, variant = "normal", icon, ...props }, ref) => {
-  const classes = alert({ variant });
-  const defaultIcon = ICON_MAP[variant];
+  /**
+   * Variant of the alert
+   */
+  variant?: ArrayElement<(typeof alert.variantMap)["variant"]>;
+}
 
-  return (
-    <div {...addClassNameToProps(props, classes.root)} ref={ref} role="alert">
-      {icon !== false ? (
-        <div className={classes.icon}>{icon ?? <SvgSprite src={defaultIcon} aria-hidden />}</div>
-      ) : null}
-      <div className={classes.content}>{children}</div>
-    </div>
-  );
-});
+const Alert = forwardRef<HTMLDivElement, Props>(
+  ({ children, variant = "normal", icon, ...props }, ref) => {
+    const classes = alert({ variant });
+    const defaultIcon = ICON_MAP[variant];
+
+    return (
+      <div {...addClassNameToProps(props, classes.root)} ref={ref} role="alert">
+        {icon !== false ? (
+          <div className={classes.icon}>{icon ?? <SvgSprite src={defaultIcon} aria-hidden />}</div>
+        ) : null}
+        <div className={classes.content}>{children}</div>
+      </div>
+    );
+  },
+);
 
 Alert.displayName = "Alert";
 

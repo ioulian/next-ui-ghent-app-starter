@@ -8,6 +8,7 @@ import { htmlFontClass } from "@/styles/fonts";
 import Header from "@/app/[locale]/_components/Header";
 import Providers from "@/components/providers/Providers";
 import { token } from "@/styled-system/tokens";
+import SpriteSheetInline from "@/components/common/svg-sprite/SpriteSheetInline";
 
 type Props = Readonly<{
   children: ReactNode;
@@ -47,6 +48,7 @@ export default function RootLayout({ children, params: { locale } }: Props) {
   return (
     <html lang={locale} className={htmlFontClass}>
       <body>
+        <SpriteSheetInline />
         <NextIntlClientProvider messages={messages}>
           <Providers>
             <Header />
