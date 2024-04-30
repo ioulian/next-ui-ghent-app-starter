@@ -99,7 +99,7 @@ const config = {
     "sonarjs/cognitive-complexity": "off",
   },
   settings: {
-    linkComponents: ["Link"],
+    linkComponents: ["Link", "LinkButton"],
   },
 };
 

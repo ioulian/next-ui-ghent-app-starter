@@ -81,6 +81,7 @@
     "@types/svg-sprite-loader": "3.9.9",
     "@typescript-eslint/eslint-plugin": "7.7.0",
     "@typescript-eslint/parser": "7.7.0",
+    "@welldone-software/why-did-you-render": "8.0.1",
     "autoprefixer": "10.4.19",
     "cross-env": "7.0.3",
     "cssnano": "6.1.2",

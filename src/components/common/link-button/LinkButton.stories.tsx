@@ -24,6 +24,7 @@ export default meta;
 type Story = StoryObj<typeof LinkButton>;
 
 export const Default: Story = {
+  // eslint-disable-next-line react/jsx-no-target-blank
   render: (args) => <LinkButton {...args} />,
   args: {
     variant: "primary",
@@ -35,6 +36,7 @@ export const Default: Story = {
 };
 
 export const WithIcons: Story = {
+  // eslint-disable-next-line react/jsx-no-target-blank
   render: (args) => <LinkButton {...args} />,
   args: {
     variant: "primary",
@@ -48,6 +50,7 @@ export const WithIcons: Story = {
 };
 
 export const IconOnly: Story = {
+  // eslint-disable-next-line react/jsx-no-target-blank
   render: (args) => <LinkButton {...args} />,
   args: {
     size: "base",
@@ -63,6 +66,7 @@ export const AccessibleIconButton: Story = {
   render: (args) => (
     <Tooltip placement="bottom">
       <TooltipTrigger>
+        {/* eslint-disable-next-line react/jsx-no-target-blank */}
         <LinkButton {...args} />
       </TooltipTrigger>
       <TooltipContent>Settings</TooltipContent>
@@ -79,6 +83,7 @@ export const AccessibleIconButton: Story = {
 };
 
 export const Text: Story = {
+  // eslint-disable-next-line react/jsx-no-target-blank
   render: (args) => <LinkButton {...args} />,
   args: {
     size: "base",
@@ -89,7 +94,9 @@ export const Text: Story = {
 };
 
 export const NextLink: Story = {
-  render: (args) => <LinkButton as={Link} href="/test" target="_blank" {...args} />,
+  render: (args) => (
+    <LinkButton as={Link} {...args} href="/test" target="_blank" rel="noreferrer" />
+  ),
   args: {
     variant: "primary",
     children: "Navigate to another page",

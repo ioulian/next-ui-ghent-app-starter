@@ -181,6 +181,9 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: 7.7.0
     version: 7.7.0(eslint@8.57.0)(typescript@5.4.5)
+  '@welldone-software/why-did-you-render':
+    specifier: 8.0.1
+    version: 8.0.1(react@18.2.0)
   autoprefixer:
     specifier: 10.4.19
     version: 10.4.19(postcss@8.4.38)
@@ -5820,6 +5823,15 @@ packages:
     dependencies:
       '@webassemblyjs/ast': 1.12.1
       '@xtuc/long': 4.2.2
+    dev: true
+
+  /@welldone-software/why-did-you-render@8.0.1(react@18.2.0):
+    resolution: {integrity: sha512-PtLBjiHNX04gDPheMeAQP16S24JV3SOW6wGDUrm4bFPZmofmmflgvd4Kacf/jhB8zlX6equ8m3t6CS+OxA3Q4g==}
+    peerDependencies:
+      react: ^18
+    dependencies:
+      lodash: 4.17.21
+      react: 18.2.0
     dev: true
 
   /@xobotyi/scrollbar-width@1.9.5:

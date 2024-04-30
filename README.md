@@ -22,7 +22,8 @@ It contains a lot of useful presets and common components to be used in your pro
 - ESLint, Prettier + Husky and lint-staged pre-commit hooks;
 - Jest (by Next.js). Most custom components are tested;
 - With [next-cache-toolbar](https://github.com/KajSzy/next-cache-toolbar) to easily debug cached api requests;
-- Use with PNPM or NPM.
+- Use with PNPM or NPM;
+- [Why Did You Render](https://github.com/welldone-software/why-did-you-render) pre-installed (activate in .env);
 
 ## Getting Started
 
@@ -30,11 +31,11 @@ It contains a lot of useful presets and common components to be used in your pro
 
 ```bash
 # NPM
-npx create-next-app --example https://github.com/ioulian/next-io-ghent-app-starter
+npx create-next-app --example https://github.com/ioulian/next-ui-ghent-app-starter
 npm run dev
 
 # PNPM
-pnpm create next-app --example https://github.com/ioulian/next-io-ghent-app-starter
+pnpm create next-app --example https://github.com/ioulian/next-ui-ghent-app-starter
 pnpm run dev
 ```
 
@@ -72,7 +73,7 @@ There are some basic GO-live checks implemented when you run `npm run build`, bu
 
 ## Issues/TODO's
 
-Issues and TODO's can be found here: <https://github.com/ioulian/next-io-ghent-app-starter/issues>
+Issues and TODO's can be found here: <https://github.com/ioulian/next-ui-ghent-app-starter/issues>
 
 ## Component export convention
 
