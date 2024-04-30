@@ -85,7 +85,7 @@ const Ellipsis = forwardRef<
         {/* This is a helper div to check collapsed dimensions against */}
         <div
           className={ellipsisHelperContent}
-          ref={ref}
+          ref={contentRef}
           aria-hidden="true"
           style={numberOfLinesStyle}
         >

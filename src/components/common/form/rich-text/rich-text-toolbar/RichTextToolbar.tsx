@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, memo, useMemo } from "react";
+import { forwardRef, memo, useState } from "react";
 import { useCurrentEditor } from "@tiptap/react";
 import { FloatingDelayGroup } from "@floating-ui/react";
 
@@ -19,7 +19,7 @@ import ActionHorizontalRule from "./ActionHorizontalRule";
 const RichTextToolbar = forwardRef<HTMLDivElement, InferComponentProps<"div">>(
   ({ ...props }, ref) => {
     const { editor } = useCurrentEditor();
-    const delay = useMemo(() => ({ open: 1000, close: 200 }), []);
+    const [delay] = useState(() => ({ open: 1000, close: 200 }));
 
     // TODO: add more buttons?
     if (!editor) {

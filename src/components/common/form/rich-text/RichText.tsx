@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, memo, useMemo } from "react";
+import { forwardRef, memo, useState } from "react";
 import { EditorProvider, EditorProviderProps } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
@@ -13,15 +13,12 @@ import { richText, richTextContent } from "./RichText.styles";
 const RichText = forwardRef<HTMLDivElement, Omit<EditorProviderProps, "children">>(
   ({ ...props }, ref) => {
     // TODO: maybe we should write a wrapper to be used with react-hook-form controller
-    const extensions = useMemo(() => [StarterKit], []);
-    const editorProps = useMemo(
-      () => ({
-        attributes: {
-          class: cx(richTextContent, text),
-        },
-      }),
-      [],
-    );
+    const [extensions] = useState(() => [StarterKit]);
+    const [editorProps] = useState(() => ({
+      attributes: {
+        class: cx(richTextContent, text),
+      },
+    }));
 
     return (
       <div ref={ref} className={richText}>

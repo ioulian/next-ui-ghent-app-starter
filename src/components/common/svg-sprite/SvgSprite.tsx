@@ -18,6 +18,14 @@ const SvgSprite: FC<
 
   const titleId = useId();
 
+  // As inline spritesheet will not work in storybook (no server code allowed),
+  // We need to prefix the ID with the url of the sprite.
+  // This will make the performance slightly worse, but it's only for storybook.
+  const url =
+    process.env.IS_STORYBOOK === "true"
+      ? `${__webpack_public_path__}static/media/sprite-development.svg`
+      : "";
+
   return (
     <svg
       {...typedProps}
@@ -27,7 +35,7 @@ const SvgSprite: FC<
       aria-labelledby={title ? titleId : undefined}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <use xlinkHref={`#${src.id.slice(0, -"-usage".length)}`} />
+      <use xlinkHref={`${url}#${src.id.slice(0, -"-usage".length)}`} />
     </svg>
   );
 };

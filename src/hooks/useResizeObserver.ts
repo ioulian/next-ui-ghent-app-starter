@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // From: https://mantine.dev/hooks/use-resize-observer/
 
@@ -26,24 +26,22 @@ export function useResizeObserver<T extends HTMLElement = HTMLElement>() {
 
   const [rect, setRect] = useState<ObserverRect>(defaultState);
 
-  const observer = useMemo(
-    () =>
-      typeof window !== "undefined" && typeof window.ResizeObserver !== "undefined"
-        ? new window.ResizeObserver((entries) => {
-            const entry = entries[0];
+  const [observer] = useState(() =>
+    typeof window !== "undefined" && typeof window.ResizeObserver !== "undefined"
+      ? new window.ResizeObserver((entries) => {
+          const entry = entries[0];
 
-            if (entry) {
-              cancelAnimationFrame(frameID.current);
+          if (entry) {
+            cancelAnimationFrame(frameID.current);
 
-              frameID.current = requestAnimationFrame(() => {
-                if (ref.current) {
-                  setRect(entry.contentRect);
-                }
-              });
-            }
-          })
-        : null,
-    [],
+            frameID.current = requestAnimationFrame(() => {
+              if (ref.current) {
+                setRect(entry.contentRect);
+              }
+            });
+          }
+        })
+      : null,
   );
 
   useEffect(() => {
