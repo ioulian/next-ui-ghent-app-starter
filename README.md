@@ -22,7 +22,7 @@ It contains a lot of useful presets and common components to be used in your pro
 - ESLint, Prettier + Husky and lint-staged pre-commit hooks;
 - Jest (by Next.js). Most custom components are tested;
 - With [next-cache-toolbar](https://github.com/KajSzy/next-cache-toolbar) to easily debug cached api requests;
-- Use with PNPM or NPM;
+- Use with PNPM (preferred) or NPM;
 - [Why Did You Render](https://github.com/welldone-software/why-did-you-render) pre-installed (activate in .env);
 
 ## Getting Started
@@ -30,33 +30,33 @@ It contains a lot of useful presets and common components to be used in your pro
 ### Install
 
 ```bash
-# NPM
-npx create-next-app --example https://github.com/ioulian/next-ui-ghent-app-starter
-npm run dev
-
 # PNPM
 pnpm create next-app --example https://github.com/ioulian/next-ui-ghent-app-starter
 pnpm run dev
+
+# NPM
+npx create-next-app --example https://github.com/ioulian/next-ui-ghent-app-starter
+npm run dev
 ```
 
 After installation, you'll probably want to use correct node version and install dependencies again.
 
 ```bash
-# NPM
-nvm use && npm install
-
 # PNPM
 nvm use && pnpm install
+
+# NPM
+nvm use && npm install
 ```
 
 ### Storybook
 
 ```bash
-# NPM
-npm run storybook
-
 # PNPM
 pnpm run storybook
+
+# NPM
+npm run storybook
 ```
 
 ### Remove demo content
