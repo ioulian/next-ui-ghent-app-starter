@@ -18,7 +18,7 @@ It contains a lot of useful presets and common components to be used in your pro
 - [SVG Sprites](https://www.npmjs.com/package/svg-sprite-loader) (Custom or with [Tabler icons](https://tabler-icons.io/)). SVG spritesheet is exported to .svg file;
 - Font optimisation (Provided by Next.js);
 - [Storybook](https://github.com/storybookjs/storybook) with a11y checks, next-intl support and Next.js support;
-- Common components preset (with a11y in mind): <https://ioulian.github.io/next-io-ghent-app-starter/>;
+- Common components preset (with a11y in mind): <https://ioulian.github.io/next-ui-ghent-app-starter/>;
 - ESLint, Prettier + Husky and lint-staged pre-commit hooks;
 - Jest (by Next.js). Most custom components are tested;
 - With [next-cache-toolbar](https://github.com/KajSzy/next-cache-toolbar) to easily debug cached api requests;
