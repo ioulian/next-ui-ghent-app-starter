@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { FormEvent, useCallback, useEffect } from "react";
 import { DeepPartial, DefaultValues, FormProvider, Mode, Path, useForm } from "react-hook-form";
 
 import { ApiError } from "@/components/common/form/types";
@@ -47,7 +47,7 @@ const Form = <T extends FormValueType>({
    */
   onChange,
   children,
-  mode = "onChange",
+  mode = "onBlur",
   ...props
 }: {
   error?: ApiError;
@@ -111,22 +111,24 @@ const Form = <T extends FormValueType>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(defaultValues)]);
 
+  const onSubmitCallback = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      if (!isLoading) {
+        if (onSubmit) {
+          handleSubmit(onSubmit)(e);
+        } else {
+          e.preventDefault();
+        }
+      } else {
+        e.preventDefault();
+      }
+    },
+    [handleSubmit, isLoading, onSubmit],
+  );
+
   return (
     <FormProvider {...methods}>
-      <form
-        {...addClassNameToProps(props, form)}
-        onSubmit={(e) => {
-          if (!isLoading) {
-            if (onSubmit) {
-              handleSubmit(onSubmit)(e);
-            } else {
-              e.preventDefault();
-            }
-          } else {
-            e.preventDefault();
-          }
-        }}
-      >
+      <form {...addClassNameToProps(props, form)} onSubmit={onSubmitCallback}>
         {error ? <ApiFormError error={error} /> : null}
         {children}
       </form>

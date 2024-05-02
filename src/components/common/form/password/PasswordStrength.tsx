@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, memo, useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
+import { useWatch } from "react-hook-form";
 import { useMessages } from "next-intl";
 
 import { InferComponentProps } from "@/types/component";
@@ -18,8 +18,7 @@ import { validatePassword } from "./utils";
 const PasswordStrength = forwardRef<HTMLDivElement, { name: string } & InferComponentProps<"div">>(
   ({ name, ...props }, ref) => {
     const messages = useMessages();
-    const { watch } = useFormContext();
-    const value = watch(name);
+    const value = useWatch({ name });
 
     const [score, setScore] = useState<number>(-1);
     const [message, setMessage] = useState<string>("");
