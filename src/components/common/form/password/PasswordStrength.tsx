@@ -27,13 +27,11 @@ const PasswordStrength = forwardRef<HTMLDivElement, { name: string } & InferComp
       if (typeof value === "string" && value.length > 0) {
         validatePassword(
           value,
-          // TODO: see if we have correct translations and not only EN.
-          // Otherwise we need to build correct translation object
           // @ts-expect-error This works
           messages.common.form.passwordStrength.messages,
         ).then((result) => {
           setScore(result.score);
-          setMessage(result.crackTimesDisplay.onlineNoThrottling10PerSecond);
+          setMessage(result.crackTimesDisplay.offlineSlowHashing1e4PerSecond);
         });
       } else {
         setScore(-1);
