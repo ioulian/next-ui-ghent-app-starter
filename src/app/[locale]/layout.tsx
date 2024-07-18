@@ -9,10 +9,11 @@ import Header from "@/app/[locale]/_components/Header";
 import Providers from "@/components/providers/Providers";
 import { token } from "@/styled-system/tokens";
 import SpriteSheetInline from "@/components/common/svg-sprite/SpriteSheetInline";
+import { LocaleType } from "@/i18n";
 
 type Props = Readonly<{
   children: ReactNode;
-  params: { locale: string };
+  params: { locale: LocaleType };
 }>;
 
 export function generateViewport(): Viewport {

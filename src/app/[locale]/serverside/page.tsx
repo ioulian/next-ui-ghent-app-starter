@@ -4,9 +4,10 @@ import { getTranslations } from "next-intl/server";
 
 import { GithubDataTest } from "@/app/[locale]/serverside/_components/GithubDataTest";
 import { generateSanitizedMetadata } from "@/utils/next";
+import { LocaleType } from "@/i18n";
 
 type Props = Readonly<{
-  params: { locale: string };
+  params: { locale: LocaleType };
 }>;
 
 export const generateMetadata = generateSanitizedMetadata<Props>(async ({ params: { locale } }) => {

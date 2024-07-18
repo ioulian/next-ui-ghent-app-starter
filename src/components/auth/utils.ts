@@ -2,7 +2,7 @@
 
 import "server-only";
 
-import { signIn } from "@/auth";
+import { signInCredentials } from "@/auth";
 
 export type CredentialsType = {
   username: string;
@@ -12,6 +12,6 @@ export type CredentialsType = {
 export const login = async (data?: CredentialsType): Promise<void> => {
   if (data) {
     const { username, password } = data;
-    await signIn(username, password);
+    await signInCredentials(username, password);
   }
 };

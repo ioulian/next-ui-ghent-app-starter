@@ -10,6 +10,7 @@ global-components:
   Image:
     element: img
     attributes:
+      - alt
       - aria-*
   Spinner:
     element: span

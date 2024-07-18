@@ -37,11 +37,12 @@ import DialogClose from "@/components/common/floating-ui/dialog/DialogClose";
 import Dropdown from "@/components/common/floating-ui/dropdown/Dropdown";
 import DropdownMenuItem from "@/components/common/floating-ui/dropdown/DropdownMenuItem";
 import ButtonGroupSeparator from "@/components/common/button-group/ButtonGroupSeparator";
+import { LocaleType } from "@/i18n";
 
 import styles from "./_styles/styles.module.css";
 
 type Props = Readonly<{
-  params: { locale: string };
+  params: { locale: LocaleType };
 }>;
 
 export const generateMetadata = generateSanitizedMetadata<Props>(async ({ params: { locale } }) => {

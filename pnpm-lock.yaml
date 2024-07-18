@@ -271,6 +271,9 @@ devDependencies:
   typescript:
     specifier: 5.4.5
     version: 5.4.5
+  webpack:
+    specifier: 5.91.0
+    version: 5.91.0(@swc/core@1.4.16)(esbuild@0.20.2)
 
 packages:
 

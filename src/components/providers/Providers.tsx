@@ -1,7 +1,7 @@
 "use client";
 
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
-import { FC, PropsWithChildren, memo } from "react";
+import { FC, PropsWithChildren } from "react";
 
 import { token } from "@/styled-system/tokens";
 import { LOADER_DELAY } from "@/utils/constants";
@@ -23,4 +23,4 @@ const Providers: FC<PropsWithChildren> = ({ children }) => {
 /**
  * Providers that need client component to run.
  */
-export default memo(Providers);
+export default Providers;

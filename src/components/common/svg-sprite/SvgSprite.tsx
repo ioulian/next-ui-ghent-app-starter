@@ -26,6 +26,7 @@ const SvgSprite: FC<
       ? `${__webpack_public_path__}static/media/sprite-development.svg`
       : "";
 
+  // src.id?.slice is needed as we don't change webpack config for jest
   return (
     <svg
       {...typedProps}
@@ -35,7 +36,7 @@ const SvgSprite: FC<
       aria-labelledby={title ? titleId : undefined}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <use xlinkHref={`${url}#${src.id.slice(0, -"-usage".length)}`} />
+      <use xlinkHref={`${url}#${src.id?.slice(0, -"-usage".length)}`} />
     </svg>
   );
 };

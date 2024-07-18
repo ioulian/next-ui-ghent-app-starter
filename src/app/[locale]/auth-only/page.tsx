@@ -3,9 +3,10 @@
 import { NextPage } from "next";
 
 import { requireLoggedIn } from "@/auth";
+import { LocaleType } from "@/i18n";
 
 type Props = Readonly<{
-  params: { locale: string };
+  params: { locale: LocaleType };
 }>;
 
 const Page: NextPage<Props> = async ({}) => {

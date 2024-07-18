@@ -35,7 +35,7 @@ export type AuthSessionType = {
  * @param username Username to send to API
  * @param password Password to send to API
  */
-export const signIn = async (username: string, password: string): Promise<void> => {
+export const signInCredentials = async (username: string, password: string): Promise<void> => {
   try {
     const response = await login(username, password);
 
